@@ -5,7 +5,7 @@ import mobileBars from '../../../public/logos/mobileBars.svg';
 import xmark from '../../../public/logos/xmark.svg';
 import play from '../../../public/logos/play.svg';
 import leftPlay from '../../../public/logos/leftPlay.svg';
-import borderline from '../../../public/logos/borderline.png';
+import borderline from '../../../public/logos/borderLine.png';
 import design1 from '../../../public/logos/design1.png';
 import design2 from '../../../public/logos/design2.png';
 
