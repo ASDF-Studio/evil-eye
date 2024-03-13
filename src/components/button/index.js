@@ -12,7 +12,8 @@ export const Button = ({
   const buttonMapping = {
     navButton:
       "shadow text-main-sky5 bg-main-sky9 bg-opacity-40 rounded-xl pl-5 pr-3",
-    text: "text-main-white px-2",
+    text: "text-color-brand-yellow hover:underline transition-all duration-200",
+    text2: "text-color-brand-yellow",
     primary:
       "w-56 h-[45px] bg-main-sky5 rounded-xl shadow shadow-buttonShadow",
     secondary:

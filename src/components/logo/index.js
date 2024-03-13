@@ -5,7 +5,7 @@ import mobileBars from '../../../public/logos/mobileBars.svg';
 import xmark from '../../../public/logos/xmark.svg';
 import play from '../../../public/logos/play.svg';
 import leftPlay from '../../../public/logos/leftPlay.svg';
-import borderline from '../../../public/logos/borderLine.png';
+import borderline from '../../../public/logos/borderline.svg';
 import design1 from '../../../public/logos/design1.png';
 import design2 from '../../../public/logos/design2.png';
 
@@ -14,6 +14,23 @@ import chevronRight from '../../../public/logos/chevronRight.svg';
 import diamondExclamation from '../../../public/logos/diamondExclamation.svg';
 import uploadCloud from '../../../public/logos/uploadCloud.svg';
 import calender from '../../../public/logos/calender.svg';
+
+
+export const LogoWithBackground = () => {
+  const containerStyle = {
+    backgroundImage: 'url("/background/shadow.png")',
+    backgroundSize: 'cover',
+    width: '481px',
+    height: '175px',
+    display: 'flex',
+  };
+
+  return (
+    <div style={containerStyle} className='p-8'>
+      <Logo />
+    </div>
+  );
+};
 
 
 export const Logo = () => {

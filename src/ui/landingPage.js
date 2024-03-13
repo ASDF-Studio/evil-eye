@@ -1,15 +1,22 @@
 import { Button } from '@/components/button';
-import { Flex, FlexBetween, FlexCenter } from '@/components/layout';
-import { Borderline, ChevronRight, Design1, Design2, Eye, LeftPlay, Play } from '../components/logo';
+import { Flex, FlexBetween, FlexCenter, FlexColumn } from '@/components/layout';
+import { Borderline, LeftPlay, Play } from '../components/logo';
 import { Typography } from '@/components/typography';
 import InfoModal from '@/components/infoModal';
 import { useState } from 'react';
+import { DesignButton } from '@/components/button/designButton';
 
 export const LandingPage = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [showModal2, setShowModal2] = useState(false);
     const [showModal3, setShowModal3] = useState(false);
+
+    const closeAllModals = () => {
+        setShowModal(false);
+        setShowModal2(false);
+        setShowModal3(false);
+    };
 
     return (
         <div className="flex flex-col min-h-screen justify-between">
@@ -18,9 +25,12 @@ export const LandingPage = () => {
                 <Button
                     variant="text"
                     endIcon={<Play className="text-color-brand-yellow" />}
-                    className="text-color-brand-yellow w-[180px]"
+                    className="w-[180px]"
                     typoVariant="h1"
-                    onClick={() => setShowModal(true)}
+                    onClick={() => {
+                        closeAllModals();
+                        setShowModal(!showModal);
+                    }}
                 >
                     What is evil eye
                 </Button>
@@ -40,9 +50,12 @@ export const LandingPage = () => {
             <Button
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
-                className="text-color-brand-yellow"
+                className="w-[100px]"
                 typoVariant="h1"
-                onClick={() => setShowModal2(true)}
+                onClick={() => {
+                    closeAllModals();
+                    setShowModal2(!showModal2);
+                }}
             >
                 cure
             </Button>
@@ -61,9 +74,12 @@ export const LandingPage = () => {
             <Button
                 variant="text"
                 leftIcon={<LeftPlay className="text-color-brand-yellow" />}
-                className="text-color-brand-yellow"
+                className=""
                 typoVariant="h1"
-                onClick={() => setShowModal3(true)}
+                onClick={() => {
+                    closeAllModals();
+                    setShowModal3(!showModal3);
+                }}
             >
                 symptoms
             </Button>
@@ -89,27 +105,25 @@ export const LandingPage = () => {
         </div>
 
         {/* bottom part */}
-        <div className='flex flex-col items-center pb-[200px]'>
+        <FlexColumn className='items-center pb-[200px]'>
             <Borderline />
             <Typography variant="h2" classname=" text-color-brand-yellow2">
                 Relief from the Evil Eye
             </Typography>
-            <Typography variant="body" classname="w-[800px] text-textColor-brand-yellow opacity-60">
+            <Typography variant="body" classname="w-[800px] text-textColor-brand-yellow text-opacity-63">
                 Evil Eye Remedy is the original and authentic cure of its kind. Relief from your symptoms is close at hand. The ancient and special Evil Eye prayer will be said for you, your loved one, or your pet.
             </Typography>
             
             <Flex className="pt-5">
-                <FlexCenter className="bg-orange-300 shadow border-2 border-amber-300 justify-start gap-[15px]">
-                    <Flex className="relative border-amber-300 border text-brand-yellow bg-transparent focus:none focus:border-none w-[410px] h-[40px]">
-                        <FlexBetween className="w-[410px] absolute">
-                            <Design1/>
-                            <button className="text-[18px] font-normal border-none w-[410px] h-[40px] font-roman p-2 justify-center text-textColor-brand-gold" >Recite the prayer</button>
-                            <Design2 />
-                        </FlexBetween>
-                    </Flex>
-                </FlexCenter>
+                <DesignButton
+                    className=""
+                    typoVariant="buttonLabel2"
+                    onClick={() => setShowModal(true)}
+                >
+                    Recite the prayer
+                </DesignButton>
             </Flex>
-        </div>
+        </FlexColumn>
         </div>
     );
 };

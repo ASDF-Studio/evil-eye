@@ -33,7 +33,7 @@ module.exports = {
           white: '#FFFFFF',
         },
         border: {
-          button: 'rgba(255, 255, 255, 0.14)',
+          button: '#D8B351',
         },
         backgroundColor: {
           'brand-blue': '#090451',
@@ -50,9 +50,17 @@ module.exports = {
           'brand-gold' : '#795700',
         },
       },
+      textShadow: {
+        shadow:
+          '0px 4px 8px rgba(255, 229, 163, 0.50)',
+      },
       boxShadow: {
         buttonShadow:
           '0px 10px 10px -5px rgba(0, 101, 197, 0.40)',
+        buttonShadow2:
+          '0px 10px 25px 0px rgba(255, 206, 112, 0.30)',
+        buttonShadow3:
+          '-20px 0px 40px 0px rgba(0, 0, 0, 0.50)',
       },
       backgroundImage: {
         profile: 'linear-gradient(0deg, #011A32 0%, rgba(0, 0, 0, 0.00) 30.79%, #011A32 30.79%), lightgray 0px -1.823px / 100% 136.82% no-repeat, lightgray 50% / cover no-repeat;',

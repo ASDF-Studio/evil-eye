@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Link from "next/link";
-import { Logo, MobileBars, ProfilePerson, User, Xmark } from '../components/logo';
+import { Logo, LogoWithBackground, MobileBars, ProfilePerson, User, Xmark } from '../components/logo';
 import { Button } from '@/components/button';
 import { Typography } from '@/components/typography';
-import Image from 'next/image';
 import { Flex, FlexCenter, FlexColumn } from '@/components/layout';
+import LoginModal from '@/components/modal/loginModal';
 
 const NAV__LINK = [
   {
@@ -27,24 +27,35 @@ const NAV__LINK = [
 
 export const Header = () => {
   const [navbar, setNavbar] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const closeHighlightModal = () => {
+    setShowLoginModal(false);
+};
+
+  const handlePath = (path) => {
+    {
+      path == 'login' && setShowLoginModal(!showLoginModal)
+    }
+  }
 
   return (
   <>
-      <div className="w-full mt-[10px] fixed z-50 px-8">
+      <div className="w-full mt-[10px] fixed z-50">
         <FlexCenter
           className={[
             'justify-between h-[60px]',
           ].join(' ')}
         >
-          <Link href={"/"} className='ml-3'>
-            <Logo/>
+          <Link href={"/"} className=''>
+            <LogoWithBackground />
           </Link> 
 
-          <FlexCenter className="gap-2">
+          <FlexCenter className="gap-2 pr-8">
 
           {NAV__LINK.map((item, index) => (
               <React.Fragment key={index}>
-                <Button variant="text">
+                <Button variant="text2" onClick={() => handlePath(item.path)}>
                   <FlexCenter className="gap-2">
                     {
                       item.icon && <User />
@@ -87,6 +98,8 @@ export const Header = () => {
         </FlexColumn>
 
       </div>
+
+      <LoginModal isvisible={showLoginModal} onClose={() => setShowLoginModal(false)}/>
     </>
   );
 };
