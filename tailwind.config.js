@@ -4,6 +4,15 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: ['./src/**/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontSize: {
+      ac: ['18px', '17.08px'],
+        base1: ['35px', '33.22px'],
+        lnk: ['18px', '25.25px'],
+        bn: ['18px', '17.08px'],
+        dts: ['14px', '19.6px'],
+        jr: ['16px', '22.4px'],
+        dlr: ['22px', '20.88px'],
+    },
     screens: {
       'msm': '360px',
       'lsm': '390px',
@@ -28,6 +37,7 @@ module.exports = {
         'rosarivo': ['Rosarivo-Regular'],
         'x360': ['X360'],
       },
+      
       colors: {
         main: {
           white: '#FFFFFF',
@@ -38,16 +48,22 @@ module.exports = {
         backgroundColor: {
           'brand-blue': '#090451',
           'brand-blue-80': 'rgba(9, 4, 81, 0.80)', 
-          'brand-yellow': '#FFD770',
+          'brand-yellow2': '#FFD770',
+          'brand-yellow': '#FFCE70',
         },
         color: {
           'brand-yellow': '#FFCE70',
           'brand-yellow2': '#FFD770',
+          'brand-gold2' : '#D2A42B',
+          'brand-txt' : '#866000',
+          'brand-op': 'rgba(255, 206, 112, 0.30)',
         },
         
         textColor: {
           'brand-yellow': '#FFD770',
           'brand-gold' : '#795700',
+          'brand-gold2' : '#D2A42B',
+          'brand-txt' : '#866000',
         },
       },
       textShadow: {

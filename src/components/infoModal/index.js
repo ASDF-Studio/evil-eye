@@ -8,7 +8,7 @@ const InfoModal = ({ isvisible, onClose, children }) => {
         if( e.target.id === 'wrapper' ) onClose();
     }
     return (
-        <FlexCenter className="z-50 fixed right-10 top-24 bg-black bg-opacity-25 backdrop-blur-sm shadow-sm" id='wrapper' onClick={handleClose}>
+        <FlexCenter className="z-50 fixed right-10 top-24 bg-black bg-opacity-25 backdrop-blur-sm animate-bounce shadow-sm" id='wrapper' onClick={handleClose}>
             <FlexColumn className='bg-backgroundColor-brand-blue-80 border border-color-brand-yellow2 shadow-buttonShadow3 justify-between'>
                 <button className='text-textColor-brand-yellow text-xl place-self-end pr-4 pt-3' onClick={() => onClose()}>
                     <Xmark/>

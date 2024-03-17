@@ -18,6 +18,7 @@ export const Button = ({
       "w-56 h-[45px] bg-main-sky5 rounded-xl shadow shadow-buttonShadow",
     secondary:
       "w-56 h-[45px] bg-main-sky5 bg-opacity-20 rounded-xl border border-sky-500",
+      h12: "text-center font-rosarivo text-[18px] font-normal leading-[25.25px] tracking-[-0.9px]",
   };
 
   return (

@@ -1,8 +1,10 @@
 import { Button } from '@/components/button';
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from '@/components/layout';
-import { Borderline, LeftPlay, Play } from '../components/logo';
+import { Borderline, Design1, Design2, LeftPlay, Play } from '../components/logo';
 import { Typography } from '@/components/typography';
 import InfoModal from '@/components/infoModal';
+import DashModal from '@/components/modal/dashModal';
+import ModalFrame2 from '@/components/modal/modalFrame2';
 import { useState } from 'react';
 import { DesignButton } from '@/components/button/designButton';
 
@@ -11,11 +13,13 @@ export const LandingPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [showModal2, setShowModal2] = useState(false);
     const [showModal3, setShowModal3] = useState(false);
+    const [showModal5, setShowModal5] = useState(false);
 
     const closeAllModals = () => {
         setShowModal(false);
         setShowModal2(false);
         setShowModal3(false);
+        setShowModal5(false);
     };
 
     return (
@@ -114,7 +118,7 @@ export const LandingPage = () => {
                 Evil Eye Remedy is the original and authentic cure of its kind. Relief from your symptoms is close at hand. The ancient and special Evil Eye prayer will be said for you, your loved one, or your pet.
             </Typography>
             
-            <Flex className="pt-5">
+            {/* <Flex className="pt-5">
                 <DesignButton
                     className=""
                     typoVariant="buttonLabel2"
@@ -122,6 +126,23 @@ export const LandingPage = () => {
                 >
                     Recite the prayer
                 </DesignButton>
+            </Flex> */}
+
+            <Flex className="pt-5">
+            <DesignButton
+                variant="text"
+                className=''
+                typoVariant="buttonLabel2"
+                onClick={() => {
+                    closeAllModals();
+                    setShowModal5(!showModal5);
+                }}
+            >
+                Recite the prayer
+            </DesignButton>
+            
+
+            
             </Flex>
         </FlexColumn>
         </div>

@@ -23,3 +23,31 @@ body {
   width: auto;
   background: #000;
 }
+@keyframes bounce {
+  0% { transform: translateY(-100px); }
+  70% { transform: translateY(20px); }
+  100% { transform: translateY(0); }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 400px;
+    padding: 100px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    
+    background: rgba(255, 206, 112, 0.2);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #FFCE70;
+    
+    border: 3px solid #FFCE70;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #FFCE70;
+  }
+}
