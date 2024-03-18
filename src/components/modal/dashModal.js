@@ -118,7 +118,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                         <FlexBetween className="pt-2 w-[400px]">
                             {/* <div className=" font-display text-jr text-brand-yellow  opacity-80">1 Evil Eye Remedy for Adam  Voigt</div> */}
                                 <Typography variant="h13" classname=" text-color-brand-yellow2 opacity-80">1 Evil Eye Remedy for Adam  Voigt</Typography>
-                                <Typography variant="h14" classname=" text-color-brand-yellow2 shadow-textColor-brand-yellow shadow-lg">$3.3</Typography>
+                                <Typography variant="h14" classname=" text-color-brand-yellow2 ">$3.3</Typography>
                         </FlexBetween>
                     <Typography variant="h13" classname="hover:underline text-color-brand-yellow2">View Invoice</Typography>
                     {/* <a href="#" className="hover:underline font-display text-brand-yellow text-jr ">View Invoice</a> */}

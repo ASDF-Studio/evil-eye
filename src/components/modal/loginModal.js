@@ -24,7 +24,7 @@ const LoginModal = ({ isvisible, onClose, children }) => {
     };
     
     return (
-        <FlexCenter className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm" id='wrapper' onClick={handleClose}>
+        <FlexCenter className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur shadow-sm" id='wrapper' onClick={handleClose}>
             <ModalFrame onClose={onClose} title="USER ACCOUNT">
             
             {/* <h1 className="font-roman text-[35px] font-normal  text-color-brand-yellow2 ">LOGIN</h1> */}
@@ -89,11 +89,11 @@ const LoginModal = ({ isvisible, onClose, children }) => {
                                 </Typography> */}
                                 <Button
                                 className=" w-full"
-                                typoVariant="text"
+                                typoVariant="h12"
                                 onClick={() => {
                                     closeHighlightModal();
                                     setShowPassModal(!showPassModal);}}>
-                               <Typography variant='text' classname=" hover:underline cursor-pointer text-color-brand-yellow2 "> RESET</Typography>
+                               <Typography variant='h12' classname=" hover:underline cursor-pointer text-color-brand-yellow2 "> RESET</Typography>
                                 </Button>
                                 <PassModal isvisible={showPassModal} onClose={() => setShowPassModal(false)} />
                             
