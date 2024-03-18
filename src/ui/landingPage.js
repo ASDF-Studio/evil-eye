@@ -13,13 +13,11 @@ export const LandingPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [showModal2, setShowModal2] = useState(false);
     const [showModal3, setShowModal3] = useState(false);
-    const [showModal5, setShowModal5] = useState(false);
 
     const closeAllModals = () => {
         setShowModal(false);
         setShowModal2(false);
         setShowModal3(false);
-        setShowModal5(false);
     };
 
     return (
@@ -117,16 +115,6 @@ export const LandingPage = () => {
             <Typography variant="body" classname="w-[800px] text-textColor-brand-yellow text-opacity-63">
                 Evil Eye Remedy is the original and authentic cure of its kind. Relief from your symptoms is close at hand. The ancient and special Evil Eye prayer will be said for you, your loved one, or your pet.
             </Typography>
-            
-            {/* <Flex className="pt-5">
-                <DesignButton
-                    className=""
-                    typoVariant="buttonLabel2"
-                    onClick={() => setShowModal(true)}
-                >
-                    Recite the prayer
-                </DesignButton>
-            </Flex> */}
 
             <Flex className="pt-5">
             <DesignButton
@@ -135,7 +123,6 @@ export const LandingPage = () => {
                 typoVariant="buttonLabel2"
                 onClick={() => {
                     closeAllModals();
-                    setShowModal5(!showModal5);
                 }}
             >
                 Recite the prayer

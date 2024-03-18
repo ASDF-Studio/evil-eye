@@ -8,6 +8,7 @@ import leftPlay from '../../../public/logos/leftPlay.svg';
 import borderline from '../../../public/logos/borderline.svg';
 import design1 from '../../../public/logos/design1.png';
 import design2 from '../../../public/logos/design2.png';
+import pen from '../../../public/logos/pen.svg';
 
 import eye from '../../../public/logos/eye.svg';
 import chevronRight from '../../../public/logos/chevronRight.svg';
@@ -140,6 +141,18 @@ export const Design2 = () => {
       width={0}
       height={"40"}
       alt="design1"
+      className=""
+    />
+  );
+};
+
+export const Pen = () => {
+  return (
+    <Image
+      src={pen}
+      width={"18"}
+      height={0}
+      alt="pen"
       className=""
     />
   );

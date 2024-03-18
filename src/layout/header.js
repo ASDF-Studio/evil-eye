@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Link from "next/link";
-import { Logo, LogoWithBackground, MobileBars, ProfilePerson, User, Xmark } from '../components/logo';
-
+import { LogoWithBackground, MobileBars, User, Xmark } from '../components/logo';
 import { Button } from '@/components/button';
 import { Typography } from '@/components/typography';
 import { Flex, FlexCenter, FlexColumn } from '@/components/layout';
 import LoginModal from '@/components/modal/loginModal';
 import DashModal from '@/components/modal/dashModal';
+import PassModal from '@/components/modal/passModal';
 
 const NAV__LINK = [
   {
@@ -26,31 +26,33 @@ const NAV__LINK = [
   },
 ];
 
-
 export const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDashModal, setShowDashModal] = useState(false);
+  const [showPassModal, setShowPassModal] = useState(false);
 
-  const closeHighlightModal = () => {
+
+  const closeAllModal = () => {
     setShowLoginModal(false);
-    setShowDashModal(false);
-};
+  };
 
   const handlePath = (path) => {
-    {
-      path == 'login' && setShowLoginModal(!showLoginModal)
-      
-    }
-    {
-      
-      path == 'price' && setShowDashModal(!showDashModal)
-    }
+    path === 'login' && setShowLoginModal(!showLoginModal);
   }
-  
+
+  const openDashboard = () => {
+    closeAllModal
+    setShowDashModal(true);
+  };
+
+  const openForgotPassword = () => {
+    closeAllModal
+    setShowPassModal(true);
+  };
 
   return (
-  <>
+    <>
       <div className="w-full mt-[10px] fixed z-50">
         <FlexCenter
           className={[
@@ -62,17 +64,14 @@ export const Header = () => {
           </Link> 
 
           <FlexCenter className="gap-2 pr-8">
-
-          {NAV__LINK.map((item, index) => (
+            {NAV__LINK.map((item, index) => (
               <React.Fragment key={index}>
-                <Button variant="text2" onClick={() => {
-                  closeHighlightModal();
-                  handlePath(item.path)}}>
+                <Button variant="text2" onClick={() => handlePath(item.path)}>
                   <FlexCenter className="gap-2">
                     {
                       item.icon && <User />
                     }
-                    <Typography variant="buttonPrimary" classname=" text-color-brand-yellow2 font-roman">
+                    <Typography variant="buttonPrimary" classname="text-color-brand-yellow2 font-roman">
                       {item.display}
                     </Typography>
                   </FlexCenter>
@@ -84,11 +83,9 @@ export const Header = () => {
                 )}
               </React.Fragment>
             ))}
-
             <Flex className="text-center justify-center 1xl:hidden">
               <i className="w-[1px] h-[40px] border-r-2 border-lightBlue mr-3" />
             </Flex>
-
             <Flex
               className="text-center 1xl:hidden"
               onClick={() => setNavbar(!navbar)}
@@ -99,24 +96,26 @@ export const Header = () => {
         </FlexCenter>
 
         <FlexColumn
-            className={`w-auto h-auto v-screen items-start justify-center gap-5 shadow-headerShadow 
+          className={`w-auto h-auto v-screen items-start justify-center gap-5 shadow-headerShadow 
             ${navbar ? 'p-5 md:p-0 block' : 'hidden'}`}
         >
-            {NAV__LINK.map((item, index) => (
-                <Button key={index} variant="text" onClick={() => {
-                  handlePath(item.path);
-                  closeHighlightModal();
-                  setShowDashModal(!showDashModal);
-                  scrollToPage(item.path)}}>
-                    {item.display}
-                </Button>
-            ))}
+          {NAV__LINK.map((item, index) => (
+            <Button key={index} variant="text" onClick={() => handlePath(item.path)}>
+              {item.display}
+            </Button>
+          ))}
         </FlexColumn>
 
       </div>
 
-      <LoginModal isvisible={showLoginModal} onClose={() => setShowLoginModal(false)}/>
-      <DashModal isvisible={showDashModal} onClose={() => setShowDashModal(false)}/>
+      <LoginModal
+        isvisible={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+        openDashboard={openDashboard}
+        openForgotPassword={openForgotPassword}
+      />
+      <DashModal isvisible={showDashModal} onClose={() => setShowDashModal(false)} />
+      <PassModal isvisible={showPassModal} onClose={() => setShowPassModal(false)} />
     </>
   );
 };
