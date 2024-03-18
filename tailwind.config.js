@@ -48,6 +48,7 @@ module.exports = {
         backgroundColor: {
           'brand-blue': '#090451',
           'brand-blue-80': 'rgba(9, 4, 81, 0.80)', 
+          'brand-blue-95': 'rgba(9, 4, 81, 0.95)',
           'brand-yellow2': '#FFD770',
           'brand-yellow': '#FFCE70',
         },

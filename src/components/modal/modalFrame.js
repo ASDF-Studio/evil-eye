@@ -10,11 +10,11 @@ const ModalFrame = ({
 }) => {
     return (
         <FlexCenter 
-            className=" w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm" 
+            className=" w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm z-50" 
             id='wrapper' 
             onClick={onClose}
         >
-            <FlexColumn className='bg-backgroundColor-brand-blue-80 w-[450px] border-2 border-color-brand-yellow2'>
+            <FlexColumn className='bg-backgroundColor-brand-blue-95 bg-opacity-95 w-[450px] border-2 border-color-brand-yellow2  shadow-buttonShadow3'>
                 <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
                     <Design1 />
                         <Typography variant="title" classname="w-[340px] ml-10 flex justify-center items-center h-full text-color-brand-yellow2 ">

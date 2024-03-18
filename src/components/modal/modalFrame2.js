@@ -9,9 +9,9 @@ const ModalFrame2 = ({
     title 
 }) => {
     return (
-        <FlexCenter className=" w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm" id='wrapper'  onClick={onClose}>
+        <FlexCenter className=" w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm" id='wrapper'  onClick={onClose}>
             
-            <FlexColumn className='bg-backgroundColor-brand-blue-80 w-auto h-auto border-2 border-color-brand-yellow2'>
+            <FlexColumn className='bg-backgroundColor-brand-blue-95 w-auto h-[600px] border-2 border-color-brand-yellow2 shadow-buttonShadow3'>
                 <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
                     <Design1 />
                         <Typography variant="title" classname="w-[820px] ml-10 flex justify-center items-center h-full text-color-brand-yellow2 ">
