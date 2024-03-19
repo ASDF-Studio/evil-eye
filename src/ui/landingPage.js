@@ -1,16 +1,12 @@
 import { Button } from "@/components/button";
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from "@/components/layout";
+import { Flex, FlexColumn } from "@/components/layout";
 import {
   Borderline,
-  Design1,
-  Design2,
   LeftPlay,
   Play,
 } from "../components/logo";
 import { Typography } from "@/components/typography";
 import InfoModal from "@/components/infoModal";
-import DashModal from "@/components/modal/dashModal";
-import ModalFrame2 from "@/components/modal/modalFrame2";
 import { useState } from "react";
 import { DesignButton } from "@/components/button/designButton";
 
@@ -96,7 +92,7 @@ export const LandingPage = () => {
             onClose={() => setShowModal2(false)}
           >
             <div>
-              <h1 className="font-roman mb-3 drop-shadow-3xl text-3xl font-bold pb-5">
+              <h1 className="font-roman drop-shadow-3xl text-[35px] font-normal pb-5">
                 CURE
               </h1>
               <p className="font-rosarivo font-normal w-auto pr-5">
@@ -137,7 +133,7 @@ export const LandingPage = () => {
             onClose={() => setShowModal3(false)}
           >
             <div>
-              <h1 className="font-roman drop-shadow-3xl mb-2 text-3xl font-bold pb-5">
+              <h1 className="font-roman drop-shadow-3xl text-[35px] font-normal pb-5">
                 SYMPTOMS
               </h1>
               <p className=" font-rosarivo font-normal w-auto pr-5">

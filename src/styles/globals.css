@@ -23,14 +23,6 @@ body {
   width: auto;
   background: #000;
 }
-@keyframes bounce {
-  0% { transform: translateY(-100px); }
-  70% { transform: translateY(20px); }
-  100% { transform: translateY(0); }
-}
-.animate-bounce-slow {
-  animation: bounce-slow 1s ease-in-out; /* Adjust duration here */
-}
 
 
 @layer utilities {
@@ -54,4 +46,44 @@ body {
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #FFCE70;
   }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(-10px);
+  }
+
+}
+
+@keyframes closeAnimation {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(110%);
+    opacity: 0.8;
+  }
+  90% {
+    transform: translateX(109%);
+    opacity: 0;
+  }
+
+}
+
+
+.bounce {
+  animation: bounce 1s;
+}
+
+.closeAnimation {
+  animation: closeAnimation 1s;
 }
