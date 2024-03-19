@@ -49,7 +49,7 @@ const LoginModal = ({
           >
             LOGIN
           </Typography>
-        </div>
+        </div>  
         <div className="px-5 text-left pb-5">
           <div className="space-y-5" action="#">
             <div>
@@ -88,6 +88,7 @@ const LoginModal = ({
                   Forgot Password?
                 </Typography>
                 <Button
+                  variant="text"
                   className="w-full"
                   typoVariant="text"
                   onClick={openForgotPass1Modal}
