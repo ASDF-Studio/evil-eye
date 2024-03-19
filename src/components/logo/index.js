@@ -3,6 +3,7 @@ import user from '../../../public/logos/user.svg';
 import logo from '../../../public/logo.svg';
 import mobileBars from '../../../public/logos/mobileBars.svg';
 import xmark from '../../../public/logos/xmark.svg';
+import x from '../../../public/logos/x.svg';
 import play from '../../../public/logos/play.svg';
 import leftPlay from '../../../public/logos/leftPlay.svg';
 import borderline from '../../../public/logos/borderline.svg';
@@ -67,10 +68,10 @@ export const MobileBars = () => {
   return (
     <Image
       src={mobileBars}
-      width={37}
+      width={18}
       height="auto"
       alt="mobile bars"
-      className="mr-3"
+      className=""
     />
   );
 };
@@ -83,6 +84,18 @@ export const Xmark = () => {
       height="auto"
       alt="xmark"
       className="mr-3"
+    />
+  );
+};
+
+export const X = () => {
+  return (
+    <Image
+      src={x}
+      width={18}
+      height="auto"
+      alt="x"
+      className=""
     />
   );
 };
@@ -128,9 +141,9 @@ export const Design1 = () => {
     <Image
       src={design1}
       width={0}
-      height={"40"}
+      height={0}
       alt="design1"
-      className=""
+      className="h-full"
     />
   );
 };
@@ -140,9 +153,9 @@ export const Design2 = () => {
     <Image
       src={design2}
       width={0}
-      height={"40"}
+      height={0}
       alt="design1"
-      className=""
+      className="h-full"
     />
   );
 };

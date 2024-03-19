@@ -15,7 +15,7 @@ module.exports = {
     },
     screens: {
       msm: "360px",
-      lsm: "390px",
+      lsm: "420px",
       sm: "767px", //mobile
       x: "1009px", //tablet | 1009px is 1024 px in ipad
       xl: "1009px", //laptop | 1009px is 1024 px in ipad
@@ -23,6 +23,7 @@ module.exports = {
       "2xl": "1440px", //desktop
       "4xl": "1800px", // for portfolio card
       "5xl": "1920px", // ultra wide
+      "10xl": "2880px", // ultra wide
     },
     extend: {
       fontFamily: {
@@ -41,6 +42,7 @@ module.exports = {
         backgroundColor: {
           "brand-blue": "#090451",
           "brand-blue-80": "rgba(9, 4, 81, 0.80)",
+          "brand-blue-90": "rgba(9, 4, 81, 0.90)",
           "brand-blue-95": "rgba(9, 4, 81, 0.95)",
           "brand-yellow2": "#FFD770",
           "brand-yellow": "#FFCE70",
@@ -58,7 +60,7 @@ module.exports = {
           "brand-gold": "#795700",
           "brand-gold2": "#D2A42B",
           "brand-txt": "#866000",
-          'placeholder': '#795700'
+          placeholder: "#795700",
         },
       },
       textShadow: {

@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import { Header } from './header';
-import { BG1920, BGvideo } from '@/components/background';
+import Head from "next/head";
+import { Header } from "./header";
+import { BG1920, BG2880, BG420, BG960, BGvideo } from "@/components/background";
 
 const MainLayout = ({ children }) => {
   return (
@@ -11,13 +11,21 @@ const MainLayout = ({ children }) => {
       </Head>
       <Header />
       <div className="h-screen overflow-hidden">
-
-        <BG1920 />
+        <div className="block lsm:hidden">
+          <BG420 />
+        </div>
+        <div className="hidden lsm:block">
+          <BG960 />
+        </div>
+        <div className="hidden x:block">
+          <BG1920 />
+        </div>
+        <div className="hidden 5xl:block">
+          <BG2880 />
+        </div>
         <BGvideo />
 
-        <div className="z-10 relative h-full">
-          {children}
-        </div>
+        <div className="z-10 relative h-full">{children}</div>
       </div>
     </>
   );

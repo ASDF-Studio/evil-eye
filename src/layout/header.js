@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import {
+  Logo,
   LogoWithBackground,
   MobileBars,
   User,
-  Xmark,
+  X,
 } from "../components/logo";
 import { Button } from "@/components/button";
 import { Typography } from "@/components/typography";
@@ -19,6 +20,7 @@ import ForgotPass2 from "@/components/modal/login/forgotpass2";
 import ForgotPass3 from "@/components/modal/login/forgotpass3";
 import Pricing from "@/components/modal/pricing";
 import Contact from "@/components/modal/contact";
+import { DesignButton } from "@/components/button/designButton";
 
 const NAV__LINK = [
   {
@@ -55,9 +57,13 @@ export const Header = () => {
 
   const closeAllModal = () => {
     setShowLoginModal(false);
+    setShowContactModal(false);
+    setShowPricingModal(false);
   };
 
   const handlePath = (path) => {
+    setNavbar(false);
+    closeAllModal();
     path === "login" && setShowLoginModal(!showLoginModal);
     path === "contact" && setShowContactModal(!showContactModal);
     path === "price" && setShowPricingModal(!showPricingModal);
@@ -100,13 +106,16 @@ export const Header = () => {
 
   return (
     <>
-      <div className="w-full mt-[10px] fixed z-50">
-        <FlexCenter className={["justify-between h-[60px]"].join(" ")}>
-          <Link href={"/"} className="">
+      <div className="w-[100%] px-5 mt-[10px] fixed z-[100]">
+        <FlexCenter className={["h-[60px] justify-between"].join(" ")}>
+          <Link href={"/"} className="relative hidden sm:block">
             <LogoWithBackground />
           </Link>
+          <div className="block sm:hidden">
+            <Logo />
+          </div>
 
-          <FlexCenter className="gap-2 pr-8">
+          <FlexCenter className="gap-2 pr-8 hidden sm:flex">
             {NAV__LINK.map((item, index) => (
               <React.Fragment key={index}>
                 <Button variant="text2" onClick={() => handlePath(item.path)}>
@@ -114,7 +123,7 @@ export const Header = () => {
                     {item.icon && <User />}
                     <Typography
                       variant="buttonPrimary"
-                      classname="text-color-brand-yellow2 font-roman"
+                      classname="text-color-brand-yellow2 font-roman whitespace-nowrap"
                     >
                       {item.display}
                     </Typography>
@@ -127,32 +136,47 @@ export const Header = () => {
                 )}
               </React.Fragment>
             ))}
-            <Flex className="text-center justify-center 1xl:hidden">
-              <i className="w-[1px] h-[40px] border-r-2 border-lightBlue mr-3" />
-            </Flex>
-            <Flex
-              className="text-center 1xl:hidden"
+          </FlexCenter>
+
+          <Flex className="p-5 block sm:hidden">
+            <DesignButton
+              variant="text"
+              className="flex text-center sm:hidden"
               onClick={() => setNavbar(!navbar)}
             >
-              {navbar ? <Xmark /> : <MobileBars />}
-            </Flex>
-          </FlexCenter>
+              {navbar ? <X /> : <MobileBars />}
+            </DesignButton>
+          </Flex>
         </FlexCenter>
 
-        <FlexColumn
-          className={`w-auto h-auto v-screen items-start justify-center gap-5 shadow-headerShadow 
+        <div className="w-[100%] h-auto flex justify-center items-center px-2 pt-2">
+          <FlexColumn
+            className={`w-full h-full v-screen items-start justify-center gap-5 shadow-headerShadow bg-backgroundColor-brand-blue-90 border-2 border-color-brand-yellow2
             ${navbar ? "p-5 md:p-0 block" : "hidden"}`}
-        >
-          {NAV__LINK.map((item, index) => (
-            <Button
-              key={index}
-              variant="text"
-              onClick={() => handlePath(item.path)}
-            >
-              {item.display}
-            </Button>
-          ))}
-        </FlexColumn>
+          >
+            {NAV__LINK.map((item, index) => (
+              <React.Fragment key={index}>
+                <Button
+                  key={index}
+                  variant="text2"
+                  onClick={() => handlePath(item.path)}
+                >
+                  <FlexCenter className="gap-2">
+                    {item.icon && <User />}
+                    <Typography
+                      variant="mobileNav"
+                    >
+                      {item.display}
+                    </Typography>
+                  </FlexCenter>
+                </Button>
+                {index < NAV__LINK.length - 1 && (
+                  <hr className="w-full border-color-brand-op" />
+                )}
+              </React.Fragment>
+            ))}
+          </FlexColumn>
+        </div>
       </div>
 
       <Pricing
