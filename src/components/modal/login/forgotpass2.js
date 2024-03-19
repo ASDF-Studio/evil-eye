@@ -35,13 +35,13 @@ const ForgotPass2 = ({
           >
             Forgot Password
           </Typography>
-          <div className="pt-3.5">
+          <div className="pt-6">
             <Typography
               variant="h12"
               classname=" text-color-brand-yellow2 drop-shadow-3xl "
             >
               We’ve sent you a reset email to your email address:
-              <span className="underline">adamvoigt@gmail.com</span>
+              <span className="underline"> adamvoigt@gmail.com</span>
             </Typography>
           </div>
 

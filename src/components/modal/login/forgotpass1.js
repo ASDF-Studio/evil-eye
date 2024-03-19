@@ -35,17 +35,17 @@ const ForgotPass1 = ({
           >
             Forgot Password
           </Typography>
-          <div className="pt-3.5">
+          <div className="pt-5">
             <Typography
               variant="h12"
               classname=" text-color-brand-yellow2 drop-shadow-3xl "
             >
-              Please enter your email below to reset your password. We’ll send
+              Please enter your email below to reset your <br></br> password. We’ll send
               you an email with a reset link.
             </Typography>
           </div>
 
-          <div className="pt-3.5">
+          <div className="pt-5">
             <label htmlFor="email" className="block mb-1.5">
               <Typography
                 variant="h12"

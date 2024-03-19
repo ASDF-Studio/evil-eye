@@ -30,7 +30,7 @@ const EmailModal = ({ isvisible, onClose }) => {
             Change Email
           </Typography>
 
-          <div>
+          <div className="mt-5">
             <label for="email" className="block  mb-1.5">
               <Typography
                 variant="h12"

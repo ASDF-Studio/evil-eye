@@ -5,6 +5,7 @@ import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import DashModal from "../dashModal";
+import { Button } from "react-scroll";
 
 const SignupOtpModal = ({ isvisible, onClose }) => {
   if (!isvisible) return null;
@@ -34,8 +35,8 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
               variant="h12"
               classname=" text-color-brand-yellow2 drop-shadow-3xl "
             >
-              We have sent you an OTP to your email address:
-              adamvoigt@gmail.com. Please enter your code below to finish
+              We have sent you an OTP to your email address: 
+              <span className=" hover:underline"> adamvoigt@gmail.com.</span> Please enter your code <br></br>below to finish
               changing your email.
             </Typography>
           </div>
@@ -66,6 +67,31 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
               </FlexBetween>
             </Flex>
           </div>
+          <FlexBetween className="mt-3"><Button
+                  variant="text"
+                  className="w-full"
+                  typoVariant="text"
+                  
+                >
+                  <Typography
+                variant="h12"
+                classname="hover:underline flex justify-start text-color-brand-yellow2 drop-shadow-3xl "
+              >
+                Change Email
+              </Typography>
+                </Button><Button
+                  variant="text"
+                  className="w-full"
+                  typoVariant="text"
+                  
+                >
+                  <Typography
+                variant="h12"
+                classname="hover:underline flex justify-end text-color-brand-yellow2 drop-shadow-3xl "
+              >
+                Resend
+              </Typography>
+                </Button></FlexBetween>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton
               className=" w-full"

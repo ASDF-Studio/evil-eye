@@ -107,7 +107,7 @@ const SignupModal = ({
                 <Input type="password" />
               </Flex>
             </div>
-            <Flex className="justify-center pb-2.5 w-[100%]">
+            <Flex className="justify-center w-[100%]">
               <DesignButton
                 className="w-full"
                 typoVariant="buttonLabel2"
@@ -118,8 +118,8 @@ const SignupModal = ({
             </Flex>
 
             <hr className="w-[410px] border-color-brand-op" />
-            <div className="pb-2.5">
-              <FlexCenter className="w-[410px] mb-5 text-color-brand-yellow2">
+            <div className="">
+              <FlexCenter className="w-[410px] mt-2 text-color-brand-yellow2">
                 <Typography
                   variant="h12"
                   classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -127,7 +127,7 @@ const SignupModal = ({
                   Already have an account?
                 </Typography>
               </FlexCenter>
-              <Flex className="relative focus:none focus:border-none w-[410px] h-[40px]">
+              <Flex className="relative focus:none focus:border-none w-[410px] h-[40px] mt-2">
                 <DesignButton3
                   className="w-full"
                   typoVariant="buttonLabel2"
