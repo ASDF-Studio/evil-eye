@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from '../layout';
-import ModalFrame from './modalFrame';
-import { Design1, Design2, Xmark } from '../logo';
-import { Typography } from '../typography';
-import { DesignButton } from '../button/designButton';
-import OtpModal from './otpModal';
+import { Flex, FlexBetween, FlexCenter, FlexColumn } from '../../layout';
+import ModalFrame from '../modalFrame';
+import { Design1, Design2, Xmark } from '../../logo';
+import { Typography } from '../../typography';
+import { DesignButton } from '../../button/designButton';
+import DashModal from '../dashModal';
 
-const EmailModal = ({ isvisible, onClose}) => {
+const OtpModal = ({ isvisible, onClose}) => {
     if ( !isvisible ) return null;
     const handleClose = (e) => {
         if( e.target.id === 'wrapper' ) onClose();
     }
-    const [showOtpModal, setShowOtpModal] = useState(false);
+    const [showDashModal, setShowDashModal] = useState(false);
     const closeHighlightModal = () => {
-        setShowOtpModal(false);
+        setShowDashModal(false);
         
     };
     return (
@@ -23,11 +23,14 @@ const EmailModal = ({ isvisible, onClose}) => {
                 <Typography variant="h11" classname=" text-color-brand-yellow2 drop-shadow-3xl ">
                 Change Email
                 </Typography>
+                <div className='pt-3.5'><Typography variant="h12" classname=" text-color-brand-yellow2 drop-shadow-3xl ">
+                We have sent you an OTP to your email address: adamvoigt@gmail.com. Please enter your code below to finish changing your email.
+                </Typography></div>
                 
-                <div>  
+                <div className='pt-3.5'>  
                         <label for="email" className="block  mb-1.5">
                             <Typography variant="h12" classname=" text-color-brand-yellow2 drop-shadow-3xl ">
-                                Email 
+                                OTP
                             </Typography>
                             </label>
                             <Flex className=" relative w-[410px] h-[40px] ">
@@ -38,7 +41,7 @@ const EmailModal = ({ isvisible, onClose}) => {
                                     name="email"
                                     id="email"
                                     className="outline-none bg-transparent items-center placeholder:text-textColor-brand-gold2 absolute flex w-full px-7 text-textColor-brand-gold2 h-[40px] "
-                                    placeholder=""
+                                    placeholder="XXXX"
                                     required/>
                                     </Flex>
                                     <Design2 />
@@ -51,10 +54,10 @@ const EmailModal = ({ isvisible, onClose}) => {
                                 typoVariant="buttonLabel2"
                                 onClick={() => {
                                     closeHighlightModal();
-                                    setShowOtpModal(!showOtpModal);}}>
+                                    setShowDashModal(!showDashModal);}}>
                                 ENTER
                                 </DesignButton>
-                                <OtpModal isvisible={showOtpModal} onClose={() => setShowOtpModal(false)} />
+                                <DashModal isvisible={showDashModal} onClose={() => setShowDashModal(false)} />
                                 
                             </Flex></div>
                 
@@ -66,4 +69,4 @@ const EmailModal = ({ isvisible, onClose}) => {
     );
 }
 
-export default EmailModal;
+export default OtpModal;

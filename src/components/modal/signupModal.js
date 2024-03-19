@@ -6,14 +6,12 @@ import { Typography } from "../typography";
 import { DesignButton } from "../button/designButton";
 import { Button } from "../button";
 import { Input } from "../input";
-import { DesignButton3 } from "../button/designButton3";
 
-const LoginModal = ({
+const SignupModal = ({
   isvisible,
   onClose,
   openDashboard,
   openForgotPassword,
-  openSignup,
 }) => {
   if (!isvisible) return null;
 
@@ -31,11 +29,6 @@ const LoginModal = ({
     openDashboard();
   };
 
-  const openSignupModal = () => {
-    onClose();
-    openSignup();
-  };
-
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
@@ -48,11 +41,24 @@ const LoginModal = ({
             variant="h11"
             classname="text-color-brand-yellow2 drop-shadow-3xl "
           >
-            LOGIN
+            SIGNUP
           </Typography>
         </div>
         <div className="px-5 text-left pb-5">
           <div className="space-y-5" action="#">
+            <div>
+              <label htmlFor="email" className="block mb-1.5">
+                <Typography
+                  variant="h12"
+                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                >
+                  Your Name
+                </Typography>
+              </label>
+              <Flex className="relative h-[40px]">
+                <Input type="text" placeholder="Your Name" />
+              </Flex>
+            </div>
             <div>
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
@@ -74,6 +80,20 @@ const LoginModal = ({
                   classname="text-color-brand-yellow2 drop-shadow-3xl "
                 >
                   Password
+                </Typography>
+              </label>
+              <Flex className="relative h-[40px]">
+                <Input type="password" />
+              </Flex>
+            </div>
+
+            <div>
+              <label htmlFor="password" className="block mb-1.5">
+                <Typography
+                  variant="h12"
+                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                >
+                  Confirm Password
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
@@ -119,17 +139,22 @@ const LoginModal = ({
                   variant="h12"
                   classname="text-color-brand-yellow2 drop-shadow-3xl "
                 >
-                  Don't have account
+                  Already have an account?
                 </Typography>
               </FlexCenter>
-              <Flex className="relative focus:none focus:border-none w-[100%] h-[40px]">
-                <DesignButton3
-                  className="w-full"
-                  typoVariant="buttonLabel2"
-                  onClick={openSignupModal}
-                >
-                  SIGN UP
-                </DesignButton3>
+              <Flex className="relative focus:none focus:border-none w-[410px] h-[40px]">
+                <FlexBetween className="w-[410px] h-[40px] border-[#D2A42B] border-2 text-brand-gold bg-transparent absolute">
+                  <Design1 />
+                  <FlexCenter className="border-none w-[410px] h-[40px] p-2 hover:cursor-pointer">
+                    <Typography
+                      variant="h16"
+                      classname="text-color-brand-yellow2"
+                    >
+                      Login
+                    </Typography>
+                  </FlexCenter>
+                  <Design2 />
+                </FlexBetween>
               </Flex>
             </div>
             <hr className="w-[410px] border-color-brand-op" />
@@ -148,4 +173,4 @@ const LoginModal = ({
   );
 };
 
-export default LoginModal;
+export default SignupModal;

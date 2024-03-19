@@ -153,7 +153,7 @@ export const Pen = () => {
       width={"18"}
       height={0}
       alt="pen"
-      className=""
+      className="cursor-pointer"
     />
   );
 };

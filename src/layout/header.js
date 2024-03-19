@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Link from "next/link";
-import { LogoWithBackground, MobileBars, User, Xmark } from '../components/logo';
-import { Button } from '@/components/button';
-import { Typography } from '@/components/typography';
-import { Flex, FlexCenter, FlexColumn } from '@/components/layout';
-import LoginModal from '@/components/modal/loginModal';
-import DashModal from '@/components/modal/dashModal';
-import PassModal from '@/components/modal/passModal';
+import {
+  LogoWithBackground,
+  MobileBars,
+  User,
+  Xmark,
+} from "../components/logo";
+import { Button } from "@/components/button";
+import { Typography } from "@/components/typography";
+import { Flex, FlexCenter, FlexColumn } from "@/components/layout";
+import LoginModal from "@/components/modal/loginModal";
+import DashModal from "@/components/modal/dashModal";
+import PassModal from "@/components/modal/changePass/passModal";
+import SignupModal from "@/components/modal/signupModal";
 
 const NAV__LINK = [
   {
-    path: 'price',
-    display: 'Price',
-    icon: '',
+    path: "price",
+    display: "Price",
+    icon: "",
   },
   {
-    path: 'contact',
-    display: 'Contact Us',
-    icon: '',
+    path: "contact",
+    display: "Contact Us",
+    icon: "",
   },
   {
-    path: 'login',
-    display: 'login',
-    icon: 'user',
+    path: "login",
+    display: "login",
+    icon: "user",
   },
 ];
 
@@ -31,47 +37,49 @@ export const Header = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDashModal, setShowDashModal] = useState(false);
   const [showPassModal, setShowPassModal] = useState(false);
-
+  const [showSignupModal, setShowSignupModal] = useState(false);
 
   const closeAllModal = () => {
     setShowLoginModal(false);
   };
 
   const handlePath = (path) => {
-    path === 'login' && setShowLoginModal(!showLoginModal);
-  }
+    path === "login" && setShowLoginModal(!showLoginModal);
+  };
 
   const openDashboard = () => {
-    closeAllModal
+    closeAllModal;
     setShowDashModal(true);
   };
 
   const openForgotPassword = () => {
-    closeAllModal
+    closeAllModal;
     setShowPassModal(true);
+  };
+
+  const openSignup = () => {
+    closeAllModal;
+    setShowSignupModal(true);
   };
 
   return (
     <>
       <div className="w-full mt-[10px] fixed z-50">
-        <FlexCenter
-          className={[
-            'justify-between h-[60px]',
-          ].join(' ')}
-        >
-          <Link href={"/"} className=''>
+        <FlexCenter className={["justify-between h-[60px]"].join(" ")}>
+          <Link href={"/"} className="">
             <LogoWithBackground />
-          </Link> 
+          </Link>
 
           <FlexCenter className="gap-2 pr-8">
             {NAV__LINK.map((item, index) => (
               <React.Fragment key={index}>
                 <Button variant="text2" onClick={() => handlePath(item.path)}>
                   <FlexCenter className="gap-2">
-                    {
-                      item.icon && <User />
-                    }
-                    <Typography variant="buttonPrimary" classname="text-color-brand-yellow2 font-roman">
+                    {item.icon && <User />}
+                    <Typography
+                      variant="buttonPrimary"
+                      classname="text-color-brand-yellow2 font-roman"
+                    >
                       {item.display}
                     </Typography>
                   </FlexCenter>
@@ -97,15 +105,18 @@ export const Header = () => {
 
         <FlexColumn
           className={`w-auto h-auto v-screen items-start justify-center gap-5 shadow-headerShadow 
-            ${navbar ? 'p-5 md:p-0 block' : 'hidden'}`}
+            ${navbar ? "p-5 md:p-0 block" : "hidden"}`}
         >
           {NAV__LINK.map((item, index) => (
-            <Button key={index} variant="text" onClick={() => handlePath(item.path)}>
+            <Button
+              key={index}
+              variant="text"
+              onClick={() => handlePath(item.path)}
+            >
               {item.display}
             </Button>
           ))}
         </FlexColumn>
-
       </div>
 
       <LoginModal
@@ -113,9 +124,20 @@ export const Header = () => {
         onClose={() => setShowLoginModal(false)}
         openDashboard={openDashboard}
         openForgotPassword={openForgotPassword}
+        openSignup={openSignup}
       />
-      <DashModal isvisible={showDashModal} onClose={() => setShowDashModal(false)} />
-      <PassModal isvisible={showPassModal} onClose={() => setShowPassModal(false)} />
+      <DashModal
+        isvisible={showDashModal}
+        onClose={() => setShowDashModal(false)}
+      />
+      <PassModal
+        isvisible={showPassModal}
+        onClose={() => setShowPassModal(false)}
+      />
+      <SignupModal
+        isvisible={showSignupModal}
+        onClose={() => setShowSignupModal(false)}
+      />
     </>
   );
 };

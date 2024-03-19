@@ -1,35 +1,39 @@
-import React from 'react';
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from '../layout';
-import { Design1, Design2, Xmark } from '../logo';
-import { Typography } from '../typography';
+import React from "react";
+import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../layout";
+import { Design1, Design2, Xmark } from "../logo";
+import { Typography } from "../typography";
 
-const ModalFrame2 = ({
-    onClose, 
-    children, 
-    title 
-}) => {
-    return (
-        <FlexCenter className=" w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm" id='wrapper'  onClick={onClose}>
-            
-            <FlexColumn className='bg-backgroundColor-brand-blue-95 w-auto h-[600px] border-2 border-color-brand-yellow2 shadow-buttonShadow3'>
-                <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
-                    <Design1 />
-                        <Typography variant="title" classname="w-[820px] ml-10 flex justify-center items-center h-full text-color-brand-yellow2 ">
-                            {title}
-                            
-                        </Typography>
-                        <FlexCenter>
-                            <button className='text-textColor-brand-yellow place-self-end w-[28px]' onClick={() => onClose()}>
-                                <Xmark/>
-                            </button>
-                        </FlexCenter>
-                    <Design2 />
-                </FlexBetween>
-                <div className=' text-brand-yellow w-auto h-auto rounded '>
-                    {children}
-                </div>
-            </FlexColumn>
-        </FlexCenter>  
-    );
-}
+const ModalFrame2 = ({ onClose, children, title }) => {
+  return (
+    <FlexCenter
+      className="w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm"
+      id="wrapper"
+      onClick={onClose}
+    >
+      <FlexColumn className="bg-backgroundColor-brand-blue-95 w-auto h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3">
+        <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
+          <Design1 />
+          <Typography
+            variant="title"
+            classname="w-full ml-10 flex justify-center items-center h-full text-color-brand-yellow2 "
+          >
+            {title}
+          </Typography>
+          <FlexCenter>
+            <button
+              className="text-textColor-brand-yellow place-self-end w-[28px]"
+              onClick={() => onClose()}
+            >
+              <Xmark />
+            </button>
+          </FlexCenter>
+          <Design2 />
+        </FlexBetween>
+        <div className=" text-brand-yellow w-auto h-auto rounded ">
+          {children}
+        </div>
+      </FlexColumn>
+    </FlexCenter>
+  );
+};
 export default ModalFrame2;
