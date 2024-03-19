@@ -9,10 +9,11 @@ import {
 import { Button } from "@/components/button";
 import { Typography } from "@/components/typography";
 import { Flex, FlexCenter, FlexColumn } from "@/components/layout";
-import LoginModal from "@/components/modal/loginModal";
+import LoginModal from "@/components/modal/login/loginModal";
 import DashModal from "@/components/modal/dashModal";
 import PassModal from "@/components/modal/changePass/passModal";
-import SignupModal from "@/components/modal/signupModal";
+import SignupModal from "@/components/modal/signup/signupModal";
+import SignupOtpModal from "@/components/modal/signup/signupOTPModal";
 
 const NAV__LINK = [
   {
@@ -38,6 +39,7 @@ export const Header = () => {
   const [showDashModal, setShowDashModal] = useState(false);
   const [showPassModal, setShowPassModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showSignupOTPModal, setShowSignupOTPModal] = useState(false);
 
   const closeAllModal = () => {
     setShowLoginModal(false);
@@ -60,6 +62,11 @@ export const Header = () => {
   const openSignup = () => {
     closeAllModal;
     setShowSignupModal(true);
+  };
+
+  const openSignupOTP = () => {
+    closeAllModal;
+    setShowSignupOTPModal(true);
   };
 
   return (
@@ -137,6 +144,12 @@ export const Header = () => {
       <SignupModal
         isvisible={showSignupModal}
         onClose={() => setShowSignupModal(false)}
+        openForgotPassword={openForgotPassword}
+        openSignupOTP={openSignupOTP}
+      />
+      <SignupOtpModal
+        isvisible={showSignupOTPModal}
+        onClose={() => setShowSignupOTPModal(false)}
       />
     </>
   );

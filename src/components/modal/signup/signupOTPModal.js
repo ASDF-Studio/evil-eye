@@ -4,11 +4,16 @@ import ModalFrame from "../modalFrame";
 import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
+import DashModal from "../dashModal";
 
-const OtpModal = ({ isvisible, onClose }) => {
+const SignupOtpModal = ({ isvisible, onClose }) => {
   if (!isvisible) return null;
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
+  };
+  const [showDashModal, setShowDashModal] = useState(false);
+  const closeHighlightModal = () => {
+    setShowDashModal(false);
   };
   return (
     <FlexCenter
@@ -22,7 +27,7 @@ const OtpModal = ({ isvisible, onClose }) => {
             variant="h11"
             classname=" text-color-brand-yellow2 drop-shadow-3xl "
           >
-            Change Email
+            SIGN UP
           </Typography>
           <div className="pt-3.5">
             <Typography
@@ -49,9 +54,9 @@ const OtpModal = ({ isvisible, onClose }) => {
                 <Design1 />
                 <Flex className="absolute justify-start items-center w-full h-[40px] z-50">
                   <input
-                    type="email"
-                    name="email"
-                    id="email"
+                    type="text"
+                    name="text"
+                    id="otp"
                     className="outline-none bg-transparent items-center placeholder:text-textColor-brand-gold2 absolute flex w-full px-7 text-textColor-brand-gold2 h-[40px] "
                     placeholder="XXXX"
                     required
@@ -65,9 +70,17 @@ const OtpModal = ({ isvisible, onClose }) => {
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
+              onClick={() => {
+                closeHighlightModal();
+                setShowDashModal(!showDashModal);
+              }}
             >
-              ENTER
+              Finish Sign Up
             </DesignButton>
+            <DashModal
+              isvisible={showDashModal}
+              onClose={() => setShowDashModal(false)}
+            />
           </Flex>
         </div>
       </ModalFrame>
@@ -75,4 +88,4 @@ const OtpModal = ({ isvisible, onClose }) => {
   );
 };
 
-export default OtpModal;
+export default SignupOtpModal;

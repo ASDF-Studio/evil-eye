@@ -1,19 +1,19 @@
 import React from "react";
-import { Flex, FlexBetween, FlexCenter } from "../layout";
-import ModalFrame from "./modalFrame";
-import { Design1, Design2 } from "../logo";
-import { Typography } from "../typography";
-import { DesignButton } from "../button/designButton";
-import { Button } from "../button";
-import { Input } from "../input";
-import { DesignButton3 } from "../button/designButton3";
+import { Flex, FlexBetween, FlexCenter } from "../../layout";
+import ModalFrame from "../modalFrame";
+import { Design1, Design2 } from "../../logo";
+import { Typography } from "../../typography";
+import { DesignButton } from "../../button/designButton";
+import { Button } from "../../button";
+import { Input } from "../../input";
+import { DesignButton3 } from "@/components/button/designButton3";
 
-const LoginModal = ({
+const SignupModal = ({
   isvisible,
   onClose,
   openDashboard,
   openForgotPassword,
-  openSignup,
+  openSignupOTP,
 }) => {
   if (!isvisible) return null;
 
@@ -31,9 +31,9 @@ const LoginModal = ({
     openDashboard();
   };
 
-  const openSignupModal = () => {
+  const openSignupOTPModal = () => {
     onClose();
-    openSignup();
+    openSignupOTP();
   };
 
   return (
@@ -48,11 +48,24 @@ const LoginModal = ({
             variant="h11"
             classname="text-color-brand-yellow2 drop-shadow-3xl "
           >
-            LOGIN
+            SIGNUP
           </Typography>
         </div>
         <div className="px-5 text-left pb-5">
           <div className="space-y-5" action="#">
+            <div>
+              <label htmlFor="email" className="block mb-1.5">
+                <Typography
+                  variant="h12"
+                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                >
+                  Your Name
+                </Typography>
+              </label>
+              <Flex className="relative h-[40px]">
+                <Input type="text" placeholder="Your Name" />
+              </Flex>
+            </div>
             <div>
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
@@ -74,6 +87,20 @@ const LoginModal = ({
                   classname="text-color-brand-yellow2 drop-shadow-3xl "
                 >
                   Password
+                </Typography>
+              </label>
+              <Flex className="relative h-[40px]">
+                <Input type="password" />
+              </Flex>
+            </div>
+
+            <div>
+              <label htmlFor="password" className="block mb-1.5">
+                <Typography
+                  variant="h12"
+                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                >
+                  Confirm Password
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
@@ -106,7 +133,7 @@ const LoginModal = ({
               <DesignButton
                 className="w-full"
                 typoVariant="buttonLabel2"
-                onClick={openDashboardModal}
+                onClick={openSignupOTPModal}
               >
                 ENTER
               </DesignButton>
@@ -119,16 +146,15 @@ const LoginModal = ({
                   variant="h12"
                   classname="text-color-brand-yellow2 drop-shadow-3xl "
                 >
-                  Don't have account
+                  Already have an account?
                 </Typography>
               </FlexCenter>
-              <Flex className="relative focus:none focus:border-none w-[100%] h-[40px]">
+              <Flex className="relative focus:none focus:border-none w-[410px] h-[40px]">
                 <DesignButton3
                   className="w-full"
                   typoVariant="buttonLabel2"
-                  onClick={openSignupModal}
                 >
-                  SIGN UP
+                  LOGIN
                 </DesignButton3>
               </Flex>
             </div>
@@ -148,4 +174,4 @@ const LoginModal = ({
   );
 };
 
-export default LoginModal;
+export default SignupModal;
