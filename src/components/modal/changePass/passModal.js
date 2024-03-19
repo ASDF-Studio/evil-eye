@@ -11,10 +11,6 @@ const PassModal = ({ isvisible, onClose }) => {
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const [showEmailModal, setShowEmailModal] = useState(false);
-  const closeHighlightModal = () => {
-    setShowEmailModal(false);
-  };
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"

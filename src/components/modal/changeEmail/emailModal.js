@@ -7,11 +7,11 @@ import { DesignButton } from "../../button/designButton";
 import OtpModal from "./otpModal";
 
 const EmailModal = ({ isvisible, onClose }) => {
+  const [showOtpModal, setShowOtpModal] = useState(false);
   if (!isvisible) return null;
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const [showOtpModal, setShowOtpModal] = useState(false);
   const closeHighlightModal = () => {
     setShowOtpModal(false);
   };

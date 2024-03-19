@@ -119,7 +119,7 @@ const LoginModal = ({
                   variant="h12"
                   classname="text-color-brand-yellow2 drop-shadow-3xl "
                 >
-                  Don't have account
+                  {"Don't have account"}
                 </Typography>
               </FlexCenter>
               <Flex className="relative focus:none focus:border-none w-[100%] h-[40px]">

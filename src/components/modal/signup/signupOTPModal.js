@@ -11,10 +11,7 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const [showDashModal, setShowDashModal] = useState(false);
-  const closeHighlightModal = () => {
-    setShowDashModal(false);
-  };
+
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
@@ -67,20 +64,9 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
             </Flex>
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
-            <DesignButton
-              className=" w-full"
-              typoVariant="buttonLabel2"
-              onClick={() => {
-                closeHighlightModal();
-                setShowDashModal(!showDashModal);
-              }}
-            >
+            <DesignButton className=" w-full" typoVariant="buttonLabel2">
               Finish Sign Up
             </DesignButton>
-            <DashModal
-              isvisible={showDashModal}
-              onClose={() => setShowDashModal(false)}
-            />
           </Flex>
         </div>
       </ModalFrame>

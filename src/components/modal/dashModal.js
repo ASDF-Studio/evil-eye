@@ -9,13 +9,12 @@ import EmailModal from "./changeEmail/emailModal";
 import { Input } from "../input";
 
 const DashModal = ({ isvisible, onClose, children }) => {
+  const [showPassModal, setShowPassModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
   if (!isvisible) return null;
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-
-  const [showPassModal, setShowPassModal] = useState(false);
-  const [showEmailModal, setShowEmailModal] = useState(false);
 
   return (
     <FlexCenter
