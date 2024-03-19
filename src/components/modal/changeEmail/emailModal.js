@@ -5,6 +5,7 @@ import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import OtpModal from "./otpModal";
+import { Input } from "@/components/input";
 
 const EmailModal = ({ isvisible, onClose }) => {
   const [showOtpModal, setShowOtpModal] = useState(false);
@@ -39,21 +40,8 @@ const EmailModal = ({ isvisible, onClose }) => {
                 Email
               </Typography>
             </label>
-            <Flex className=" relative w-[410px] h-[40px] ">
-              <FlexBetween className="w-full h-[40px] absolute border-[#D2A42B] border-2 text-brand-gold bg-brand-blue">
-                <Design1 />
-                <Flex className="absolute justify-start items-center w-full h-[40px] z-50">
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    className="outline-none bg-transparent items-center placeholder:text-textColor-brand-gold2 absolute flex w-full px-7 text-textColor-brand-gold2 h-[40px] "
-                    placeholder=""
-                    required
-                  />
-                </Flex>
-                <Design2 />
-              </FlexBetween>
+            <Flex className=" relative w-full h-[40px] ">
+              <Input type="email" placeholder=""/>
             </Flex>
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">

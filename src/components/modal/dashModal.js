@@ -135,7 +135,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                     </Typography>
                     <Typography
                       variant="h14"
-                      classname=" text-color-brand-yellow2 shadow-textColor-brand-yellow shadow-lg"
+                      classname=" text-color-brand-yellow2"
                     >
                       $3.3
                     </Typography>

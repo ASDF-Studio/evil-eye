@@ -16,11 +16,11 @@ export const Input = ({
       ].join(" ")}
     >
       <Design1 />
-      <Flex className="absolute justify-start items-center w-[437px] h-[40px] z-50">
+      <Flex className="absolute justify-start items-center w-full h-[40px] z-50">
         <input
           type={type}
           name={type}
-          className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent items-center placeholder:text-textColor-placeholder absolute flex w-[437px] px-7 text-textColor-brand-gold2 h-[40px] "
+          className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent items-center placeholder:text-textColor-placeholder absolute flex w-full px-7 text-textColor-brand-gold2 h-[40px] "
           placeholder={placeholder}
           required
         />

@@ -5,6 +5,7 @@ import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import EmailModal from "../changeEmail/emailModal";
+import { Input } from "@/components/input";
 
 const ForgotPass3 = ({ isvisible, onClose }) => {
   if (!isvisible) return null;
@@ -34,21 +35,8 @@ const ForgotPass3 = ({ isvisible, onClose }) => {
                 New Password
               </Typography>
             </label>
-            <Flex className=" relative w-[410px] h-[40px] ">
-              <FlexBetween className="w-full h-[40px] border-[#D2A42B] border-2 text-brand-gold bg-brand-blue absolute ">
-                <Design1 />
-                <Flex className="absolute justify-start items-center w-full h-[40px] z-50">
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    className=" bg-transparent outline-none absolute flex w-[410px] px-7 text-textColor-brand-gold2 h-[40px]"
-                    placeholder=""
-                    required
-                  />
-                </Flex>
-                <Design2 />
-              </FlexBetween>
+            <Flex className=" relative w-full h-[40px] ">
+              <Input type="password"/>
             </Flex>
           </div>
           <div className="pt-5">
@@ -60,24 +48,11 @@ const ForgotPass3 = ({ isvisible, onClose }) => {
                 Confirm Password
               </Typography>
             </label>
-            <Flex className=" relative w-[410px] h-[40px] ">
-              <FlexBetween className="w-full h-[40px] border-[#D2A42B] border-2 text-brand-gold bg-brand-blue absolute ">
-                <Design1 />
-                <Flex className="absolute justify-start items-center w-full h-[40px] z-50">
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    className=" bg-transparent outline-none absolute flex w-[410px] px-7 text-textColor-brand-gold2 h-[40px]"
-                    placeholder=""
-                    required
-                  />
-                </Flex>
-                <Design2 />
-              </FlexBetween>
+            <Flex className=" relative w-full h-[40px] ">
+              <Input type="password"/>
             </Flex>
           </div>
-          <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
+          <Flex className=" justify-center pt-5 pb-2.5">
             <DesignButton className=" w-full" typoVariant="buttonLabel2">
               ENTER
             </DesignButton>

@@ -9,10 +9,9 @@ const InfoModal = ({ isvisible, onClose, children }) => {
         if (isvisible) {
             setModalVisible(true);
         } else {
-            // Delay the closing animation to allow the bounce animation to complete
             setTimeout(() => {
                 setModalVisible(false);
-            }, 100); // Adjust the delay to match the duration of the bounce animation
+            }, 100);
         }
     }, [isvisible]);
 
