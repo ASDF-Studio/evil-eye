@@ -97,7 +97,7 @@ const LoginModal = ({
                     variant="text"
                     classname="hover:underline cursor-pointer text-color-brand-yellow2"
                   >
-                    RESET
+                    Reset
                   </Typography>
                 </Button>
               </FlexBetween>
