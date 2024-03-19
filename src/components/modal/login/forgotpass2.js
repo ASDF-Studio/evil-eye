@@ -7,20 +7,20 @@ import { DesignButton } from "../../button/designButton";
 import DashModal from "../dashModal";
 import { Input } from "@/components/input";
 
-const ForgotPass1 = ({ 
+const ForgotPass2 = ({ 
   isvisible, 
   onClose,
-  openForgotPass2,
+  openForgotPass3, 
 }) => {
   if (!isvisible) return null;
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openForgotPass2Modal = () => {
-    onClose();
-    openForgotPass2();
-  };
 
+  const openForgotPass3Modal = () => {
+    onClose();
+    openForgotPass3();
+  };
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
@@ -40,31 +40,18 @@ const ForgotPass1 = ({
               variant="h12"
               classname=" text-color-brand-yellow2 drop-shadow-3xl "
             >
-              Please enter your email below to reset your password. We’ll send
-              you an email with a reset link.
+              We’ve sent you a reset email to your email address:
+              <span className="underline">adamvoigt@gmail.com</span>
             </Typography>
           </div>
 
-          <div className="pt-3.5">
-            <label htmlFor="email" className="block mb-1.5">
-              <Typography
-                variant="h12"
-                classname="text-color-brand-yellow2 drop-shadow-3xl "
-              >
-                Email
-              </Typography>
-            </label>
-            <Flex className="relative h-[40px]">
-              <Input type="email" placeholder="example@domain.com" />
-            </Flex>
-          </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
-            <DesignButton
-              className=" w-full"
+            <DesignButton 
+              className=" w-full" 
               typoVariant="buttonLabel2"
-              onClick={openForgotPass2Modal}
+              onClick={openForgotPass3Modal}
             >
-              Send RESET Email
+              OKAY
             </DesignButton>
           </Flex>
         </div>
@@ -73,4 +60,4 @@ const ForgotPass1 = ({
   );
 };
 
-export default ForgotPass1;
+export default ForgotPass2;

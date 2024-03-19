@@ -14,6 +14,9 @@ import DashModal from "@/components/modal/dashModal";
 import PassModal from "@/components/modal/changePass/passModal";
 import SignupModal from "@/components/modal/signup/signupModal";
 import SignupOtpModal from "@/components/modal/signup/signupOTPModal";
+import ForgotPass1 from "@/components/modal/login/forgotpass1";
+import ForgotPass2 from "@/components/modal/login/forgotpass2";
+import ForgotPass3 from "@/components/modal/login/forgotpass3";
 
 const NAV__LINK = [
   {
@@ -41,6 +44,10 @@ export const Header = () => {
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showSignupOTPModal, setShowSignupOTPModal] = useState(false);
 
+  const [showForgotPass1Modal, setShowForgotPass1Modal] = useState(false);
+  const [showForgotPass2Modal, setShowForgotPass2Modal] = useState(false);
+  const [showForgotPass3Modal, setShowForgotPass3Modal] = useState(false);
+
   const closeAllModal = () => {
     setShowLoginModal(false);
   };
@@ -67,6 +74,21 @@ export const Header = () => {
   const openSignupOTP = () => {
     closeAllModal;
     setShowSignupOTPModal(true);
+  };
+
+  const openForgotPass1 = () => {
+    closeAllModal;
+    setShowForgotPass1Modal(true);
+  };
+
+  const openForgotPass2 = () => {
+    closeAllModal;
+    setShowForgotPass2Modal(true);
+  };
+
+  const openForgotPass3 = () => {
+    closeAllModal;
+    setShowForgotPass3Modal(true);
   };
 
   return (
@@ -132,6 +154,7 @@ export const Header = () => {
         openDashboard={openDashboard}
         openForgotPassword={openForgotPassword}
         openSignup={openSignup}
+        openForgotPass1={openForgotPass1}
       />
       <DashModal
         isvisible={showDashModal}
@@ -150,6 +173,20 @@ export const Header = () => {
       <SignupOtpModal
         isvisible={showSignupOTPModal}
         onClose={() => setShowSignupOTPModal(false)}
+      />
+      <ForgotPass1
+        isvisible={showForgotPass1Modal}
+        onClose={() => setShowForgotPass1Modal(false)}
+        openForgotPass2={openForgotPass2}
+      />
+      <ForgotPass2
+        isvisible={showForgotPass2Modal}
+        onClose={() => setShowForgotPass2Modal(false)}
+        openForgotPass3={openForgotPass3}
+      />
+      <ForgotPass3
+        isvisible={showForgotPass3Modal}
+        onClose={() => setShowForgotPass3Modal(false)}
       />
     </>
   );

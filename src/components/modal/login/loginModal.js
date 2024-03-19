@@ -12,18 +12,13 @@ const LoginModal = ({
   isvisible,
   onClose,
   openDashboard,
-  openForgotPassword,
   openSignup,
+  openForgotPass1,
 }) => {
   if (!isvisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
-  };
-
-  const openForgotPasswordModal = () => {
-    onClose();
-    openForgotPassword();
   };
 
   const openDashboardModal = () => {
@@ -34,6 +29,10 @@ const LoginModal = ({
   const openSignupModal = () => {
     onClose();
     openSignup();
+  };
+  const openForgotPass1Modal = () => {
+    onClose();
+    openForgotPass1();
   };
 
   return (
@@ -91,7 +90,7 @@ const LoginModal = ({
                 <Button
                   className="w-full"
                   typoVariant="text"
-                  onClick={openForgotPasswordModal}
+                  onClick={openForgotPass1Modal}
                 >
                   <Typography
                     variant="text"
