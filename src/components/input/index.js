@@ -20,7 +20,7 @@ export const Input = ({
         <input
           type={type}
           name={type}
-          className="outline-none bg-transparent items-center placeholder:text-textColor-brand-gold2 absolute flex w-[437px] px-7 text-textColor-brand-gold2 h-[40px] "
+          className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent items-center placeholder:text-textColor-placeholder absolute flex w-[437px] px-7 text-textColor-brand-gold2 h-[40px] "
           placeholder={placeholder}
           required
         />

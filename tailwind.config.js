@@ -58,6 +58,7 @@ module.exports = {
           "brand-gold": "#795700",
           "brand-gold2": "#D2A42B",
           "brand-txt": "#866000",
+          'placeholder': '#795700'
         },
       },
       textShadow: {

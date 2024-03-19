@@ -17,6 +17,8 @@ import SignupOtpModal from "@/components/modal/signup/signupOTPModal";
 import ForgotPass1 from "@/components/modal/login/forgotpass1";
 import ForgotPass2 from "@/components/modal/login/forgotpass2";
 import ForgotPass3 from "@/components/modal/login/forgotpass3";
+import Pricing from "@/components/modal/pricing";
+import Contact from "@/components/modal/contact";
 
 const NAV__LINK = [
   {
@@ -39,6 +41,9 @@ const NAV__LINK = [
 export const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [showPricingModal, setShowPricingModal] = useState(false);
+
   const [showDashModal, setShowDashModal] = useState(false);
   const [showPassModal, setShowPassModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
@@ -54,6 +59,8 @@ export const Header = () => {
 
   const handlePath = (path) => {
     path === "login" && setShowLoginModal(!showLoginModal);
+    path === "contact" && setShowContactModal(!showContactModal);
+    path === "price" && setShowPricingModal(!showPricingModal);
   };
 
   const openDashboard = () => {
@@ -147,6 +154,16 @@ export const Header = () => {
           ))}
         </FlexColumn>
       </div>
+
+      <Pricing
+        isvisible={showPricingModal}
+        onClose={() => setShowPricingModal(false)}
+      />
+
+      <Contact
+        isvisible={showContactModal}
+        onClose={() => setShowContactModal(false)}
+      />
 
       <LoginModal
         isvisible={showLoginModal}
