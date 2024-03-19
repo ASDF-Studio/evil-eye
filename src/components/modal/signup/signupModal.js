@@ -107,35 +107,13 @@ const SignupModal = ({
                 <Input type="password" />
               </Flex>
             </div>
-            <Flex className="w-[410px] justify-end">
-              <FlexBetween className="w-auto">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
-                >
-                  Forgot Password?
-                </Typography>
-                <Button
-                  className="w-full"
-                  typoVariant="text"
-                  onClick={openForgotPasswordModal}
-                >
-                  <Typography
-                    variant="text"
-                    classname="hover:underline cursor-pointer text-color-brand-yellow2"
-                  >
-                    RESET
-                  </Typography>
-                </Button>
-              </FlexBetween>
-            </Flex>
             <Flex className="justify-center pb-2.5 w-[100%]">
               <DesignButton
                 className="w-full"
                 typoVariant="buttonLabel2"
                 onClick={openSignupOTPModal}
               >
-                ENTER
+                SIGN UP
               </DesignButton>
             </Flex>
 
