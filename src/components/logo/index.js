@@ -7,8 +7,8 @@ import x from '../../../public/logos/x.svg';
 import play from '../../../public/logos/play.svg';
 import leftPlay from '../../../public/logos/leftPlay.svg';
 import borderline from '../../../public/logos/borderline.svg';
-import design1 from '../../../public/logos/design1.png';
-import design2 from '../../../public/logos/design2.png';
+import design1 from '../../../public/logos/design1.svg';
+import design2 from '../../../public/logos/design2.svg';
 import pen from '../../../public/logos/pen.svg';
 import email from '../../../public/logos/email.svg';
 
@@ -23,7 +23,7 @@ export const LogoWithBackground = () => {
   const containerStyle = {
     backgroundImage: 'url("/background/shadow.png")',
     backgroundSize: 'cover',
-    width: '481px',
+    width: '381px',
     height: '175px',
     display: 'flex',
   };

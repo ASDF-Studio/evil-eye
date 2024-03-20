@@ -24,7 +24,7 @@ export const LandingPage = () => {
   return (
     <div className="flex flex-col min-h-screen justify-between">
       <div>
-        <Flex className="relative mx-auto w-auto h-auto top-[20%] left-[20%]">
+        <Flex className="relative mx-auto w-auto h-auto 5xl:top-[20%] 5xl:left-[20%] left-[5%]">
           <Button
             variant="text"
             endIcon={<Play className="text-color-brand-yellow" />}
@@ -73,7 +73,7 @@ export const LandingPage = () => {
           </InfoModal>
         </Flex>
 
-        <Flex className="relative mx-auto w-auto h-auto top-60 left-[28%]">
+        <Flex className="relative mx-auto w-auto h-auto 5xl:top-60 5xl:left-[28%] top-[240px] left-[5%]">
           <Button
             variant="text"
             endIcon={<Play className="text-color-brand-yellow" />}
@@ -114,7 +114,7 @@ export const LandingPage = () => {
           </InfoModal>
         </Flex>
 
-        <Flex className="relative mx-auto w-auto h-auto top-30 left-[65%]">
+        <Flex className="relative mx-auto w-auto h-auto 5xl:top-30 5xl:left-[65%] sm:top-[0px] sm:left-[62%] top-[250px] left-[30%]">
           <Button
             variant="text"
             leftIcon={<LeftPlay className="text-color-brand-yellow" />}
@@ -165,14 +165,14 @@ export const LandingPage = () => {
       </div>
 
       {/* bottom part */}
-      <FlexColumn className="items-center pb-[200px]">
+      <FlexColumn className="items-center pb-[120px]">
         <Borderline />
-        <Typography variant="h2" classname=" text-color-brand-yellow2">
+        <Typography variant="h2" classname="w-[300px] pt-[10px] text-color-brand-yellow2">
           Relief from the Evil Eye
         </Typography>
         <Typography
           variant="body"
-          classname="w-[800px] text-textColor-brand-yellow text-opacity-63"
+          classname="5xl:w-[800px] pt-[10px] w-[300px] text-textColor-brand-yellow text-opacity-63"
         >
           Evil Eye Remedy is the original and authentic cure of its kind. Relief
           from your symptoms is close at hand. The ancient and special Evil Eye
