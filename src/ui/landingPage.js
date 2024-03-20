@@ -114,7 +114,7 @@ export const LandingPage = () => {
           </InfoModal>
         </Flex>
 
-        <Flex className="relative mx-auto w-auto h-auto 5xl:top-30 5xl:left-[65%] sm:top-[0px] sm:left-[62%] top-[250px] left-[30%]">
+        <Flex className="relative mx-auto w-auto h-auto 5xl:top-30 5xl:left-[65%] sm:top-[10px] top-[250px] left-[30%]">
           <Button
             variant="text"
             leftIcon={<LeftPlay className="text-color-brand-yellow" />}
