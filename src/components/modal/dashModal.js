@@ -40,7 +40,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 Update your settings here.
               </Typography>
             </Flex>
-            <div className="pt-5">
+            <div className="pt-5 mb-3.5">
               <Typography
                 variant="h12"
                 classname=" text-color-brand-yellow2 pt-5"
@@ -52,7 +52,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
               </Flex>
             </div>
 
-            <div className="pt-10">
+            <div className="mt-5">
               <FlexBetween>
                 <Typography variant="h12" classname=" text-color-brand-yellow2">
                   Email
@@ -82,7 +82,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                   onClose={() => setShowPassModal(false)}
                 />
               </FlexBetween>
-              <Flex className=" relative mt-2 outline-none w-[437px] h-[40px] ">
+              <Flex className=" relative pt-2 outline-none w-[437px] h-[40px] ">
                 <Input type="password" />
               </Flex>
             </div>
@@ -111,7 +111,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
           <div className="pt-5 pl-5 w-[480px] ">
             <Typography
               variant="h11"
-              classname=" text-color-brand-yellow2 drop-shadow-3xl px-5 pt-5"
+              classname=" text-color-brand-yellow2 drop-shadow-3xl px-4 pt-5"
             >
               PRAYER HISTORY
             </Typography>
