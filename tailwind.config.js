@@ -45,7 +45,7 @@ module.exports = {
           "brand-blue-90": "rgba(9, 4, 81, 0.90)",
           "brand-blue-95": "rgba(9, 4, 81, 0.95)",
           "brand-yellow2": "#FFD770",
-          "brand-hover" : "#FFE5A3",
+          "brand-hover": "#FFE5A3",
           "brand-yellow": "#FFCE70",
         },
         color: {
@@ -71,6 +71,9 @@ module.exports = {
         buttonShadow: "0px 10px 10px -5px rgba(0, 101, 197, 0.40)",
         buttonShadow2: "0px 10px 25px 0px rgba(255, 206, 112, 0.30)",
         buttonShadow3: "-20px 0px 40px 0px rgba(0, 0, 0, 0.50)",
+      },
+      dropShadow: {
+        "3xl": "0px 4px 8px rgba(255, 229, 163, 0.50)",
       },
       backgroundImage: {
         profile:
