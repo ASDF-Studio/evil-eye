@@ -19,10 +19,10 @@ export const LandingPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen justify-between">
-      <Flex className="w-full h-full justify-center">
-        <Flex className="w-[1440px] h-[500px] flex-col sm:flex-row">
+      <Flex className="w-full h-full justify-center 1xl:mt-[50px]">
+        <Flex className="w-[1440px] h-auto flex-col sm:flex-row  ">
           <FlexColumn className="h-full justify-between">
-            <Flex className="relative w-full h-auto">
+            <Flex className="relative w-full  pl-[18px] h-auto sm:ml-[18px] sm:mt-[18px] 1xl:ml-[210px] 1xl:mt-[0px] 2xl:ml-[300px] 2xl:mt-[0px] 5xl:mt-[0px] 5xl:ml-[300px] 10xl:mr-[150px]">
               <Button
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
@@ -76,7 +76,7 @@ export const LandingPage = () => {
               </InfoModal>
             </Flex>
 
-            <Flex className="relative w-[100%] h-auto pb-20">
+            <Flex className="relative w-[100%] h-auto  mt-[37px] pl-[18px] sm:ml-[58px] sm:mb-[38px] 1xl:ml-[250px] 2xl:ml-[340px] 2xl:mb-[100px] 5xl:mb-[130px] 10xl:mb-[100px]">
               <Button
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
@@ -118,7 +118,7 @@ export const LandingPage = () => {
             </Flex>
           </FlexColumn>
 
-          <Flex className="relative mx-auto w-full h-auto justify-end items-end flex-col sm:flex-row">
+          <Flex className="relative mx-auto w-full h-auto justify-end pb-[20px] pt-[27px] pr-[20px] items-end flex-col sm:flex-row  sm:pb-[5px] sm:mr-[36px] 1xl:mr-[130px] 1xl:flex-row 2xl:mr-[240px] 2xl:flex-row 5xl:mr-[260px]">
             <Button
               variant="text"
               leftIcon={<LeftPlay className="text-color-brand-yellow" />}
@@ -170,17 +170,17 @@ export const LandingPage = () => {
       </Flex>
 
       {/* bottom part */}
-      <FlexColumn className="items-center pb-[120px]">
+      <FlexColumn className="items-center pb-[120px] sm:pb-[190px] 1xl:pb-[150px] 2xl:pb-[400px]">
         <Borderline />
         <Typography
           variant="h2"
-          classname="w-[300px] pt-[10px] text-color-brand-yellow2"
+          classname="w-[300px] pt-[10px] text-color-brand-yellow2 1xl:w-[852px] 2xl:w-[852px]"
         >
           Relief from the Evil Eye
         </Typography>
         <Typography
           variant="body"
-          classname="5xl:w-[800px] pt-[10px] w-[300px] text-textColor-brand-yellow text-opacity-63"
+          classname=" pt-[10px] w-[300px] 1xl:w-[805px] 2xl:w-[805px] text-textColor-brand-yellow text-opacity-63"
         >
           Evil Eye Remedy is the original and authentic cure of its kind. Relief
           from your symptoms is close at hand. The ancient and special Evil Eye
