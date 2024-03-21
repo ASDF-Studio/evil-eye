@@ -3,7 +3,7 @@ import { Flex, FlexColumn } from "@/components/layout";
 import { Borderline, LeftPlay, Play } from "../components/logo";
 import { Typography } from "@/components/typography";
 import InfoModal from "@/components/infoModal";
-import ReciteModal from "@/components/modal/reciteModal";
+import ReciteModal from "@/components/modal/recite/reciteModal";
 import { useState } from "react";
 import { DesignButton } from "@/components/button/designButton";
 
