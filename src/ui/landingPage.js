@@ -177,13 +177,13 @@ export const LandingPage = () => {
         <Borderline />
         <Typography
           variant="h2"
-          classname="w-[300px] pt-[10px] text-color-brand-yellow2 1xl:w-[852px] 2xl:w-[852px]"
+          classname="w-[300px] sm:w-[648px] pt-[10px] text-color-brand-yellow2 1xl:w-[852px] 2xl:w-[852px]"
         >
           Relief from the Evil Eye
         </Typography>
         <Typography
           variant="body"
-          classname=" pt-[10px] w-[300px] 1xl:w-[805px] 2xl:w-[805px] text-textColor-brand-yellow text-opacity-63"
+          classname=" pt-[10px] w-[300px] sm:w-[600px] 1xl:w-[805px] 2xl:w-[805px] text-textColor-brand-yellow text-opacity-63"
         >
           Evil Eye Remedy is the original and authentic cure of its kind. Relief
           from your symptoms is close at hand. The ancient and special Evil Eye
@@ -202,11 +202,12 @@ export const LandingPage = () => {
           >
             Recite the prayer
           </DesignButton>
-          <ReciteModal isvisible={showReciteModal}
-                onClose={() => setShowReciteModal(false)}/>
+          <ReciteModal
+            isvisible={showReciteModal}
+            onClose={() => setShowReciteModal(false)}
+          />
         </Flex>
       </FlexColumn>
     </div>
   );
 };
-

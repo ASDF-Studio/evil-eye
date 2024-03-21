@@ -24,6 +24,7 @@ export const Input = ({
           placeholder={placeholder}
           required
         />
+        
       </Flex>
       <Design2 />
     </FlexBetween>

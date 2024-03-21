@@ -6,8 +6,8 @@ export const Typography = ({
   const variantMapping = {
     buttonLabel: "text-center text-[20px] font-normal uppercase font-roman",
     buttonLabel2: "text-center text-[18px] font-normal uppercase font-roman",
-    h1: "text-center font-roman text-[35px] font-normal tracking-[-3.5px] uppercase text-shadow-sm hover:tracking-[-4px]",
-    h2: "text-center 1xl:text-[65px] text-[35px] font-normal 1xl:tracking-[-6.5px] tracking-[-3.5px] leading-normal uppercase font-roman",
+    h1: "text-center font-roman text-[35px] font-normal tracking-[-3.5px] leading-[24px] uppercase text-shadow-sm hover:tracking-[-4px]",
+    h2: "text-center sm:text-[65px] text-[35px] font-normal sm:tracking-[-6.5px] tracking-[-3.5px] leading-normal uppercase font-roman",
     h11: "text-center font-roman text-[35px] leading-[33.25px] font-normal tracking-[-3.5px] uppercase text-shadow-sm ",
     h12: "text-center font-rosarivo text-[18px] font-normal leading-[25.25px] tracking-[-0.9px]",
     h13: "text-center font-rosarivo text-[16px] font-normal leading-[22.4px] ",
