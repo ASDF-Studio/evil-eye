@@ -42,7 +42,7 @@ const Contact = ({ isvisible, onClose }) => {
           <hr className="w-full border-color-brand-yellow2 my-4" />
         </div>
         <div className="px-5 text-left pb-5">
-          <div className="space-y-5" action="#">
+          <div className="space-y-5 h-[300px] w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left">
             <div>
               <label htmlFor="email" className="block mb-1.5">
                 <Typography

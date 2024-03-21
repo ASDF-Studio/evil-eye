@@ -45,6 +45,7 @@ module.exports = {
           "brand-blue-90": "rgba(9, 4, 81, 0.90)",
           "brand-blue-95": "rgba(9, 4, 81, 0.95)",
           "brand-yellow2": "#FFD770",
+          "brand-hover" : "#FFE5A3",
           "brand-yellow": "#FFCE70",
         },
         color: {

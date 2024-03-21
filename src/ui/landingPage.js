@@ -3,6 +3,7 @@ import { Flex, FlexColumn } from "@/components/layout";
 import { Borderline, LeftPlay, Play } from "../components/logo";
 import { Typography } from "@/components/typography";
 import InfoModal from "@/components/infoModal";
+import ReciteModal from "@/components/modal/reciteModal";
 import { useState } from "react";
 import { DesignButton } from "@/components/button/designButton";
 
@@ -10,11 +11,13 @@ export const LandingPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
+  const [showReciteModal, setShowReciteModal] = useState(false);
 
   const closeAllModals = () => {
     setShowModal(false);
     setShowModal2(false);
     setShowModal3(false);
+    setShowReciteModal(false);
   };
 
   return (
@@ -194,12 +197,16 @@ export const LandingPage = () => {
             typoVariant="buttonLabel2"
             onClick={() => {
               closeAllModals();
+              setShowReciteModal(!showReciteModal);
             }}
           >
             Recite the prayer
           </DesignButton>
+          <ReciteModal isvisible={showReciteModal}
+                onClose={() => setShowReciteModal(false)}/>
         </Flex>
       </FlexColumn>
     </div>
   );
 };
+

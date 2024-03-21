@@ -51,8 +51,8 @@ const SignupModal = ({
             SIGNUP
           </Typography>
         </div>
-        <div className="px-5 text-left pb-5">
-          <div className="space-y-5" action="#">
+        <div className="px-2 text-left pb-5">
+          <div className="space-y-5 h-[300px] w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left" >
             <div>
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
@@ -127,7 +127,7 @@ const SignupModal = ({
                   Already have an account?
                 </Typography>
               </FlexCenter>
-              <Flex className="relative focus:none focus:border-none w-[410px] h-[40px] mt-2">
+              <Flex className="relative focus:none focus:border-none w-full h-[40px] mt-2">
                 <DesignButton3
                   className="w-full"
                   typoVariant="buttonLabel2"
