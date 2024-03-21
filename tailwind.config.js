@@ -38,6 +38,7 @@ module.exports = {
         },
         border: {
           button: "#D8B351",
+          checkBox: "#FFCE6F"
         },
         backgroundColor: {
           "brand-blue": "#090451",
