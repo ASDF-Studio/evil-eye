@@ -21,8 +21,8 @@ export const LandingPage = () => {
     <div className="flex flex-col min-h-screen justify-between">
       <Flex className="w-full h-full justify-center 1xl:mt-[50px]">
         <Flex className="w-[1440px] h-auto flex-col sm:flex-row  ">
-          <FlexColumn className="h-full justify-between">
-            <Flex className="relative w-full  pl-[18px] h-auto sm:ml-[18px] sm:mt-[18px] 1xl:ml-[210px] 1xl:mt-[0px] 2xl:ml-[300px] 2xl:mt-[0px] 5xl:mt-[0px] 5xl:ml-[300px] 10xl:mr-[150px]">
+          <FlexColumn className="h-full gap-10 sm:gap-0 sm:justify-between">
+            <Flex className="relative w-full  pl-[18px] h-auto sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
               <Button
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
@@ -76,7 +76,7 @@ export const LandingPage = () => {
               </InfoModal>
             </Flex>
 
-            <Flex className="relative w-[100%] h-auto  mt-[37px] pl-[18px] sm:ml-[58px] sm:mb-[38px] 1xl:ml-[250px] 2xl:ml-[340px] 2xl:mb-[100px] 5xl:mb-[130px] 10xl:mb-[100px]">
+            <Flex className="relative w-[100%] h-auto  mt-[37px] pl-[18px] sm:ml-[58px] sm:mb-[38px] 1xl:ml-[315px] 1xl:mt-[90px] 1xl:mb-[50px] 2xl:ml-[360px] 2xl:mt-[100px] 2xl:mb-[70px] 5xl:ml-[390px] 5xl:mt-[120px] 5xl:mb-[70px] 10xl:mb-[100px]">
               <Button
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
@@ -118,7 +118,7 @@ export const LandingPage = () => {
             </Flex>
           </FlexColumn>
 
-          <Flex className="relative mx-auto w-full h-auto justify-end pb-[20px] pt-[27px] pr-[20px] items-end flex-col sm:flex-row  sm:pb-[5px] sm:mr-[36px] 1xl:mr-[130px] 1xl:flex-row 2xl:mr-[240px] 2xl:flex-row 5xl:mr-[260px]">
+          <Flex className="relative mx-auto w-full h-auto justify-end pb-[20px] pt-[27px] pr-[20px] items-end flex-col sm:flex-row  sm:pb-[5px] sm:mr-[36px] 1xl:mr-[225px] 1xl:items-start 1xl:pt-[55px] 2xl:mr-[290px] 2xl:flex-row 5xl:mr-[280px] 5xl:pt-[5px]">
             <Button
               variant="text"
               leftIcon={<LeftPlay className="text-color-brand-yellow" />}
@@ -170,7 +170,7 @@ export const LandingPage = () => {
       </Flex>
 
       {/* bottom part */}
-      <FlexColumn className="items-center pb-[120px] sm:pb-[190px] 1xl:pb-[150px] 2xl:pb-[400px]">
+      <FlexColumn className="items-center pb-[120px] sm:pb-[190px] 1xl:pb-[170px] 2xl:pb-[400px]">
         <Borderline />
         <Typography
           variant="h2"
