@@ -49,7 +49,7 @@ const LoginModal = ({
           >
             LOGIN
           </Typography>
-        </div>  
+        </div>
         <div className="px-5 text-left pb-5">
           <div className="space-y-5" action="#">
             <div>
@@ -89,16 +89,11 @@ const LoginModal = ({
                 </Typography>
                 <Button
                   variant="text"
-                  className="w-full"
-                  typoVariant="text"
+                  className="w-full underline cursor-pointer text-color-brand-yellow2"
+                  typoVariant="h12"
                   onClick={openForgotPass1Modal}
                 >
-                  <Typography
-                    variant="text"
-                    classname="hover:underline cursor-pointer text-color-brand-yellow2"
-                  >
-                    Reset
-                  </Typography>
+                  Reset
                 </Button>
               </FlexBetween>
             </Flex>

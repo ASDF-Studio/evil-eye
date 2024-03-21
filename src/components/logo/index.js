@@ -140,10 +140,10 @@ export const Design1 = () => {
   return (
     <Image
       src={design1}
-      width={0}
+      width={18}
       height={0}
       alt="design1"
-      className="h-full"
+      className=""
     />
   );
 };
@@ -152,10 +152,10 @@ export const Design2 = () => {
   return (
     <Image
       src={design2}
-      width={0}
+      width={18}
       height={0}
-      alt="design1"
-      className="h-full"
+      alt="design2"
+      className=""
     />
   );
 };
