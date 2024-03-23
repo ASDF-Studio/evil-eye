@@ -24,12 +24,12 @@ const Contact = ({ isvisible, onClose }) => {
       <ModalFrame onClose={onClose} title="Contact Us">
         <div className="px-5 mb-3.5">
           <Typography
-            variant="h11"
-            classname="text-color-brand-yellow2 drop-shadow-3xl flex items-center"
+            variant="h18"
+            classname="text-color-brand-yellow2 drop-shadow-3xl flex items-center "
           >
-            We’ll Get back to you as soon as we can
+            We’ll Get back to  you as soon as we can
           </Typography>
-          <hr className="w-full border-color-brand-op my-4" />
+          <hr className="w-full border-color-brand-yellow2 my-4" />
           <Flex className="gap-2">
             <Email />
             <Typography

@@ -54,7 +54,7 @@ const OtpModal = ({ isvisible, onClose }) => {
             <Button variant="text" className="w-full" typoVariant="text">
               <Typography
                 variant="h12"
-                classname="hover:underline flex justify-start text-color-brand-yellow2 drop-shadow-3xl "
+                classname="underline flex justify-start text-color-brand-yellow2 drop-shadow-3xl "
               >
                 Change Email
               </Typography>
@@ -62,7 +62,7 @@ const OtpModal = ({ isvisible, onClose }) => {
             <Button variant="text" className="w-full" typoVariant="text">
               <Typography
                 variant="h12"
-                classname="hover:underline flex justify-end text-color-brand-yellow2 drop-shadow-3xl "
+                classname="underline flex justify-end text-color-brand-yellow2 drop-shadow-3xl "
               >
                 Resend
               </Typography>

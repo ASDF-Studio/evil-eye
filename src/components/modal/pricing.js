@@ -16,14 +16,13 @@ const Pricing = ({ isvisible, onClose }) => {
       onClick={handleClose}
     >
       <ModalFrame onClose={onClose} title="Pricing">
-        <div className="px-5 mb-3.5">
-          <Typography
+      <Flex className="justify-center"><Typography
             variant="h11"
             classname=" text-color-brand-yellow2 drop-shadow-3xl "
           >
             $5 per prayer
-          </Typography>
-
+          </Typography></Flex>
+        <div className="px-5 mb-3.5">
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton
               className=" w-full"

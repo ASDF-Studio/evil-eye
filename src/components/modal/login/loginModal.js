@@ -89,7 +89,7 @@ const LoginModal = ({
                 </Typography>
                 <Button
                   variant="text"
-                  className="w-full underline cursor-pointer text-color-brand-yellow2"
+                  className="w-full pb-1 underline cursor-pointer text-color-brand-yellow2"
                   typoVariant="h12"
                   onClick={openForgotPass1Modal}
                 >
@@ -114,7 +114,7 @@ const LoginModal = ({
                   variant="h12"
                   classname="text-color-brand-yellow2 drop-shadow-3xl "
                 >
-                  {"Don't have account"}
+                  {"Don't have account?"}
                 </Typography>
               </FlexCenter>
               <Flex className="relative focus:none focus:border-none w-[100%] h-[40px]">
@@ -131,7 +131,7 @@ const LoginModal = ({
             <FlexCenter className="w-[410px]">
               <Typography
                 variant="h12"
-                classname="hover:underline text-color-brand-yellow2 drop-shadow-3xl "
+                classname="underline text-color-brand-yellow2 drop-shadow-3xl "
               >
                 Continue as guest
               </Typography>

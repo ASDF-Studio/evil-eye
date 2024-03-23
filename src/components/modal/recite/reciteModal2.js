@@ -9,10 +9,10 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 
-const ReciteModal = ({ 
+const reciteModal2 = ({ 
   isvisible,
   onClose,
-  openRecite2,
+  openRecite3,
 
  }) => {
   if (!isvisible) return null;
@@ -20,9 +20,9 @@ const ReciteModal = ({
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal2 = () => {
+  const openReciteModal3 = () => {
     onClose();
-    openRecite2();
+    openRecite3();
   };
   
 
@@ -54,47 +54,41 @@ const ReciteModal = ({
           </div>
           <hr className="w-auto border-color-brand-op" />
 
-          <div className="pt-5">
-            <Typography
-              variant="h12"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
-            >
-              Name of recipient
-            </Typography>
-            <Flex className="relative h-[40px]">
-              <Input type="text" placeholder="Name" />
-            </Flex>
-          </div>
+          
 
           <div className="pt-5">
           <Typography
               variant="h12"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
             >
-              Recipient’s phone or email
+              Who’s the recipient of this prayer?
             </Typography>
-            <div><Typography
-              variant="h17"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
-            >
-              We’ll use this to let them know a prayer is being recited for them
-            </Typography></div>
           </div>
           
           
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 mb-3.5">
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
-                <CheckBox>Phone</CheckBox>
+                <CheckBox>Myself</CheckBox>
               </Flex>
             </div>
 
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
-                <CheckBox>Email</CheckBox>
+                <CheckBox>Someone Else</CheckBox>
               </Flex>
             </div>
+          </div>
+          <hr className="w-auto border-color-brand-op" />
+
+          <div className="pt-3.5">
+          <Typography
+              variant="h12"
+              classname="text-color-brand-yellow2 drop-shadow-3xl "
+            >
+              Notify me via text (optional)
+            </Typography>
           </div>
           <div>
           <Flex className="relative h-[40px]">
@@ -106,7 +100,7 @@ const ReciteModal = ({
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
-               onClick={openReciteModal2}
+               onClick={openReciteModal3}
             >
               Next
             </DesignButton>
@@ -117,4 +111,4 @@ const ReciteModal = ({
   );
 };
 
-export default ReciteModal;
+export default reciteModal2;

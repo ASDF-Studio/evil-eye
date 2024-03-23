@@ -9,10 +9,10 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 
-const ReciteModal = ({ 
+const ReciteModal3 = ({ 
   isvisible,
   onClose,
-  openRecite2,
+  openRecite4,
 
  }) => {
   if (!isvisible) return null;
@@ -20,9 +20,9 @@ const ReciteModal = ({
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal2 = () => {
+  const openReciteModal4 = () => {
     onClose();
-    openRecite2();
+    openRecite4();
   };
   
 
@@ -51,6 +51,31 @@ const ReciteModal = ({
               Whenever a person gets affected with an evil eye curse, it affects
               them physically, mentally, emotionally, and financially.
             </Typography>
+          </div>
+          <hr className="w-auto border-color-brand-op" />
+          <div className="pt-5">
+          <Typography
+              variant="h12"
+              classname="text-color-brand-yellow2 drop-shadow-3xl "
+            >
+              Who’s the recipient of this prayer?
+            </Typography>
+          </div>
+          
+          
+
+          <div className="flex gap-4 mb-3.5">
+            <div className="h-full w-full">
+              <Flex className="relative h-[40px]">
+                <CheckBox>Myself</CheckBox>
+              </Flex>
+            </div>
+
+            <div className="h-full w-full">
+              <Flex className="relative h-[40px]">
+                <CheckBox>Someone Else</CheckBox>
+              </Flex>
+            </div>
           </div>
           <hr className="w-auto border-color-brand-op" />
 
@@ -106,7 +131,7 @@ const ReciteModal = ({
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
-               onClick={openReciteModal2}
+               onClick={openReciteModal4}
             >
               Next
             </DesignButton>
@@ -117,4 +142,4 @@ const ReciteModal = ({
   );
 };
 
-export default ReciteModal;
+export default ReciteModal3;

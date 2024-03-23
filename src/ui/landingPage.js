@@ -6,18 +6,54 @@ import InfoModal from "@/components/infoModal";
 import ReciteModal from "@/components/modal/recite/reciteModal";
 import { useState } from "react";
 import { DesignButton } from "@/components/button/designButton";
+import ReciteModal2 from "@/components/modal/recite/reciteModal2";
+import ReciteModal3 from "@/components/modal/recite/reciteModal3";
+import ReciteModal4 from "@/components/modal/recite/reciteModal4";
+import ReciteModal5 from "@/components/modal/recite/reciteModal5";
+import ReciteModal6 from "@/components/modal/recite/reciteModal6";
 
 export const LandingPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
   const [showReciteModal, setShowReciteModal] = useState(false);
+  const [showReciteModal2, setShowReciteModal2] = useState(false);
+  const [showReciteModal3, setShowReciteModal3] = useState(false);
+  const [showReciteModal4, setShowReciteModal4] = useState(false);
+  const [showReciteModal5, setShowReciteModal5] = useState(false);
+  const [showReciteModal6, setShowReciteModal6] = useState(false);
 
   const closeAllModals = () => {
     setShowModal(false);
     setShowModal2(false);
     setShowModal3(false);
     setShowReciteModal(false);
+    setShowReciteModal2(false);
+    setShowReciteModal3(false);
+    setShowReciteModal4(false);
+    setShowReciteModal5(false);
+    setShowReciteModal6(false);
+  };
+  const openRecite2 = () => {
+    closeAllModals;
+    setShowReciteModal2(true);
+  };
+
+  const openRecite3 = () => {
+    closeAllModals;
+    setShowReciteModal3(true);
+  };
+  const openRecite4 = () => {
+    closeAllModals;
+    setShowReciteModal4(true);
+  };
+  const openRecite5 = () => {
+    closeAllModals;
+    setShowReciteModal5(true);
+  };
+  const openRecite6 = () => {
+    closeAllModals;
+    setShowReciteModal6(true);
   };
 
   return (
@@ -160,6 +196,7 @@ export const LandingPage = () => {
                   <li>Arguments with loved ones</li>
                   <li>Feeling discomfort in social gatherings</li>
                 </ul>
+                <br></br>
                 <p className="font-rosarivo font-normal w-auto mb-6 pr-5">
                   Pregnant ladies, newborn babies, kids, young and <br></br>{" "}
                   successful people are more vulnerable to the evil eye{" "}
@@ -185,9 +222,7 @@ export const LandingPage = () => {
           variant="body"
           classname=" pt-[10px] w-[300px] sm:w-[600px] 1xl:w-[805px] 2xl:w-[805px] text-textColor-brand-yellow text-opacity-63"
         >
-          Evil Eye Remedy is the original and authentic cure of its kind. Relief
-          from your symptoms is close at hand. The ancient and special Evil Eye
-          prayer will be said for you, your loved one, or your pet.
+          Evil Eye Remedy is the original and authentic cure of its kind. Relief from your symptoms is close at hand. The ancient and special Evil Eye prayer will be said for you or your loved one.
         </Typography>
 
         <Flex className="pt-5">
@@ -205,7 +240,34 @@ export const LandingPage = () => {
           <ReciteModal
             isvisible={showReciteModal}
             onClose={() => setShowReciteModal(false)}
+            openRecite2={openRecite2}
+            openRecite3={openRecite3}
           />
+          <ReciteModal2
+        isvisible={showReciteModal2}
+        onClose={() => setShowReciteModal2(false)}
+        openRecite3={openRecite3}
+      />
+      <ReciteModal3
+        isvisible={showReciteModal3}
+        onClose={() => setShowReciteModal3(false)}
+        openRecite4={openRecite4}
+      />
+      <ReciteModal4
+        isvisible={showReciteModal4}
+        onClose={() => setShowReciteModal4(false)}
+        openRecite5={openRecite5}
+      />
+      <ReciteModal5
+        isvisible={showReciteModal5}
+        onClose={() => setShowReciteModal5(false)}
+        openRecite6={openRecite6}
+      />
+      <ReciteModal6
+        isvisible={showReciteModal6}
+        onClose={() => setShowReciteModal6(false)}
+        // openRecite7={openRecite7}
+      />
         </Flex>
       </FlexColumn>
     </div>
