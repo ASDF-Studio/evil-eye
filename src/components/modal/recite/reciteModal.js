@@ -43,7 +43,7 @@ const ReciteModal = ({
         </div>
         <FlexColumn className="px-5 mb-3.5 gap-2">
           
-          <div className="pb-5">
+          <div className="pb-3">
             <Typography
               variant="h12"
               classname=" text-color-brand-yellow2 drop-shadow-3xl "
@@ -54,7 +54,7 @@ const ReciteModal = ({
           </div>
           <hr className="w-auto border-color-brand-op" />
 
-          <div className="pt-5">
+          <div className="pt-3">
             <Typography
               variant="h12"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -66,7 +66,7 @@ const ReciteModal = ({
             </Flex>
           </div>
 
-          <div className="pt-5">
+          <div className="pt-3.5">
           <Typography
               variant="h12"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -75,7 +75,7 @@ const ReciteModal = ({
             </Typography>
             <div><Typography
               variant="h17"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2 drop-shadow-3xl"
             >
               We’ll use this to let them know a prayer is being recited for them
             </Typography></div>
@@ -96,13 +96,13 @@ const ReciteModal = ({
               </Flex>
             </div>
           </div>
-          <div>
+          <div className="pt-3.5">
           <Flex className="relative h-[40px]">
                 <Input type="text" placeholder="123-345-6789" />
               </Flex>
           </div>
 
-          <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
+          <Flex className=" justify-center pt-3.5 pb-2.5 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"

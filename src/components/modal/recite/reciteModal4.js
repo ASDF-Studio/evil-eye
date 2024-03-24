@@ -10,6 +10,7 @@ import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 import { DesignButton2 } from "@/components/button/designButton2";
 
+
 const ReciteModal4 = ({ 
   isvisible,
   onClose,
@@ -36,7 +37,7 @@ const ReciteModal4 = ({
       <ModalFrame onClose={onClose} title="Recite the prayer">
       <div className=" divide-[#FFCE70] divide-y-2">
         <div className="px-5">
-        <div className=" mb-3.5">
+        <div>
           <Typography
             variant="h11"
             classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -49,7 +50,7 @@ const ReciteModal4 = ({
 
           
 
-          <div className="pt-5">
+          <div className="pt-5 pb-5">
           <Typography
               variant="h12"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -60,7 +61,7 @@ const ReciteModal4 = ({
           
           <hr className="w-auto border-color-brand-op" />
 
-          <FlexBetween className="pt-2 w-[400px]">
+          <FlexBetween className="pb-3.5 pt-2 w-[400px]">
                     <Typography
                       variant="h13"
                       classname=" text-color-brand-yellow2 opacity-80"
@@ -119,7 +120,7 @@ const ReciteModal4 = ({
                   </FlexBetween>
           </div>
 
-          <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
+          <Flex className=" justify-center pt-5 pb-5 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
@@ -127,7 +128,17 @@ const ReciteModal4 = ({
             >
               CONTINUE WITH PAYMENT
             </DesignButton>
-          </Flex></div>
+          </Flex>
+                    <FlexCenter className="pb-5"><Typography
+                      variant="h13"
+                      classname=" text-color-brand-yellow2 opacity-80"
+                    >
+                      Secured by
+                    </Typography>
+                    
+                    
+                    </FlexCenter>
+          </div>
           </div>
       </ModalFrame>
     </FlexCenter>

@@ -16,7 +16,7 @@ import eye from '../../../public/logos/eye.svg';
 import chevronRight from '../../../public/logos/chevronRight.svg';
 import diamondExclamation from '../../../public/logos/diamondExclamation.svg';
 import uploadCloud from '../../../public/logos/uploadCloud.svg';
-import calender from '../../../public/logos/calender.svg';
+import stripe from '../../../public/logos/stripe.svg'
 
 
 export const LogoWithBackground = () => {
@@ -81,6 +81,17 @@ export const Xmark = () => {
     <Image
       src={xmark}
       width={37}
+      height="auto"
+      alt="xmark"
+      className="mr-3"
+    />
+  );
+};
+export const Stripe = () => {
+  return (
+    <Image
+      src={stripe}
+      width={0}
       height="auto"
       alt="xmark"
       className="mr-3"

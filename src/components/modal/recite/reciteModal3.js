@@ -43,17 +43,17 @@ const ReciteModal3 = ({
         </div>
         <FlexColumn className="px-5 mb-3.5 gap-2">
           
-          <div className="pb-5">
+          <div className="pb-3">
             <Typography
               variant="h12"
               classname=" text-color-brand-yellow2 drop-shadow-3xl "
             >
               Whenever a person gets affected with an evil eye curse, it affects
-              them physically, mentally, emotionally, and financially.
+              them physically, mentally, emotionally and financially.
             </Typography>
           </div>
           <hr className="w-auto border-color-brand-op" />
-          <div className="pt-5">
+          <div className="pt-3">
           <Typography
               variant="h12"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -64,7 +64,7 @@ const ReciteModal3 = ({
           
           
 
-          <div className="flex gap-4 mb-3.5">
+          <div className="flex gap-4 mb-4">
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
                 <CheckBox>Myself</CheckBox>
@@ -79,7 +79,7 @@ const ReciteModal3 = ({
           </div>
           <hr className="w-auto border-color-brand-op" />
 
-          <div className="pt-5">
+          <div className="pt-3">
             <Typography
               variant="h12"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -91,7 +91,7 @@ const ReciteModal3 = ({
             </Flex>
           </div>
 
-          <div className="pt-5">
+          <div className="pt-3">
           <Typography
               variant="h12"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -121,13 +121,13 @@ const ReciteModal3 = ({
               </Flex>
             </div>
           </div>
-          <div>
+          <div className="pt-3">
           <Flex className="relative h-[40px]">
                 <Input type="text" placeholder="123-345-6789" />
               </Flex>
           </div>
 
-          <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
+          <Flex className=" justify-center pt-3 pb-2 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"

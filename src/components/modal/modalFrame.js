@@ -28,6 +28,7 @@ const ModalFrame = ({
                     <Design2 />
                 </FlexBetween>
                 <div className=' text-brand-yellow pt-5 w-auto h-auto rounded '>
+                    
                     {children}
                 </div>
             </FlexColumn>

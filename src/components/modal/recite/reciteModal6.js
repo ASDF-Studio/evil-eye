@@ -25,14 +25,21 @@ const ReciteModal6 = ({
     openRecite7();
   };
   
+  
 
   return (
+    
+      
+  
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
       id="wrapper"
       onClick={handleClose}
     >
+      
       <ModalFrame onClose={onClose} title="Recite the prayer">
+      
+
       
       <div className=" px-5">
         <div className="flex justify-center mb-3.5">
