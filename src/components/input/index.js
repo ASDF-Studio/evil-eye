@@ -3,8 +3,9 @@ import { Design1, Design2 } from "../logo";
 import { Typography } from "../typography";
 
 export const Input = ({
+  value = "",
   type = "text",
-  placeholder ="",
+  placeholder = "",
   className = "",
   ...rest
 }) => {
@@ -18,13 +19,14 @@ export const Input = ({
       <Design1 />
       <Flex className="absolute justify-start items-center w-full h-[40px] z-50">
         <input
+          value={value}
           type={type}
           name={type}
           className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent items-center placeholder:text-textColor-placeholder absolute flex w-full px-7 text-textColor-brand-gold2 h-[40px] "
           placeholder={placeholder}
           required
+          {...rest}
         />
-        
       </Flex>
       <Design2 />
     </FlexBetween>

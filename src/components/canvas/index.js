@@ -1,4 +1,4 @@
-import { responsiveScreen } from "@/constants";
+import { responsiveScreen } from "@/context";
 import { FC } from "react";
 
 export const Canvas = ({
