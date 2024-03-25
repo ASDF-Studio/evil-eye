@@ -64,7 +64,7 @@ export const LandingPage = () => {
       <Flex className="w-full h-full justify-center 1xl:mt-[50px]">
         <Flex className="w-[1440px] h-auto flex-col sm:flex-row  ">
           <FlexColumn className="h-full gap-10 justify-between sm:gap-0">
-            <Flex className="relative w-full pl-[18px] h-auto sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
+            <Flex className="relative w-full pl-[18px] pt-[48px] h-auto sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
               <Button
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
@@ -109,7 +109,7 @@ export const LandingPage = () => {
             </Flex>
           </FlexColumn>
 
-          <Flex className="relative mx-auto w-full h-auto justify-end pb-[20px] pt-[27px] pr-[20px] items-end flex-col sm:flex-row  sm:pb-[5px] sm:mr-[36px] 1xl:mr-[225px] 1xl:items-start 1xl:pt-[55px] 2xl:mr-[290px] 2xl:flex-row 5xl:mr-[280px] 5xl:pt-[5px]">
+          <Flex className="relative mx-auto w-full h-auto justify-end pb-[20px] pt-[27px] pr-[20px] items-end flex-col sm:flex-row  sm:pb-[5px] sm:mr-[36px] sm:items-start sm:pt-[130px] 1xl:mr-[225px] 2xl:mr-[290px] 2xl:flex-row 5xl:mr-[280px] 5xl:pt-[5px]">
             <Button
               variant="text"
               leftIcon={<LeftPlay className="text-color-brand-yellow" />}
