@@ -8,13 +8,11 @@ import { DesignButton } from "../../button/designButton";
 import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
+import { PrayerBG, PrayerBGvideo } from "@/components/background";
+import ModalFrame2 from "../modalFrame2";
+import PrayerModalFrame from "../prayerModalFrame";
 
-const ReciteModal6 = ({ 
-  isvisible,
-  onClose,
-  openRecite7,
-
- }) => {
+const ReciteModal6 = ({ isvisible, onClose, openRecite7 }) => {
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -24,69 +22,65 @@ const ReciteModal6 = ({
     onClose();
     openRecite7();
   };
-  
-  
 
   return (
-    
-      
-  
     <FlexCenter
-      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
+      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-30"
       id="wrapper"
       onClick={handleClose}
     >
-      
-      <ModalFrame onClose={onClose} title="Recite the prayer">
-      
-
-      
-      <div className=" px-5">
-        <div className="flex justify-center mb-3.5">
-          <Typography
-            variant="h11"
-            classname="text-color-brand-yellow2 drop-shadow-3xl"
-          >
-            Please wait...
-            We are Reciting Your prayer
-          </Typography>
+      <PrayerModalFrame onClose={onClose} title="Recite the prayer">
+        <div className="overflow-hidden">
+          <PrayerBG />
+          <PrayerBGvideo />
         </div>
-        <FlexColumn className="mb-3.5 gap-2">
-          
-
-          
-
-          <div className="flex justify-centerpt-5">
-          <Typography
-              variant="h13"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+        <Flex className="h-full items-end justify-center">
+          <div className="flex justify-center mb-3.5">
+            <Typography
+              variant="h11"
+              classname="text-color-brand-yellow2 drop-shadow-3xl"
             >
-              Be kind to each other. Be kind to the Earth.
+              Please wait...<br/> We are Reciting Your prayer
             </Typography>
           </div>
-          <div className="">
-        
-
-          <Flex className=" justify-center pt-3 pb-2.5 w-[100%]">
-            <DesignButton
-              className=" w-full"
-              typoVariant="buttonLabel2"
-               onClick={openReciteModal7}
-            >
-              Recite Prayer
-            </DesignButton>
-          </Flex></div>
-          
-          
-
-          
-        </FlexColumn>
-        </div>
-
-          
-      </ModalFrame>
+        </Flex>
+      </PrayerModalFrame>
     </FlexCenter>
   );
 };
 
 export default ReciteModal6;
+
+{
+  /* <div className=" px-5">
+          <div className="flex justify-center mb-3.5">
+            <Typography
+              variant="h11"
+              classname="text-color-brand-yellow2 drop-shadow-3xl"
+            >
+              Please wait... We are Reciting Your prayer
+            </Typography>
+          </div>
+          <FlexColumn className="mb-3.5 gap-2">
+            <div className="flex justify-centerpt-5">
+              <Typography
+                variant="h13"
+                classname="text-color-brand-yellow2 drop-shadow-3xl "
+              >
+                Be kind to each other. Be kind to the Earth.
+              </Typography>
+            </div>
+            <div className="">
+              <Flex className=" justify-center pt-3 pb-2.5 w-[100%]">
+                <DesignButton
+                  className=" w-full"
+                  typoVariant="buttonLabel2"
+                  onClick={openReciteModal7}
+                >
+                  Recite Prayer
+                </DesignButton>
+              </Flex>
+            </div>
+          </FlexColumn>
+        </div> */
+}

@@ -3,19 +3,19 @@ import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../layout";
 import { Design1, Design2, Xmark } from "../logo";
 import { Typography } from "../typography";
 
-const ModalFrame = ({ onClose, children, title }) => {
+const PrayerModalFrame = ({ onClose, children, title }) => {
   return (
     <FlexCenter
-      className="fixed inset-0 bg-black bg-opacity-25 shadow-sm z-50 w-[50%]"
+      className="w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm"
       id="wrapper"
       onClick={onClose}
     >
-      <FlexColumn className="bg-backgroundColor-brand-blue-95 bg-opacity-95 border-2 border-color-brand-yellow2 shadow-buttonShadow3 w-screen sm:w-[450px]">
+      <FlexColumn className="bg-backgroundColor-brand-blue-95 w-auto h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3">
         <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
           <Design1 />
           <Typography
             variant="title"
-            classname="w-[340px] ml-10 flex justify-center items-center h-full text-color-brand-yellow2 "
+            classname="w-full ml-10 flex justify-center items-center h-full text-color-brand-yellow2 "
           >
             {title}
           </Typography>
@@ -29,11 +29,11 @@ const ModalFrame = ({ onClose, children, title }) => {
           </FlexCenter>
           <Design2 />
         </FlexBetween>
-        <div className="text-brand-yellow pt-5 rounded relative h-auto w-auto">
+        <div className=" text-brand-yellow w-[650px] h-[750px] rounded relative">
           {children}
         </div>
       </FlexColumn>
     </FlexCenter>
   );
 };
-export default ModalFrame;
+export default PrayerModalFrame;
