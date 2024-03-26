@@ -10,8 +10,9 @@ const ModalFrame = ({ onClose, children, title }) => {
       id="wrapper"
       onClick={onClose}
     >
-      <FlexColumn className="bg-backgroundColor-brand-blue-95 bg-opacity-95 border-2 border-color-brand-yellow2 shadow-buttonShadow3 w-screen sm:w-[450px]">
-        <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
+      <FlexColumn className=" w-screen h-screen sm:h-auto mt-36 sm:mt-0 sm:w-[450px]">
+        <FlexColumn className="bg-backgroundColor-brand-blue-95 bg-opacity-95 border-2 border-color-brand-yellow2 shadow-buttonShadow3 w-auto m-3">
+          <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
           <Design1 />
           <Typography
             variant="title"
@@ -31,7 +32,7 @@ const ModalFrame = ({ onClose, children, title }) => {
         </FlexBetween>
         <div className="text-brand-yellow pt-5 rounded relative h-auto w-auto">
           {children}
-        </div>
+        </div></FlexColumn>
       </FlexColumn>
     </FlexCenter>
   );

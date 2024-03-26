@@ -5,12 +5,13 @@ import { Typography } from "../typography";
 
 const PrayerModalFrame = ({ onClose, children, title }) => {
   return (
-    <FlexCenter
+    <div className=" flex justify-center items-center w-screen sm:w-[650px]">
+      <FlexCenter
       className="w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm"
       id="wrapper"
       onClick={onClose}
     >
-      <FlexColumn className="bg-backgroundColor-brand-blue-95 w-auto h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3">
+      <FlexColumn className="bg-backgroundColor-brand-blue-95 h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3 w-auto m-3">
         <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
           <Design1 />
           <Typography
@@ -29,11 +30,12 @@ const PrayerModalFrame = ({ onClose, children, title }) => {
           </FlexCenter>
           <Design2 />
         </FlexBetween>
-        <div className=" text-brand-yellow w-[650px] h-[750px] rounded relative">
+        <div className=" text-brand-yellow w-auto sm:w-[648px] h-[750px] rounded relative">
           {children}
         </div>
       </FlexColumn>
     </FlexCenter>
+    </div>
   );
 };
 export default PrayerModalFrame;

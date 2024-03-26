@@ -31,7 +31,7 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
           <div className="pt-3.5">
             <Typography
               variant="h12"
-              classname=" text-color-brand-yellow2 drop-shadow-3xl "
+              classname=" text-color-brand-yellow2"
             >
               We have sent you an OTP to your email address:
               <span className=" hover:underline">
@@ -47,7 +47,7 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
             <label for="email" className="block  mb-1.5">
               <Typography
                 variant="h12"
-                classname=" text-color-brand-yellow2 drop-shadow-3xl "
+                classname=" text-color-brand-yellow2"
               >
                 OTP
               </Typography>
@@ -58,17 +58,12 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
           </div>
           <FlexBetween className="mt-3">
             <Button variant="text" className="w-full" typoVariant="text">
-              <Typography
-                variant="h12"
-                classname="hover:underline flex justify-start text-color-brand-yellow2 drop-shadow-3xl "
-              >
-                Change Email
-              </Typography>
+              
             </Button>
             <Button variant="text" className="w-full" typoVariant="text">
               <Typography
                 variant="h12"
-                classname="hover:underline flex justify-end text-color-brand-yellow2 drop-shadow-3xl "
+                classname="underline flex justify-end text-color-brand-yellow2"
               >
                 Resend
               </Typography>

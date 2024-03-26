@@ -14,6 +14,8 @@ import ReciteModal6 from "@/components/modal/recite/reciteModal6";
 import Symtoms from "@/components/infoModal/symtoms";
 import Cure from "@/components/infoModal/cure";
 import EvilEye from "@/components/infoModal/evileye";
+import ReciteModal7 from "@/components/modal/recite/reciteModal7";
+import DashModal from "@/components/modal/dashboard/dashModal";
 
 export const LandingPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -25,6 +27,8 @@ export const LandingPage = () => {
   const [showReciteModal4, setShowReciteModal4] = useState(false);
   const [showReciteModal5, setShowReciteModal5] = useState(false);
   const [showReciteModal6, setShowReciteModal6] = useState(false);
+  const [showReciteModal7, setShowReciteModal7] = useState(false);
+  const [showDashModal, setShowDashModal] = useState(false);
 
   const closeAllModals = () => {
     setShowModal(false);
@@ -36,6 +40,7 @@ export const LandingPage = () => {
     setShowReciteModal4(false);
     setShowReciteModal5(false);
     setShowReciteModal6(false);
+    setShowReciteModal7(false);
   };
   const openRecite2 = () => {
     closeAllModals;
@@ -57,6 +62,14 @@ export const LandingPage = () => {
   const openRecite6 = () => {
     closeAllModals;
     setShowReciteModal6(true);
+  };
+  const openRecite7 = () => {
+    closeAllModals;
+    setShowReciteModal7(true);
+  };
+  const openDashboard = () => {
+    closeAllModals;
+    setShowDashModal(true);
   };
 
   return (
@@ -192,8 +205,17 @@ export const LandingPage = () => {
           <ReciteModal6
             isvisible={showReciteModal6}
             onClose={() => setShowReciteModal6(false)}
-            // openRecite7={openRecite7}
+            openRecite7={openRecite7}
           />
+          <ReciteModal7
+            isvisible={showReciteModal7}
+            onClose={() => setShowReciteModal7(false)}
+            openDashboard={openDashboard}
+          />
+          <DashModal
+        isvisible={showDashModal}
+        onClose={() => setShowDashModal(false)}
+      />
         </Flex>
       </FlexColumn>
     </div>

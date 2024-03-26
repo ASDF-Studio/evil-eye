@@ -61,7 +61,7 @@ const ReciteModal4 = ({
           
           <hr className="w-auto border-color-brand-op" />
 
-          <FlexBetween className="pb-3.5 pt-2 w-[400px]">
+          <FlexBetween className="pb-3.5 pt-2 w-auto ">
                     <Typography
                       variant="h13"
                       classname=" text-color-brand-yellow2 opacity-80"
@@ -77,7 +77,8 @@ const ReciteModal4 = ({
                   </FlexBetween>
                   <hr className="w-auto border-color-brand-op" />
 
-          <FlexBetween className="pt-2 w-[400px]">
+          <FlexBetween className="pt-2 w-auto ">
+                    <Flex className="flex-col sm:flex-row gap-2">
                     <Typography
                       variant="h13"
                       classname=" text-color-brand-yellow2 opacity-80"
@@ -90,8 +91,9 @@ const ReciteModal4 = ({
                     >
                       50% Discount Applied
                     </Typography>
+                    </Flex>
                     <Flex className="justify-end h-full w-[190px]">
-                    <Flex className="relative w-[190px] h-[40px]">
+                    <Flex className="relative w-[170px] h-[40px]">
                 <DesignButton3>GRKDAY</DesignButton3>
               </Flex>
                     </Flex>
@@ -104,7 +106,7 @@ const ReciteModal4 = ({
 
         <div className="px-5">
             <div className="pt-3.5">
-          <FlexBetween className="pt-2 w-[400px]">
+          <FlexBetween className="pt-2 w-auto">
                     <Typography
                       variant="h13"
                       classname=" text-color-brand-yellow2 opacity-80"

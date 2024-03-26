@@ -57,7 +57,7 @@ const SignupModal = ({
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2"
                 >
                   Your Name
                 </Typography>
@@ -70,7 +70,7 @@ const SignupModal = ({
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2"
                 >
                   Email
                 </Typography>
@@ -84,7 +84,7 @@ const SignupModal = ({
               <label htmlFor="password" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2"
                 >
                   Password
                 </Typography>
@@ -98,7 +98,7 @@ const SignupModal = ({
               <label htmlFor="password" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2 "
                 >
                   Confirm Password
                 </Typography>
@@ -117,12 +117,12 @@ const SignupModal = ({
               </DesignButton>
             </Flex>
 
-            <hr className="w-[410px] border-color-brand-op" />
+            <hr className="w-auto sm:w-[410px] border-color-brand-op" />
             <div className="">
-              <FlexCenter className="w-[410px] mt-2 text-color-brand-yellow2">
+              <FlexCenter className="w-auto mt-2 text-color-brand-yellow2">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2"
                 >
                   Already have an account?
                 </Typography>
@@ -136,11 +136,11 @@ const SignupModal = ({
                 </DesignButton3>
               </Flex>
             </div>
-            <hr className="w-[410px] border-color-brand-op" />
-            <FlexCenter className="w-[410px]">
+            <hr className="w-auto sm:w-[410px] border-color-brand-op" />
+            <FlexCenter className="w-auto">
               <Typography
                 variant="h12"
-                classname="hover:underline text-color-brand-yellow2 drop-shadow-3xl "
+                classname="hover:underline text-color-brand-yellow2"
               >
                 Continue as guest
               </Typography>

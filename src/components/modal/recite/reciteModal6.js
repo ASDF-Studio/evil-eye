@@ -34,14 +34,30 @@ const ReciteModal6 = ({ isvisible, onClose, openRecite7 }) => {
           <PrayerBGvideo />
         </div>
         <Flex className="h-full items-end justify-center">
-          <div className="flex justify-center mb-3.5">
+          <div className="flex flex-col justify-center mb-3.5">
             <Typography
               variant="h11"
               classname="text-color-brand-yellow2 drop-shadow-3xl"
             >
               Please wait...<br/> We are Reciting Your prayer
             </Typography>
+            <FlexCenter className="pt-3 relative w-full"><Typography
+              variant="h13"
+              classname="text-color-brand-yellow2"
+            >
+              Be kind to each other. Be kind to the Earth.
+            </Typography>
+            </FlexCenter>
+            <div className="pt-3 px-3">
+              <DesignButton
+                  className="relative w-full"
+                  typoVariant="buttonLabel2"
+                  onClick={openReciteModal7}
+                >
+                  Recite Prayer
+                </DesignButton></div>
           </div>
+          
         </Flex>
       </PrayerModalFrame>
     </FlexCenter>

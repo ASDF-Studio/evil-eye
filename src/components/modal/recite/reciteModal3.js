@@ -64,7 +64,7 @@ const ReciteModal3 = ({
           
           
 
-          <div className="flex gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-4">
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
                 <CheckBox>Myself</CheckBox>
@@ -108,7 +108,7 @@ const ReciteModal3 = ({
           
           
 
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
                 <CheckBox>Phone</CheckBox>

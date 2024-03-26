@@ -10,7 +10,8 @@ const DashboardModalFrame = ({ onClose, children, title }) => {
       id="wrapper"
       onClick={onClose}
     >
-      <FlexColumn className="bg-backgroundColor-brand-blue-95 w-auto h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3">
+      <FlexColumn className=" w-screen h-screen mt-36 ">
+      <FlexColumn className="bg-backgroundColor-brand-blue-95 w-auto h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3 sm:top-50% m-3">
         <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
           <Design1 />
           <Typography
@@ -32,6 +33,7 @@ const DashboardModalFrame = ({ onClose, children, title }) => {
         <div className=" text-brand-yellow w-auto h-auto rounded ">
           {children}
         </div>
+      </FlexColumn>
       </FlexColumn>
     </FlexCenter>
   );

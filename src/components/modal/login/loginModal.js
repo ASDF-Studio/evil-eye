@@ -79,8 +79,8 @@ const LoginModal = ({
                 <Input type="password" />
               </Flex>
             </div>
-            <Flex className="w-[410px] justify-end">
-              <FlexBetween className="w-auto">
+            <Flex className="w-auto justify-end">
+              <FlexBetween className="w-auto ">
                 <Typography
                   variant="h12"
                   classname="text-color-brand-yellow2 "
@@ -107,9 +107,9 @@ const LoginModal = ({
               </DesignButton>
             </Flex>
 
-            <hr className="w-[410px] border-color-brand-op" />
+            <hr className="w-auto sm:w-[410px] border-color-brand-op" />
             <div className="pb-2.5">
-              <FlexCenter className="w-[410px] mb-5 text-color-brand-yellow2">
+              <FlexCenter className="w-auto sm:w-[410px] mb-5 text-color-brand-yellow2">
                 <Typography
                   variant="h12"
                   classname="text-color-brand-yellow2  "
@@ -127,8 +127,8 @@ const LoginModal = ({
                 </DesignButton3>
               </Flex>
             </div>
-            <hr className="w-[410px] border-color-brand-op" />
-            <FlexCenter className="w-[410px]">
+            <hr className="w-auto sm:w-[410px] border-color-brand-op" />
+            <FlexCenter className="w-auto sm:w-[410px]">
               <Typography
                 variant="h12"
                 classname="underline text-color-brand-yellow2 "
