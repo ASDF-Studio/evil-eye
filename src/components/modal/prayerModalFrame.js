@@ -20,14 +20,14 @@ const PrayerModalFrame = ({ onClose, children, title }) => {
           >
             {title}
           </Typography>
-          <FlexCenter>
+          {/* <FlexCenter>
             <button
               className="text-textColor-brand-yellow place-self-end w-[28px]"
               onClick={() => onClose()}
             >
               <Xmark />
             </button>
-          </FlexCenter>
+          </FlexCenter> */}
           <Design2 />
         </FlexBetween>
         <div className=" text-brand-yellow w-auto sm:w-[648px] h-[750px] rounded relative">

@@ -38,39 +38,37 @@ const ReciteModal7 = ({ isvisible, onClose, openRecite8, openDashboard }) => {
           <PrayerBGvideo />
         </div>
         <Flex className="h-full items-end justify-center">
-          <div className="flex flex-col justify-center px-3 mb-3.5">
+          <div className="flex flex-col justify-center px-3 mb-[37px]">
             <Typography
               variant="h11"
               classname="text-color-brand-yellow2 drop-shadow-3xl"
             >
               Prayer is Complete
             </Typography>
-            <FlexCenter className="pt-3 relative w-full"><Typography
-              variant="h13"
-              classname="text-color-brand-yellow2"
-            >
-              🧿 Thank you 🧿
-            </Typography></FlexCenter>
+            <FlexCenter className="pt-3 relative w-full">
+              <Typography variant="h13" classname="text-color-brand-yellow2">
+                🧿 Thank you 🧿
+              </Typography>
+            </FlexCenter>
             <div className="pt-3">
-                <DesignButton
-                  className="relative w-full"
-                  typoVariant="buttonLabel2"
-                  onClick={openReciteModal8}
-                >
-                  Recite another Prayer
-                </DesignButton>
+              <DesignButton
+                className="relative w-full"
+                typoVariant="buttonLabel2"
+                onClick={openReciteModal8}
+              >
+                Recite another Prayer
+              </DesignButton>
             </div>
-            <div className="pt-3">
-                <DesignButton
-                  className="relative w-full"
-                  typoVariant="buttonLabel2"
-                  onClick={openDashboardModal}
-                >
-                  View Order History
-                </DesignButton>
-            </div>
+            <Flex className="relative bg-backgroundColor-brand-blue mt-3 focus:none focus:border-none w-[100%] h-[40px]">
+              <DesignButton3
+                className="w-full"
+                typoVariant="buttonLabel2"
+                onClick={openDashboardModal}
+              >
+                View Order History
+              </DesignButton3>
+            </Flex>
           </div>
-          
         </Flex>
       </PrayerModalFrame>
     </FlexCenter>
