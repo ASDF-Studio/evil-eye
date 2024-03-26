@@ -86,7 +86,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 <Input type="password" />
               </Flex>
             </div>
-            <Flex className=" relative text-brand-gold bg-brand-yellow  focus:none focus:border-none mt-2 w-[437px] h-[40px] ">
+            <Flex className=" relative text-brand-gold bg-brand-yellow2  focus:none focus:border-none mt-2 w-[437px] h-[40px] ">
               <DesignButton2 className="" typoVariant="buttonLabel3">
                 SAVE
               </DesignButton2>

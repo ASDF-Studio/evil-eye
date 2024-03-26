@@ -46,7 +46,7 @@ const reciteModal2 = ({
           <div className="pb-3">
             <Typography
               variant="h12"
-              classname=" text-color-brand-yellow2 drop-shadow-3xl "
+              classname=" text-color-brand-yellow2 opacity-80 "
             >
               Whenever a person gets affected with an evil eye curse, it affects
               them physically, mentally, emotionally, and financially.
@@ -59,7 +59,7 @@ const reciteModal2 = ({
           <div className="pt-3">
           <Typography
               variant="h12"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2"
             >
               Who’s the recipient of this prayer?
             </Typography>
@@ -85,7 +85,7 @@ const reciteModal2 = ({
           <div className="pt-3">
           <Typography
               variant="h12"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2"
             >
               Notify me via text (optional)
             </Typography>

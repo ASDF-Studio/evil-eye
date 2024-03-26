@@ -56,7 +56,7 @@ const LoginModal = ({
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2 "
                 >
                   Email
                 </Typography>
@@ -70,7 +70,7 @@ const LoginModal = ({
               <label htmlFor="password" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2 "
                 >
                   Password
                 </Typography>
@@ -83,7 +83,7 @@ const LoginModal = ({
               <FlexBetween className="w-auto">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2 "
                 >
                   Forgot Password?
                 </Typography>
@@ -112,7 +112,7 @@ const LoginModal = ({
               <FlexCenter className="w-[410px] mb-5 text-color-brand-yellow2">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2  "
                 >
                   {"Don't have account?"}
                 </Typography>
@@ -131,7 +131,7 @@ const LoginModal = ({
             <FlexCenter className="w-[410px]">
               <Typography
                 variant="h12"
-                classname="underline text-color-brand-yellow2 drop-shadow-3xl "
+                classname="underline text-color-brand-yellow2 "
               >
                 Continue as guest
               </Typography>
