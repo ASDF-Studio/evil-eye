@@ -23,7 +23,7 @@ export const Button = ({
   };
 
   return (
-    <button className={[buttonMapping[variant], "flex justify-center items-center gap-3"].join(" ")} {...rest}>
+    <button className={[buttonMapping[variant], "flex justify-center items-center gap-2"].join(" ")} {...rest}>
       <div>
         {
           leftIcon ? 

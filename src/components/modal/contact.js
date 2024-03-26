@@ -17,7 +17,7 @@ const Contact = ({ isvisible, onClose }) => {
 
   return (
     <FlexCenter
-      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
+      className="z-50 fixed top-[50%] left-[50%]  bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
       id="wrapper"
       onClick={handleClose}
     >
@@ -25,7 +25,7 @@ const Contact = ({ isvisible, onClose }) => {
         <div className="px-5 mb-3.5">
           <Typography
             variant="h18"
-            classname="text-color-brand-yellow2 drop-shadow-3xl flex items-center "
+            classname="text-color-brand-yellow2 flex items-center "
           >
             We’ll Get back to  you as soon as we can
           </Typography>
@@ -34,7 +34,7 @@ const Contact = ({ isvisible, onClose }) => {
             <Email />
             <Typography
               variant="h12"
-              classname="text-color-brand-yellow2 drop-shadow-3xl"
+              classname="text-color-brand-yellow2 "
             >
               info@evileyeremedy.com
             </Typography>
@@ -42,12 +42,12 @@ const Contact = ({ isvisible, onClose }) => {
           <hr className="w-full border-color-brand-yellow2 my-4" />
         </div>
         <div className="px-5 text-left pb-5">
-          <div className="space-y-5 h-[300px] w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left">
+          <div className="space-y-5 h-[350px] w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left">
             <div>
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2  "
                 >
                   Name
                 </Typography>
@@ -61,7 +61,7 @@ const Contact = ({ isvisible, onClose }) => {
               <label htmlFor="password" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2 "
                 >
                   Email
                 </Typography>
@@ -74,7 +74,7 @@ const Contact = ({ isvisible, onClose }) => {
               <label htmlFor="password" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2 "
                 >
                   Phone (Optional)
                 </Typography>
@@ -87,7 +87,7 @@ const Contact = ({ isvisible, onClose }) => {
               <label htmlFor="password" className="block mb-1.5">
                 <Typography
                   variant="h12"
-                  classname="text-color-brand-yellow2 drop-shadow-3xl "
+                  classname="text-color-brand-yellow2  "
                 >
                   Message
                 </Typography>

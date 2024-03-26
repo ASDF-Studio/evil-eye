@@ -186,7 +186,7 @@ export const LandingPage = () => {
                   signs and symptoms you can find in an afflicted <br></br>{" "}
                   person:
                 </p>
-                <ul className=" leading-normal font-display list-disc pl-7">
+                <ul className=" leading-normal font-rosarivo font-display list-disc pl-7">
                   <li>Fever, Headache, Nausea</li>
                   <li>Heavy Eyelids and Yawning</li>
                   <li>Mood Swings</li>

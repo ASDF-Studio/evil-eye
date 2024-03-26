@@ -51,7 +51,7 @@ const ReciteModal5 = ({
           <div className="flex justify-centerpt-5">
           <Typography
               variant="h13"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2"
             >
               We have successfully processed your payment. Please click below to continue.
             </Typography>

@@ -53,7 +53,7 @@ const ReciteModal4 = ({
           <div className="pt-5 pb-5">
           <Typography
               variant="h12"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2 opacity-80"
             >
               Ready for the prayer? Please pay and continue.
             </Typography>
@@ -85,16 +85,16 @@ const ReciteModal4 = ({
                       Coupon
                     </Typography>
                     <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
+                      variant="h20"
+                      classname=" text-color-brand-yellow2 opacity-60"
                     >
                       50% Discount Applied
                     </Typography>
-                    <div className="h-full w-full">
-                    <Flex className="relative h-[40px]">
+                    <Flex className="justify-end h-full w-[190px]">
+                    <Flex className="relative w-[190px] h-[40px]">
                 <DesignButton3>GRKDAY</DesignButton3>
               </Flex>
-                    </div>
+                    </Flex>
                   </FlexBetween>
           
 

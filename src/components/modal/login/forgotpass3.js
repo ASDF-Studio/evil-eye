@@ -30,7 +30,7 @@ const ForgotPass3 = ({ isvisible, onClose }) => {
             <label for="password" className="block mb-1.5">
               <Typography
                 variant="h12"
-                classname=" text-color-brand-yellow2 drop-shadow-3xl "
+                classname=" text-color-brand-yellow2 "
               >
                 New Password
               </Typography>
@@ -43,7 +43,7 @@ const ForgotPass3 = ({ isvisible, onClose }) => {
             <label for="password" className="block mb-1.5">
               <Typography
                 variant="h12"
-                classname=" text-color-brand-yellow2 drop-shadow-3xl "
+                classname=" text-color-brand-yellow2  "
               >
                 Confirm Password
               </Typography>

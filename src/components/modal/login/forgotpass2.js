@@ -38,7 +38,7 @@ const ForgotPass2 = ({
           <div className="pt-6">
             <Typography
               variant="h19"
-              classname=" text-color-brand-yellow2 drop-shadow-3xl "
+              classname=" text-color-brand-yellow2"
             >
               We’ve sent you a reset email to your email address:
               <span className="underline"> adamvoigt@gmail.com</span>

@@ -10,7 +10,7 @@ const ModalFrame = ({
 }) => {
     return (
         <FlexCenter 
-            className=" w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm z-50" 
+            className=" w-full fixed inset-0  bg-black bg-opacity-25 backdrop-blur shadow-sm z-50" 
             id='wrapper' 
             onClick={onClose}
         >

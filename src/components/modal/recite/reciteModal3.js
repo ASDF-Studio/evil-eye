@@ -46,7 +46,7 @@ const ReciteModal3 = ({
           <div className="pb-3">
             <Typography
               variant="h12"
-              classname=" text-color-brand-yellow2 drop-shadow-3xl "
+              classname=" text-color-brand-yellow2 opacity-80"
             >
               Whenever a person gets affected with an evil eye curse, it affects
               them physically, mentally, emotionally and financially.
@@ -56,7 +56,7 @@ const ReciteModal3 = ({
           <div className="pt-3">
           <Typography
               variant="h12"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2"
             >
               Who’s the recipient of this prayer?
             </Typography>
@@ -82,11 +82,11 @@ const ReciteModal3 = ({
           <div className="pt-3">
             <Typography
               variant="h12"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2"
             >
               Name of recipient
             </Typography>
-            <Flex className="relative h-[40px]">
+            <Flex className="relative h-[40px] pt-1">
               <Input type="text" placeholder="Name" />
             </Flex>
           </div>
@@ -94,13 +94,13 @@ const ReciteModal3 = ({
           <div className="pt-3">
           <Typography
               variant="h12"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2"
             >
               Recipient’s phone or email
             </Typography>
             <div><Typography
               variant="h17"
-              classname="text-color-brand-yellow2 drop-shadow-3xl "
+              classname="text-color-brand-yellow2"
             >
               We’ll use this to let them know a prayer is being recited for them
             </Typography></div>

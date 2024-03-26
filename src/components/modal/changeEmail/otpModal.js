@@ -29,7 +29,7 @@ const OtpModal = ({ isvisible, onClose }) => {
           <div className="pt-6">
             <Typography
               variant="h12"
-              classname=" text-color-brand-yellow2 drop-shadow-3xl "
+              classname=" text-color-brand-yellow2 "
             >
               We have sent you an OTP to your email address:
               <span className=" underline"> adamvoigt@gmail.com.</span> Please
@@ -41,7 +41,7 @@ const OtpModal = ({ isvisible, onClose }) => {
             <label for="email" className="block  mb-1.5">
               <Typography
                 variant="h12"
-                classname=" text-color-brand-yellow2 drop-shadow-3xl "
+                classname=" text-color-brand-yellow2"
               >
                 OTP
               </Typography>
@@ -50,24 +50,17 @@ const OtpModal = ({ isvisible, onClose }) => {
               <Input type="email" placeholder="XXXX"/>
             </Flex>
           </div>
-          <FlexBetween className="mt-3">
+          <Flex className="justify-end mt-3">
+            
             <Button variant="text" className="w-full" typoVariant="text">
               <Typography
                 variant="h12"
-                classname="underline flex justify-start text-color-brand-yellow2 drop-shadow-3xl "
-              >
-                Change Email
-              </Typography>
-            </Button>
-            <Button variant="text" className="w-full" typoVariant="text">
-              <Typography
-                variant="h12"
-                classname="underline flex justify-end text-color-brand-yellow2 drop-shadow-3xl "
+                classname="underline flex justify-end text-color-brand-yellow2"
               >
                 Resend
               </Typography>
             </Button>
-          </FlexBetween>
+          </Flex>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton className=" w-full" typoVariant="buttonLabel2">
               ENTER
