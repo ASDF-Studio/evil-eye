@@ -11,7 +11,7 @@ import { Button } from "@/components/button";
 import { Typography } from "@/components/typography";
 import { Flex, FlexCenter, FlexColumn } from "@/components/layout";
 import LoginModal from "@/components/modal/login/loginModal";
-import DashModal from "@/components/modal/dashModal";
+import DashModal from "@/components/modal/dashboard/dashModal";
 import PassModal from "@/components/modal/changePass/passModal";
 import SignupModal from "@/components/modal/signup/signupModal";
 import SignupOtpModal from "@/components/modal/signup/signupOTPModal";

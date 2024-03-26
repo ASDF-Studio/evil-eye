@@ -4,7 +4,7 @@ import ModalFrame from "../modalFrame";
 import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
-import DashModal from "../dashModal";
+import DashModal from "../dashboard/dashModal";
 import { Input } from "@/components/input";
 
 const ForgotPass1 = ({ 

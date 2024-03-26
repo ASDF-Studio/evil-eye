@@ -3,7 +3,7 @@ import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../layout";
 import { Design1, Design2, Xmark } from "../logo";
 import { Typography } from "../typography";
 
-const ModalFrame2 = ({ onClose, children, title }) => {
+const DashboardModalFrame = ({ onClose, children, title }) => {
   return (
     <FlexCenter
       className="w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm"
@@ -36,4 +36,4 @@ const ModalFrame2 = ({ onClose, children, title }) => {
     </FlexCenter>
   );
 };
-export default ModalFrame2;
+export default DashboardModalFrame;

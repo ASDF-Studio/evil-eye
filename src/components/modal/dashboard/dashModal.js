@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../layout";
-import ModalFrame2 from "./modalFrame2";
-import { Design1, Design2, Pen, Xmark } from "../logo";
-import { DesignButton2 } from "../button/designButton2";
-import { Typography } from "../typography";
-import PassModal from "./changePass/passModal";
-import EmailModal from "./changeEmail/emailModal";
-import { Input } from "../input";
+import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
+import { Design1, Design2, Pen, Xmark } from "../../logo";
+import { DesignButton2 } from "../../button/designButton2";
+import { Typography } from "../../typography";
+import PassModal from "../changePass/passModal";
+import EmailModal from "../changeEmail/emailModal";
+import { Input } from "../../input";
+import DashboardModalFrame from "../dashboardModalFrame";
 
 const DashModal = ({ isvisible, onClose, children }) => {
   const [showPassModal, setShowPassModal] = useState(false);
@@ -22,7 +22,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
       id="wrapper"
       onClick={handleClose}
     >
-      <ModalFrame2 onClose={onClose} title="DASHBOARD">
+      <DashboardModalFrame onClose={onClose} title="DASHBOARD">
         <Flex className=" gap-0 w-auto divide-[#FFCE70] divide-x-2 flex-col sm:flex-row">
           <FlexColumn className="gap-6 p-5 text-left">
             <Flex className="items-start flex-col">
@@ -306,7 +306,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
             </div>
           </div>
         </Flex>
-      </ModalFrame2>
+      </DashboardModalFrame>
     </FlexCenter>
   );
 };

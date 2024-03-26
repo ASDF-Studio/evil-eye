@@ -9,7 +9,6 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 import { PrayerBG, PrayerBGvideo } from "@/components/background";
-import ModalFrame2 from "../modalFrame2";
 import PrayerModalFrame from "../prayerModalFrame";
 
 const ReciteModal6 = ({ isvisible, onClose, openRecite7 }) => {
