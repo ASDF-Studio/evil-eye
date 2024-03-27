@@ -41,7 +41,7 @@ const ReciteModal3 = ({
             PRAYER
           </Typography>
         </div>
-        <FlexColumn className="px-5 mb-3.5 gap-2">
+        <FlexColumn className="px-5 mb-3.5 gap-2 h-[350px] 4xl:h-auto overflow-y-auto overflow-hidden scrollbar">
           
           <div className="pb-3">
             <Typography

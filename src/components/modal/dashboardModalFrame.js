@@ -6,12 +6,12 @@ import { Typography } from "../typography";
 const DashboardModalFrame = ({ onClose, children, title }) => {
   return (
     <FlexCenter
-      className="w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm"
+      className="w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm "
       id="wrapper"
       onClick={onClose}
     >
-      <FlexColumn className=" w-screen h-screen mt-36 ">
-      <FlexColumn className="bg-backgroundColor-brand-blue-95 w-auto h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3 sm:top-50% m-3">
+      <FlexColumn className=" w-screen h-screen 1xl:h-auto mt-36 1xl:mt-0  ">
+      <FlexColumn className="bg-backgroundColor-brand-blue-95 w-auto h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3 sm:top-50% m-3 ">
         <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
           <Design1 />
           <Typography
@@ -30,7 +30,7 @@ const DashboardModalFrame = ({ onClose, children, title }) => {
           </FlexCenter>
           <Design2 />
         </FlexBetween>
-        <div className=" text-brand-yellow w-auto h-auto rounded ">
+        <div className=" text-brand-yellow w-auto sm:h-auto rounded ">
           {children}
         </div>
       </FlexColumn>

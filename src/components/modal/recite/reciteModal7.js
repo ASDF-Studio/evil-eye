@@ -46,7 +46,7 @@ const ReciteModal7 = ({ isvisible, onClose, openRecite8, openDashboard }) => {
               Prayer is Complete
             </Typography>
             <FlexCenter className="pt-3 relative w-full">
-              <Typography variant="h13" classname="text-color-brand-yellow2">
+              <Typography variant="h13" classname="text-color-brand-yellow2 opacity-80">
                 🧿 Thank you 🧿
               </Typography>
             </FlexCenter>

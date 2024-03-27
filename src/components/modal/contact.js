@@ -17,7 +17,7 @@ const Contact = ({ isvisible, onClose }) => {
 
   return (
     <FlexCenter
-      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
+      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm "
       id="wrapper"
       onClick={handleClose}
     >
@@ -42,7 +42,7 @@ const Contact = ({ isvisible, onClose }) => {
           <hr className="w-full border-color-brand-yellow2 my-4" />
         </div>
         <div className="px-5 text-left pb-5">
-          <div className="space-y-5 h-[350px] w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left">
+          <div className="space-y-5 h-[350px] 4xl:h-auto w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left">
             <div>
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
