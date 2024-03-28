@@ -51,8 +51,8 @@ const SignupModal = ({
             SIGNUP
           </Typography>
         </div>
-        <div className="px-2 text-left pb-5">
-          <div className="space-y-5 h-[300px] w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left" >
+        <div className="px-2 text-left">
+          <div className="space-y-5 h-[500px] sm:h-auto w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left  pb-5" >
             <div>
               <label htmlFor="email" className="block mb-1.5">
                 <Typography

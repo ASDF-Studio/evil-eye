@@ -93,7 +93,7 @@ export const Stripe = () => {
       src={stripe}
       width={0}
       height="auto"
-      alt="xmark"
+      alt="stripe"
       className="mr-3"
     />
   );

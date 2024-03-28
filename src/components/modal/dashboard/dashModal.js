@@ -48,7 +48,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 Your Name
               </Typography>
               <Flex className="relative mt-2 ">
-                <Input type="text" placeholder="elias" />
+                <Input type="text" placeholder="Your Name" />
               </Flex>
             </div>
 
@@ -116,7 +116,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
               PRAYER HISTORY
             </Typography>
             <div className="w-auto sm:w-[450px]">
-              <div className="space-y-6 h-[500px] w-auto sm:w-[450px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
+              <div className="space-y-6 w-auto sm:w-[450px]  h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
                 <div className="w-auto sm:w-[400px] h-[75px] ">
                   <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
                     <Typography

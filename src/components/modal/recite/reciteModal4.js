@@ -9,6 +9,7 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 import { DesignButton2 } from "@/components/button/designButton2";
+import { Stripe } from "@/components/logo";
 
 
 const ReciteModal4 = ({ 
@@ -138,7 +139,7 @@ const ReciteModal4 = ({
                       Secured by
                     </Typography>
                     
-                    
+                    <div className="pl-2"><Stripe/></div>
                     </FlexCenter>
           </div>
           </div>
