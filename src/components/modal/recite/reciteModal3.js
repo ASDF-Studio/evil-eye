@@ -28,7 +28,7 @@ const ReciteModal3 = ({
 
   return (
     <FlexCenter
-      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
+      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm 2xl:mt-10 4xl:mt-0"
       id="wrapper"
       onClick={handleClose}
     >
@@ -41,7 +41,7 @@ const ReciteModal3 = ({
             PRAYER
           </Typography>
         </div>
-        <FlexColumn className="px-5 mb-3.5 gap-2 h-[350px] 4xl:h-auto overflow-y-auto overflow-hidden scrollbar">
+        <FlexColumn className="px-5 gap-2 h-[350px] 1xl:h-[450px] 2xl:h-[550px] 4xl:h-auto overflow-y-auto overflow-hidden scrollbar">
           
           <div className="pb-3">
             <Typography
@@ -127,7 +127,7 @@ const ReciteModal3 = ({
               </Flex>
           </div>
 
-          <Flex className=" justify-center pt-3 pb-2 w-[100%]">
+          <Flex className=" justify-center pt-3 pb-5 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"

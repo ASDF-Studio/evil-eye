@@ -212,6 +212,8 @@ export const LandingPage = () => {
             isvisible={showReciteModal7}
             onClose={() => setShowReciteModal7(false)}
             openDashboard={openDashboard}
+            openRecite3={openRecite3}
+
           />
           <DashModal
             isvisible={showDashModal}

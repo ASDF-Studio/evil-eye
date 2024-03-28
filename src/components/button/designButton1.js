@@ -12,7 +12,7 @@ export const DesignButton1 = ({
   return (
     <FlexCenter
       className={[
-        "h-[60px] lsm:h-[40px] bg-backgroundColor-brand-yellow2 hover:bg-backgroundColor-brand-hover shadow-buttonShadow2 border-2 border-border-button",
+        "h-[40px] bg-backgroundColor-brand-yellow2 hover:bg-backgroundColor-brand-hover shadow-buttonShadow2 border-2 border-border-button",
         className,
       ].join(" ")}
     >

@@ -28,7 +28,7 @@ const ReciteModal = ({
 
   return (
     <FlexCenter
-      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
+      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm 2xl:mt-10 4xl:mt-0"
       id="wrapper"
       onClick={handleClose}
     >

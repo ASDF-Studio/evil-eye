@@ -7,6 +7,8 @@ import PassModal from "../changePass/passModal";
 import EmailModal from "../changeEmail/emailModal";
 import { Input } from "../../input";
 import DashboardModalFrame from "../dashboardModalFrame";
+import { DesignButton1 } from "@/components/button/designButton1";
+import { DesignButton3 } from "@/components/button/designButton3";
 
 const DashModal = ({ isvisible, onClose, children }) => {
   const [showPassModal, setShowPassModal] = useState(false);
@@ -117,7 +119,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
             </Typography>
             <div className="w-auto sm:w-[450px]">
               <div className="space-y-6 w-auto sm:w-[450px]  h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
-                <div className="w-auto sm:w-[400px] h-[75px] ">
+              <div className="w-auto sm:w-[400px] h-[75px] ">
                   <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
                     <Typography
                       variant="h15"
@@ -135,9 +137,9 @@ const DashModal = ({ isvisible, onClose, children }) => {
                     </Typography>
                     <Typography
                       variant="h14"
-                      classname=" text-color-brand-yellow2"
+                      classname=" text-color-brand-yellow2 "
                     >
-                      $3.3
+                      $5
                     </Typography>
                   </FlexBetween>
                   <Typography
@@ -168,7 +170,38 @@ const DashModal = ({ isvisible, onClose, children }) => {
                       variant="h14"
                       classname=" text-color-brand-yellow2 "
                     >
-                      $2.5
+                      $5
+                    </Typography>
+                  </FlexBetween>
+                  <Typography
+                    variant="h13"
+                    classname="hover:underline text-color-brand-yellow2"
+                  >
+                    View Invoice
+                  </Typography>
+                </div>
+                <hr className="w-auto sm:w-[400px] border-color-brand-op"></hr>
+                <div className="w-auto sm:w-[400px] h-[75px] ">
+                  <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
+                    <Typography
+                      variant="h15"
+                      classname=" text-color-brand-txt  "
+                    >
+                      12 January, 2025
+                    </Typography>
+                  </div>
+                  <FlexBetween className="pt-2 w-auto sm:w-[400px]">
+                    <Typography
+                      variant="h13"
+                      classname=" text-color-brand-yellow2 opacity-80"
+                    >
+                      1 Evil Eye Remedy for Adam Voigt
+                    </Typography>
+                    <Typography
+                      variant="h14"
+                      classname=" text-color-brand-yellow2 "
+                    >
+                      $5
                     </Typography>
                   </FlexBetween>
                   <Typography
@@ -240,8 +273,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                     View Invoice
                   </Typography>
                 </div>
-                <hr className="w-auto sm:w-[400px] border-color-brand-op"></hr>
-                <div className="w-auto sm:w-[400px] h-[75px] ">
+                {/* <div className="w-auto sm:w-[400px] h-[75px] ">
                   <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
                     <Typography
                       variant="h15"
@@ -270,7 +302,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                   >
                     View Invoice
                   </Typography>
-                </div>
+                </div> */}
                 <hr className="w-auto sm:w-[400px] border-color-brand-op"></hr>
                 <div className="w-auto sm:w-[400px] h-[75px] ">
                   <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
@@ -292,7 +324,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                       variant="h14"
                       classname=" text-color-brand-yellow2 "
                     >
-                      $2.3
+                      $5
                     </Typography>
                   </FlexBetween>
                   <Typography

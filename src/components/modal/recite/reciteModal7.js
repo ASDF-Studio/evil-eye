@@ -10,16 +10,17 @@ import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 import { PrayerBG, PrayerBGvideo } from "@/components/background";
 import PrayerModalFrame from "../prayerModalFrame";
+import { DesignButton1 } from "@/components/button/designButton1";
 
-const ReciteModal7 = ({ isvisible, onClose, openRecite8, openDashboard }) => {
+const ReciteModal7 = ({ isvisible, onClose, openRecite3, openDashboard }) => {
   if (!isvisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal8 = () => {
+  const openReciteModal3 = () => {
     onClose();
-    openRecite8();
+    openRecite3();
   };
   const openDashboardModal = () => {
     onClose();
@@ -51,13 +52,13 @@ const ReciteModal7 = ({ isvisible, onClose, openRecite8, openDashboard }) => {
               </Typography>
             </FlexCenter>
             <div className="pt-3">
-              <DesignButton
+              <DesignButton1
                 className="relative w-full"
                 typoVariant="buttonLabel2"
-                onClick={openReciteModal8}
+                onClick={openReciteModal3}
               >
-                Recite another Prayer
-              </DesignButton>
+                RECITE ANOTHER PRAYER
+              </DesignButton1>
             </div>
             <Flex className="relative bg-backgroundColor-brand-blue mt-3 focus:none focus:border-none w-[100%] h-[40px]">
               <DesignButton3
