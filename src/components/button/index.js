@@ -19,6 +19,7 @@ export const Button = ({
     secondary:
       "w-56 h-[45px] bg-main-sky5 bg-opacity-20 rounded-xl border border-sky-500",
       h12: "text-center font-rosarivo text-[18px] font-normal leading-[25.25px] tracking-[-0.9px]",
+      h21: "text-center font-rosarivo text-[18px] font-normal leading-[24px] tracking-[-2.16px]",
       
   };
 

@@ -5,14 +5,14 @@ import { Typography } from "../typography";
 
 const PrayerModalFrame = ({ onClose, children, title }) => {
   return (
-    <div className=" flex justify-center items-center w-screen sm:w-[650px]">
+    <div className=" flex justify-center items-center w-screen sm:w-[650px] ">
       <FlexCenter
       className="w-full fixed inset-0 bg-black bg-opacity-25 backdrop-blur shadow-sm"
       id="wrapper"
       onClick={onClose}
     >
-      <FlexColumn className=" h-screen 1xl:h-auto mt-36 1xl:mt-0">
-      <FlexColumn className="bg-backgroundColor-brand-blue-95 h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3 w-auto m-3">
+      <FlexColumn className=" h-[600px] overflow-y-auto overflow-hidden 1xl:h-auto mt-20 1xl:mt-0 m-3">
+      <FlexColumn className="bg-backgroundColor-brand-blue-95 h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3 w-auto ">
         <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
           <Design1 />
           <Typography
