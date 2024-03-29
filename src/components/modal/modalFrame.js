@@ -11,7 +11,7 @@ const ModalFrame = ({ onClose, children, title }) => {
       onClick={onClose}
     >
       <FlexColumn className=" w-screen h-screen sm:h-auto mt-36  sm:mt-0 sm:w-[450px] ">
-        <div className="h-[550px] sm:h-auto overflow-y-auto overflow-hidden mb-10 mx-3 sm:mx-0 ">
+        <div className="h-[600px] max-h-screen sm:h-auto overflow-y-auto overflow-hidden mb-10 mx-3 sm:mx-0 ">
         <FlexColumn className="bg-backgroundColor-brand-blue-95 bg-opacity-95 border-2 border-color-brand-yellow2 shadow-buttonShadow3 w-auto ">
           <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
           <Design1 />
