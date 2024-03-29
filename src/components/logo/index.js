@@ -35,6 +35,22 @@ export const LogoWithBackground = () => {
   );
 };
 
+export const LogoWithBackgroundMobile = () => {
+  const containerStyle = {
+    backgroundImage: 'url("/background/shadow.png")',
+    backgroundSize: 'cover',
+    width: '147px',
+    height: 'auto',
+    display: 'flex',
+  };
+
+  return (
+    <div style={containerStyle} className='p-3'>
+      <Logo />
+    </div>
+  );
+};
+
 
 export const Logo = () => {
   return (
