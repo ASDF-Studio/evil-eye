@@ -10,6 +10,7 @@ import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 import { DesignButton2 } from "@/components/button/designButton2";
 import { Stripe } from "@/components/logo";
+import { DesignButton1 } from "@/components/button/designButton1";
 
 
 const ReciteModal4 = ({ 
@@ -124,13 +125,14 @@ const ReciteModal4 = ({
           </div>
 
           <Flex className=" justify-center pt-5 pb-5 w-[100%]">
-            <DesignButton
-              className=" w-full"
+            <DesignButton1
+              className="w-full  "
               typoVariant="buttonLabel2"
+
                onClick={openReciteModal5}
             >
               CONTINUE WITH PAYMENT
-            </DesignButton>
+            </DesignButton1>
           </Flex>
                     <FlexCenter className="pb-5"><Typography
                       variant="h13"

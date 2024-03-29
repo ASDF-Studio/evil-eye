@@ -38,7 +38,7 @@ const SignupModal = ({
 
   return (
     <FlexCenter
-      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
+      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm 2xl:mt-16 4xl:mt-0"
       id="wrapper"
       onClick={handleClose}
     >
@@ -52,7 +52,7 @@ const SignupModal = ({
           </Typography>
         </div>
         <div className="px-2 text-left">
-          <div className="space-y-5 h-[500px] sm:h-auto w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left  pb-5" >
+          <div className="space-y-5 h-[500px] sm:h-[600px] 2xl:h-auto w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left  pb-5" >
             <div>
               <label htmlFor="email" className="block mb-1.5">
                 <Typography
