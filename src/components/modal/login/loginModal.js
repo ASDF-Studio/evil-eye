@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Flex, FlexBetween, FlexCenter } from "../../layout";
 import ModalFrame from "../modalFrame";
-import { Design1, Design2 } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import { Button } from "../../button";
 import { Input } from "../../input";
 import { DesignButton3 } from "../../button/designButton3";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { login } from "@/action";
 
 const LoginModal = ({
   isvisible,
@@ -21,6 +22,16 @@ const LoginModal = ({
     if (e.target.id === "wrapper") onClose();
   };
 
+  const dispatch = useAppDispatch();
+
+  // state
+  const auth = useAppSelector((state) => state.auth);
+
+  // data
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // function
   const openDashboardModal = () => {
     onClose();
     openDashboard();
@@ -33,6 +44,28 @@ const LoginModal = ({
   const openForgotPass1Modal = () => {
     onClose();
     openForgotPass1();
+  };
+
+  // handle
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const user = {
+      email,
+      password,
+    };
+
+    // if (auth.authenticate) {
+    //   handleCloseAlert()
+    // } else {
+    //   loginError && handleShowAlert()
+    // }
+
+    try {
+      await dispatch(login(user));
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   return (
@@ -62,7 +95,12 @@ const LoginModal = ({
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input type="email" placeholder="example@domain.com" />
+                <Input
+                  value={email}
+                  type="email"
+                  placeholder="example@domain.com"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </Flex>
             </div>
 
@@ -76,7 +114,11 @@ const LoginModal = ({
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input type="password" />
+                <Input
+                  value={password}
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </Flex>
             </div>
             <Flex className="w-auto justify-end">
@@ -102,8 +144,9 @@ const LoginModal = ({
                 className="w-full"
                 typoVariant="buttonLabel2"
                 onClick={openDashboardModal}
+                // onClick={handleSubmit}
               >
-                ENTER
+                {auth.loading == false ? "Enter" : "Loading..."}
               </DesignButton>
             </Flex>
 
