@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   Logo,
   LogoWithBackground,
+  LogoWithBackgroundMobile,
   MobileBars,
   User,
   X,
@@ -106,13 +107,14 @@ export const Header = () => {
 
   return (
     <>
-      <div className="w-[100%] px-3 mt-[10px] fixed z-20 sm:px-0">
+      <div className="w-[100%] px-0 mt-0 sm:mt-[10px] fixed z-20 sm:px-0">
         <FlexCenter className={["h-[60px] justify-between"].join(" ")}>
           <Link href={"/"} className="relative hidden sm:block">
             <LogoWithBackground />
           </Link>
           <div className="block sm:hidden">
-            <Logo />
+            {/* <Logo /> */}
+            <LogoWithBackgroundMobile />
           </div>
 
           <FlexCenter className="gap-2 pr-8 hidden sm:flex">
@@ -149,9 +151,9 @@ export const Header = () => {
           </Flex>
         </FlexCenter>
 
-        <div className="w-[100%] h-auto flex justify-center items-center px-2 pt-2">
+        <div className="w-[100%] h-auto backdrop-blur shadow-buttonShadow3 flex justify-center items-center px-2 pt-0">
           <FlexColumn
-            className={`w-full h-full v-screen items-start justify-center gap-5 shadow-headerShadow bg-backgroundColor-brand-blue-90 border-2 border-color-brand-yellow2
+            className={`w-full h-full v-screen items-start justify-center gap-5 shadow-headerShadow  bg-backgroundColor-brand-blue-90 border-2 border-color-brand-yellow2
             ${navbar ? "p-5 md:p-0 block" : "hidden"}`}
           >
             {NAV__LINK.map((item, index) => (
