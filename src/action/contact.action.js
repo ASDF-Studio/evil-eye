@@ -8,7 +8,6 @@ export const sendContactUsData = (contactData) => {
   return async (dispatch) => {
     dispatch({
       type: contactConstants.CONTACT_US_REQUEST,
-      payload: true,
     });
     try {
       const res = await axios.post(`${baseURL}contact`, contactData);
@@ -19,7 +18,6 @@ export const sendContactUsData = (contactData) => {
       if (res.status === 200) {
         dispatch({
           type: contactConstants.CONTACT_US_SUCCESS,
-          payload: false,
         });
         alert("SUCCESS");
         return;

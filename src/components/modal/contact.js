@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Flex, FlexBetween, FlexCenter } from "../layout";
 import ModalFrame from "./modalFrame";
 import { Typography } from "../typography";
@@ -10,32 +10,48 @@ import { contactConstants } from "@/action/contact.constants";
 import { sendContactUsData } from "@/action/contact.action";
 
 const Contact = ({ isvisible, onClose }) => {
+  const contactUsEmail = "info@evileyeremedy.com";
   const contactValues = useAppSelector((state) => state.contact);
   const dispatch = useAppDispatch();
+
+  const [userData, setUserData] = useState({
+    userName: "",
+    userEmail: "",
+    userPhone: "",
+    userMsg: "",
+  });
 
   if (!isvisible) return null;
 
   const handleInputChange = (e) => {
     const value = e.target.value;
     if (e.target.id === "userName") {
-      dispatch({
-        type: contactConstants.INPUT_USER_NAME,
-        payload: value,
+      setUserData((prev) => {
+        return {
+          ...prev,
+          userName: value,
+        };
       });
     } else if (e.target.id === "userEmail") {
-      dispatch({
-        type: contactConstants.INPUT_USER_EMAIL,
-        payload: value,
+      setUserData((prev) => {
+        return {
+          ...prev,
+          userEmail: value,
+        };
       });
     } else if (e.target.id === "userPhone") {
-      dispatch({
-        type: contactConstants.INPUT_PHONE_NUMBER,
-        payload: value,
+      setUserData((prev) => {
+        return {
+          ...prev,
+          userPhone: value,
+        };
       });
     } else if (e.target.id === "userMsg") {
-      dispatch({
-        type: contactConstants.INPUT_MESSAGE,
-        payload: value,
+      setUserData((prev) => {
+        return {
+          ...prev,
+          userMsg: value,
+        };
       });
     }
   };
@@ -46,9 +62,10 @@ const Contact = ({ isvisible, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!contactValues?.user) return;
     try {
-      dispatch(sendContactUsData(contactValues.user));
+      dispatch(sendContactUsData({ ...userData, contactUsEmail }));
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +109,7 @@ const Contact = ({ isvisible, onClose }) => {
                   id="userName"
                   type="text"
                   placeholder="Your Name"
-                  value={contactValues.user.userName}
+                  value={userData.userName}
                   onChange={handleInputChange}
                 />
               </Flex>
@@ -110,7 +127,7 @@ const Contact = ({ isvisible, onClose }) => {
                   type="email"
                   placeholder="example@domain.com"
                   onChange={handleInputChange}
-                  value={contactValues.user.userEmail}
+                  value={userData.userEmail}
                 />
               </Flex>
             </div>
@@ -126,7 +143,7 @@ const Contact = ({ isvisible, onClose }) => {
                   type="text"
                   placeholder="123-345-6789"
                   onChange={handleInputChange}
-                  value={contactValues.user.phoneNumber}
+                  value={userData.userPhone}
                 />
               </Flex>
             </div>
@@ -146,7 +163,7 @@ const Contact = ({ isvisible, onClose }) => {
                   name="message"
                   className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent items-center placeholder:text-textColor-placeholder p-2 text-textColor-brand-gold2 resize-none"
                   placeholder={"Type here..."}
-                  value={contactValues.user.message}
+                  value={userData.userMsg}
                   required
                 />
               </Flex>
