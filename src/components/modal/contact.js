@@ -20,6 +20,12 @@ const Contact = ({ isvisible, onClose }) => {
     userPhone: "",
     userMsg: "",
   });
+  const [invalidInputs, setInvalidInputs] = useState({
+    isUserNameInvalid: false,
+    isEmailInvalid: false,
+    isPhoneInvalid: false,
+    isMsgInvalid: false,
+  });
 
   if (!isvisible) return null;
 
@@ -62,8 +68,14 @@ const Contact = ({ isvisible, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setInvalidInputs({
+      isUserNameInvalid: userData.userName ? false : true,
+      isEmailInvalid: userData.userEmail ? false : true,
+      isMsgInvalid: userData.userMsg ? false : true,
+    });
 
-    if (!contactValues?.user) return;
+    if (!userData.userEmail || !userData.userName || !userData.userMsg) return;
+
     try {
       dispatch(sendContactUsData({ ...userData, contactUsEmail }));
     } catch (error) {
@@ -96,7 +108,7 @@ const Contact = ({ isvisible, onClose }) => {
         <div className="px-5 text-left">
           <div className="space-y-5 h-[370px] 4xl:h-auto w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left">
             <div>
-              <label htmlFor="email" className="block mb-1.5">
+              <label htmlFor="email" className="block">
                 <Typography
                   variant="h12"
                   classname="text-color-brand-yellow2  "
@@ -104,6 +116,17 @@ const Contact = ({ isvisible, onClose }) => {
                   Name
                 </Typography>
               </label>
+              <p>
+                {invalidInputs.isUserNameInvalid ? (
+                  <Typography classname="text-red-600">
+                    Name is required*
+                  </Typography>
+                ) : (
+                  <Typography classname="block opacity-0">
+                    Name is required*
+                  </Typography>
+                )}
+              </p>
               <Flex className="relative h-[40px]">
                 <Input
                   id="userName"
@@ -116,11 +139,22 @@ const Contact = ({ isvisible, onClose }) => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block mb-1.5">
+              <label htmlFor="password" className="block">
                 <Typography variant="h12" classname="text-color-brand-yellow2 ">
                   Email
                 </Typography>
               </label>
+              <p>
+                {invalidInputs.isEmailInvalid ? (
+                  <Typography classname="text-red-600">
+                    Email is required*
+                  </Typography>
+                ) : (
+                  <Typography classname="opacity-0">
+                    Email is required*
+                  </Typography>
+                )}
+              </p>
               <Flex className="relative h-[40px]">
                 <Input
                   id="userEmail"
@@ -132,11 +166,22 @@ const Contact = ({ isvisible, onClose }) => {
               </Flex>
             </div>
             <div>
-              <label htmlFor="password" className="block mb-1.5">
+              <label htmlFor="password" className="block">
                 <Typography variant="h12" classname="text-color-brand-yellow2 ">
                   Phone (Optional)
                 </Typography>
               </label>
+              <p>
+                {invalidInputs.isPhoneInvalid ? (
+                  <Typography classname="text-red-600">
+                    Phone numbder is invalid
+                  </Typography>
+                ) : (
+                  <Typography classname="opacity-0">
+                    Phone numbder is invalid
+                  </Typography>
+                )}
+              </p>
               <Flex className="relative h-[40px]">
                 <Input
                   id="userPhone"
@@ -148,7 +193,7 @@ const Contact = ({ isvisible, onClose }) => {
               </Flex>
             </div>
             <div>
-              <label htmlFor="password" className="block mb-1.5">
+              <label htmlFor="password" className="block">
                 <Typography
                   variant="h12"
                   classname="text-color-brand-yellow2  "
@@ -156,6 +201,17 @@ const Contact = ({ isvisible, onClose }) => {
                   Message
                 </Typography>
               </label>
+              <p>
+                {invalidInputs.isMsgInvalid ? (
+                  <Typography classname="text-red-600">
+                    Message is invalid
+                  </Typography>
+                ) : (
+                  <Typography classname="opacity-0">
+                    Message is invalid
+                  </Typography>
+                )}
+              </p>
               <Flex className="relative h-[140px] border-2 border-color-brand-gold2">
                 <textarea
                   onChange={handleInputChange}
