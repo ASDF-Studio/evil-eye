@@ -9,6 +9,7 @@ import { Input } from "../../input";
 import DashboardModalFrame from "../dashboardModalFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 import { DesignButton3 } from "@/components/button/designButton3";
+import { historyDummyData } from "@/context/history";
 
 const DashModal = ({ isvisible, onClose, children }) => {
   const [showPassModal, setShowPassModal] = useState(false);
@@ -17,6 +18,8 @@ const DashModal = ({ isvisible, onClose, children }) => {
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
+
+  const histories = historyDummyData;
 
   return (
     <FlexCenter
@@ -119,221 +122,46 @@ const DashModal = ({ isvisible, onClose, children }) => {
             </Typography>
             <div className="w-auto sm:w-[450px]">
               <div className="space-y-6 w-auto sm:w-[450px]  h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
-              <div className="w-auto sm:w-[400px] h-[75px] ">
-                  <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
-                    <Typography
-                      variant="h15"
-                      classname=" text-color-brand-txt  "
-                    >
-                      12 January, 2025
-                    </Typography>
-                  </div>
-                  <FlexBetween className="pt-2 w-auto sm:w-[400px]">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      1 Evil Eye Remedy for Adam Voigt
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2 "
-                    >
-                      $5
-                    </Typography>
-                  </FlexBetween>
-                  <Typography
-                    variant="h13"
-                    classname="hover:underline text-color-brand-yellow2"
-                  >
-                    View Invoice
-                  </Typography>
-                </div>
-                <hr className="w-auto sm:w-[400px] -mt-5 border-color-brand-op"></hr>
-                <div className="w-auto sm:w-[400px] h-[75px] ">
-                  <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
-                    <Typography
-                      variant="h15"
-                      classname=" text-color-brand-txt  "
-                    >
-                      12 January, 2025
-                    </Typography>
-                  </div>
-                  <FlexBetween className="pt-2 w-auto sm:w-[400px]">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      1 Evil Eye Remedy for Adam Voigt
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2 "
-                    >
-                      $5
-                    </Typography>
-                  </FlexBetween>
-                  <Typography
-                    variant="h13"
-                    classname="hover:underline text-color-brand-yellow2"
-                  >
-                    View Invoice
-                  </Typography>
-                </div>
-                <hr className="w-auto sm:w-[400px] border-color-brand-op"></hr>
-                <div className="w-auto sm:w-[400px] h-[75px] ">
-                  <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
-                    <Typography
-                      variant="h15"
-                      classname=" text-color-brand-txt  "
-                    >
-                      12 January, 2025
-                    </Typography>
-                  </div>
-                  <FlexBetween className="pt-2 w-auto sm:w-[400px]">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      1 Evil Eye Remedy for Adam Voigt
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2 "
-                    >
-                      $5
-                    </Typography>
-                  </FlexBetween>
-                  <Typography
-                    variant="h13"
-                    classname="hover:underline text-color-brand-yellow2"
-                  >
-                    View Invoice
-                  </Typography>
-                </div>
-                <hr className="w-auto sm:w-[400px] border-color-brand-op"></hr>
-                <div className="w-auto sm:w-[400px] h-[75px] ">
-                  <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
-                    <Typography
-                      variant="h15"
-                      classname=" text-color-brand-txt  "
-                    >
-                      12 January, 2025
-                    </Typography>
-                  </div>
-                  <FlexBetween className="pt-2 w-auto sm:w-[400px]">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      1 Evil Eye Remedy for Adam Voigt
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2 "
-                    >
-                      $5
-                    </Typography>
-                  </FlexBetween>
-                  <Typography
-                    variant="h13"
-                    classname="hover:underline text-color-brand-yellow2"
-                  >
-                    View Invoice
-                  </Typography>
-                </div>
-                <hr className="w-auto sm:w-[400px] border-color-brand-op"></hr>
-                <div className="w-auto sm:w-[400px] h-[75px] ">
-                  <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
-                    <Typography
-                      variant="h15"
-                      classname=" text-color-brand-txt  "
-                    >
-                      12 January, 2025
-                    </Typography>
-                  </div>
-                  <FlexBetween className="pt-2 w-auto sm:w-[400px]">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      1 Evil Eye Remedy for Adam Voigt
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2 "
-                    >
-                      $5
-                    </Typography>
-                  </FlexBetween>
-                  <Typography
-                    variant="h13"
-                    classname="hover:underline text-color-brand-yellow2"
-                  >
-                    View Invoice
-                  </Typography>
-                </div>
-                {/* <div className="w-auto sm:w-[400px] h-[75px] ">
-                  <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
-                    <Typography
-                      variant="h15"
-                      classname=" text-color-brand-txt  "
-                    >
-                      12 January, 2025
-                    </Typography>
-                  </div>
-                  <FlexBetween className="pt-2 w-auto sm:w-[400px]">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      1 Evil Eye Remedy for Adam Voigt
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2 "
-                    >
-                      $2.3
-                    </Typography>
-                  </FlexBetween>
-                  <Typography
-                    variant="h13"
-                    classname="hover:underline text-color-brand-yellow2"
-                  >
-                    View Invoice
-                  </Typography>
-                </div> */}
-                <hr className="w-auto sm:w-[400px] border-color-brand-op"></hr>
-                <div className="w-auto sm:w-[400px] h-[75px] ">
-                  <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
-                    <Typography
-                      variant="h15"
-                      classname=" text-color-brand-txt  "
-                    >
-                      12 January, 2025
-                    </Typography>
-                  </div>
-                  <FlexBetween className="pt-2 w-auto sm:w-[400px]">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      1 Evil Eye Remedy for Adam Voigt
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2 "
-                    >
-                      $5
-                    </Typography>
-                  </FlexBetween>
-                  <Typography
-                    variant="h13"
-                    classname="hover:underline text-color-brand-yellow2"
-                  >
-                    View Invoice
-                  </Typography>
-                </div>
+                {histories.map((history) => {
+                  return (
+                    <>
+                      <div
+                        id={history.id}
+                        className="w-auto sm:w-[400px] h-[75px] "
+                      >
+                        <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
+                          <Typography
+                            variant="h15"
+                            classname=" text-color-brand-txt  "
+                          >
+                            {history.date}
+                          </Typography>
+                        </div>
+                        <FlexBetween className="pt-2 w-auto sm:w-[400px]">
+                          <Typography
+                            variant="h13"
+                            classname=" text-color-brand-yellow2 opacity-80"
+                          >
+                            1 Evil Eye Remedy for {history.name}
+                          </Typography>
+                          <Typography
+                            variant="h14"
+                            classname=" text-color-brand-yellow2 "
+                          >
+                            ${history.payment}
+                          </Typography>
+                        </FlexBetween>
+                        <Typography
+                          variant="h13"
+                          classname="hover:underline text-color-brand-yellow2"
+                        >
+                          View Invoice
+                        </Typography>
+                      </div>
+                      <hr className="w-auto sm:w-[400px] -mt-5 border-color-brand-op"></hr>
+                    </>
+                  );
+                })}
               </div>
             </div>
           </div>
