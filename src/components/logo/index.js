@@ -9,6 +9,8 @@ import leftPlay from '../../../public/logos/leftPlay.svg';
 import borderline from '../../../public/logos/borderline.svg';
 import design1 from '../../../public/logos/design1.svg';
 import design2 from '../../../public/logos/design2.svg';
+import loadingDesign1 from '../../../public/logos/loadingDesign1.svg';
+import loadingDesign2 from '../../../public/logos/loadingDesign2.svg';
 import pen from '../../../public/logos/pen.svg';
 import email from '../../../public/logos/email.svg';
 
@@ -186,6 +188,31 @@ export const Design2 = () => {
     />
   );
 };
+
+export const LoadingDesign1 = () => {
+  return (
+    <Image
+      src={loadingDesign1}
+      width={18}
+      height={0}
+      alt="loadingDesign1"
+      className=""
+    />
+  );
+};
+
+export const LoadingDesign2 = () => {
+  return (
+    <Image
+      src={loadingDesign2}
+      width={18}
+      height={0}
+      alt="loadingDesign2"
+      className=""
+    />
+  );
+};
+
 
 export const Pen = () => {
   return (
