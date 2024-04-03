@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { FlexCenter } from "../layout";
 import { LoadingDesign1, LoadingDesign2 } from "../logo";
 
-export const LoadingFrame = ({ children, className = "", prayerProgress, ...rest }) => {
+export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    setProgress(0);
+
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
         const newProgress = prevProgress + 20;
@@ -22,6 +24,7 @@ export const LoadingFrame = ({ children, className = "", prayerProgress, ...rest
       prayerProgress();
     }
   }, [progress]);
+
   return (
     <FlexCenter
       className={[

@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-import ModalFrame from "../modalFrame";
 import { Typography } from "../../typography";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
-import { Button } from "react-scroll";
-import { DesignButton } from "../../button/designButton";
 import { DesignButton3 } from "../../button/designButton3";
-import { Input } from "@/components/input";
-import { CheckBox } from "@/components/input/checkbox";
 import { PrayerBG, PrayerBGvideo } from "@/components/background";
 import PrayerModalFrame from "../prayerModalFrame";
 import { LoadingFrame } from "@/components/loading/loadingFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 
-const ReciteModal6 = ({ isvisible, onClose, openRecite7 }) => {
+const ReciteModal6 = ({ isvisible, onClose, openRecite3, openDashboard }) => {
   const [prayerDone, setPrayerDone] = useState(false);
 
 
@@ -22,11 +17,9 @@ const ReciteModal6 = ({ isvisible, onClose, openRecite7 }) => {
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal7 = () => {
-    onClose();
-    openRecite7();
-  };
+
   const openReciteModal3 = () => {
+    setPrayerDone(false);
     onClose();
     openRecite3();
   };
