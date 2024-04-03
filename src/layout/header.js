@@ -113,8 +113,8 @@ export const Header = () => {
             <LogoWithBackground />
           </Link>
           <div className="block sm:hidden">
-            <Logo />
-            {/* <LogoWithBackgroundMobile /> */}
+            {/* <Logo /> */}
+            <LogoWithBackgroundMobile />
           </div>
 
           <FlexCenter className="gap-2 pr-8 hidden sm:flex">
