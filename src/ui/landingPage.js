@@ -70,7 +70,7 @@ export const LandingPage = () => {
       <Flex className="w-full h-full  justify-center 1xl:mt-[50px]">
         <Flex className="w-[1440px] h-auto  flex-col sm:flex-row  ">
           <FlexColumn className="h-full max-h-[700px] gap-10 justify-between sm:gap-0">
-            <Flex className="relative w-full h-auto pl-[18px] sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
+            <Flex className="relative w-full h-auto pl-[18px] pt-[0px] sm:ml-[18px] sm:pt-[48px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
               <Button
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
@@ -140,7 +140,7 @@ export const LandingPage = () => {
       </Flex>
 
       {/* bottom part */}
-      <FlexColumn className="items-center h-full max-h-screen pb-[30%] sm:pb-[10%] sm:max-h-[430px]">
+      <FlexColumn className="items-center h-full max-h-[450px] mb-[30%] sm:mb-[0%] sm:max-h-[430px]">
       {/* <FlexColumn className="items-center h-full max-h-[450px] sm:pb-[80px]"> */}
         <Borderline />
         <Typography
