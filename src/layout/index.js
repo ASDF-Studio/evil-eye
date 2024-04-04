@@ -23,7 +23,7 @@ const MainLayout = ({ children }) => {
         <div className="hidden 5xl:block">
           <BG2880 />
         </div>
-        <BGvideo />
+        {/* <BGvideo /> */}
 
         <div className="z-10 relative mt-16 overflow-y-auto h-full sm:mt-0 sm:h-full  sm:overflow-hidden">{children}</div>
       </div>
