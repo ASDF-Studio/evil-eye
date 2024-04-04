@@ -3,7 +3,7 @@ import { LandingPage } from "./landingPage";
 
 const LandingUI = () => {
   return (
-    <ScreenPadding className="pt-[40px] sm:pt-[90px] 5xl:pt-[130px] ">
+    <ScreenPadding className="pt-[0px] sm:pt-[90px] 5xl:pt-[130px] ">
       <LandingPage/>
     </ScreenPadding>
   );
