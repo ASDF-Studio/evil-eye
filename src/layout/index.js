@@ -26,7 +26,7 @@ const MainLayout = ({ children }) => {
         <BGvideo />
 
         {/* <div className="z-10 relative mt-16 overflow-y-auto h-full sm:mt-0 sm:h-full  sm:overflow-hidden">{children}</div> */}
-        <div className="z-10 relative mt-16">{children}</div>
+        <div className="z-10 relative">{children}</div>
       </div>
     </>
   );
