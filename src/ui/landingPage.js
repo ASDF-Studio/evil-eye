@@ -140,7 +140,7 @@ export const LandingPage = () => {
       </Flex>
 
       {/* bottom part */}
-      <FlexColumn className="items-center h-full max-h-[450px] mb-[30%] sm:mb-[0%] sm:max-h-[430px]">
+      <FlexColumn className="items-center h-full max-h-[450px] sm:max-h-[430px]">
       {/* <FlexColumn className="items-center h-full max-h-[450px] sm:pb-[80px]"> */}
         <Borderline />
         <Typography
