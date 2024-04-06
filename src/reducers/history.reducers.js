@@ -13,6 +13,7 @@ export default function historyReducer(state = initialState, action) {
         ...state,
         history: [...state.history],
         loading: true,
+        error: null,
       };
       break;
 
@@ -21,6 +22,7 @@ export default function historyReducer(state = initialState, action) {
         ...state,
         history: [...action.payload],
         loading: false,
+        error: null,
       };
       break;
 

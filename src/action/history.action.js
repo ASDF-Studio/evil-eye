@@ -12,16 +12,17 @@ export const getHistoryData = (userId) => {
 
     try {
       const res = await axios.get(`${baseURL}history/${userId}`);
+      // const res = await axios.get(`http://localhost:4000/api`);
       if (res.status === 200) {
         dispatch({
           type: historyConstants.HISTORY_SUCCESS,
-          payload: res.data,
+          payload: res.data.history,
         });
         alert("SUCCESS");
         return;
       }
     } catch (error) {
-      if (error.response.status === 400) {
+      if (error?.response?.status === 400) {
         const { message } = error?.response?.data;
         dispatch({
           type: historyConstants.HISTORY_FAILURE,
