@@ -10,6 +10,7 @@ import DashboardModalFrame from "../dashboardModalFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 import { DesignButton3 } from "@/components/button/designButton3";
 import { historyDummyData } from "@/context/history";
+import PrayerHistory from "../../dashboard/prayerHistory";
 
 const DashModal = ({ isvisible, onClose, children }) => {
   const [showPassModal, setShowPassModal] = useState(false);
@@ -125,40 +126,12 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 {histories.map((history) => {
                   return (
                     <>
-                      <div
-                        id={history.prayerId}
-                        className="w-auto sm:w-[400px] h-[75px] "
-                      >
-                        <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
-                          <Typography
-                            variant="h15"
-                            classname=" text-color-brand-txt  "
-                          >
-                            {history.date}
-                          </Typography>
-                        </div>
-                        <FlexBetween className="pt-2 w-auto sm:w-[400px]">
-                          <Typography
-                            variant="h13"
-                            classname=" text-color-brand-yellow2 opacity-80"
-                          >
-                            1 Evil Eye Remedy for {history.recepientName}
-                          </Typography>
-                          <Typography
-                            variant="h14"
-                            classname=" text-color-brand-yellow2 "
-                          >
-                            ${history.payment}
-                          </Typography>
-                        </FlexBetween>
-                        <Typography
-                          variant="h13"
-                          classname="hover:underline text-color-brand-yellow2"
-                        >
-                          View Invoice
-                        </Typography>
-                      </div>
-                      <hr className="w-auto sm:w-[400px] -mt-5 border-color-brand-op"></hr>
+                      <PrayerHistory
+                        key={history.prayerId}
+                        date={history.date}
+                        recepientName={history.recepientName}
+                        payment={history.payment}
+                      />
                     </>
                   );
                 })}
