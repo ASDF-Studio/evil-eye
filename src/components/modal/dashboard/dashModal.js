@@ -126,7 +126,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                   return (
                     <>
                       <div
-                        id={history.id}
+                        id={history.prayerId}
                         className="w-auto sm:w-[400px] h-[75px] "
                       >
                         <div className="w-[118px] h-[28px] text-center  bg-color-brand-yellow">
@@ -142,7 +142,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                             variant="h13"
                             classname=" text-color-brand-yellow2 opacity-80"
                           >
-                            1 Evil Eye Remedy for {history.name}
+                            1 Evil Eye Remedy for {history.recepientName}
                           </Typography>
                           <Typography
                             variant="h14"
