@@ -10,29 +10,22 @@ export default function contactReducers(state = initialState, action) {
     case contactConstants.CONTACT_US_REQUEST:
       state = {
         ...state,
-        user: {
-          ...state.user,
-        },
         loading: true,
+        error: null,
       };
       break;
 
     case contactConstants.CONTACT_US_SUCCESS:
       state = {
         ...state,
-        user: {
-          ...state.user,
-        },
         loading: false,
+        error: null,
       };
       break;
 
     case contactConstants.CONTACT_US_FAILURE:
       state = {
         ...state,
-        user: {
-          ...state.user,
-        },
         loading: false,
         responseMsg: action.payload.message,
         error: action.payload.error,
