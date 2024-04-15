@@ -51,6 +51,12 @@ const Contact = ({ isvisible, onClose }) => {
 
     try {
       dispatch(sendContactUsData({ ...userData, contactUsEmail }));
+      setUserData({
+        userName: "",
+        userEmail: "",
+        userPhone: "",
+        userMsg: "",
+      });
     } catch (error) {
       console.log(error);
     }
