@@ -29,37 +29,10 @@ const Contact = ({ isvisible, onClose }) => {
 
   if (!isvisible) return null;
 
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    if (e.target.id === "userName") {
-      setUserData((prev) => {
-        return {
-          ...prev,
-          userName: value,
-        };
-      });
-    } else if (e.target.id === "userEmail") {
-      setUserData((prev) => {
-        return {
-          ...prev,
-          userEmail: value,
-        };
-      });
-    } else if (e.target.id === "userPhone") {
-      setUserData((prev) => {
-        return {
-          ...prev,
-          userPhone: value,
-        };
-      });
-    } else if (e.target.id === "userMsg") {
-      setUserData((prev) => {
-        return {
-          ...prev,
-          userMsg: value,
-        };
-      });
-    }
+  const handleInputChange = (e, identifier) => {
+    setUserData((prev) => {
+      return { ...prev, [identifier]: e.target.value };
+    });
   };
 
   const handleClose = (e) => {
@@ -133,7 +106,9 @@ const Contact = ({ isvisible, onClose }) => {
                   type="text"
                   placeholder="Your Name"
                   value={userData.userName}
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e, "userName");
+                  }}
                 />
               </Flex>
             </div>
@@ -160,7 +135,9 @@ const Contact = ({ isvisible, onClose }) => {
                   id="userEmail"
                   type="email"
                   placeholder="example@domain.com"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e, "userEmail");
+                  }}
                   value={userData.userEmail}
                 />
               </Flex>
@@ -187,7 +164,9 @@ const Contact = ({ isvisible, onClose }) => {
                   id="userPhone"
                   type="text"
                   placeholder="123-345-6789"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e, "userPhone");
+                  }}
                   value={userData.userPhone}
                 />
               </Flex>
@@ -214,7 +193,9 @@ const Contact = ({ isvisible, onClose }) => {
               </p>
               <Flex className="relative h-[140px] border-2 border-color-brand-gold2">
                 <textarea
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e, "userMsg");
+                  }}
                   id="userMsg"
                   name="message"
                   className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent items-center placeholder:text-textColor-placeholder p-2 text-textColor-brand-gold2 resize-none"
