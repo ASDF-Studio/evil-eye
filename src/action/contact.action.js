@@ -25,7 +25,7 @@ export const sendContactUsData = (contactData) => {
     } catch (error) {
       //   if (true) {
       //     let message = "yo";
-      if (error.response.status === 400) {
+      if (error?.response?.status === 400) {
         const { message } = error?.response?.data;
         dispatch({
           type: contactConstants.CONTACT_US_FAILURE,
