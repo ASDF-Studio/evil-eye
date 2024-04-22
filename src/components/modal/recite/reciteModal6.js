@@ -1,27 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import ModalFrame from "../modalFrame";
 import { Typography } from "../../typography";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
-import { Button } from "react-scroll";
-import { DesignButton } from "../../button/designButton";
 import { DesignButton3 } from "../../button/designButton3";
-import { Input } from "@/components/input";
-import { CheckBox } from "@/components/input/checkbox";
 import { PrayerBG, PrayerBGvideo } from "@/components/background";
 import PrayerModalFrame from "../prayerModalFrame";
+import { LoadingFrame } from "@/components/loading/loadingFrame";
+import { DesignButton1 } from "@/components/button/designButton1";
 
-const ReciteModal6 = ({ isvisible, onClose, openRecite7 }) => {
+const ReciteModal6 = ({ isvisible, onClose, openRecite3, openDashboard }) => {
+  const [prayerDone, setPrayerDone] = useState(false);
+
+
   if (!isvisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal7 = () => {
+
+  const openReciteModal3 = () => {
+    setPrayerDone(false);
     onClose();
-    openRecite7();
+    openRecite3();
+  };
+  const openDashboardModal = () => {
+    onClose();
+    openDashboard();
   };
 
+  const prayerProgress = () => {
+    setPrayerDone(true);
+  };
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-30"
@@ -33,69 +42,68 @@ const ReciteModal6 = ({ isvisible, onClose, openRecite7 }) => {
           <PrayerBG />
           <PrayerBGvideo />
         </div>
-        <Flex className="h-full items-end justify-center">
-          <div className="flex flex-col justify-center mb-3.5">
-            <Typography
-              variant="h11"
-              classname="text-color-brand-yellow2 drop-shadow-3xl"
-            >
-              Please wait...<br/> We are Reciting Your prayer
-            </Typography>
-            <FlexCenter className="pt-3 relative w-full"><Typography
-              variant="h13"
-              classname="text-color-brand-yellow2"
-            >
-              Be kind to each other. Be kind to the Earth.
-            </Typography>
-            </FlexCenter>
-            <div className="pt-3 px-3">
-              <DesignButton
+
+        {prayerDone ? (
+          <Flex className="h-full items-end justify-center">
+            <div className="flex flex-col justify-center px-3 mb-[37px]">
+              <Typography
+                variant="h11"
+                classname="text-color-brand-yellow2 drop-shadow-3xl"
+              >
+                Prayer is Complete
+              </Typography>
+              <FlexCenter className="pt-3 relative w-full">
+                <Typography
+                  variant="h13"
+                  classname="text-color-brand-yellow2 opacity-80"
+                >
+                  🧿 Thank you 🧿
+                </Typography>
+              </FlexCenter>
+              <div className="pt-3">
+                <DesignButton1
                   className="relative w-full"
                   typoVariant="buttonLabel2"
-                  onClick={openReciteModal7}
+                  onClick={openReciteModal3}
                 >
-                  Recite Prayer
-                </DesignButton></div>
-          </div>
-          
-        </Flex>
+                  RECITE ANOTHER PRAYER
+                </DesignButton1>
+              </div>
+              <Flex className="relative bg-backgroundColor-brand-blue mt-3 focus:none focus:border-none w-[100%] h-[40px]">
+                <DesignButton3
+                  className="w-full"
+                  typoVariant="buttonLabel2"
+                  onClick={openDashboardModal}
+                >
+                  View Order History
+                </DesignButton3>
+              </Flex>
+            </div>
+          </Flex>
+        ) : (
+          <Flex className="h-full items-end justify-center">
+            <div className="flex flex-col justify-center mb-3.5">
+              <Typography
+                variant="h11"
+                classname="text-color-brand-yellow2 drop-shadow-3xl"
+              >
+                Please wait...
+                <br /> We are Reciting Your prayer
+              </Typography>
+              <FlexCenter className="pt-3 relative w-full">
+                <Typography variant="h13" classname="text-color-brand-yellow2">
+                  Be kind to each other. Be kind to the Earth.
+                </Typography>
+              </FlexCenter>
+              <div className="pt-6 pb-[40px] w-full flex items-center justify-center">
+                <LoadingFrame className="relative" prayerProgress={prayerProgress} />
+              </div>
+            </div>
+          </Flex>
+        )}
       </PrayerModalFrame>
     </FlexCenter>
   );
 };
 
 export default ReciteModal6;
-
-{
-  /* <div className=" px-5">
-          <div className="flex justify-center mb-3.5">
-            <Typography
-              variant="h11"
-              classname="text-color-brand-yellow2 drop-shadow-3xl"
-            >
-              Please wait... We are Reciting Your prayer
-            </Typography>
-          </div>
-          <FlexColumn className="mb-3.5 gap-2">
-            <div className="flex justify-centerpt-5">
-              <Typography
-                variant="h13"
-                classname="text-color-brand-yellow2 drop-shadow-3xl "
-              >
-                Be kind to each other. Be kind to the Earth.
-              </Typography>
-            </div>
-            <div className="">
-              <Flex className=" justify-center pt-3 pb-2.5 w-[100%]">
-                <DesignButton
-                  className=" w-full"
-                  typoVariant="buttonLabel2"
-                  onClick={openReciteModal7}
-                >
-                  Recite Prayer
-                </DesignButton>
-              </Flex>
-            </div>
-          </FlexColumn>
-        </div> */
-}

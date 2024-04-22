@@ -14,7 +14,6 @@ import ReciteModal6 from "@/components/modal/recite/reciteModal6";
 import Symtoms from "@/components/infoModal/symtoms";
 import Cure from "@/components/infoModal/cure";
 import EvilEye from "@/components/infoModal/evileye";
-import ReciteModal7 from "@/components/modal/recite/reciteModal7";
 import DashModal from "@/components/modal/dashboard/dashModal";
 
 export const LandingPage = () => {
@@ -27,7 +26,6 @@ export const LandingPage = () => {
   const [showReciteModal4, setShowReciteModal4] = useState(false);
   const [showReciteModal5, setShowReciteModal5] = useState(false);
   const [showReciteModal6, setShowReciteModal6] = useState(false);
-  const [showReciteModal7, setShowReciteModal7] = useState(false);
   const [showDashModal, setShowDashModal] = useState(false);
 
   const closeAllModals = () => {
@@ -40,7 +38,6 @@ export const LandingPage = () => {
     setShowReciteModal4(false);
     setShowReciteModal5(false);
     setShowReciteModal6(false);
-    setShowReciteModal7(false);
   };
   const openRecite2 = () => {
     closeAllModals;
@@ -63,10 +60,6 @@ export const LandingPage = () => {
     closeAllModals;
     setShowReciteModal6(true);
   };
-  const openRecite7 = () => {
-    closeAllModals;
-    setShowReciteModal7(true);
-  };
   const openDashboard = () => {
     closeAllModals;
     setShowDashModal(true);
@@ -74,10 +67,10 @@ export const LandingPage = () => {
 
   return (
     <div className="flex flex-col h-screen justify-between">
-      <Flex className="w-full h-full  justify-center 1xl:mt-[50px]">
-        <Flex className="w-[1440px] h-auto  flex-col sm:flex-row  ">
+      <Flex className="w-full h-full mt-[90px] justify-center 1xl:mt-[120px]">
+        <Flex className="w-[1440px] h-auto flex-col sm:flex-row  ">
           <FlexColumn className="h-full max-h-[700px] gap-10 justify-between sm:gap-0">
-            <Flex className="relative w-full h-auto pl-[18px] pt-[48px] sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
+            <Flex className="relative w-full h-auto pl-[18px] sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
               <Button
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
@@ -147,7 +140,7 @@ export const LandingPage = () => {
       </Flex>
 
       {/* bottom part */}
-      <FlexColumn className="items-center h-full max-h-[450px] pb-[30%] sm:pb-[10%] sm:max-h-[430px]">
+      <FlexColumn className="items-center h-full pb-[20px] max-h-[350px] sm:max-h-[380px] 2xl:max-h-[450px]">
       {/* <FlexColumn className="items-center h-full max-h-[450px] sm:pb-[80px]"> */}
         <Borderline />
         <Typography
@@ -206,14 +199,8 @@ export const LandingPage = () => {
           <ReciteModal6
             isvisible={showReciteModal6}
             onClose={() => setShowReciteModal6(false)}
-            openRecite7={openRecite7}
-          />
-          <ReciteModal7
-            isvisible={showReciteModal7}
-            onClose={() => setShowReciteModal7(false)}
             openDashboard={openDashboard}
             openRecite3={openRecite3}
-
           />
           <DashModal
             isvisible={showDashModal}

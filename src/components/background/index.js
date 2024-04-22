@@ -24,7 +24,7 @@ export const PrayerBGvideo = () => {
       autoPlay
       loop
       muted
-      className="absolute top-0 left-0 w-full h-full object-cover mix-blend-lighten opacity-50"
+      className="absolute top-0 left-0 w-full h-full object-cover mix-blend-soft-light"
     >
       <source src="/background/prayer_Background.mp4" type="video/mp4" />
     </video>
@@ -35,7 +35,7 @@ export const PrayerBG = () => {
   return (
     <Image
       rel="preload"
-      src={prayerbg1920}
+      src={bg960}
       width="auto"
       height="auto"
       priority={true}

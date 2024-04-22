@@ -38,7 +38,8 @@ module.exports = {
         },
         border: {
           button: "#D8B351",
-          checkBox: "#FFCE6F"
+          checkBox: "#FFCE6F",
+          loading: "#E5B13B"
         },
         backgroundColor: {
           "brand-blue": "#090451",
@@ -48,6 +49,7 @@ module.exports = {
           "brand-yellow2": "#FFD770",
           "brand-hover": "#FFE5A3",
           "brand-yellow": "#FFCE70",
+          "dark-yellow": "#795700",
         },
         color: {
           "brand-yellow": "#FFCE70",
