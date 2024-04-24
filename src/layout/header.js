@@ -22,6 +22,7 @@ import ForgotPass3 from "@/components/modal/login/forgotpass3";
 import Pricing from "@/components/modal/pricing";
 import Contact from "@/components/modal/contact";
 import { DesignButton } from "@/components/button/designButton";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 
 const NAV__LINK = [
   {
@@ -42,6 +43,11 @@ const NAV__LINK = [
 ];
 
 export const Header = () => {
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+  const user = useAppSelector((state) => state.auth.user);
+
   const [navbar, setNavbar] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
@@ -65,7 +71,9 @@ export const Header = () => {
   const handlePath = (path) => {
     setNavbar(false);
     closeAllModal();
-    path === "login" && setShowLoginModal(!showLoginModal);
+    path === "login" && 
+        auth.authenticate ? setShowDashModal(!showDashModal) : setShowLoginModal(!showLoginModal);
+
     path === "contact" && setShowContactModal(!showContactModal);
     path === "price" && setShowPricingModal(!showPricingModal);
   };
@@ -78,6 +86,11 @@ export const Header = () => {
   const openForgotPassword = () => {
     closeAllModal;
     setShowPassModal(true);
+  };
+
+  const openLogin = () => {
+    closeAllModal;
+    setShowLoginModal(true);
   };
 
   const openSignup = () => {
@@ -127,7 +140,11 @@ export const Header = () => {
                       variant="buttonPrimary"
                       classname="text-color-brand-yellow2 font-roman whitespace-nowrap"
                     >
-                      {item.display}
+                      {item.display === "login" ? 
+                        user.name ? `${user.name}` : "login" 
+                        : 
+                          item.display
+                        }
                     </Typography>
                   </FlexCenter>
                 </Button>
@@ -211,6 +228,7 @@ export const Header = () => {
         isvisible={showSignupModal}
         onClose={() => setShowSignupModal(false)}
         openForgotPassword={openForgotPassword}
+        openLogin={openLogin}
         openSignupOTP={openSignupOTP}
       />
       <SignupOtpModal

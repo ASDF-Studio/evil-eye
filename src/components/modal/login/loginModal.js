@@ -16,22 +16,16 @@ const LoginModal = ({
   openSignup,
   openForgotPass1,
 }) => {
-  if (!isvisible) return null;
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
 
-  const dispatch = useAppDispatch();
-
-  // state
-  const auth = useAppSelector((state) => state.auth);
-
-  // data
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // function
   const openDashboardModal = () => {
     onClose();
     openDashboard();
@@ -41,32 +35,28 @@ const LoginModal = ({
     onClose();
     openSignup();
   };
+
   const openForgotPass1Modal = () => {
     onClose();
     openForgotPass1();
   };
 
-  // handle
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const user = {
       email,
       password,
     };
 
-    // if (auth.authenticate) {
-    //   handleCloseAlert()
-    // } else {
-    //   loginError && handleShowAlert()
-    // }
-
     try {
       await dispatch(login(user));
+      onClose();
     } catch (error) {
       console.error("Error during login:", error);
     }
   };
+
+  if (!isvisible) return null;
 
   return (
     <FlexCenter
@@ -76,10 +66,7 @@ const LoginModal = ({
     >
       <ModalFrame onClose={onClose} title="USER ACCOUNT">
         <div className="px-5 mb-3.5">
-          <Typography
-            variant="h11"
-            classname="text-color-brand-yellow2 drop-shadow-3xl "
-          >
+          <Typography variant="h11" classname="text-color-brand-yellow2 drop-shadow-3xl">
             LOGIN
           </Typography>
         </div>
@@ -87,10 +74,7 @@ const LoginModal = ({
           <div className="space-y-5" action="#">
             <div>
               <label htmlFor="email" className="block mb-1.5">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2 "
-                >
+                <Typography variant="h12" classname="text-color-brand-yellow2">
                   Email
                 </Typography>
               </label>
@@ -106,10 +90,7 @@ const LoginModal = ({
 
             <div>
               <label htmlFor="password" className="block mb-1.5">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2 "
-                >
+                <Typography variant="h12" classname="text-color-brand-yellow2">
                   Password
                 </Typography>
               </label>
@@ -122,11 +103,8 @@ const LoginModal = ({
               </Flex>
             </div>
             <Flex className="w-auto justify-end">
-              <FlexBetween className="w-auto ">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2 "
-                >
+              <FlexBetween className="w-auto">
+                <Typography variant="h12" classname="text-color-brand-yellow2">
                   Forgot Password?
                 </Typography>
                 <Button
@@ -143,8 +121,7 @@ const LoginModal = ({
               <DesignButton
                 className="w-full"
                 typoVariant="buttonLabel2"
-                onClick={openDashboardModal}
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
               >
                 {auth.loading == false ? "Enter" : "Loading..."}
               </DesignButton>
@@ -153,14 +130,11 @@ const LoginModal = ({
             <hr className="w-auto sm:w-[410px] border-color-brand-op" />
             <div className="pb-2.5">
               <FlexCenter className="w-auto sm:w-[410px] mb-5 text-color-brand-yellow2">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2  "
-                >
+                <Typography variant="h12" classname="text-color-brand-yellow2">
                   {"Don't have an account?"}
                 </Typography>
               </FlexCenter>
-              <Flex className="relative focus:none focus:border-none w-[100%] h-[40px]">
+              <Flex className="relative w-[100%] h-[40px] focus:none focus:border-none">
                 <DesignButton3
                   className="w-full"
                   typoVariant="buttonLabel2"
@@ -172,10 +146,7 @@ const LoginModal = ({
             </div>
             <hr className="w-auto sm:w-[410px] border-color-brand-op" />
             <FlexCenter className="w-auto sm:w-[410px]">
-              <Typography
-                variant="h12"
-                classname="underline text-color-brand-yellow2 "
-              >
+              <Typography variant="h12" classname="underline text-color-brand-yellow2">
                 Continue as guest
               </Typography>
             </FlexCenter>

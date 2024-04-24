@@ -1,10 +1,13 @@
 import MainLayout from "@/layout";
+import PrivateContent from "@/layout/privateContent";
 import LandingUI from "@/ui";
 
 export default function Home() {
   return (
-    <MainLayout>
+    <PrivateContent>
+      <MainLayout>
         <LandingUI />
-    </MainLayout>
+      </MainLayout>
+    </PrivateContent>
   );
 }

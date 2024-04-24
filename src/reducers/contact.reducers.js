@@ -1,4 +1,5 @@
-import { contactConstants } from "@/action/contact.constants";
+import { contactConstants } from "@/action/constants";
+
 
 const initialState = {
   loading: false,

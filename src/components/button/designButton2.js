@@ -14,7 +14,7 @@ export const DesignButton2 = ({
     <FlexCenter className=" bg-backgroundColor-brand-yellow2 shadow-buttonShadow2 border-2 border-border-button">
         <FlexBetween>
             <Design1/>
-                <button className="w-[410px] h-[40px] p-2 px-[15px] text-ac font-roman text-textColor-brand-gold border-none">
+                <button className="w-[410px] h-[40px] p-2 px-[15px] text-ac font-roman text-textColor-brand-gold border-none" {...rest}>
                     <Typography classname="" variant={typoVariant}>
                         {children}
                     </Typography>

@@ -1,24 +1,22 @@
 import axios from "axios";
 import { API } from "../../urlConfig";
-import { historyConstants } from "./history.constants";
+import { historyConstants } from "./constants";
 
 const baseURL = API;
 
-export const getHistoryData = (userId) => {
+export const getHistoryData = (payload) => {
   return async (dispatch) => {
     dispatch({
       type: historyConstants.HISTORY_REQUEST,
     });
 
     try {
-      const res = await axios.get(`${baseURL}history/${userId}`);
-      // const res = await axios.get(`http://localhost:4000/api`);
+      const res = await axios.get(`${baseURL}history`, payload);
       if (res.status === 200) {
         dispatch({
           type: historyConstants.HISTORY_SUCCESS,
           payload: res.data.history,
         });
-        alert("SUCCESS");
         return;
       }
     } catch (error) {

@@ -6,12 +6,41 @@ import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import { Button } from "@/components/button";
 import { Input } from "@/components/input";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { verifyEmailOTP } from "@/action";
 
-const OtpModal = ({ isvisible, onClose }) => {
+const OtpModal = ({ isvisible, email, newEmail, onClose }) => {
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+
+  const [otp, setOTP] = useState("");
+
   if (!isvisible) return null;
+
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
+
+  const handleOTPSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      email: email,
+      newEmail: newEmail,
+      otp: otp
+    };
+
+    try {
+      await dispatch(verifyEmailOTP(data));
+      onClose();
+
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
+  };
+
+
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
@@ -27,10 +56,7 @@ const OtpModal = ({ isvisible, onClose }) => {
             Change Email
           </Typography>
           <div className="pt-6">
-            <Typography
-              variant="h12"
-              classname=" text-color-brand-yellow2 "
-            >
+            <Typography variant="h12" classname=" text-color-brand-yellow2 ">
               We have sent you an OTP to your email address:
               <span className=" underline"> adamvoigt@gmail.com.</span> Please
               enter your code <br></br>below to finish changing your email.
@@ -39,19 +65,20 @@ const OtpModal = ({ isvisible, onClose }) => {
 
           <div className="pt-4">
             <label for="email" className="block  mb-1.5">
-              <Typography
-                variant="h12"
-                classname=" text-color-brand-yellow2"
-              >
+              <Typography variant="h12" classname=" text-color-brand-yellow2">
                 OTP
               </Typography>
             </label>
             <Flex className=" relative w-full h-[40px] ">
-              <Input type="email" placeholder="XXXX"/>
+              <Input
+                type="number"
+                placeholder="XXXX"
+                value={otp}
+                onChange={(e) => setOTP(e.target.value)}
+              />
             </Flex>
           </div>
           <Flex className="justify-end mt-3">
-            
             <Button variant="text" className="w-full" typoVariant="text">
               <Typography
                 variant="h12"
@@ -62,8 +89,12 @@ const OtpModal = ({ isvisible, onClose }) => {
             </Button>
           </Flex>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
-            <DesignButton className=" w-full" typoVariant="buttonLabel2">
-              ENTER
+            <DesignButton
+              className=" w-full"
+              typoVariant="buttonLabel2"
+              onClick={handleOTPSubmit}
+            >
+              {auth.loading == false ? "ENTER" : "Loading..."}
             </DesignButton>
           </Flex>
         </div>

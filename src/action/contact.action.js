@@ -1,6 +1,6 @@
 import axios from "axios";
-import { contactConstants } from "./contact.constants";
 import { API } from "../../urlConfig";
+import { contactConstants } from "./constants";
 
 const baseURL = API;
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import { Design1, Design2, Pen, Xmark } from "../../logo";
 import { DesignButton2 } from "../../button/designButton2";
@@ -7,17 +7,50 @@ import PassModal from "../changePass/passModal";
 import EmailModal from "../changeEmail/emailModal";
 import { Input } from "../../input";
 import DashboardModalFrame from "../dashboardModalFrame";
-import { DesignButton1 } from "@/components/button/designButton1";
-import { DesignButton3 } from "@/components/button/designButton3";
 import { historyDummyData } from "@/context/history";
 import PrayerHistory from "../../dashboard/prayerHistory";
+import { DesignButton3 } from "@/components/button/designButton3";
+import { logout, updateUser } from "@/action";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 
 const DashModal = ({ isvisible, onClose, children }) => {
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+  const user = useAppSelector((state) => state.auth.user);
+
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name || "");
+    }
+  }, [user]);
+
   const [showPassModal, setShowPassModal] = useState(false);
   const [showEmailModal, setShowEmailModal] = useState(false);
   if (!isvisible) return null;
+
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
+  };
+
+  const handleSave = async () => {
+    const updatedUser = { ...user, name: name };
+    try {
+      await dispatch(updateUser(updatedUser));
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await dispatch(logout());
+      onClose();
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
   };
 
   const histories = historyDummyData;
@@ -54,7 +87,12 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 Your Name
               </Typography>
               <Flex className="relative mt-2 ">
-                <Input type="text" placeholder="Your Name" />
+                <Input
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </Flex>
             </div>
 
@@ -63,7 +101,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 <Typography variant="h12" classname=" text-color-brand-yellow2">
                   Email
                 </Typography>
-                <div onClick={() => setShowEmailModal(true)}>
+                <div onClick={() => setShowEmailModal(!showEmailModal)}>
                   <Pen />
                 </div>
                 <EmailModal
@@ -72,7 +110,12 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 />
               </FlexBetween>
               <Flex className="relative h-[40px] pt-2">
-                <Input type="email" placeholder="example@domain.com" />
+                <Input
+                  type="email"
+                  placeholder="example@domain.com"
+                  value={user.email}
+                  readOnly
+                />
               </Flex>
             </div>
             <div>
@@ -89,28 +132,27 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 />
               </FlexBetween>
               <Flex className=" relative pt-2 outline-none h-[40px] ">
-                <Input type="password" />
+                <Input type="password" readOnly value={user.name} />
               </Flex>
             </div>
             <Flex className="w-full relative text-brand-gold bg-brand-yellow2  focus:none focus:border-none mt-2 h-[40px] ">
-              <DesignButton2 className="" typoVariant="buttonLabel3">
-                SAVE
+              <DesignButton2
+                className=""
+                typoVariant="buttonLabel3"
+                onClick={handleSave}
+              >
+                {auth.loading == false ? "Save" : "Loading..."}
               </DesignButton2>
             </Flex>
             <div>
-              <Flex className=" relative bg-transparent  focus:none focus:border-none h-[40px] ">
-                <FlexBetween className=" w-full h-[40px] border-[#D2A42B] border-2 text-brand-gold bg-brand-blue absolute">
-                  <Design1 />
-                  <FlexCenter className="border-none  h-[40px] p-2 hover:cursor-pointer">
-                    <Typography
-                      variant="h16"
-                      classname=" text-color-brand-yellow2 "
-                    >
-                      LOGOUT
-                    </Typography>
-                  </FlexCenter>
-                  <Design2 />
-                </FlexBetween>
+              <Flex className="relative focus:none focus:border-none w-full h-[40px] mt-2">
+                <DesignButton3
+                  className="w-full"
+                  typoVariant="buttonLabel2"
+                  onClick={handleLogout}
+                >
+                  LOGOUT
+                </DesignButton3>
               </Flex>
             </div>
           </FlexColumn>
@@ -122,19 +164,15 @@ const DashModal = ({ isvisible, onClose, children }) => {
               PRAYER HISTORY
             </Typography>
             <div className="w-auto sm:w-[450px]">
-              <div className="space-y-6 w-auto sm:w-[450px]  h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
-                {histories.map((history) => {
-                  return (
-                    <>
-                      <PrayerHistory
-                        key={history.prayerId}
-                        date={history.date}
-                        recepientName={history.recepientName}
-                        payment={history.payment}
-                      />
-                    </>
-                  );
-                })}
+              <div className="space-y-6 w-auto sm:w-[450px] h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
+                {histories.map((history) => (
+                  <PrayerHistory
+                    key={history.prayerId} // Provide key directly to PrayerHistory component
+                    date={history.date}
+                    recepientName={history.recepientName}
+                    payment={history.payment}
+                  />
+                ))}
               </div>
             </div>
           </div>

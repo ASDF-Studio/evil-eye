@@ -4,7 +4,7 @@ import { Borderline, LeftPlay, Play } from "../components/logo";
 import { Typography } from "@/components/typography";
 import InfoModal from "@/components/infoModal";
 import ReciteModal from "@/components/modal/recite/reciteModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DesignButton } from "@/components/button/designButton";
 import ReciteModal2 from "@/components/modal/recite/reciteModal2";
 import ReciteModal3 from "@/components/modal/recite/reciteModal3";
@@ -15,8 +15,19 @@ import Symtoms from "@/components/infoModal/symtoms";
 import Cure from "@/components/infoModal/cure";
 import EvilEye from "@/components/infoModal/evileye";
 import DashModal from "@/components/modal/dashboard/dashModal";
+import { useAppDispatch } from "@/hooks";
+import { getHistoryData } from "@/action";
 
 export const LandingPage = () => {
+  const dispatch = useAppDispatch();
+
+  // const id = "662366a01031879c2e8295c2";
+  const payload = { id: "662366a01031879c2e8295c2" };
+
+  useEffect(() => {
+    dispatch(getHistoryData(payload));
+  }, [dispatch]);
+
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
@@ -141,7 +152,7 @@ export const LandingPage = () => {
 
       {/* bottom part */}
       <FlexColumn className="items-center h-full pb-[20px] max-h-[350px] sm:max-h-[380px] 2xl:max-h-[450px]">
-      {/* <FlexColumn className="items-center h-full max-h-[450px] sm:pb-[80px]"> */}
+        {/* <FlexColumn className="items-center h-full max-h-[450px] sm:pb-[80px]"> */}
         <Borderline />
         <Typography
           variant="h2"

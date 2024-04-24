@@ -6,7 +6,6 @@ import { Input } from "../input";
 import { DesignButton } from "../button/designButton";
 import { Email } from "../logo";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { contactConstants } from "@/action/contact.constants";
 import { sendContactUsData } from "@/action/contact.action";
 
 const Contact = ({ isvisible, onClose }) => {

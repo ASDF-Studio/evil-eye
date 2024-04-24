@@ -1,4 +1,5 @@
-import { contactConstants } from "@/action/contact.constants";
+
+import { contactConstants } from "@/action/constants";
 import { useAppSelector } from "@/hooks";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";

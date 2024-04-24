@@ -6,16 +6,42 @@ import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import OtpModal from "./otpModal";
 import { Input } from "@/components/input";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { changeEmail } from "@/action";
 
 const EmailModal = ({ isvisible, onClose }) => {
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+  const user = useAppSelector((state) => state.auth.user);
+
+  const [email] = useState(user.email);
+  const [newEmail, setNewEmail] = useState("");
+
   const [showOtpModal, setShowOtpModal] = useState(false);
+
   if (!isvisible) return null;
+
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const closeHighlightModal = () => {
-    setShowOtpModal(false);
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      email: user.email,
+      newEmail: newEmail,
+    };
+
+    try {
+      await dispatch(changeEmail(data));
+      setShowOtpModal(!showOtpModal);
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
   };
+
   return (
     <FlexCenter
       className="z-[60] fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
@@ -33,30 +59,31 @@ const EmailModal = ({ isvisible, onClose }) => {
 
           <div className="mt-5">
             <label for="email" className="block  mb-1.5">
-              <Typography
-                variant="h12"
-                classname=" text-color-brand-yellow2 "
-              >
+              <Typography variant="h12" classname=" text-color-brand-yellow2 ">
                 Email
               </Typography>
             </label>
             <Flex className=" relative w-full h-[40px] ">
-              <Input type="email" placeholder=""/>
+              <Input
+                type="email"
+                placeholder="example@domain.com"
+                value={newEmail}
+                onChange={(e) => setNewEmail(e.target.value)}
+              />
             </Flex>
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
-              onClick={() => {
-                closeHighlightModal();
-                setShowOtpModal(!showOtpModal);
-              }}
+              onClick={handleEmailSubmit}
             >
-              ENTER
+              {auth.loading == false ? "ENTER" : "Loading..."}
             </DesignButton>
             <OtpModal
               isvisible={showOtpModal}
+              email={email}
+              newEmail={newEmail}
               onClose={() => setShowOtpModal(false)}
             />
           </Flex>

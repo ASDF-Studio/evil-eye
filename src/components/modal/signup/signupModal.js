@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Flex, FlexBetween, FlexCenter } from "../../layout";
 import ModalFrame from "../modalFrame";
 import { Design1, Design2 } from "../../logo";
@@ -7,15 +7,24 @@ import { DesignButton } from "../../button/designButton";
 import { Button } from "../../button";
 import { Input } from "../../input";
 import { DesignButton3 } from "@/components/button/designButton3";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { signup } from "@/action";
 
 const SignupModal = ({
   isvisible,
   onClose,
   openDashboard,
+  openLogin,
   openForgotPassword,
   openSignupOTP,
 }) => {
-  if (!isvisible) return null;
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
@@ -31,10 +40,33 @@ const SignupModal = ({
     openDashboard();
   };
 
+  const openLoginModal = () => {
+    onClose();
+    openLogin();
+  };
+
   const openSignupOTPModal = () => {
     onClose();
     openSignupOTP();
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = {
+      name,
+      email,
+      password,
+      confirmPassword
+    };
+
+    try {
+      await dispatch(signup(user));
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
+  };
+
+  if (!isvisible) return null;
 
   return (
     <FlexCenter
@@ -63,7 +95,12 @@ const SignupModal = ({
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input type="text" placeholder="Your Name" />
+                <Input 
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </Flex>
             </div>
             <div>
@@ -76,7 +113,12 @@ const SignupModal = ({
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input type="email" placeholder="example@domain.com" />
+                <Input 
+                  type="email" 
+                  placeholder="example@domain.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </Flex>
             </div>
 
@@ -90,7 +132,11 @@ const SignupModal = ({
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input type="password" />
+                <Input 
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)} 
+                />
               </Flex>
             </div>
 
@@ -104,16 +150,21 @@ const SignupModal = ({
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input type="password" />
+                <Input 
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)} 
+                />
               </Flex>
             </div>
             <Flex className="justify-center w-[100%]">
               <DesignButton
                 className="w-full"
                 typoVariant="buttonLabel2"
-                onClick={openSignupOTPModal}
+                // onClick={openSignupOTPModal}
+                onClick={handleSubmit}
               >
-                SIGN UP
+                {auth.loading == false ? "SIGN UP" : "Loading..."}
               </DesignButton>
             </Flex>
 
@@ -131,6 +182,7 @@ const SignupModal = ({
                 <DesignButton3
                   className="w-full"
                   typoVariant="buttonLabel2"
+                  onClick={openLoginModal}
                 >
                   LOGIN
                 </DesignButton3>

@@ -11,6 +11,8 @@ const initState = {
   loading: false,
   error: null,
   message: "",
+  signupRequest: false,
+  emailOTPSent: false,
 };
 
 export default function authReducer(state = initState, action) {
@@ -69,15 +71,15 @@ export default function authReducer(state = initState, action) {
         ...state,
         authenticating: true,
         loading: true,
+        signupRequest: false,
       };
       break;
     case authConstants.SIGNUP_SUCCESS:
       state = {
         ...state,
         user: action.payload.user,
-        token: action.payload.token,
         message: action.payload.message,
-        authenticate: true,
+        signupRequest: action.payload.signupRequest,
         authenticating: false,
         loading: false,
       };
@@ -87,8 +89,39 @@ export default function authReducer(state = initState, action) {
         ...state,
         error: action.payload.message,
         loading: false,
+        signupRequest: false,
       };
       break;
+
+    case authConstants.OTP_REQUEST:
+      state = {
+        ...state,
+        authenticating: true,
+        loading: true,
+      };
+      break;
+    case authConstants.OTP_SUCCESS:
+      state = {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        message: action.payload.message,
+        signupRequest: false,
+        authenticating: false,
+        loading: false,
+        authenticate: true,
+      };
+      break;
+    case authConstants.OTP_FAILURE:
+      state = {
+        ...state,
+        error: action.payload.message,
+        loading: false,
+        signupRequest: false,
+        authenticating: false,
+      };
+      break;
+
     case authConstants.UPDATE_REQUEST:
       state = {
         ...state,
@@ -123,6 +156,54 @@ export default function authReducer(state = initState, action) {
         loading: false,
       };
       break;
+
+    case authConstants.CHANGE_EMAIL_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+        emailOTPSent: false
+      };
+      break;
+
+    case authConstants.CHANGE_EMAIL_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+        emailOTPSent: action.payload.emailOTPSent,
+      };
+      break;
+
+    case authConstants.CHANGE_EMAIL_FAILURE:
+      state = {
+        ...state,
+        error: action.payload.error,
+        loading: false,
+        emailOTPSent: false
+      };
+      break;
+
+      case authConstants.EMAIL_OTP_REQUEST:
+        state = {
+          ...state,
+          loading: true,
+        };
+        break;
+  
+      case authConstants.EMAIL_OTP_SUCCESS:
+        state = {
+          ...state,
+          user: action.payload.user,
+          loading: false,
+        };
+        break;
+  
+      case authConstants.EMAIL_OTP_FAILURE:
+        state = {
+          ...state,
+          error: action.payload.error,
+          loading: false,
+        };
+        break;
   }
 
   return state;
