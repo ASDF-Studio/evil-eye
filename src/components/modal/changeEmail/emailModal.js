@@ -1,24 +1,21 @@
+// EmailModal.js
 import React, { useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import ModalFrame from "../modalFrame";
 import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
-import OtpModal from "./otpModal";
 import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { changeEmail } from "@/action";
 
-const EmailModal = ({ isvisible, onClose }) => {
+const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
 
-  const [email] = useState(user.email);
   const [newEmail, setNewEmail] = useState("");
-
-  const [showOtpModal, setShowOtpModal] = useState(false);
 
   if (!isvisible) return null;
 
@@ -36,7 +33,7 @@ const EmailModal = ({ isvisible, onClose }) => {
 
     try {
       await dispatch(changeEmail(data));
-      setShowOtpModal(!showOtpModal);
+      onEmailSubmit(newEmail); // Call the parent's onEmailSubmit function
     } catch (error) {
       console.error("Error during signup:", error);
     }
@@ -80,12 +77,6 @@ const EmailModal = ({ isvisible, onClose }) => {
             >
               {auth.loading == false ? "ENTER" : "Loading..."}
             </DesignButton>
-            <OtpModal
-              isvisible={showOtpModal}
-              email={email}
-              newEmail={newEmail}
-              onClose={() => setShowOtpModal(false)}
-            />
           </Flex>
         </div>
       </ModalFrame>
@@ -94,3 +85,4 @@ const EmailModal = ({ isvisible, onClose }) => {
 };
 
 export default EmailModal;
+

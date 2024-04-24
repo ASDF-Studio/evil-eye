@@ -1,3 +1,4 @@
+// DashModal.js
 import React, { useEffect, useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import { Design1, Design2, Pen, Xmark } from "../../logo";
@@ -5,6 +6,7 @@ import { DesignButton2 } from "../../button/designButton2";
 import { Typography } from "../../typography";
 import PassModal from "../changePass/passModal";
 import EmailModal from "../changeEmail/emailModal";
+import OtpModal from "../changeEmail/otpModal"; // Import OtpModal
 import { Input } from "../../input";
 import DashboardModalFrame from "../dashboardModalFrame";
 import { historyDummyData } from "@/context/history";
@@ -20,6 +22,11 @@ const DashModal = ({ isvisible, onClose, children }) => {
   const user = useAppSelector((state) => state.auth.user);
 
   const [name, setName] = useState("");
+  const [email] = useState(user.email);
+  const [newEmail, setNewEmail] = useState("");
+  const [showEmailModal, setShowEmailModal] = useState(false); // State for EmailModal
+  const [showOtpModal, setShowOtpModal] = useState(false); // State for OtpModal
+  const [showPassModal, setShowPassModal] = useState(false); // State for OtpModal
 
   useEffect(() => {
     if (user) {
@@ -27,8 +34,6 @@ const DashModal = ({ isvisible, onClose, children }) => {
     }
   }, [user]);
 
-  const [showPassModal, setShowPassModal] = useState(false);
-  const [showEmailModal, setShowEmailModal] = useState(false);
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -50,6 +55,16 @@ const DashModal = ({ isvisible, onClose, children }) => {
       onClose();
     } catch (error) {
       console.error("Error during logout:", error);
+    }
+  };
+
+  const handleEmailSubmit = async (newEmail) => {
+    setNewEmail(newEmail);
+    try {
+      setShowEmailModal(false);
+      setShowOtpModal(true);
+    } catch (error) {
+      console.error("Error during email submission:", error);
     }
   };
 
@@ -101,12 +116,19 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 <Typography variant="h12" classname=" text-color-brand-yellow2">
                   Email
                 </Typography>
-                <div onClick={() => setShowEmailModal(!showEmailModal)}>
+                <div onClick={() => setShowEmailModal(true)}>
                   <Pen />
                 </div>
                 <EmailModal
                   isvisible={showEmailModal}
                   onClose={() => setShowEmailModal(false)}
+                  onEmailSubmit={handleEmailSubmit}
+                />
+                <OtpModal
+                  isvisible={showOtpModal}
+                  newEmail={newEmail}
+                  email={email}
+                  onClose={() => setShowOtpModal(false)}
                 />
               </FlexBetween>
               <Flex className="relative h-[40px] pt-2">

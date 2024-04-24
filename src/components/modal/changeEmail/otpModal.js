@@ -1,3 +1,4 @@
+// OtpModal.js
 import React, { useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import ModalFrame from "../modalFrame";
@@ -9,12 +10,12 @@ import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { verifyEmailOTP } from "@/action";
 
-const OtpModal = ({ isvisible, email, newEmail, onClose }) => {
+const OtpModal = ({ isvisible, newEmail, email, onClose }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
 
-  const [otp, setOTP] = useState("");
+  const [otpValue, setOTPValue] = useState("");
 
   if (!isvisible) return null;
 
@@ -28,18 +29,16 @@ const OtpModal = ({ isvisible, email, newEmail, onClose }) => {
     const data = {
       email: email,
       newEmail: newEmail,
-      otp: otp
+      otp: otpValue,
     };
 
     try {
       await dispatch(verifyEmailOTP(data));
       onClose();
-
     } catch (error) {
       console.error("Error during signup:", error);
     }
   };
-
 
   return (
     <FlexCenter
@@ -58,7 +57,7 @@ const OtpModal = ({ isvisible, email, newEmail, onClose }) => {
           <div className="pt-6">
             <Typography variant="h12" classname=" text-color-brand-yellow2 ">
               We have sent you an OTP to your email address:
-              <span className=" underline"> adamvoigt@gmail.com.</span> Please
+              <span className=" underline"> {newEmail}.</span> Please
               enter your code <br></br>below to finish changing your email.
             </Typography>
           </div>
@@ -73,8 +72,8 @@ const OtpModal = ({ isvisible, email, newEmail, onClose }) => {
               <Input
                 type="number"
                 placeholder="XXXX"
-                value={otp}
-                onChange={(e) => setOTP(e.target.value)}
+                value={otpValue}
+                onChange={(e) => setOTPValue(e.target.value)}
               />
             </Flex>
           </div>
