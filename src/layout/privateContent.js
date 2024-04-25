@@ -1,4 +1,4 @@
-import { getHistoryData, isUserLoggedIn } from "@/action";
+import { isUserLoggedIn } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { useEffect } from "react";
 
@@ -9,9 +9,6 @@ export default function PrivateContent({ children }) {
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
-    }
-    if (auth.authenticate) {
-      dispatch(getHistoryData());
     }
   }, [auth.authenticate, dispatch]);
 

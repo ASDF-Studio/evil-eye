@@ -1,18 +1,17 @@
 // DashModal.js
 import React, { useEffect, useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
-import { Design1, Design2, Pen, Xmark } from "../../logo";
+import { Pen } from "../../logo";
 import { DesignButton2 } from "../../button/designButton2";
 import { Typography } from "../../typography";
 import PassModal from "../changePass/passModal";
 import EmailModal from "../changeEmail/emailModal";
-import OtpModal from "../changeEmail/otpModal"; // Import OtpModal
+import OtpModal from "../changeEmail/otpModal";
 import { Input } from "../../input";
 import DashboardModalFrame from "../dashboardModalFrame";
-import { historyDummyData } from "@/context/history";
 import PrayerHistory from "../../dashboard/prayerHistory";
 import { DesignButton3 } from "@/components/button/designButton3";
-import { logout, updateUser } from "@/action";
+import { getHistoryData, logout, updateUser } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 
 const DashModal = ({ isvisible, onClose, children }) => {
@@ -20,18 +19,25 @@ const DashModal = ({ isvisible, onClose, children }) => {
 
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
+  const history = useAppSelector((state) => state.history);
 
   const [name, setName] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  const [showEmailModal, setShowEmailModal] = useState(false); // State for EmailModal
-  const [showOtpModal, setShowOtpModal] = useState(false); // State for OtpModal
-  const [showPassModal, setShowPassModal] = useState(false); // State for OtpModal
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [showOtpModal, setShowOtpModal] = useState(false);
+  const [showPassModal, setShowPassModal] = useState(false);
 
   useEffect(() => {
-    if (user) {
-      setName(user.name || "");
+    if (auth.authenticate) {
+      if (user) {
+        setName(user.name || "");
+        const data = {
+          id: user._id,
+        };
+        dispatch(getHistoryData(data));
+      }
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   if (!isvisible) return null;
 
@@ -67,7 +73,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
     }
   };
 
-  const histories = historyDummyData;
+  const histories = history.history;
 
   return (
     <FlexCenter
@@ -185,12 +191,12 @@ const DashModal = ({ isvisible, onClose, children }) => {
             </Typography>
             <div className="w-auto sm:w-[450px]">
               <div className="space-y-6 w-auto sm:w-[450px] h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
-                {histories.map((history) => (
+                {histories.map((item) => (
                   <PrayerHistory
-                    key={history.prayerId} // Provide key directly to PrayerHistory component
-                    date={history.date}
-                    recepientName={history.recepientName}
-                    payment={history.payment}
+                    key={item._id}
+                    date={item.createdAt}
+                    recepientName={item.name}
+                    payment={item.price}
                   />
                 ))}
               </div>

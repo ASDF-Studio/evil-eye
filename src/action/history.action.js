@@ -4,14 +4,16 @@ import { historyConstants } from "./constants";
 
 const baseURL = API;
 
-export const getHistoryData = (payload) => {
+export const getHistoryData = (data) => {
   return async (dispatch) => {
     dispatch({
       type: historyConstants.HISTORY_REQUEST,
     });
 
     try {
-      const res = await axios.get(`${baseURL}history`, payload);
+      const res = await axios.post(`${baseURL}history`, {
+        ...data,
+      });
       if (res.status === 200) {
         dispatch({
           type: historyConstants.HISTORY_SUCCESS,

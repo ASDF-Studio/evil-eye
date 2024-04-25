@@ -15,18 +15,8 @@ import Symtoms from "@/components/infoModal/symtoms";
 import Cure from "@/components/infoModal/cure";
 import EvilEye from "@/components/infoModal/evileye";
 import DashModal from "@/components/modal/dashboard/dashModal";
-import { useAppDispatch } from "@/hooks";
-import { getHistoryData } from "@/action";
 
 export const LandingPage = () => {
-  const dispatch = useAppDispatch();
-
-  // const id = "662366a01031879c2e8295c2";
-  const payload = { id: "662366a01031879c2e8295c2" };
-
-  useEffect(() => {
-    dispatch(getHistoryData(payload));
-  }, [dispatch]);
 
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
