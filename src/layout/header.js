@@ -193,7 +193,13 @@ export const Header = () => {
                 >
                   <FlexCenter className="gap-2">
                     {item.icon && <User />}
-                    <Typography variant="mobileNav">{item.display}</Typography>
+                    <Typography variant="mobileNav">
+                      {item.display === "login"
+                        ? user.name
+                          ? `${user.name}`
+                          : "login"
+                        : item.display}
+                    </Typography>
                   </FlexCenter>
                 </Button>
                 {index < NAV__LINK.length - 1 && (
