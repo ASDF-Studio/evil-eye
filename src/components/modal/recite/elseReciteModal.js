@@ -9,10 +9,10 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 
-const ReciteModal = ({ 
+const ElseReciteModal = ({ 
   isvisible,
   onClose,
-  openRecite2,
+  openPaymentReciteModal,
 
  }) => {
   if (!isvisible) return null;
@@ -20,9 +20,9 @@ const ReciteModal = ({
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal2 = () => {
+  const openReciteModal4 = () => {
     onClose();
-    openRecite2();
+    openPaymentReciteModal();
   };
   
 
@@ -41,23 +41,48 @@ const ReciteModal = ({
             PRAYER
           </Typography>
         </div>
-        <FlexColumn className="px-5 mb-3.5 gap-2">
+        <FlexColumn className="px-5 gap-2 h-[450px] 1xl:h-[500px] 2xl:h-[550px] 4xl:h-auto overflow-y-auto overflow-hidden scrollbar">
           
           <div className="pb-3">
             <Typography
               variant="h12"
-              classname=" text-color-brand-yellow2 opacity-80 "
+              classname=" text-color-brand-yellow2 opacity-80"
             >
               Whenever a person gets affected with an evil eye curse, it affects
-              them physically, mentally, emotionally, and financially.
+              them physically, mentally, emotionally and financially.
             </Typography>
+          </div>
+          <hr className="w-auto border-color-brand-op" />
+          <div className="pt-3">
+          <Typography
+              variant="h12"
+              classname="text-color-brand-yellow2"
+            >
+              Who’s the recipient of this prayer?
+            </Typography>
+          </div>
+          
+          
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-4">
+            <div className="h-full w-full">
+              <Flex className="relative h-[40px]">
+                <CheckBox>Myself</CheckBox>
+              </Flex>
+            </div>
+
+            <div className="h-full w-full">
+              <Flex className="relative h-[40px]">
+                <CheckBox>Someone Else</CheckBox>
+              </Flex>
+            </div>
           </div>
           <hr className="w-auto border-color-brand-op" />
 
           <div className="pt-3">
             <Typography
               variant="h12"
-              classname="text-color-brand-yellow2  "
+              classname="text-color-brand-yellow2"
             >
               Name of recipient
             </Typography>
@@ -66,16 +91,16 @@ const ReciteModal = ({
             </Flex>
           </div>
 
-          <div className="pt-3.5">
+          <div className="pt-3">
           <Typography
               variant="h12"
-              classname="text-color-brand-yellow2  "
+              classname="text-color-brand-yellow2"
             >
               Recipient’s phone or email
             </Typography>
             <div><Typography
               variant="h17"
-              classname="text-color-brand-yellow2 "
+              classname="text-color-brand-yellow2"
             >
               We’ll use this to let them know a prayer is being recited for them
             </Typography></div>
@@ -83,7 +108,7 @@ const ReciteModal = ({
           
           
 
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
                 <CheckBox>Phone</CheckBox>
@@ -96,17 +121,17 @@ const ReciteModal = ({
               </Flex>
             </div>
           </div>
-          <div className="pt-3.5">
+          <div className="pt-3">
           <Flex className="relative h-[40px]">
                 <Input type="text" placeholder="123-345-6789" />
               </Flex>
           </div>
 
-          <Flex className=" justify-center pt-3.5 pb-2.5 w-[100%]">
+          <Flex className=" justify-center pt-3 pb-5 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
-               onClick={openReciteModal2}
+               onClick={openReciteModal4}
             >
               Next
             </DesignButton>
@@ -117,4 +142,4 @@ const ReciteModal = ({
   );
 };
 
-export default ReciteModal;
+export default ElseReciteModal;

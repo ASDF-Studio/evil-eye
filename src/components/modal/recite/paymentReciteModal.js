@@ -13,10 +13,10 @@ import { Stripe } from "@/components/logo";
 import { DesignButton1 } from "@/components/button/designButton1";
 
 
-const ReciteModal4 = ({ 
+const PaymentReciteModal = ({ 
   isvisible,
   onClose,
-  openRecite5,
+  openPaymentSuccessReciteModal,
 
  }) => {
   if (!isvisible) return null;
@@ -26,7 +26,7 @@ const ReciteModal4 = ({
   };
   const openReciteModal5 = () => {
     onClose();
-    openRecite5();
+    openPaymentSuccessReciteModal();
   };
   
 
@@ -150,4 +150,4 @@ const ReciteModal4 = ({
   );
 };
 
-export default ReciteModal4;
+export default PaymentReciteModal;

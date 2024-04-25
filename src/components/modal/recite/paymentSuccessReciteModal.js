@@ -9,7 +9,7 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 
-const ReciteModal5 = ({ isvisible, onClose, openRecite6 }) => {
+const PaymentSuccessReciteModal = ({ isvisible, onClose, openPrayerReciteModal }) => {
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -17,7 +17,7 @@ const ReciteModal5 = ({ isvisible, onClose, openRecite6 }) => {
   };
   const openReciteModal6 = () => {
     onClose();
-    openRecite6();
+    openPrayerReciteModal();
   };
 
   return (
@@ -61,4 +61,4 @@ const ReciteModal5 = ({ isvisible, onClose, openRecite6 }) => {
   );
 };
 
-export default ReciteModal5;
+export default PaymentSuccessReciteModal;

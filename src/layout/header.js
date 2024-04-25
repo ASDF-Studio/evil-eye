@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import {
-  Logo,
   LogoWithBackground,
   LogoWithBackgroundMobile,
   MobileBars,
@@ -22,7 +21,7 @@ import ForgotPass3 from "@/components/modal/login/forgotpass3";
 import Pricing from "@/components/modal/pricing";
 import Contact from "@/components/modal/contact";
 import { DesignButton } from "@/components/button/designButton";
-import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useAppSelector } from "@/hooks";
 
 const NAV__LINK = [
   {
@@ -43,7 +42,6 @@ const NAV__LINK = [
 ];
 
 export const Header = () => {
-  const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);

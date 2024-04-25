@@ -3,67 +3,72 @@ import { Flex, FlexColumn } from "@/components/layout";
 import { Borderline, LeftPlay, Play } from "../components/logo";
 import { Typography } from "@/components/typography";
 import InfoModal from "@/components/infoModal";
-import ReciteModal from "@/components/modal/recite/reciteModal";
 import { useEffect, useState } from "react";
 import { DesignButton } from "@/components/button/designButton";
-import ReciteModal2 from "@/components/modal/recite/reciteModal2";
-import ReciteModal3 from "@/components/modal/recite/reciteModal3";
-import ReciteModal4 from "@/components/modal/recite/reciteModal4";
-import ReciteModal5 from "@/components/modal/recite/reciteModal5";
-import ReciteModal6 from "@/components/modal/recite/reciteModal6";
 import Symtoms from "@/components/infoModal/symtoms";
 import Cure from "@/components/infoModal/cure";
 import EvilEye from "@/components/infoModal/evileye";
 import DashModal from "@/components/modal/dashboard/dashModal";
+import GuestReciteModal from "@/components/modal/recite/guestReciteModal";
+import ElseReciteModal from "@/components/modal/recite/elseReciteModal";
+import SelfReciteModal from "@/components/modal/recite/selfReciteModal";
+import PaymentReciteModal from "@/components/modal/recite/paymentReciteModal";
+import PaymentSuccessReciteModal from "@/components/modal/recite/paymentSuccessReciteModal";
+import PrayerReciteModal from "@/components/modal/recite/prayerReciteModal";
 
 export const LandingPage = () => {
-
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
-  const [showReciteModal, setShowReciteModal] = useState(false);
-  const [showReciteModal2, setShowReciteModal2] = useState(false);
-  const [showReciteModal3, setShowReciteModal3] = useState(false);
-  const [showReciteModal4, setShowReciteModal4] = useState(false);
-  const [showReciteModal5, setShowReciteModal5] = useState(false);
-  const [showReciteModal6, setShowReciteModal6] = useState(false);
+  const [showGuestReciteModal, setGuestShowReciteModal] = useState(false);
+  const [showSelfReciteModal, setSelfReciteModal] = useState(false);
+  const [showElseReciteModal, setElseReciteModal] = useState(false);
+  const [showPaymentReciteModal, setPaymentReciteModal] = useState(false);
+  const [showPaymentSuccessReciteModal, setPaymentSuccessReciteModal] =
+    useState(false);
+  const [showPrayerReciteModal, setPrayerReciteModal] = useState(false);
   const [showDashModal, setShowDashModal] = useState(false);
 
   const closeAllModals = () => {
     setShowModal(false);
     setShowModal2(false);
     setShowModal3(false);
-    setShowReciteModal(false);
-    setShowReciteModal2(false);
-    setShowReciteModal3(false);
-    setShowReciteModal4(false);
-    setShowReciteModal5(false);
-    setShowReciteModal6(false);
+    setGuestShowReciteModal(false);
+    setSelfReciteModal(false);
+    setElseReciteModal(false);
+    setPaymentReciteModal(false);
+    setPaymentSuccessReciteModal(false);
+    setPrayerReciteModal(false);
   };
-  const openRecite2 = () => {
+  const openSelfReciteModal = () => {
     closeAllModals;
-    setShowReciteModal2(true);
+    setSelfReciteModal(true);
   };
 
-  const openRecite3 = () => {
+  const openElseReciteModal = () => {
     closeAllModals;
-    setShowReciteModal3(true);
+    setElseReciteModal(true);
   };
-  const openRecite4 = () => {
+  const openPaymentReciteModal = () => {
     closeAllModals;
-    setShowReciteModal4(true);
+    setPaymentReciteModal(true);
   };
-  const openRecite5 = () => {
+  const openPaymentSuccessReciteModal = () => {
     closeAllModals;
-    setShowReciteModal5(true);
+    setPaymentSuccessReciteModal(true);
   };
-  const openRecite6 = () => {
+  const openPrayerReciteModal = () => {
     closeAllModals;
-    setShowReciteModal6(true);
+    setPrayerReciteModal(true);
   };
   const openDashboard = () => {
     closeAllModals;
     setShowDashModal(true);
+  };
+
+  const handlePrayerModal = () => {
+    closeAllModals();
+    setGuestShowReciteModal(!showGuestReciteModal);
   };
 
   return (
@@ -164,44 +169,40 @@ export const LandingPage = () => {
             variant="text"
             className=""
             typoVariant="buttonLabel2"
-            onClick={() => {
-              closeAllModals();
-              setShowReciteModal(!showReciteModal);
-            }}
+            onClick={handlePrayerModal}
           >
             Recite the prayer
           </DesignButton>
-          <ReciteModal
-            isvisible={showReciteModal}
-            onClose={() => setShowReciteModal(false)}
-            openRecite2={openRecite2}
-            openRecite3={openRecite3}
+          <GuestReciteModal
+            isvisible={showGuestReciteModal}
+            onClose={() => setGuestShowReciteModal(false)}
+            openSelfReciteModal={openSelfReciteModal}
           />
-          <ReciteModal2
-            isvisible={showReciteModal2}
-            onClose={() => setShowReciteModal2(false)}
-            openRecite3={openRecite3}
+          <SelfReciteModal
+            isvisible={showSelfReciteModal}
+            onClose={() => setSelfReciteModal(false)}
+            openElseReciteModal={openElseReciteModal}
           />
-          <ReciteModal3
-            isvisible={showReciteModal3}
-            onClose={() => setShowReciteModal3(false)}
-            openRecite4={openRecite4}
+          <ElseReciteModal
+            isvisible={showElseReciteModal}
+            onClose={() => setElseReciteModal(false)}
+            openPaymentReciteModal={openPaymentReciteModal}
           />
-          <ReciteModal4
-            isvisible={showReciteModal4}
-            onClose={() => setShowReciteModal4(false)}
-            openRecite5={openRecite5}
+          <PaymentReciteModal
+            isvisible={showPaymentReciteModal}
+            onClose={() => setPaymentReciteModal(false)}
+            openPaymentSuccessReciteModal={openPaymentSuccessReciteModal}
           />
-          <ReciteModal5
-            isvisible={showReciteModal5}
-            onClose={() => setShowReciteModal5(false)}
-            openRecite6={openRecite6}
+          <PaymentSuccessReciteModal
+            isvisible={showPaymentSuccessReciteModal}
+            onClose={() => setPaymentSuccessReciteModal(false)}
+            openPrayerReciteModal={openPrayerReciteModal}
           />
-          <ReciteModal6
-            isvisible={showReciteModal6}
-            onClose={() => setShowReciteModal6(false)}
+          <PrayerReciteModal
+            isvisible={showPrayerReciteModal}
+            onClose={() => setPrayerReciteModal(false)}
             openDashboard={openDashboard}
-            openRecite3={openRecite3}
+            openElseReciteModal={openElseReciteModal}
           />
           <DashModal
             isvisible={showDashModal}

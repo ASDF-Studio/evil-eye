@@ -9,10 +9,10 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 
-const ReciteModal3 = ({ 
+const SelfReciteModal = ({ 
   isvisible,
   onClose,
-  openRecite4,
+  openElseReciteModal,
 
  }) => {
   if (!isvisible) return null;
@@ -20,9 +20,9 @@ const ReciteModal3 = ({
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal4 = () => {
+  const openReciteModal3 = () => {
     onClose();
-    openRecite4();
+    openElseReciteModal();
   };
   
 
@@ -41,18 +41,21 @@ const ReciteModal3 = ({
             PRAYER
           </Typography>
         </div>
-        <FlexColumn className="px-5 gap-2 h-[450px] 1xl:h-[500px] 2xl:h-[550px] 4xl:h-auto overflow-y-auto overflow-hidden scrollbar">
+        <FlexColumn className="px-5 mb-3.5 gap-2">
           
           <div className="pb-3">
             <Typography
               variant="h12"
-              classname=" text-color-brand-yellow2 opacity-80"
+              classname=" text-color-brand-yellow2 opacity-80 "
             >
               Whenever a person gets affected with an evil eye curse, it affects
-              them physically, mentally, emotionally and financially.
+              them physically, mentally, emotionally, and financially.
             </Typography>
           </div>
           <hr className="w-auto border-color-brand-op" />
+
+          
+
           <div className="pt-3">
           <Typography
               variant="h12"
@@ -64,7 +67,7 @@ const ReciteModal3 = ({
           
           
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-5">
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
                 <CheckBox>Myself</CheckBox>
@@ -80,58 +83,24 @@ const ReciteModal3 = ({
           <hr className="w-auto border-color-brand-op" />
 
           <div className="pt-3">
-            <Typography
-              variant="h12"
-              classname="text-color-brand-yellow2"
-            >
-              Name of recipient
-            </Typography>
-            <Flex className="relative h-[40px] pt-1">
-              <Input type="text" placeholder="Name" />
-            </Flex>
-          </div>
-
-          <div className="pt-3">
           <Typography
               variant="h12"
               classname="text-color-brand-yellow2"
             >
-              Recipient’s phone or email
+              Notify me via text (optional)
             </Typography>
-            <div><Typography
-              variant="h17"
-              classname="text-color-brand-yellow2"
-            >
-              We’ll use this to let them know a prayer is being recited for them
-            </Typography></div>
           </div>
-          
-          
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="h-full w-full">
-              <Flex className="relative h-[40px]">
-                <CheckBox>Phone</CheckBox>
-              </Flex>
-            </div>
-
-            <div className="h-full w-full">
-              <Flex className="relative h-[40px]">
-                <CheckBox>Email</CheckBox>
-              </Flex>
-            </div>
-          </div>
-          <div className="pt-3">
+          <div>
           <Flex className="relative h-[40px]">
                 <Input type="text" placeholder="123-345-6789" />
               </Flex>
           </div>
 
-          <Flex className=" justify-center pt-3 pb-5 w-[100%]">
+          <Flex className=" justify-center pt-3.5 pb-2.5 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
-               onClick={openReciteModal4}
+               onClick={openReciteModal3}
             >
               Next
             </DesignButton>
@@ -142,4 +111,4 @@ const ReciteModal3 = ({
   );
 };
 
-export default ReciteModal3;
+export default SelfReciteModal;

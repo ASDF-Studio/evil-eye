@@ -8,7 +8,7 @@ import PrayerModalFrame from "../prayerModalFrame";
 import { LoadingFrame } from "@/components/loading/loadingFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 
-const ReciteModal6 = ({ isvisible, onClose, openRecite3, openDashboard }) => {
+const PrayerReciteModal = ({ isvisible, onClose, openElseReciteModal, openDashboard }) => {
   const [prayerDone, setPrayerDone] = useState(false);
 
 
@@ -21,7 +21,7 @@ const ReciteModal6 = ({ isvisible, onClose, openRecite3, openDashboard }) => {
   const openReciteModal3 = () => {
     setPrayerDone(false);
     onClose();
-    openRecite3();
+    openElseReciteModal();
   };
   const openDashboardModal = () => {
     onClose();
@@ -106,4 +106,4 @@ const ReciteModal6 = ({ isvisible, onClose, openRecite3, openDashboard }) => {
   );
 };
 
-export default ReciteModal6;
+export default PrayerReciteModal;

@@ -10,6 +10,7 @@ const MainLayout = ({ children }) => {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Header />
+      
       {/* <div className="h-screen overflow-auto sm:overflow-hidden"> */}
       <div className="">
         <div className="block lsm:hidden">
