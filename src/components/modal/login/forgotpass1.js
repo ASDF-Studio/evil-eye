@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import ModalFrame from "../modalFrame";
-import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
-import DashModal from "../dashboard/dashModal";
 import { Input } from "@/components/input";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { generateResetPasswordLink } from "@/action";
 
-const ForgotPass1 = ({ 
-  isvisible, 
-  onClose,
-  openForgotPass2,
-}) => {
+const ForgotPass1 = ({ isvisible, onClose, openForgotPass2 }) => {
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+  const [email, setEmail] = useState("");
+
   if (!isvisible) return null;
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
@@ -19,6 +20,21 @@ const ForgotPass1 = ({
   const openForgotPass2Modal = () => {
     onClose();
     openForgotPass2();
+  };
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      email: email,
+    };
+
+    try {
+      await dispatch(generateResetPasswordLink(data));
+      openForgotPass2Modal();
+    } catch (error) {
+      console.error("Error during reset password:", error);
+    }
   };
 
   return (
@@ -36,35 +52,34 @@ const ForgotPass1 = ({
             Forgot Password
           </Typography>
           <div className="pt-5">
-            <Typography
-              variant="h19"
-              classname=" text-color-brand-yellow2 "
-            >
-              Please enter your email below to reset your <br></br> password. We’ll send
-              you an email with a reset link.
+            <Typography variant="h19" classname=" text-color-brand-yellow2 ">
+              Please enter your email below to reset your <br></br> password.
+              We’ll send you an email with a reset link.
             </Typography>
           </div>
 
           <div className="pt-5">
             <label htmlFor="email" className="block mb-1.5">
-              <Typography
-                variant="h12"
-                classname="text-color-brand-yellow2 "
-              >
+              <Typography variant="h12" classname="text-color-brand-yellow2 ">
                 Email
               </Typography>
             </label>
             <Flex className="relative h-[40px]">
-              <Input type="email" placeholder="example@domain.com" />
+              <Input
+                type="email"
+                placeholder="example@domain.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Flex>
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
-              onClick={openForgotPass2Modal}
+              onClick={handleEmailSubmit}
             >
-              Send RESET Email
+              {auth.loading == false ? "Send RESET Email" : "Loading..."}
             </DesignButton>
           </Flex>
         </div>

@@ -38,7 +38,7 @@ export const login = (user) => {
 export const updateUser = (user) => {
   return async (dispatch) => {
     dispatch({ type: authConstants.UPDATE_REQUEST });
-    const res = await axios.post(`${baseURL}/updateUser`, {
+    const res = await axios.post(`${baseURL}updateUser`, {
       ...user,
     });
 
@@ -63,7 +63,7 @@ export const updateUser = (user) => {
 export const updatePassword = (password) => {
   return async (dispatch) => {
     dispatch({ type: authConstants.UPDATE_PASSWORD_REQUEST });
-    const res = await axios.post(`${baseURL}/updatePassword`, {
+    const res = await axios.post(`${baseURL}updatePassword`, {
       ...password,
     });
 
@@ -230,3 +230,27 @@ export const verifyEmailOTP = (data) => {
     }
   };
 };
+
+export const generateResetPasswordLink = (resetEmail) => {
+    return async (dispatch) => {
+      dispatch({ type: authConstants.RESET_PASSWORD_REQUEST });
+      const res = await axios.post(`${baseURL}generateResetPasswordLink`, {
+        ...resetEmail,
+      });
+  
+      if (res.status === 200) {
+        const { message } = res.data;
+        dispatch({
+          type: authConstants.RESET_PASSWORD_SUCCESS,
+          payload: { message, resetEmail: resetEmail.email },
+        });
+      } else {
+        if (res.status === 400) {
+          dispatch({
+            type: authConstants.RESET_PASSWORD_FAILURE,
+            payload: { error: message },
+          });
+        }
+      }
+    };
+  };

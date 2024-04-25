@@ -71,11 +71,22 @@ export const Header = () => {
   const handlePath = (path) => {
     setNavbar(false);
     closeAllModal();
-    path === "login" && 
-        auth.authenticate ? setShowDashModal(!showDashModal) : setShowLoginModal(!showLoginModal);
 
-    path === "contact" && setShowContactModal(!showContactModal);
-    path === "price" && setShowPricingModal(!showPricingModal);
+    if (path === "login") {
+      if (auth.authenticate) {
+        setShowDashModal(!showDashModal);
+      } else {
+        setShowLoginModal(!showLoginModal);
+      }
+    }
+
+    if (path === "contact") {
+      setShowContactModal(!showContactModal);
+    }
+
+    if (path === "price") {
+      setShowPricingModal(!showPricingModal);
+    }
   };
 
   const openDashboard = () => {
@@ -140,11 +151,11 @@ export const Header = () => {
                       variant="buttonPrimary"
                       classname="text-color-brand-yellow2 font-roman whitespace-nowrap"
                     >
-                      {item.display === "login" ? 
-                        user.name ? `${user.name}` : "login" 
-                        : 
-                          item.display
-                        }
+                      {item.display === "login"
+                        ? user.name
+                          ? `${user.name}`
+                          : "login"
+                        : item.display}
                     </Typography>
                   </FlexCenter>
                 </Button>
@@ -182,11 +193,7 @@ export const Header = () => {
                 >
                   <FlexCenter className="gap-2">
                     {item.icon && <User />}
-                    <Typography
-                      variant="mobileNav"
-                    >
-                      {item.display}
-                    </Typography>
+                    <Typography variant="mobileNav">{item.display}</Typography>
                   </FlexCenter>
                 </Button>
                 {index < NAV__LINK.length - 1 && (

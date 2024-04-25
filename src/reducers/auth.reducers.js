@@ -13,6 +13,7 @@ const initState = {
   message: "",
   signupRequest: false,
   emailOTPSent: false,
+  resetEmail: ""
 };
 
 export default function authReducer(state = initState, action) {
@@ -161,7 +162,7 @@ export default function authReducer(state = initState, action) {
       state = {
         ...state,
         loading: true,
-        emailOTPSent: false
+        emailOTPSent: false,
       };
       break;
 
@@ -178,32 +179,55 @@ export default function authReducer(state = initState, action) {
         ...state,
         error: action.payload.error,
         loading: false,
-        emailOTPSent: false
+        emailOTPSent: false,
       };
       break;
 
-      case authConstants.EMAIL_OTP_REQUEST:
-        state = {
-          ...state,
-          loading: true,
-        };
-        break;
-  
-      case authConstants.EMAIL_OTP_SUCCESS:
-        state = {
-          ...state,
-          user: action.payload.user,
-          loading: false,
-        };
-        break;
-  
-      case authConstants.EMAIL_OTP_FAILURE:
-        state = {
-          ...state,
-          error: action.payload.error,
-          loading: false,
-        };
-        break;
+    case authConstants.EMAIL_OTP_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+      };
+      break;
+
+    case authConstants.EMAIL_OTP_SUCCESS:
+      state = {
+        ...state,
+        user: action.payload.user,
+        loading: false,
+      };
+      break;
+
+    case authConstants.EMAIL_OTP_FAILURE:
+      state = {
+        ...state,
+        error: action.payload.error,
+        loading: false,
+      };
+      break;
+
+    case authConstants.RESET_PASSWORD_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+      };
+      break;
+
+    case authConstants.RESET_PASSWORD_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+        resetEmail: action.payload.resetEmail
+      };
+      break;
+
+    case authConstants.RESET_PASSWORD_FAILURE:
+      state = {
+        ...state,
+        error: action.payload.error,
+        loading: false,
+      };
+      break;
   }
 
   return state;

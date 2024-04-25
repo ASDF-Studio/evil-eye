@@ -1,17 +1,44 @@
 import React, { useState } from "react";
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
+import { Flex, FlexCenter } from "../../layout";
 import ModalFrame from "../modalFrame";
-import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
-import EmailModal from "../changeEmail/emailModal";
 import { Input } from "@/components/input";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { updatePassword } from "@/action";
 
-const PassModal = ({ isvisible, onClose }) => {
+const PassModal = ({ isvisible, email, onClose }) => {
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+  const user = useAppSelector((state) => state.auth.user);
+
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   if (!isvisible) return null;
+
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      email: user.email,
+      newPassword: newPassword,
+      confirmPassword: confirmPassword,
+    };
+
+    try {
+      await dispatch(updatePassword(data));
+      onClose();
+    } catch (error) {
+      console.error("Error during update password:", error);
+    }
+  };
+
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
@@ -28,33 +55,41 @@ const PassModal = ({ isvisible, onClose }) => {
           </Typography>
           <div className="pt-5">
             <label for="password" className="block mb-1.5">
-              <Typography
-                variant="h12"
-                classname=" text-color-brand-yellow2  "
-              >
+              <Typography variant="h12" classname=" text-color-brand-yellow2  ">
                 New Password
               </Typography>
             </label>
             <Flex className=" relative w-full h-[40px] ">
-              <Input type="password"/>
+              <Input
+                type="password"
+                placeholder="xxx"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
             </Flex>
           </div>
           <div className="pt-5">
             <label for="password" className="block mb-1.5">
-              <Typography
-                variant="h12"
-                classname=" text-color-brand-yellow2  "
-              >
+              <Typography variant="h12" classname=" text-color-brand-yellow2  ">
                 Confirm Password
               </Typography>
             </label>
             <Flex className="relative w-full h-[40px] ">
-              <Input type="password"/>
+              <Input
+                type="password"
+                placeholder="xxx"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
             </Flex>
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
-            <DesignButton className=" w-full" typoVariant="buttonLabel2">
-              ENTER
+            <DesignButton
+              className=" w-full"
+              typoVariant="buttonLabel2"
+              onClick={handleSubmit}
+            >
+              {auth.loading == false ? "ENTER" : "Loading..."}
             </DesignButton>
           </Flex>
         </div>

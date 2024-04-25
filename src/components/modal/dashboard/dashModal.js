@@ -22,7 +22,6 @@ const DashModal = ({ isvisible, onClose, children }) => {
   const user = useAppSelector((state) => state.auth.user);
 
   const [name, setName] = useState("");
-  const [email] = useState(user.email);
   const [newEmail, setNewEmail] = useState("");
   const [showEmailModal, setShowEmailModal] = useState(false); // State for EmailModal
   const [showOtpModal, setShowOtpModal] = useState(false); // State for OtpModal
@@ -127,7 +126,6 @@ const DashModal = ({ isvisible, onClose, children }) => {
                 <OtpModal
                   isvisible={showOtpModal}
                   newEmail={newEmail}
-                  email={email}
                   onClose={() => setShowOtpModal(false)}
                 />
               </FlexBetween>

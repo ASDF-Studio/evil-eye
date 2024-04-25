@@ -33,7 +33,7 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
 
     try {
       await dispatch(changeEmail(data));
-      onEmailSubmit(newEmail); // Call the parent's onEmailSubmit function
+      onEmailSubmit(newEmail);
     } catch (error) {
       console.error("Error during signup:", error);
     }

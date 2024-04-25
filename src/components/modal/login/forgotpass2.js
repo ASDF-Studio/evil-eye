@@ -1,26 +1,32 @@
 import React, { useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import ModalFrame from "../modalFrame";
-import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
-import DashModal from "../dashboard/dashModal";
-import { Input } from "@/components/input";
+import { useAppSelector } from "@/hooks";
 
 const ForgotPass2 = ({ 
   isvisible, 
   onClose,
   openForgotPass3, 
 }) => {
+
+  const resetEmail = useAppSelector((state) => state.auth.resetEmail);
+
   if (!isvisible) return null;
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
 
-  const openForgotPass3Modal = () => {
+  // const openForgotPass3Modal = () => {
+  //   onClose();
+  //   openForgotPass3();
+  // };
+  
+  const handleLinkSend = () => {
     onClose();
-    openForgotPass3();
   };
+
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
@@ -40,8 +46,8 @@ const ForgotPass2 = ({
               variant="h19"
               classname=" text-color-brand-yellow2"
             >
-              We’ve sent you a reset email to your email address:
-              <span className="underline"> adamvoigt@gmail.com</span>
+              We’ve sent you a reset email to your email address: {" "}
+              <span className="underline">{resetEmail}</span>
             </Typography>
           </div>
 
@@ -49,7 +55,7 @@ const ForgotPass2 = ({
             <DesignButton 
               className=" w-full" 
               typoVariant="buttonLabel2"
-              onClick={openForgotPass3Modal}
+              onClick={handleLinkSend}
             >
               OKAY
             </DesignButton>

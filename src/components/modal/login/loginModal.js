@@ -98,6 +98,7 @@ const LoginModal = ({
                 <Input
                   value={password}
                   type="password"
+                  placeholder="xxx"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Flex>

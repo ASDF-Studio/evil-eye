@@ -10,10 +10,11 @@ import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { verifyEmailOTP } from "@/action";
 
-const OtpModal = ({ isvisible, newEmail, email, onClose }) => {
+const OtpModal = ({ isvisible, newEmail, onClose }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
+  const user = useAppSelector((state) => state.auth.user);
 
   const [otpValue, setOTPValue] = useState("");
 
@@ -27,7 +28,7 @@ const OtpModal = ({ isvisible, newEmail, email, onClose }) => {
     e.preventDefault();
 
     const data = {
-      email: email,
+      email: user.email,
       newEmail: newEmail,
       otp: otpValue,
     };
