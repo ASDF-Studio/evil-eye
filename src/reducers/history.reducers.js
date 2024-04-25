@@ -8,7 +8,6 @@ const initialState = {
   error: null,
 };
 export default function historyReducer(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case historyConstants.HISTORY_REQUEST:
       state = {

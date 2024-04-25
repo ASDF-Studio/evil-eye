@@ -10,7 +10,7 @@ import { sendContactUsData } from "@/action/contact.action";
 
 const Contact = ({ isvisible, onClose }) => {
   const contactUsEmail = "info@evileyeremedy.com";
-  const contactValues = useAppSelector((state) => state.contact);
+  const contact = useAppSelector((state) => state.contact);
   const dispatch = useAppDispatch();
 
   const [userData, setUserData] = useState({
@@ -48,8 +48,14 @@ const Contact = ({ isvisible, onClose }) => {
 
     if (!userData.userEmail || !userData.userName || !userData.userMsg) return;
 
+    const data = {
+      name: userData.userName,
+      email: userData.userEmail,
+      phone: userData.userPhone,
+      message: userData.userMsg,
+    };
     try {
-      dispatch(sendContactUsData({ ...userData, contactUsEmail }));
+      dispatch(sendContactUsData(data));
       setUserData({
         userName: "",
         userEmail: "",
@@ -78,7 +84,7 @@ const Contact = ({ isvisible, onClose }) => {
           <Flex className="gap-2">
             <Email />
             <Typography variant="h12" classname="text-color-brand-yellow2 ">
-              {contactValues.contactUsEmail}
+              {contactUsEmail}
             </Typography>
           </Flex>
           <hr className="w-full border-color-brand-yellow2 my-4" />
@@ -210,13 +216,21 @@ const Contact = ({ isvisible, onClose }) => {
                 />
               </Flex>
             </div>
+            {contact.contactSend && (
+              <p>
+                <Typography classname="text-green-600">
+                  sent successfully
+                </Typography>
+              </p>
+            )}
+
             <Flex className="justify-center pb-2.5 w-[100%]">
               <DesignButton
                 className="w-full"
                 typoVariant="buttonLabel2"
                 onClick={handleSubmit}
               >
-                ENTER
+                {contact.loading == false ? "ENTER" : "Loading..."}
               </DesignButton>
             </Flex>
           </div>

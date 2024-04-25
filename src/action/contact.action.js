@@ -6,36 +6,23 @@ const baseURL = API;
 
 export const sendContactUsData = (contactData) => {
   return async (dispatch) => {
-    dispatch({
-      type: contactConstants.CONTACT_US_REQUEST,
+    dispatch({ type: contactConstants.CONTACT_US_REQUEST });
+    const res = await axios.post(`${baseURL}contact`, {
+      ...contactData,
     });
-    try {
-      const res = await axios.post(`${baseURL}contact`, contactData);
-      //   let res = {
-      //     status: 200,
-      //   };
-      //   throw new Error("error from server");
-      if (res.status === 200) {
-        dispatch({
-          type: contactConstants.CONTACT_US_SUCCESS,
-        });
-        alert("SUCCESS");
-        return;
-      }
-    } catch (error) {
-      //   if (true) {
-      //     let message = "yo";
-      if (error?.response?.status === 400) {
-        const { message } = error?.response?.data;
+
+    if (res.status === 200) {
+      const { message } = res.data;
+      dispatch({
+        type: contactConstants.CONTACT_US_SUCCESS,
+        payload: { message, contactSend: true },
+      });
+    } else {
+      if (res.status === 400) {
         dispatch({
           type: contactConstants.CONTACT_US_FAILURE,
-          payload: {
-            message: message || "Something went wrong. Please try again.",
-            error: error,
-          },
+          payload: { error: message },
         });
-        alert("failed");
-        return;
       }
     }
   };
