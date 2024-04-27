@@ -203,14 +203,6 @@ const Contact = ({ isvisible, onClose, contatcSubmit }) => {
               >
                 {contact.loading == false ? "ENTER" : "Loading..."}
               </DesignButton>
-
-              {contact.contactSend && (
-                <p>
-                  <Typography classname="text-green-600">
-                    sent successfully
-                  </Typography>
-                </p>
-              )}
             </Flex>
           </div>
         </div>

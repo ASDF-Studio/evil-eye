@@ -5,13 +5,13 @@ import { Flex, FlexCenter, FlexColumn } from "../../layout";
 import { DesignButton } from "../../button/designButton";
 
 const variantMapping = {
-  "contact": {
-    header: "Please enter your name.",
-    title: "Please enter a valid email address.",
-    info: "Phone number is invalid.",
-    button: "Please enter your message to us",
+  contact: {
+    header: "Contact Us",
+    title: "thank you! we received your message successfully.",
+    info: "We’ll get back to you as soon we read your message. ",
+    button: "Done",
   },
-  "login": {
+  login: {
     name: "Please enter your name.",
     email: "Please enter a valid email address.",
     phone: "Phone number is invalid.",

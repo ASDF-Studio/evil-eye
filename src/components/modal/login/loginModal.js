@@ -15,6 +15,7 @@ const LoginModal = ({
   openDashboard,
   openSignup,
   openForgotPass1,
+  openNotification,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -51,6 +52,7 @@ const LoginModal = ({
     try {
       await dispatch(login(user));
       onClose();
+      openNotification();
     } catch (error) {
       console.error("Error during login:", error);
     }

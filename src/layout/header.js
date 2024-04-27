@@ -23,6 +23,7 @@ import Contact from "@/components/modal/contact";
 import { DesignButton } from "@/components/button/designButton";
 import { useAppSelector } from "@/hooks";
 import SuccessModal from "@/components/modal/submitMessage/success";
+import NotificationModal from "@/components/modal/submitMessage/notification";
 
 const NAV__LINK = [
   {
@@ -61,6 +62,8 @@ export const Header = () => {
   const [showForgotPass3Modal, setShowForgotPass3Modal] = useState(false);
 
   const [showSuccessModal, setSuccessModal] = useState(false);
+
+  const [showNotification, setNotification] = useState(false);
 
   const closeAllModal = () => {
     setShowLoginModal(false);
@@ -132,6 +135,11 @@ export const Header = () => {
   const contatcSubmit = () => {
     closeAllModal;
     setSuccessModal(true);
+  };
+
+  const openNotification = () => {
+    closeAllModal;
+    setNotification(true);
   };
 
   return (
@@ -240,6 +248,7 @@ export const Header = () => {
         openForgotPassword={openForgotPassword}
         openSignup={openSignup}
         openForgotPass1={openForgotPass1}
+        openNotification={openNotification}
       />
       <DashModal
         isvisible={showDashModal}
@@ -273,6 +282,11 @@ export const Header = () => {
       <ForgotPass3
         isvisible={showForgotPass3Modal}
         onClose={() => setShowForgotPass3Modal(false)}
+      />
+
+      <NotificationModal
+        isvisible={showNotification}
+        onClose={() => setNotification(false)}
       />
     </>
   );
