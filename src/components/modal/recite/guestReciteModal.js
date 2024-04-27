@@ -12,7 +12,7 @@ import { CheckBox } from "@/components/input/checkbox";
 const GuestReciteModal = ({ 
   isvisible,
   onClose,
-  openSelfReciteModal,
+  openPaymentReciteModal,
 
  }) => {
   if (!isvisible) return null;
@@ -22,7 +22,7 @@ const GuestReciteModal = ({
   };
   const openReciteModal2 = () => {
     onClose();
-    openSelfReciteModal();
+    openPaymentReciteModal();
   };
   
 

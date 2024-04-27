@@ -3,15 +3,13 @@ import { Flex, FlexColumn } from "@/components/layout";
 import { Borderline, LeftPlay, Play } from "../components/logo";
 import { Typography } from "@/components/typography";
 import InfoModal from "@/components/infoModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DesignButton } from "@/components/button/designButton";
 import Symtoms from "@/components/infoModal/symtoms";
 import Cure from "@/components/infoModal/cure";
 import EvilEye from "@/components/infoModal/evileye";
 import DashModal from "@/components/modal/dashboard/dashModal";
 import GuestReciteModal from "@/components/modal/recite/guestReciteModal";
-import ElseReciteModal from "@/components/modal/recite/elseReciteModal";
-import SelfReciteModal from "@/components/modal/recite/selfReciteModal";
 import PaymentReciteModal from "@/components/modal/recite/paymentReciteModal";
 import PaymentSuccessReciteModal from "@/components/modal/recite/paymentSuccessReciteModal";
 import PrayerReciteModal from "@/components/modal/recite/prayerReciteModal";
@@ -26,9 +24,6 @@ export const LandingPage = () => {
   const [showModal3, setShowModal3] = useState(false);
   const [showGuestReciteModal, setGuestShowReciteModal] = useState(false);
   const [showReciteModal, setReciteModal] = useState(false);
-
-  const [showSelfReciteModal, setSelfReciteModal] = useState(false);
-  const [showElseReciteModal, setElseReciteModal] = useState(false);
 
   const [showPaymentReciteModal, setPaymentReciteModal] = useState(false);
   const [showPaymentSuccessReciteModal, setPaymentSuccessReciteModal] =
@@ -59,15 +54,6 @@ export const LandingPage = () => {
   const openReciteModal = () => {
     closeAllModals;
     setReciteModal(true);
-  };
-  const openSelfReciteModal = () => {
-    closeAllModals;
-    setSelfReciteModal(true);
-  };
-
-  const openElseReciteModal = () => {
-    closeAllModals;
-    setElseReciteModal(true);
   };
   const openPaymentReciteModal = (data) => {
     setPrayerData(data);
@@ -202,25 +188,13 @@ export const LandingPage = () => {
           <GuestReciteModal
             isvisible={showGuestReciteModal}
             onClose={() => setGuestShowReciteModal(false)}
-            openSelfReciteModal={openSelfReciteModal}
+            openPaymentReciteModal={openPaymentReciteModal}
           />
           <ReciteModal
             isvisible={showReciteModal}
             onClose={() => setReciteModal(false)}
             openPaymentReciteModal={openPaymentReciteModal}
           />
-
-          <SelfReciteModal
-            isvisible={showSelfReciteModal}
-            onClose={() => setSelfReciteModal(false)}
-            openElseReciteModal={openElseReciteModal}
-          />
-          <ElseReciteModal
-            isvisible={showElseReciteModal}
-            onClose={() => setElseReciteModal(false)}
-            openPaymentReciteModal={openPaymentReciteModal}
-          />
-
           <PaymentReciteModal
             isvisible={showPaymentReciteModal}
             onClose={() => setPaymentReciteModal(false)}
@@ -236,7 +210,7 @@ export const LandingPage = () => {
             isvisible={showPrayerReciteModal}
             onClose={() => setPrayerReciteModal(false)}
             openDashboard={openDashboard}
-            openElseReciteModal={openElseReciteModal}
+            openReciteModal={openReciteModal}
           />
           <DashModal
             isvisible={showDashModal}

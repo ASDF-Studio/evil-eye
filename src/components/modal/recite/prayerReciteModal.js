@@ -8,9 +8,13 @@ import PrayerModalFrame from "../prayerModalFrame";
 import { LoadingFrame } from "@/components/loading/loadingFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 
-const PrayerReciteModal = ({ isvisible, onClose, openElseReciteModal, openDashboard }) => {
+const PrayerReciteModal = ({
+  isvisible,
+  onClose,
+  openReciteModal,
+  openDashboard,
+}) => {
   const [prayerDone, setPrayerDone] = useState(false);
-
 
   if (!isvisible) return null;
 
@@ -21,7 +25,7 @@ const PrayerReciteModal = ({ isvisible, onClose, openElseReciteModal, openDashbo
   const openReciteModal3 = () => {
     setPrayerDone(false);
     onClose();
-    openElseReciteModal();
+    openReciteModal();
   };
   const openDashboardModal = () => {
     onClose();
@@ -96,7 +100,10 @@ const PrayerReciteModal = ({ isvisible, onClose, openElseReciteModal, openDashbo
                 </Typography>
               </FlexCenter>
               <div className="pt-6 pb-[40px] w-full flex items-center justify-center">
-                <LoadingFrame className="relative" prayerProgress={prayerProgress} />
+                <LoadingFrame
+                  className="relative"
+                  prayerProgress={prayerProgress}
+                />
               </div>
             </div>
           </Flex>
