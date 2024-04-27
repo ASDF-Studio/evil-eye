@@ -3,32 +3,38 @@ import React from "react";
 import ModalFrame from "../modalFrame";
 import { Typography } from "../../typography";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
-import { Button } from "react-scroll";
-import { DesignButton } from "../../button/designButton";
 import { DesignButton3 } from "../../button/designButton3";
-import { Input } from "@/components/input";
-import { CheckBox } from "@/components/input/checkbox";
-import { DesignButton2 } from "@/components/button/designButton2";
 import { Stripe } from "@/components/logo";
 import { DesignButton1 } from "@/components/button/designButton1";
+import { prayer } from "@/action";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 
-
-const PaymentReciteModal = ({ 
+const PaymentReciteModal = ({
   isvisible,
   onClose,
   openPaymentSuccessReciteModal,
+  prayerData,
+}) => {
+  const dispatch = useAppDispatch();
+  const prayerState = useAppSelector((state) => state.prayer);
 
- }) => {
   if (!isvisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal5 = () => {
-    onClose();
-    openPaymentSuccessReciteModal();
+
+  const handlePayment = async (e) => {
+    e.preventDefault();
+
+    try {
+      await dispatch(prayer(prayerData));
+      onClose();
+      openPaymentSuccessReciteModal();
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
   };
-  
 
   return (
     <FlexCenter
@@ -37,114 +43,105 @@ const PaymentReciteModal = ({
       onClick={handleClose}
     >
       <ModalFrame onClose={onClose} title="Recite the prayer">
-      <div className=" divide-[#FFCE70] divide-y-2">
-        <div className="px-5">
-        <div>
-          <Typography
-            variant="h11"
-            classname="text-color-brand-yellow2 drop-shadow-3xl "
-          >
-            PAYMENT
-          </Typography>
-        </div>
-        <FlexColumn className="mb-3.5 gap-2">
-          
+        <div className=" divide-[#FFCE70] divide-y-2">
+          <div className="px-5">
+            <div>
+              <Typography
+                variant="h11"
+                classname="text-color-brand-yellow2 drop-shadow-3xl "
+              >
+                PAYMENT
+              </Typography>
+            </div>
+            <FlexColumn className="mb-3.5 gap-2">
+              <div className="pt-5 pb-5">
+                <Typography
+                  variant="h12"
+                  classname="text-color-brand-yellow2 opacity-80"
+                >
+                  Ready for the prayer? Please pay and continue.
+                </Typography>
+              </div>
 
-          
+              <hr className="w-auto border-color-brand-op" />
 
-          <div className="pt-5 pb-5">
-          <Typography
-              variant="h12"
-              classname="text-color-brand-yellow2 opacity-80"
-            >
-              Ready for the prayer? Please pay and continue.
-            </Typography>
+              <FlexBetween className="pb-3.5 pt-2 w-auto ">
+                <Typography
+                  variant="h13"
+                  classname=" text-color-brand-yellow2 opacity-80"
+                >
+                  1 Evil Eye Remedy for {prayerData.name}
+                </Typography>
+                <Typography variant="h14" classname=" text-color-brand-yellow2">
+                  ${prayerData.price}
+                </Typography>
+              </FlexBetween>
+              <hr className="w-auto border-color-brand-op" />
+
+              <FlexBetween className="pt-2 w-auto ">
+                <Flex className="flex-col sm:flex-row gap-2">
+                  <Typography
+                    variant="h13"
+                    classname=" text-color-brand-yellow2 opacity-80"
+                  >
+                    Coupon
+                  </Typography>
+                  <Typography
+                    variant="h20"
+                    classname=" text-color-brand-yellow2 opacity-60"
+                  >
+                    50% Discount Applied
+                  </Typography>
+                </Flex>
+                <Flex className="justify-end h-full w-[190px]">
+                  <Flex className="relative w-[170px] h-[40px]">
+                    <DesignButton3>GRKDAY</DesignButton3>
+                  </Flex>
+                </Flex>
+              </FlexBetween>
+            </FlexColumn>
           </div>
-          
-          <hr className="w-auto border-color-brand-op" />
 
-          <FlexBetween className="pb-3.5 pt-2 w-auto ">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      1 Evil Eye Remedy for Adam Voigt
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2"
-                    >
-                      $3.3
-                    </Typography>
-                  </FlexBetween>
-                  <hr className="w-auto border-color-brand-op" />
-
-          <FlexBetween className="pt-2 w-auto ">
-                    <Flex className="flex-col sm:flex-row gap-2">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      Coupon
-                    </Typography>
-                    <Typography
-                      variant="h20"
-                      classname=" text-color-brand-yellow2 opacity-60"
-                    >
-                      50% Discount Applied
-                    </Typography>
-                    </Flex>
-                    <Flex className="justify-end h-full w-[190px]">
-                    <Flex className="relative w-[170px] h-[40px]">
-                <DesignButton3>GRKDAY</DesignButton3>
-              </Flex>
-                    </Flex>
-                  </FlexBetween>
-          
-
-          
-        </FlexColumn>
-        </div>
-
-        <div className="px-5">
+          <div className="px-5">
             <div className="pt-3.5">
-          <FlexBetween className="pt-2 w-auto">
-                    <Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      Total
-                    </Typography>
-                    <Typography
-                      variant="h14"
-                      classname=" text-color-brand-yellow2"
-                    >
-                      $3.3
-                    </Typography>
-                  </FlexBetween>
-          </div>
+              <FlexBetween className="pt-2 w-auto">
+                <Typography
+                  variant="h13"
+                  classname=" text-color-brand-yellow2 opacity-80"
+                >
+                  Total
+                </Typography>
+                <Typography variant="h14" classname=" text-color-brand-yellow2">
+                  ${prayerData.price}
+                </Typography>
+              </FlexBetween>
+            </div>
 
-          <Flex className=" justify-center pt-5 pb-5 w-[100%]">
-            <DesignButton1
-              className="w-full  "
-              typoVariant="buttonLabel2"
+            <Flex className=" justify-center pt-5 pb-5 w-[100%]">
+              <DesignButton1
+                className="w-full  "
+                typoVariant="buttonLabel2"
+                onClick={handlePayment}
+              >
+                {prayerState.loading == false
+                  ? "CONTINUE WITH PAYMENT"
+                  : "Loading..."}
+              </DesignButton1>
+            </Flex>
+            <FlexCenter className="pb-5">
+              <Typography
+                variant="h13"
+                classname=" text-color-brand-yellow2 opacity-80"
+              >
+                Secured by
+              </Typography>
 
-               onClick={openReciteModal5}
-            >
-              CONTINUE WITH PAYMENT
-            </DesignButton1>
-          </Flex>
-                    <FlexCenter className="pb-5"><Typography
-                      variant="h13"
-                      classname=" text-color-brand-yellow2 opacity-80"
-                    >
-                      Secured by
-                    </Typography>
-                    
-                    <div className="pl-2"><Stripe/></div>
-                    </FlexCenter>
+              <div className="pl-2">
+                <Stripe />
+              </div>
+            </FlexCenter>
           </div>
-          </div>
+        </div>
       </ModalFrame>
     </FlexCenter>
   );

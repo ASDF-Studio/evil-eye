@@ -49,3 +49,8 @@ export const authConstants = {
     HISTORY_FAILURE: "HISTORY_FAILURE",
   };
   
+  export const prayerConstants = {
+    PRAYER_REQUEST: "PRAYER_REQUEST",
+    PRAYER_SUCCESS: "PRAYER_SUCCESS",
+    PRAYER_FAILURE: "PRAYER_FAILURE",
+  };

@@ -15,30 +15,50 @@ import SelfReciteModal from "@/components/modal/recite/selfReciteModal";
 import PaymentReciteModal from "@/components/modal/recite/paymentReciteModal";
 import PaymentSuccessReciteModal from "@/components/modal/recite/paymentSuccessReciteModal";
 import PrayerReciteModal from "@/components/modal/recite/prayerReciteModal";
+import { useAppSelector } from "@/hooks";
+import ReciteModal from "@/components/modal/recite/reciteModal";
 
 export const LandingPage = () => {
+  const auth = useAppSelector((state) => state.auth);
+
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
   const [showGuestReciteModal, setGuestShowReciteModal] = useState(false);
+  const [showReciteModal, setReciteModal] = useState(false);
+
   const [showSelfReciteModal, setSelfReciteModal] = useState(false);
   const [showElseReciteModal, setElseReciteModal] = useState(false);
+
   const [showPaymentReciteModal, setPaymentReciteModal] = useState(false);
   const [showPaymentSuccessReciteModal, setPaymentSuccessReciteModal] =
     useState(false);
   const [showPrayerReciteModal, setPrayerReciteModal] = useState(false);
   const [showDashModal, setShowDashModal] = useState(false);
 
+  const [prayerData, setPrayerData] = useState([]);
+
   const closeAllModals = () => {
     setShowModal(false);
     setShowModal2(false);
     setShowModal3(false);
     setGuestShowReciteModal(false);
+    setReciteModal(false);
+
     setSelfReciteModal(false);
     setElseReciteModal(false);
+
     setPaymentReciteModal(false);
     setPaymentSuccessReciteModal(false);
     setPrayerReciteModal(false);
+  };
+  const openGuestReciteModal = () => {
+    closeAllModals;
+    setGuestShowReciteModal(true);
+  };
+  const openReciteModal = () => {
+    closeAllModals;
+    setReciteModal(true);
   };
   const openSelfReciteModal = () => {
     closeAllModals;
@@ -49,7 +69,8 @@ export const LandingPage = () => {
     closeAllModals;
     setElseReciteModal(true);
   };
-  const openPaymentReciteModal = () => {
+  const openPaymentReciteModal = (data) => {
+    setPrayerData(data);
     closeAllModals;
     setPaymentReciteModal(true);
   };
@@ -66,9 +87,14 @@ export const LandingPage = () => {
     setShowDashModal(true);
   };
 
-  const handlePrayerModal = () => {
-    closeAllModals();
-    setGuestShowReciteModal(!showGuestReciteModal);
+  const handlePrayerModal = async (e) => {
+    e.preventDefault();
+
+    if (auth.authenticate) {
+      openReciteModal();
+    } else {
+      openGuestReciteModal();
+    }
   };
 
   return (
@@ -178,6 +204,12 @@ export const LandingPage = () => {
             onClose={() => setGuestShowReciteModal(false)}
             openSelfReciteModal={openSelfReciteModal}
           />
+          <ReciteModal
+            isvisible={showReciteModal}
+            onClose={() => setReciteModal(false)}
+            openPaymentReciteModal={openPaymentReciteModal}
+          />
+
           <SelfReciteModal
             isvisible={showSelfReciteModal}
             onClose={() => setSelfReciteModal(false)}
@@ -188,10 +220,12 @@ export const LandingPage = () => {
             onClose={() => setElseReciteModal(false)}
             openPaymentReciteModal={openPaymentReciteModal}
           />
+
           <PaymentReciteModal
             isvisible={showPaymentReciteModal}
             onClose={() => setPaymentReciteModal(false)}
             openPaymentSuccessReciteModal={openPaymentSuccessReciteModal}
+            prayerData={prayerData}
           />
           <PaymentSuccessReciteModal
             isvisible={showPaymentSuccessReciteModal}

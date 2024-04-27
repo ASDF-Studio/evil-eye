@@ -4,6 +4,8 @@ import { Typography } from "../typography";
 
 export const CheckBox = ({
   type = "checkbox",
+  checked = false,
+  onChange,
   placeholder = "",
   className = "",
   typoVariant = "placeholder",
@@ -21,9 +23,10 @@ export const CheckBox = ({
       <Flex className="absolute justify-start items-center w-full h-[40px] z-50">
         <input
           type={type}
+          checked={checked}
+          onChange={onChange}
           className={`mr-2 ml-6 h-[22px] w-[22px] border-2 border-border-checkBox appearance-none checked:bg-[url('/logos/check.svg')] bg-auto bg-no-repeat bg-center cursor-pointer`}
         />
-        {/* checked:bg-[url('/logos/check.svg')] */}
         <Typography classname="text-border-checkBox" variant={typoVariant}>
           {children}
         </Typography>

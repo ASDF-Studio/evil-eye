@@ -8,7 +8,6 @@ const initialState = {
   contactSend: false
 };
 export default function contactReducers(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case contactConstants.CONTACT_US_REQUEST:
       state = {
