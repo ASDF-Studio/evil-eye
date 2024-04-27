@@ -22,6 +22,7 @@ import Pricing from "@/components/modal/pricing";
 import Contact from "@/components/modal/contact";
 import { DesignButton } from "@/components/button/designButton";
 import { useAppSelector } from "@/hooks";
+import SuccessModal from "@/components/modal/submitMessage/success";
 
 const NAV__LINK = [
   {
@@ -42,7 +43,6 @@ const NAV__LINK = [
 ];
 
 export const Header = () => {
-
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
 
@@ -59,6 +59,8 @@ export const Header = () => {
   const [showForgotPass1Modal, setShowForgotPass1Modal] = useState(false);
   const [showForgotPass2Modal, setShowForgotPass2Modal] = useState(false);
   const [showForgotPass3Modal, setShowForgotPass3Modal] = useState(false);
+
+  const [showSuccessModal, setSuccessModal] = useState(false);
 
   const closeAllModal = () => {
     setShowLoginModal(false);
@@ -125,6 +127,11 @@ export const Header = () => {
   const openForgotPass3 = () => {
     closeAllModal;
     setShowForgotPass3Modal(true);
+  };
+
+  const contatcSubmit = () => {
+    closeAllModal;
+    setSuccessModal(true);
   };
 
   return (
@@ -217,6 +224,13 @@ export const Header = () => {
       <Contact
         isvisible={showContactModal}
         onClose={() => setShowContactModal(false)}
+        contatcSubmit={contatcSubmit}
+      />
+
+      <SuccessModal
+        isvisible={showSuccessModal}
+        onClose={() => setSuccessModal(false)}
+        type={"contact"}
       />
 
       <LoginModal

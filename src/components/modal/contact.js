@@ -7,10 +7,13 @@ import { DesignButton } from "../button/designButton";
 import { Email } from "../logo";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { sendContactUsData } from "@/action/contact.action";
+import { InlineError } from "@/validity";
+import SuccessModal from "./submitMessage/success";
 
-const Contact = ({ isvisible, onClose }) => {
+const Contact = ({ isvisible, onClose, contatcSubmit }) => {
   const contactUsEmail = "info@evileyeremedy.com";
   const contact = useAppSelector((state) => state.contact);
+
   const dispatch = useAppDispatch();
 
   const [userData, setUserData] = useState({
@@ -62,10 +65,14 @@ const Contact = ({ isvisible, onClose }) => {
         userPhone: "",
         userMsg: "",
       });
+
+      onClose();
+      contatcSubmit();
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm 2xl:mt-10 4xl:mt-0"
@@ -100,17 +107,6 @@ const Contact = ({ isvisible, onClose }) => {
                   Name
                 </Typography>
               </label>
-              <p>
-                {invalidInputs.isUserNameInvalid ? (
-                  <Typography classname="text-red-600">
-                    Name is required*
-                  </Typography>
-                ) : (
-                  <Typography classname="block opacity-0">
-                    Name is required*
-                  </Typography>
-                )}
-              </p>
               <Flex className="relative h-[40px]">
                 <Input
                   id="userName"
@@ -122,6 +118,10 @@ const Contact = ({ isvisible, onClose }) => {
                   }}
                 />
               </Flex>
+
+              {invalidInputs.isUserNameInvalid && (
+                <InlineError message={"name"} />
+              )}
             </div>
 
             <div>
@@ -130,17 +130,6 @@ const Contact = ({ isvisible, onClose }) => {
                   Email
                 </Typography>
               </label>
-              <p>
-                {invalidInputs.isEmailInvalid ? (
-                  <Typography classname="text-red-600">
-                    Email is required*
-                  </Typography>
-                ) : (
-                  <Typography classname="opacity-0">
-                    Email is required*
-                  </Typography>
-                )}
-              </p>
               <Flex className="relative h-[40px]">
                 <Input
                   id="userEmail"
@@ -152,6 +141,10 @@ const Contact = ({ isvisible, onClose }) => {
                   value={userData.userEmail}
                 />
               </Flex>
+
+              {invalidInputs.isEmailInvalid && (
+                <InlineError message={"email"} />
+              )}
             </div>
             <div>
               <label htmlFor="password" className="block">
@@ -159,17 +152,6 @@ const Contact = ({ isvisible, onClose }) => {
                   Phone (Optional)
                 </Typography>
               </label>
-              <p>
-                {invalidInputs.isPhoneInvalid ? (
-                  <Typography classname="text-red-600">
-                    Phone numbder is invalid
-                  </Typography>
-                ) : (
-                  <Typography classname="opacity-0">
-                    Phone numbder is invalid
-                  </Typography>
-                )}
-              </p>
               <Flex className="relative h-[40px]">
                 <Input
                   id="userPhone"
@@ -181,6 +163,9 @@ const Contact = ({ isvisible, onClose }) => {
                   value={userData.userPhone}
                 />
               </Flex>
+              {invalidInputs.isPhoneInvalid && (
+                <InlineError message={"phone"} />
+              )}
             </div>
             <div>
               <label htmlFor="password" className="block">
@@ -191,17 +176,6 @@ const Contact = ({ isvisible, onClose }) => {
                   Message
                 </Typography>
               </label>
-              <p>
-                {invalidInputs.isMsgInvalid ? (
-                  <Typography classname="text-red-600">
-                    Message is invalid
-                  </Typography>
-                ) : (
-                  <Typography classname="opacity-0">
-                    Message is invalid
-                  </Typography>
-                )}
-              </p>
               <Flex className="relative h-[140px] border-2 border-color-brand-gold2">
                 <textarea
                   onChange={(e) => {
@@ -215,14 +189,11 @@ const Contact = ({ isvisible, onClose }) => {
                   required
                 />
               </Flex>
+
+              {invalidInputs.isMsgInvalid && (
+                <InlineError message={"message"} />
+              )}
             </div>
-            {contact.contactSend && (
-              <p>
-                <Typography classname="text-green-600">
-                  sent successfully
-                </Typography>
-              </p>
-            )}
 
             <Flex className="justify-center pb-2.5 w-[100%]">
               <DesignButton
@@ -232,6 +203,14 @@ const Contact = ({ isvisible, onClose }) => {
               >
                 {contact.loading == false ? "ENTER" : "Loading..."}
               </DesignButton>
+
+              {contact.contactSend && (
+                <p>
+                  <Typography classname="text-green-600">
+                    sent successfully
+                  </Typography>
+                </p>
+              )}
             </Flex>
           </div>
         </div>

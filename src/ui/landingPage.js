@@ -39,10 +39,6 @@ export const LandingPage = () => {
     setShowModal3(false);
     setGuestShowReciteModal(false);
     setReciteModal(false);
-
-    setSelfReciteModal(false);
-    setElseReciteModal(false);
-
     setPaymentReciteModal(false);
     setPaymentSuccessReciteModal(false);
     setPrayerReciteModal(false);
