@@ -64,6 +64,8 @@ export const Header = () => {
   const [showSuccessModal, setSuccessModal] = useState(false);
 
   const [showNotification, setNotification] = useState(false);
+  
+  const [notificationData, setNotificationData] = useState();
 
   const closeAllModal = () => {
     setShowLoginModal(false);
@@ -137,9 +139,14 @@ export const Header = () => {
     setSuccessModal(true);
   };
 
-  const openNotification = () => {
+  const openNotification = (data) => {
     closeAllModal;
+    setNotificationData(data);
     setNotification(true);
+
+    setTimeout(() => {
+      setNotification(false);
+    }, 4000);
   };
 
   return (
@@ -165,7 +172,7 @@ export const Header = () => {
                       classname="text-color-brand-yellow2 font-roman whitespace-nowrap"
                     >
                       {item.display === "login"
-                        ? user.name
+                        ? auth.authenticate
                           ? `${user.name}`
                           : "login"
                         : item.display}
@@ -253,10 +260,12 @@ export const Header = () => {
       <DashModal
         isvisible={showDashModal}
         onClose={() => setShowDashModal(false)}
+        openNotification={openNotification}
       />
       <PassModal
         isvisible={showPassModal}
         onClose={() => setShowPassModal(false)}
+        openNotification={openNotification}
       />
       <SignupModal
         isvisible={showSignupModal}
@@ -268,6 +277,7 @@ export const Header = () => {
       <SignupOtpModal
         isvisible={showSignupOTPModal}
         onClose={() => setShowSignupOTPModal(false)}
+        openNotification={openNotification}
       />
       <ForgotPass1
         isvisible={showForgotPass1Modal}
@@ -287,6 +297,7 @@ export const Header = () => {
       <NotificationModal
         isvisible={showNotification}
         onClose={() => setNotification(false)}
+        notificationData={notificationData}
       />
     </>
   );

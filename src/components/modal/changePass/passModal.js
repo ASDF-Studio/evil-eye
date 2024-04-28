@@ -7,7 +7,7 @@ import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { updatePassword } from "@/action";
 
-const PassModal = ({ isvisible, email, onClose }) => {
+const PassModal = ({ isvisible, email, onClose, openNotification }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
@@ -34,6 +34,7 @@ const PassModal = ({ isvisible, email, onClose }) => {
     try {
       await dispatch(updatePassword(data));
       onClose();
+      openNotification("password");
     } catch (error) {
       console.error("Error during update password:", error);
     }

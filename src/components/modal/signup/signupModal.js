@@ -16,7 +16,7 @@ const SignupModal = ({
   openDashboard,
   openLogin,
   openForgotPassword,
-  openSignupOTP,
+  openSignupOTP
 }) => {
   const dispatch = useAppDispatch();
 
@@ -61,6 +61,7 @@ const SignupModal = ({
 
     try {
       await dispatch(signup(user));
+      openSignupOTPModal()
     } catch (error) {
       console.error("Error during signup:", error);
     }

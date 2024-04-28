@@ -52,7 +52,7 @@ const LoginModal = ({
     try {
       await dispatch(login(user));
       onClose();
-      openNotification();
+      openNotification("login");
     } catch (error) {
       console.error("Error during login:", error);
     }

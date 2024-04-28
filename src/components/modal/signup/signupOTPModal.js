@@ -1,17 +1,40 @@
 import React, { useState } from "react";
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
+import { Flex, FlexBetween, FlexCenter } from "../../layout";
 import ModalFrame from "../modalFrame";
-import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
-import DashModal from "../dashboard/dashModal";
 import { Button } from "@/components/button";
 import { Input } from "@/components/input";
+import { verifyOTP } from "@/action";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 
-const SignupOtpModal = ({ isvisible, onClose }) => {
+const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
+  const dispatch = useAppDispatch();
+
+  const auth = useAppSelector((state) => state.auth);
+  const user = useAppSelector((state) => state.auth.user);
+
+  const [otpValue, setOTPValue] = useState("");
+
   if (!isvisible) return null;
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      email: user.email,
+      otp: otpValue,
+    };
+
+    try {
+      await dispatch(verifyOTP(data));
+      onClose();
+      openNotification("signup");
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
   };
 
   return (
@@ -29,10 +52,7 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
             SIGN UP
           </Typography>
           <div className="pt-3.5">
-            <Typography
-              variant="h12"
-              classname=" text-color-brand-yellow2"
-            >
+            <Typography variant="h12" classname=" text-color-brand-yellow2">
               We have sent you an OTP to your email address:
               <span className=" hover:underline">
                 {" "}
@@ -45,21 +65,25 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
 
           <div className="pt-3.5">
             <label for="email" className="block  mb-1.5">
-              <Typography
-                variant="h12"
-                classname=" text-color-brand-yellow2"
-              >
+              <Typography variant="h12" classname=" text-color-brand-yellow2">
                 OTP
               </Typography>
             </label>
             <Flex className="relative w-full h-[40px] ">
-              <Input type="text" placeholder="XXXX"/>
+              <Input
+                type="number"
+                placeholder="XXXX"
+                value={otpValue}
+                onChange={(e) => setOTPValue(e.target.value)}
+              />
             </Flex>
           </div>
           <FlexBetween className="mt-3">
-            <Button variant="text" className="w-full" typoVariant="text">
-              
-            </Button>
+            <Button
+              variant="text"
+              className="w-full"
+              typoVariant="text"
+            ></Button>
             <Button variant="text" className="w-full" typoVariant="text">
               <Typography
                 variant="h12"
@@ -70,8 +94,12 @@ const SignupOtpModal = ({ isvisible, onClose }) => {
             </Button>
           </FlexBetween>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
-            <DesignButton className=" w-full" typoVariant="buttonLabel2">
-              Finish Sign Up
+            <DesignButton
+              className=" w-full"
+              typoVariant="buttonLabel2"
+              onClick={handleSubmit}
+            >
+              {auth.loading == false ? "Finish Sign Up" : "Loading..."}
             </DesignButton>
           </Flex>
         </div>

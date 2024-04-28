@@ -14,7 +14,7 @@ import { DesignButton3 } from "@/components/button/designButton3";
 import { getHistoryData, logout, updateUser } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 
-const DashModal = ({ isvisible, onClose, children }) => {
+const DashModal = ({ isvisible, onClose, children, openNotification }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
@@ -49,6 +49,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
     const updatedUser = { ...user, name: name };
     try {
       await dispatch(updateUser(updatedUser));
+      openNotification("save");
     } catch (error) {
       console.error("Error during logout:", error);
     }
@@ -58,6 +59,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
     try {
       await dispatch(logout());
       onClose();
+      openNotification("logout");
     } catch (error) {
       console.error("Error during logout:", error);
     }
@@ -133,6 +135,7 @@ const DashModal = ({ isvisible, onClose, children }) => {
                   isvisible={showOtpModal}
                   newEmail={newEmail}
                   onClose={() => setShowOtpModal(false)}
+                  openNotification={openNotification}
                 />
               </FlexBetween>
               <Flex className="relative h-[40px] pt-2">

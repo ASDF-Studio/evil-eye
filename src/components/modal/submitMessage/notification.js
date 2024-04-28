@@ -2,11 +2,20 @@ import React from "react";
 import { FlexCenter } from "../../layout";
 import NotificationFrame from "../notificationFrame";
 
-const NotificationModal = ({ isvisible, onClose }) => {
+const NotificationModal = ({ isvisible, onClose, notificationData }) => {
   if (!isvisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
+  };
+
+  const variantMapping = {
+    login: "Welcome back. You have successfully login.",
+    signup: "Welcome. You have successfully login.",
+    logout: "successfully logged out",
+    save: "Data saved.",
+    password: "Password updated",
+    email: "Email change successfully"
   };
 
   return (
@@ -15,7 +24,7 @@ const NotificationModal = ({ isvisible, onClose }) => {
       id="wrapper"
       onClick={handleClose}
     >
-      <NotificationFrame onClose={onClose} title={"Welcome back. You have successfully login. "} />
+      <NotificationFrame onClose={onClose} title={variantMapping[notificationData]} />
     </FlexCenter>
   );
 };

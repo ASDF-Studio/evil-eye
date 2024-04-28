@@ -10,7 +10,7 @@ import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { verifyEmailOTP } from "@/action";
 
-const OtpModal = ({ isvisible, newEmail, onClose }) => {
+const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
@@ -36,6 +36,7 @@ const OtpModal = ({ isvisible, newEmail, onClose }) => {
     try {
       await dispatch(verifyEmailOTP(data));
       onClose();
+      openNotification("email");
     } catch (error) {
       console.error("Error during signup:", error);
     }
