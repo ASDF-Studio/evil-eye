@@ -70,10 +70,10 @@ const PaymentReciteModal = ({
                   variant="h13"
                   classname=" text-color-brand-yellow2 opacity-80"
                 >
-                  1 Evil Eye Remedy for {prayerData.name}
+                  1 Evil Eye Remedy for {prayerData?.name}
                 </Typography>
                 <Typography variant="h14" classname=" text-color-brand-yellow2">
-                  ${prayerData.price}
+                  ${prayerData?.price}
                 </Typography>
               </FlexBetween>
               <hr className="w-auto border-color-brand-op" />
@@ -112,7 +112,7 @@ const PaymentReciteModal = ({
                   Total
                 </Typography>
                 <Typography variant="h14" classname=" text-color-brand-yellow2">
-                  ${prayerData.price}
+                  ${prayerData?.price}
                 </Typography>
               </FlexBetween>
             </div>

@@ -7,6 +7,7 @@ import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import { verifyOTP } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
+import { InlineError } from "@/validity";
 
 const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,10 @@ const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
 
   const [otpValue, setOTPValue] = useState("");
 
+  const [invalidInputs, setInvalidInputs] = useState({
+    isOTPInvalid: false,
+  });
+
   if (!isvisible) return null;
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
@@ -23,6 +28,13 @@ const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setInvalidInputs({
+      isOTPInvalid: otpValue ? false : true,
+    });
+
+    if (!otpValue) return;
+
     const data = {
       email: user.email,
       otp: otpValue,
@@ -77,6 +89,8 @@ const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
                 onChange={(e) => setOTPValue(e.target.value)}
               />
             </Flex>
+
+            {invalidInputs.isOTPInvalid && <InlineError message={"otp"} />}
           </div>
           <FlexBetween className="mt-3">
             <Button

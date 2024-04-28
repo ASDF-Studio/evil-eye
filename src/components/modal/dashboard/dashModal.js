@@ -13,6 +13,7 @@ import PrayerHistory from "../../dashboard/prayerHistory";
 import { DesignButton3 } from "@/components/button/designButton3";
 import { getHistoryData, logout, updateUser } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
+import { InlineError } from "@/validity";
 
 const DashModal = ({ isvisible, onClose, children, openNotification }) => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,10 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [showPassModal, setShowPassModal] = useState(false);
+
+  const [invalidInputs, setInvalidInputs] = useState({
+    isNameInvalid: false,
+  });
 
   useEffect(() => {
     if (auth.authenticate) {
@@ -46,6 +51,12 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
   };
 
   const handleSave = async () => {
+    setInvalidInputs({
+      isNameInvalid: name ? false : true,
+    });
+
+    if (!name) return;
+
     const updatedUser = { ...user, name: name };
     try {
       await dispatch(updateUser(updatedUser));
@@ -116,6 +127,8 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </Flex>
+
+              {invalidInputs.isNameInvalid && <InlineError message={"name"} />}
             </div>
 
             <div className="mt-5">

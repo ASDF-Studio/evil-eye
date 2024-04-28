@@ -6,6 +6,7 @@ import { DesignButton } from "../../button/designButton";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 import { useAppSelector } from "@/hooks";
+import { InlineError } from "@/validity";
 
 const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const auth = useAppSelector((state) => state.auth);
@@ -19,6 +20,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [recipientType, setRecipientType] = useState("myself");
   const [contactMethod, setContactMethod] = useState("email");
+
+  const [invalidInputs, setInvalidInputs] = useState({
+    isNewNameInvalid: false,
+  });
 
   if (!isvisible) return null;
 
@@ -42,6 +47,12 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       name = newName;
       email = newEmail;
       number = newPhone;
+
+      setInvalidInputs({
+        isNewNameInvalid: newName ? false : true,
+      });
+
+      if (!newName) return;
     }
 
     const data = {
@@ -157,6 +168,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     onChange={(e) => setNewName(e.target.value)}
                   />
                 </Flex>
+
+                {invalidInputs.isNewNameInvalid && (
+                  <InlineError message={"name"} />
+                )}
               </div>
 
               <div className="pt-3">

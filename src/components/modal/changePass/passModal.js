@@ -6,6 +6,7 @@ import { DesignButton } from "../../button/designButton";
 import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { updatePassword } from "@/action";
+import { InlineError } from "@/validity";
 
 const PassModal = ({ isvisible, email, onClose, openNotification }) => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,11 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [invalidInputs, setInvalidInputs] = useState({
+    isPasswordInvalid: false,
+    isConfirmPasswordInvalid: false,
+  });
+
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -24,6 +30,13 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setInvalidInputs({
+      isPasswordInvalid: newPassword ? false : true,
+      isConfirmPasswordInvalid: confirmPassword ? false : true,
+    });
+
+    if (!newPassword || !confirmPassword) return;
 
     const data = {
       email: user.email,
@@ -68,6 +81,9 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
                 onChange={(e) => setNewPassword(e.target.value)}
               />
             </Flex>
+            {invalidInputs.isPasswordInvalid && (
+              <InlineError message={"password"} />
+            )}
           </div>
           <div className="pt-5">
             <label for="password" className="block mb-1.5">
@@ -83,6 +99,9 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </Flex>
+            {invalidInputs.isConfirmPasswordInvalid && (
+              <InlineError message={"password"} />
+            )}
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton

@@ -8,6 +8,7 @@ import { DesignButton } from "../../button/designButton";
 import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { changeEmail } from "@/action";
+import { InlineError } from "@/validity";
 
 const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,10 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
 
   const [newEmail, setNewEmail] = useState("");
 
+  const [invalidInputs, setInvalidInputs] = useState({
+    isEmailInvalid: false,
+  });
+
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -25,6 +30,12 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
+
+    setInvalidInputs({
+      isEmailInvalid: newEmail ? false : true,
+    });
+
+    if (!newEmail) return;
 
     const data = {
       email: user.email,
@@ -68,6 +79,8 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
                 onChange={(e) => setNewEmail(e.target.value)}
               />
             </Flex>
+
+            {invalidInputs.isEmailInvalid && <InlineError message={"email"} />}
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton
@@ -85,4 +98,3 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
 };
 
 export default EmailModal;
-

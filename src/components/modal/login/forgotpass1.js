@@ -6,12 +6,17 @@ import { DesignButton } from "../../button/designButton";
 import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { generateResetPasswordLink } from "@/action";
+import { InlineError } from "@/validity";
 
 const ForgotPass1 = ({ isvisible, onClose, openForgotPass2 }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
   const [email, setEmail] = useState("");
+
+  const [invalidInputs, setInvalidInputs] = useState({
+    isEmailInvalid: false,
+  });
 
   if (!isvisible) return null;
   const handleClose = (e) => {
@@ -24,6 +29,11 @@ const ForgotPass1 = ({ isvisible, onClose, openForgotPass2 }) => {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
+
+    setInvalidInputs({
+      isEmailInvalid: email ? false : true,
+    });
+    if (!email) return;
 
     const data = {
       email: email,
@@ -72,6 +82,7 @@ const ForgotPass1 = ({ isvisible, onClose, openForgotPass2 }) => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Flex>
+            {invalidInputs.isEmailInvalid && <InlineError message={"email"} />}
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton

@@ -9,6 +9,7 @@ import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { verifyEmailOTP } from "@/action";
+import { InlineError } from "@/validity";
 
 const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,10 @@ const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
 
   const [otpValue, setOTPValue] = useState("");
 
+  const [invalidInputs, setInvalidInputs] = useState({
+    isOTPInvalid: false,
+  });
+
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -26,6 +31,12 @@ const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
 
   const handleOTPSubmit = async (e) => {
     e.preventDefault();
+
+    setInvalidInputs({
+      isOTPInvalid: otpValue ? false : true,
+    });
+
+    if (!otpValue) return;
 
     const data = {
       email: user.email,
@@ -59,8 +70,8 @@ const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
           <div className="pt-6">
             <Typography variant="h12" classname=" text-color-brand-yellow2 ">
               We have sent you an OTP to your email address:
-              <span className=" underline"> {newEmail}.</span> Please
-              enter your code <br></br>below to finish changing your email.
+              <span className=" underline"> {newEmail}.</span> Please enter your
+              code <br></br>below to finish changing your email.
             </Typography>
           </div>
 
@@ -78,6 +89,8 @@ const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
                 onChange={(e) => setOTPValue(e.target.value)}
               />
             </Flex>
+
+            {invalidInputs.isOTPInvalid && <InlineError message={"otp"} />}
           </div>
           <Flex className="justify-end mt-3">
             <Button variant="text" className="w-full" typoVariant="text">

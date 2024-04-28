@@ -9,6 +9,7 @@ import { Input } from "../../input";
 import { DesignButton3 } from "@/components/button/designButton3";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { signup } from "@/action";
+import { InlineError } from "@/validity";
 
 const SignupModal = ({
   isvisible,
@@ -16,7 +17,7 @@ const SignupModal = ({
   openDashboard,
   openLogin,
   openForgotPassword,
-  openSignupOTP
+  openSignupOTP,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -25,6 +26,13 @@ const SignupModal = ({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [invalidInputs, setInvalidInputs] = useState({
+    isNameInvalid: false,
+    isEmailInvalid: false,
+    isPasswordInvalid: false,
+    isPasswordConfirmedInvalid: false,
+  });
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
@@ -52,16 +60,25 @@ const SignupModal = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setInvalidInputs({
+      isNameInvalid: name ? false : true,
+      isEmailInvalid: email ? false : true,
+      isPasswordInvalid: password ? false : true,
+      isPasswordConfirmedInvalid: confirmPassword ? false : true,
+    });
+
+    if (!name || !email || !password || !confirmPassword) return;
+
     const user = {
       name,
       email,
       password,
-      confirmPassword
+      confirmPassword,
     };
 
     try {
       await dispatch(signup(user));
-      openSignupOTPModal()
+      openSignupOTPModal();
     } catch (error) {
       console.error("Error during signup:", error);
     }
@@ -85,78 +102,76 @@ const SignupModal = ({
           </Typography>
         </div>
         <div className="px-2 text-left">
-          <div className="space-y-5 h-[500px] sm:h-[600px] 2xl:h-auto w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left  pb-5" >
+          <div className="space-y-5 h-[500px] sm:h-[600px] 2xl:h-auto w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left  pb-5">
             <div>
               <label htmlFor="email" className="block mb-1.5">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2"
-                >
+                <Typography variant="h12" classname="text-color-brand-yellow2">
                   Your Name
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input 
+                <Input
                   type="text"
                   placeholder="Your Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </Flex>
+              {invalidInputs.isNameInvalid && <InlineError message={"name"} />}
             </div>
             <div>
               <label htmlFor="email" className="block mb-1.5">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2"
-                >
+                <Typography variant="h12" classname="text-color-brand-yellow2">
                   Email
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input 
-                  type="email" 
+                <Input
+                  type="email"
                   placeholder="example@domain.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Flex>
+              {invalidInputs.isEmailInvalid && (
+                <InlineError message={"email"} />
+              )}
             </div>
 
             <div>
               <label htmlFor="password" className="block mb-1.5">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2"
-                >
+                <Typography variant="h12" classname="text-color-brand-yellow2">
                   Password
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input 
+                <Input
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)} 
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Flex>
+              {invalidInputs.isPasswordInvalid && (
+                <InlineError message={"password"} />
+              )}
             </div>
 
             <div>
               <label htmlFor="password" className="block mb-1.5">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2 "
-                >
+                <Typography variant="h12" classname="text-color-brand-yellow2 ">
                   Confirm Password
                 </Typography>
               </label>
               <Flex className="relative h-[40px]">
-                <Input 
+                <Input
                   type="password"
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)} 
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </Flex>
+              {invalidInputs.isPasswordConfirmedInvalid && (
+                <InlineError message={"password"} />
+              )}
             </div>
             <Flex className="justify-center w-[100%]">
               <DesignButton
@@ -172,10 +187,7 @@ const SignupModal = ({
             <hr className="w-auto sm:w-[410px] border-color-brand-op" />
             <div className="">
               <FlexCenter className="w-auto mt-2 text-color-brand-yellow2">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2"
-                >
+                <Typography variant="h12" classname="text-color-brand-yellow2">
                   Already have an account?
                 </Typography>
               </FlexCenter>

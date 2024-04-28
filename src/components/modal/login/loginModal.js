@@ -8,6 +8,7 @@ import { Input } from "../../input";
 import { DesignButton3 } from "../../button/designButton3";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { login } from "@/action";
+import { InlineError } from "@/validity";
 
 const LoginModal = ({
   isvisible,
@@ -22,6 +23,11 @@ const LoginModal = ({
   const auth = useAppSelector((state) => state.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [invalidInputs, setInvalidInputs] = useState({
+    isEmailInvalid: false,
+    isPasswordInvalid: false,
+  });
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
@@ -44,6 +50,14 @@ const LoginModal = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setInvalidInputs({
+      isEmailInvalid: email ? false : true,
+      isPasswordInvalid: password ? false : true,
+    });
+
+    if (!email || !password) return;
+
     const user = {
       email,
       password,
@@ -68,7 +82,10 @@ const LoginModal = ({
     >
       <ModalFrame onClose={onClose} title="USER ACCOUNT">
         <div className="px-5 mb-3.5">
-          <Typography variant="h11" classname="text-color-brand-yellow2 drop-shadow-3xl">
+          <Typography
+            variant="h11"
+            classname="text-color-brand-yellow2 drop-shadow-3xl"
+          >
             LOGIN
           </Typography>
         </div>
@@ -88,6 +105,7 @@ const LoginModal = ({
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Flex>
+              {invalidInputs.isEmailInvalid && <InlineError message={"email"} />}
             </div>
 
             <div>
@@ -104,6 +122,9 @@ const LoginModal = ({
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Flex>
+              {invalidInputs.isPasswordInvalid && (
+                <InlineError message={"password"} />
+              )}
             </div>
             <Flex className="w-auto justify-end">
               <FlexBetween className="w-auto">
@@ -149,7 +170,10 @@ const LoginModal = ({
             </div>
             <hr className="w-auto sm:w-[410px] border-color-brand-op" />
             <FlexCenter className="w-auto sm:w-[410px]">
-              <Typography variant="h12" classname="underline text-color-brand-yellow2">
+              <Typography
+                variant="h12"
+                classname="underline text-color-brand-yellow2"
+              >
                 Continue as guest
               </Typography>
             </FlexCenter>
