@@ -8,6 +8,7 @@ const initialState = {
   error: null,
   couponValid: false,
   discountPercentage: "",
+  coupon:""
 };
 export default function prayerReducer(state = initialState, action) {
   console.log(action);
@@ -56,7 +57,8 @@ export default function prayerReducer(state = initialState, action) {
         loading: false,
         couponValid: true,
         error: null,
-        discountPercentage: action.paylaod.discountPercentage
+        coupon: action.payload.couponCode,
+        discountPercentage: action.payload.discountPercentage,
       };
       break;
 

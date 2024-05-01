@@ -8,8 +8,7 @@ import { Stripe } from "@/components/logo";
 import { DesignButton1 } from "@/components/button/designButton1";
 import { paymentCheckout, prayer, validateCoupon } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-
-// import { loadStripe } from "@stripe/stripe-js";
+import { Input } from "@/components/input";
 
 const PaymentReciteModal = ({
   isvisible,
@@ -20,15 +19,24 @@ const PaymentReciteModal = ({
   const dispatch = useAppDispatch();
   const prayerState = useAppSelector((state) => state.prayer);
 
-  const [haveCouponCode, setCouponCode] = useState("3c7ovGI9");
+  const [haveCouponCode, setCouponCode] = useState("");
 
-  useEffect(() => {
-    const couponCode = {
-      couponCode: haveCouponCode,
-    };
+  const [isOpen, setIsOpen] = useState(false);
 
-    dispatch(validateCoupon(couponCode));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (isvisible) {
+  //     setIsOpen(true);
+  //   }
+  // }, [isvisible]);
+
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     const couponCode = {
+  //       couponCode: haveCouponCode,
+  //     };
+  //     dispatch(validateCoupon(couponCode));
+  //   }
+  // }, [isOpen]);
 
   if (!isvisible) return null;
 
@@ -36,14 +44,26 @@ const PaymentReciteModal = ({
     if (e.target.id === "wrapper") onClose();
   };
 
+  const handleCoupon = async (e) => {
+    e.preventDefault();
+
+    const couponCode = {
+      couponCode: haveCouponCode,
+    };
+
+    try {
+      await dispatch(validateCoupon(couponCode));
+    } catch (error) {
+      console.error("Error during payment:", error);
+    }
+  };
+
   const handlePayment = async (e) => {
     e.preventDefault();
 
-    //stripe
-
     const updatedPrayerData = {
       ...prayerData,
-      couponCode: couponCode,
+      couponCode: haveCouponCode,
     };
 
     try {
@@ -98,7 +118,36 @@ const PaymentReciteModal = ({
               </FlexBetween>
               <hr className="w-auto border-color-brand-op" />
 
-              <FlexBetween className="pt-2 w-auto ">
+              <FlexBetween className="flex-col w-[100%] sm:flex-row gap-2">
+                <Typography
+                  variant="h13"
+                  classname=" text-color-brand-yellow2 opacity-80"
+                >
+                  Coupon
+                </Typography>
+                <Typography
+                  variant="h20"
+                  classname=" text-color-brand-yellow2 opacity-60"
+                >
+                  {prayerState.discountPercentage}% Discount Applied
+                </Typography>
+              </FlexBetween>
+
+              <FlexBetween className="h-full w-[100%]">
+                <Flex className="relative w-[62%] h-[40px]">
+                  <Input
+                    type="text"
+                    placeholder="Code"
+                    value={haveCouponCode}
+                    onChange={(e) => setCouponCode(e.target.value)}
+                  />
+                </Flex>
+                <Flex className="relative w-[35%] h-[40px]">
+                  <DesignButton3 onClick={handleCoupon}>Check</DesignButton3>
+                </Flex>
+              </FlexBetween>
+
+              {/* <FlexBetween className="pt-2 w-auto ">
                 <Flex className="flex-col sm:flex-row gap-2">
                   <Typography
                     variant="h13"
@@ -110,15 +159,21 @@ const PaymentReciteModal = ({
                     variant="h20"
                     classname=" text-color-brand-yellow2 opacity-60"
                   >
-                    50% Discount Applied
+                    {prayerState.discountPercentage}% Discount Applied
                   </Typography>
                 </Flex>
                 <Flex className="justify-end h-full w-[190px]">
                   <Flex className="relative w-[170px] h-[40px]">
-                    <DesignButton3>{haveCouponCode}</DesignButton3>
+                    <DesignButton3>{prayerState.coupon}</DesignButton3>
+                    <Input
+                      type="text"
+                      placeholder="Code"
+                      value={haveCouponCode}
+                      onChange={(e) => setCouponCode(e.target.value)}
+                    />
                   </Flex>
                 </Flex>
-              </FlexBetween>
+              </FlexBetween> */}
             </FlexColumn>
           </div>
 

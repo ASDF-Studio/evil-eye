@@ -58,12 +58,10 @@ export const validateCoupon = (couponCode) => {
         dispatch({
           type: prayerConstants.COUPON_SUCCESS,
           payload: {
-            couponCode: res.data.couponCode,
+            couponCode: res.data.coupon,
             discountPercentage: res.data.discountPercentage,
           },
         });
-
-        console.log("res.data.discountPercentage", res?.data?.discountPercentage)
       } else {
         console.error("Invalid coupon code");
       }
