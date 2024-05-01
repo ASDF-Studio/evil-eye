@@ -58,12 +58,20 @@ export const validateCoupon = (couponCode) => {
         dispatch({
           type: prayerConstants.COUPON_SUCCESS,
           payload: {
+            couponValid: res.data.valid,
             couponCode: res.data.coupon,
             discountPercentage: res.data.discountPercentage,
           },
         });
       } else {
-        console.error("Invalid coupon code");
+        dispatch({
+          type: prayerConstants.COUPON_FAILURE,
+          payload: {
+            message: "Invalid coupon code",
+            couponValid: res.data.valid,
+          },
+        });
+        return;
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {

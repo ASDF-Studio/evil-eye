@@ -21,23 +21,6 @@ const PaymentReciteModal = ({
 
   const [haveCouponCode, setCouponCode] = useState("");
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  // useEffect(() => {
-  //   if (isvisible) {
-  //     setIsOpen(true);
-  //   }
-  // }, [isvisible]);
-
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     const couponCode = {
-  //       couponCode: haveCouponCode,
-  //     };
-  //     dispatch(validateCoupon(couponCode));
-  //   }
-  // }, [isOpen]);
-
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -61,16 +44,28 @@ const PaymentReciteModal = ({
   const handlePayment = async (e) => {
     e.preventDefault();
 
-    const updatedPrayerData = {
-      ...prayerData,
-      couponCode: haveCouponCode,
-    };
+    let updatedPrayerData;
+
+    if (prayerState.couponValid) {
+      let discountedPrice =
+        prayerData.price -
+        prayerData.price * (prayerState.discountPercentage / 100);
+      updatedPrayerData = {
+        ...prayerData,
+        discountedPrice: discountedPrice,
+        couponCode: haveCouponCode,
+      };
+    } else {
+      updatedPrayerData = {
+        ...prayerData,
+      };
+    }
 
     try {
       await dispatch(paymentCheckout(updatedPrayerData));
 
-      // onClose();
-      // openPaymentSuccessReciteModal();
+      onClose();
+      openPaymentSuccessReciteModal();
     } catch (error) {
       console.error("Error during payment:", error);
     }
@@ -125,16 +120,27 @@ const PaymentReciteModal = ({
                 >
                   Coupon
                 </Typography>
-                <Typography
-                  variant="h20"
-                  classname=" text-color-brand-yellow2 opacity-60"
-                >
-                  {prayerState.discountPercentage}% Discount Applied
-                </Typography>
+                {prayerState.couponValid && (
+                  <Typography
+                    variant="h20"
+                    classname=" text-color-brand-yellow2 opacity-60"
+                  >
+                    {prayerState.discountPercentage}% Discount Applied
+                  </Typography>
+                )}
+
+                {prayerState.invalidCoupon && (
+                  <Typography
+                    variant="h20"
+                    classname=" text-color-brand-yellow2 opacity-60"
+                  >
+                    {prayerState.invalidCoupon}
+                  </Typography>
+                )}
               </FlexBetween>
 
               <FlexBetween className="h-full w-[100%]">
-                <Flex className="relative w-[62%] h-[40px]">
+                <Flex className="relative w-[57%] h-[40px]">
                   <Input
                     type="text"
                     placeholder="Code"
@@ -142,38 +148,12 @@ const PaymentReciteModal = ({
                     onChange={(e) => setCouponCode(e.target.value)}
                   />
                 </Flex>
-                <Flex className="relative w-[35%] h-[40px]">
-                  <DesignButton3 onClick={handleCoupon}>Check</DesignButton3>
+                <Flex className="relative w-[40%] h-[40px]">
+                  <DesignButton3 onClick={handleCoupon}>
+                    {prayerState.loading == false ? "Check" : "Loading..."}
+                  </DesignButton3>
                 </Flex>
               </FlexBetween>
-
-              {/* <FlexBetween className="pt-2 w-auto ">
-                <Flex className="flex-col sm:flex-row gap-2">
-                  <Typography
-                    variant="h13"
-                    classname=" text-color-brand-yellow2 opacity-80"
-                  >
-                    Coupon
-                  </Typography>
-                  <Typography
-                    variant="h20"
-                    classname=" text-color-brand-yellow2 opacity-60"
-                  >
-                    {prayerState.discountPercentage}% Discount Applied
-                  </Typography>
-                </Flex>
-                <Flex className="justify-end h-full w-[190px]">
-                  <Flex className="relative w-[170px] h-[40px]">
-                    <DesignButton3>{prayerState.coupon}</DesignButton3>
-                    <Input
-                      type="text"
-                      placeholder="Code"
-                      value={haveCouponCode}
-                      onChange={(e) => setCouponCode(e.target.value)}
-                    />
-                  </Flex>
-                </Flex>
-              </FlexBetween> */}
             </FlexColumn>
           </div>
 
@@ -187,7 +167,11 @@ const PaymentReciteModal = ({
                   Total
                 </Typography>
                 <Typography variant="h14" classname=" text-color-brand-yellow2">
-                  ${prayerData?.price}
+                  $
+                  {prayerState.couponValid
+                    ? prayerData.price -
+                      prayerData.price * (prayerState.discountPercentage / 100)
+                    : prayerData.price}
                 </Typography>
               </FlexBetween>
             </div>

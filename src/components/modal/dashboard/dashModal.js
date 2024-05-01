@@ -32,17 +32,27 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
     isNameInvalid: false,
   });
 
+  const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
-    if (auth.authenticate) {
-      if (user) {
-        setName(user.name || "");
-        const data = {
-          id: user._id,
-        };
-        dispatch(getHistoryData(data));
+    if (isvisible) {
+      setIsOpen(true);
+    }
+  }, [isvisible]);
+
+  useEffect(() => {
+    if (isOpen) {
+      if (auth.authenticate) {
+        if (user) {
+          setName(user.name || "");
+          const data = {
+            id: user._id,
+          };
+          dispatch(getHistoryData(data));
+        }
       }
     }
-  }, [user, dispatch]);
+  }, [isOpen]);
 
   if (!isvisible) return null;
 
