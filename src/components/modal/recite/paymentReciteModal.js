@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import ModalFrame from "../modalFrame";
 import { Typography } from "../../typography";
@@ -6,8 +6,10 @@ import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import { DesignButton3 } from "../../button/designButton3";
 import { Stripe } from "@/components/logo";
 import { DesignButton1 } from "@/components/button/designButton1";
-import { prayer } from "@/action";
+import { paymentCheckout, prayer, validateCoupon } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
+
+// import { loadStripe } from "@stripe/stripe-js";
 
 const PaymentReciteModal = ({
   isvisible,
@@ -18,6 +20,16 @@ const PaymentReciteModal = ({
   const dispatch = useAppDispatch();
   const prayerState = useAppSelector((state) => state.prayer);
 
+  const [haveCouponCode, setCouponCode] = useState("3c7ovGI9");
+
+  useEffect(() => {
+    const couponCode = {
+      couponCode: haveCouponCode,
+    };
+
+    dispatch(validateCoupon(couponCode));
+  }, [dispatch]);
+
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -27,12 +39,20 @@ const PaymentReciteModal = ({
   const handlePayment = async (e) => {
     e.preventDefault();
 
+    //stripe
+
+    const updatedPrayerData = {
+      ...prayerData,
+      couponCode: couponCode,
+    };
+
     try {
-      await dispatch(prayer(prayerData));
-      onClose();
-      openPaymentSuccessReciteModal();
+      await dispatch(paymentCheckout(updatedPrayerData));
+
+      // onClose();
+      // openPaymentSuccessReciteModal();
     } catch (error) {
-      console.error("Error during signup:", error);
+      console.error("Error during payment:", error);
     }
   };
 
@@ -95,7 +115,7 @@ const PaymentReciteModal = ({
                 </Flex>
                 <Flex className="justify-end h-full w-[190px]">
                   <Flex className="relative w-[170px] h-[40px]">
-                    <DesignButton3>GRKDAY</DesignButton3>
+                    <DesignButton3>{haveCouponCode}</DesignButton3>
                   </Flex>
                 </Flex>
               </FlexBetween>

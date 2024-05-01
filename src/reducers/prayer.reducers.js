@@ -2,9 +2,12 @@ import { prayerConstants } from "@/action/constants";
 
 const initialState = {
   prayer: [],
+  paymentSuccess: false,
   loading: false,
   message: "",
   error: null,
+  couponValid: false,
+  discountPercentage: "",
 };
 export default function prayerReducer(state = initialState, action) {
   console.log(action);
@@ -13,6 +16,7 @@ export default function prayerReducer(state = initialState, action) {
       state = {
         ...state,
         loading: true,
+        paymentSuccess: false,
         error: null,
       };
       break;
@@ -20,7 +24,8 @@ export default function prayerReducer(state = initialState, action) {
     case prayerConstants.PRAYER_SUCCESS:
       state = {
         ...state,
-        prayer: [...action.payload],
+        prayer: action.payload.prayer,
+        paymentSuccess: action.payload.paymentSuccess,
         loading: false,
         error: null,
       };
@@ -31,6 +36,36 @@ export default function prayerReducer(state = initialState, action) {
         ...state,
         message: action.payload.message,
         error: action.payload.error,
+        paymentSuccess: false,
+        loading: false,
+      };
+      break;
+
+    case prayerConstants.COUPON_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+        error: null,
+        couponValid: false,
+      };
+      break;
+
+    case prayerConstants.COUPON_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+        couponValid: true,
+        error: null,
+        discountPercentage: action.paylaod.discountPercentage
+      };
+      break;
+
+    case prayerConstants.COUPON_FAILURE:
+      state = {
+        ...state,
+        message: action.payload.message,
+        error: action.payload.error,
+        couponValid: false,
         loading: false,
       };
       break;
