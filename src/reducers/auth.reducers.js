@@ -14,7 +14,7 @@ const initState = {
   message: "",
   signupRequest: false,
   emailOTPSent: false,
-  resetEmail: ""
+  resetEmail: "",
 };
 
 export default function authReducer(state = initState, action) {
@@ -24,6 +24,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         authenticating: true,
         loading: true,
+        error: null,
       };
       break;
     case authConstants.LOGIN_SUCCESS:
@@ -31,33 +32,39 @@ export default function authReducer(state = initState, action) {
         ...state,
         user: action.payload.user,
         token: action.payload.token,
-        authenticate: true,
         authenticating: false,
+        authenticate: true,
         loading: false,
+        error: null,
       };
       break;
     case authConstants.LOGIN_FAILURE:
       state = {
         ...state,
-        error: action.payload.message,
+        error: action.payload.error,
         loading: false,
+        authenticate: false,
       };
     case authConstants.LOGIN_AUTH_FAILURE:
       state = {
         ...state,
         // error: action.payload.error,
         loading: false,
+        authenticate: false,
       };
       break;
     case authConstants.LOGOUT_REQUEST:
       state = {
         ...state,
         loading: true,
+        error: null,
       };
       break;
     case authConstants.LOGOUT_SUCCESS:
       state = {
         ...initState,
+        error: null,
+        authenticate: false,
       };
       break;
     case authConstants.LOGOUT_FAILURE:
@@ -74,6 +81,8 @@ export default function authReducer(state = initState, action) {
         authenticating: true,
         loading: true,
         signupRequest: false,
+        error: null,
+        authenticate: false,
       };
       break;
     case authConstants.SIGNUP_SUCCESS:
@@ -84,6 +93,8 @@ export default function authReducer(state = initState, action) {
         signupRequest: action.payload.signupRequest,
         authenticating: false,
         loading: false,
+        error: null,
+        authenticate: false,
       };
       break;
     case authConstants.SIGNUP_FAILURE:
@@ -92,6 +103,8 @@ export default function authReducer(state = initState, action) {
         error: action.payload.message,
         loading: false,
         signupRequest: false,
+        error: null,
+        authenticate: false,
       };
       break;
 
@@ -100,6 +113,8 @@ export default function authReducer(state = initState, action) {
         ...state,
         authenticating: true,
         loading: true,
+        error: null,
+        authenticate: false,
       };
       break;
     case authConstants.OTP_SUCCESS:
@@ -112,6 +127,7 @@ export default function authReducer(state = initState, action) {
         authenticating: false,
         loading: false,
         authenticate: true,
+        error: null,
       };
       break;
     case authConstants.OTP_FAILURE:
@@ -121,6 +137,8 @@ export default function authReducer(state = initState, action) {
         loading: false,
         signupRequest: false,
         authenticating: false,
+        authenticate: false,
+        error: null,
       };
       break;
 
@@ -128,6 +146,7 @@ export default function authReducer(state = initState, action) {
       state = {
         ...state,
         loading: true,
+        error: null,
       };
       break;
     case authConstants.UPDATE_SUCCESS:
@@ -135,12 +154,14 @@ export default function authReducer(state = initState, action) {
         ...state,
         user: action.payload.user,
         loading: false,
+        error: null,
       };
       break;
     case authConstants.UPDATE_FAILURE:
       state = {
         ...state,
         loading: false,
+        error: null,
       };
       break;
 
@@ -148,6 +169,7 @@ export default function authReducer(state = initState, action) {
       state = {
         ...state,
         loading: true,
+        error: null,
       };
       break;
 
@@ -156,6 +178,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         error: action.payload.error,
         loading: false,
+        error: null,
       };
       break;
 
@@ -164,6 +187,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         loading: true,
         emailOTPSent: false,
+        error: null,
       };
       break;
 
@@ -172,6 +196,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         loading: false,
         emailOTPSent: action.payload.emailOTPSent,
+        error: null,
       };
       break;
 
@@ -181,6 +206,7 @@ export default function authReducer(state = initState, action) {
         error: action.payload.error,
         loading: false,
         emailOTPSent: false,
+        error: null,
       };
       break;
 
@@ -188,6 +214,7 @@ export default function authReducer(state = initState, action) {
       state = {
         ...state,
         loading: true,
+        error: null,
       };
       break;
 
@@ -196,6 +223,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         user: action.payload.user,
         loading: false,
+        error: null,
       };
       break;
 
@@ -204,6 +232,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         error: action.payload.error,
         loading: false,
+        error: null,
       };
       break;
 
@@ -211,6 +240,7 @@ export default function authReducer(state = initState, action) {
       state = {
         ...state,
         loading: true,
+        error: null,
       };
       break;
 
@@ -218,7 +248,8 @@ export default function authReducer(state = initState, action) {
       state = {
         ...state,
         loading: false,
-        resetEmail: action.payload.resetEmail
+        resetEmail: action.payload.resetEmail,
+        error: null,
       };
       break;
 
@@ -227,6 +258,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         error: action.payload.error,
         loading: false,
+        error: null,
       };
       break;
   }

@@ -24,12 +24,14 @@ export const login = (user) => {
         });
       }
     } catch (error) {
-      if (error.response.status === 400) {
-        const { message } = error.response.data;
+      if (error.response && error.response.status === 400) {
+        const errorMessage = error.response.data.error;
         dispatch({
           type: authConstants.LOGIN_FAILURE,
-          payload: { message },
+          payload: { error: errorMessage },
         });
+      } else {
+        console.error("Error:", error);
       }
     }
   };
@@ -215,7 +217,7 @@ export const verifyEmailOTP = (data) => {
           payload: {
             token: res.data.token,
             user: res.data.user,
-            message: res.data.message
+            message: res.data.message,
           },
         });
       }
@@ -232,25 +234,25 @@ export const verifyEmailOTP = (data) => {
 };
 
 export const generateResetPasswordLink = (resetEmail) => {
-    return async (dispatch) => {
-      dispatch({ type: authConstants.RESET_PASSWORD_REQUEST });
-      const res = await axios.post(`${baseURL}generateResetPasswordLink`, {
-        ...resetEmail,
+  return async (dispatch) => {
+    dispatch({ type: authConstants.RESET_PASSWORD_REQUEST });
+    const res = await axios.post(`${baseURL}generateResetPasswordLink`, {
+      ...resetEmail,
+    });
+
+    if (res.status === 200) {
+      const { message } = res.data;
+      dispatch({
+        type: authConstants.RESET_PASSWORD_SUCCESS,
+        payload: { message, resetEmail: resetEmail.email },
       });
-  
-      if (res.status === 200) {
-        const { message } = res.data;
+    } else {
+      if (res.status === 400) {
         dispatch({
-          type: authConstants.RESET_PASSWORD_SUCCESS,
-          payload: { message, resetEmail: resetEmail.email },
+          type: authConstants.RESET_PASSWORD_FAILURE,
+          payload: { error: message },
         });
-      } else {
-        if (res.status === 400) {
-          dispatch({
-            type: authConstants.RESET_PASSWORD_FAILURE,
-            payload: { error: message },
-          });
-        }
       }
-    };
+    }
   };
+};
