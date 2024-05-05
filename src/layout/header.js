@@ -273,6 +273,7 @@ export const Header = () => {
         openForgotPassword={openForgotPassword}
         openLogin={openLogin}
         openSignupOTP={openSignupOTP}
+        openNotification={openNotification}
       />
       <SignupOtpModal
         isvisible={showSignupOTPModal}

@@ -1,4 +1,3 @@
-// DashModal.js
 import React, { useEffect, useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import { Pen } from "../../logo";

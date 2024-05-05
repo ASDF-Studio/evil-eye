@@ -97,16 +97,41 @@ export const signup = (user) => {
         const { message, signupRequest, user } = res.data;
         dispatch({
           type: authConstants.SIGNUP_SUCCESS,
-          payload: { message, signupRequest, user },
+          payload: {
+            message,
+            signupRequest,
+            user,
+          },
+        });
+      }
+
+      if (res.status === 202) {
+        const errorMessage = res.data.error;
+        dispatch({
+          type: authConstants.OTP_OPEN,
+          payload: {
+            otp_open: res.data.otp_open,
+            otpEmail: res.data.otpEmail,
+            payload: { error: errorMessage },
+          },
+        });
+      }
+      if (res.status === 410) {
+        const errorMessage = res.data.error;
+        dispatch({
+          type: authConstants.OTP_CLOSE,
+          payload: { otp_open: res.data.otp_open, error: errorMessage },
         });
       }
     } catch (error) {
-      if (error.response.status === 400) {
-        const { message } = error.response.data;
+      if (error.response && error.response.status === 400) {
+        const errorMessage = error.response.data.error;
         dispatch({
           type: authConstants.SIGNUP_FAILURE,
-          payload: { message },
+          payload: { error: errorMessage },
         });
+      } else {
+        console.error("Error:", error);
       }
     }
   };

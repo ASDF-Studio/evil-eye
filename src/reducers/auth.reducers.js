@@ -15,6 +15,11 @@ const initState = {
   signupRequest: false,
   emailOTPSent: false,
   resetEmail: "",
+
+  otpEmail: "",
+  otp_open: false,
+  loginError: null,
+  signupError: null,
 };
 
 export default function authReducer(state = initState, action) {
@@ -24,7 +29,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         authenticating: true,
         loading: true,
-        error: null,
+        loginError: null,
       };
       break;
     case authConstants.LOGIN_SUCCESS:
@@ -35,13 +40,13 @@ export default function authReducer(state = initState, action) {
         authenticating: false,
         authenticate: true,
         loading: false,
-        error: null,
+        loginError: null,
       };
       break;
     case authConstants.LOGIN_FAILURE:
       state = {
         ...state,
-        error: action.payload.error,
+        loginError: action.payload.error,
         loading: false,
         authenticate: false,
       };
@@ -81,8 +86,10 @@ export default function authReducer(state = initState, action) {
         authenticating: true,
         loading: true,
         signupRequest: false,
-        error: null,
+        signupError: null,
         authenticate: false,
+        emailOTPSent: false,
+        otp_open: false
       };
       break;
     case authConstants.SIGNUP_SUCCESS:
@@ -93,18 +100,37 @@ export default function authReducer(state = initState, action) {
         signupRequest: action.payload.signupRequest,
         authenticating: false,
         loading: false,
-        error: null,
+        signupError: null,
         authenticate: false,
+        emailOTPSent: true,
       };
       break;
     case authConstants.SIGNUP_FAILURE:
       state = {
         ...state,
-        error: action.payload.message,
         loading: false,
         signupRequest: false,
-        error: null,
         authenticate: false,
+        signupError: action.payload.error,
+        emailOTPSent: false,
+      };
+      break;
+
+    case authConstants.OTP_OPEN:
+      state = {
+        ...state,
+        loading: false,
+        otp_open: action.payload.otp_open,
+        otpEmail: action.payload.otpEmail,
+        signupError: action.payload.error,
+      };
+      break;
+    case authConstants.OTP_CLOSE:
+      state = {
+        ...state,
+        loading: false,
+        otp_open: action.payload.otp_open,
+        signupError: action.payload.error,
       };
       break;
 

@@ -25,6 +25,7 @@ const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,7 +69,7 @@ const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
               We have sent you an OTP to your email address:
               <span className=" hover:underline">
                 {" "}
-                adamvoigt@gmail.com.
+                {auth.otpEmail}.
               </span>{" "}
               Please enter your code <br></br>below to finish changing your
               email.

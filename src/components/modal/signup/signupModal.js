@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { Flex, FlexBetween, FlexCenter } from "../../layout";
+import React, { useEffect, useState } from "react";
+import { Flex, FlexCenter } from "../../layout";
 import ModalFrame from "../modalFrame";
-import { Design1, Design2 } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
-import { Button } from "../../button";
 import { Input } from "../../input";
 import { DesignButton3 } from "@/components/button/designButton3";
 import { useAppDispatch, useAppSelector } from "@/hooks";
@@ -18,6 +16,7 @@ const SignupModal = ({
   openLogin,
   openForgotPassword,
   openSignupOTP,
+  openNotification,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -26,6 +25,20 @@ const SignupModal = ({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [error, setError] = useState("");
+  const { signupError: signupError } = useAppSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    setError(signupError);
+  }, [signupError]);
+
+  useEffect(() => {
+    if (auth.otp_open) {
+      openNotification("signup");
+      openSignupOTPModal();
+    }
+  }, [auth.otp_open]);
 
   const [invalidInputs, setInvalidInputs] = useState({
     isNameInvalid: false,
@@ -78,7 +91,6 @@ const SignupModal = ({
 
     try {
       await dispatch(signup(user));
-      openSignupOTPModal();
     } catch (error) {
       console.error("Error during signup:", error);
     }
@@ -86,7 +98,7 @@ const SignupModal = ({
 
   if (!isvisible) return null;
 
-  return (
+  return (console.log("signupError",signupError),
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm 2xl:mt-16 4xl:mt-0"
       id="wrapper"
@@ -172,12 +184,19 @@ const SignupModal = ({
               {invalidInputs.isPasswordConfirmedInvalid && (
                 <InlineError message={"password"} />
               )}
+
+              {error && (
+                <div className="pt-2">
+                  <Typography variant="h12" classname="text-red-600">
+                    {error}
+                  </Typography>
+                </div>
+              )}
             </div>
             <Flex className="justify-center w-[100%]">
               <DesignButton
                 className="w-full"
                 typoVariant="buttonLabel2"
-                // onClick={openSignupOTPModal}
                 onClick={handleSubmit}
               >
                 {auth.loading == false ? "SIGN UP" : "Loading..."}

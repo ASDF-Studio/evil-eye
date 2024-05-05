@@ -2,7 +2,6 @@ import { FlexBetween } from "@/components/layout";
 import { Typography } from "@/components/typography";
 
 export default function PrayerHistory({ date, recepientName, payment }) {
-  // Function to format the date string
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const options = {
