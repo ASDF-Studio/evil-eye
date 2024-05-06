@@ -110,15 +110,9 @@ const SignupOtpModal = ({
           </div>
 
           <div className="pt-3.5">
-            <FlexBetween>
-              <Typography variant="h12" classname=" text-color-brand-yellow2">
-                OTP
-              </Typography>{" "}
-              <Typography variant="h12" classname=" text-color-brand-yellow2">
-                OTP
-              </Typography>
-            </FlexBetween>
-
+            <Typography variant="h12" classname=" text-color-brand-yellow2">
+              OTP
+            </Typography>
             <Flex className="relative w-full h-[40px] ">
               <Input
                 type="number"
