@@ -66,6 +66,9 @@ export const Header = () => {
   const [showNotification, setNotification] = useState(false);
   
   const [notificationData, setNotificationData] = useState();
+  const [notificationRawData, setNotificationRawData] = useState();
+
+  const [otpEmail, setOtpEmail] = useState("");
 
   const closeAllModal = () => {
     setShowLoginModal(false);
@@ -114,7 +117,8 @@ export const Header = () => {
     setShowSignupModal(true);
   };
 
-  const openSignupOTP = () => {
+  const openSignupOTP = (email) => {
+    setOtpEmail(email);
     closeAllModal;
     setShowSignupOTPModal(true);
   };
@@ -142,6 +146,16 @@ export const Header = () => {
   const openNotification = (data) => {
     closeAllModal;
     setNotificationData(data);
+    setNotification(true);
+
+    setTimeout(() => {
+      setNotification(false);
+    }, 4000);
+  };
+
+  const openNotificationRaw = (data) => {
+    closeAllModal;
+    setNotificationRawData(data);
     setNotification(true);
 
     setTimeout(() => {
@@ -279,6 +293,8 @@ export const Header = () => {
         isvisible={showSignupOTPModal}
         onClose={() => setShowSignupOTPModal(false)}
         openNotification={openNotification}
+        openNotificationRaw={openNotificationRaw}
+        otpEmail={otpEmail}
       />
       <ForgotPass1
         isvisible={showForgotPass1Modal}
@@ -298,6 +314,7 @@ export const Header = () => {
       <NotificationModal
         isvisible={showNotification}
         onClose={() => setNotification(false)}
+        notificationRawData={notificationRawData}
         notificationData={notificationData}
       />
     </>

@@ -22,7 +22,3 @@ export const FlexBetween = ({ children, className }) => {
         `flex items-center justify-between`, className
     ].join(" ")}> {children}</ div>
 }
-
-export const Pressable = ({ children, ...rest }) => {
-    return <button {...rest}>{children}</button>
-}

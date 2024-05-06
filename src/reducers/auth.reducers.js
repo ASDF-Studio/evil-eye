@@ -16,10 +16,13 @@ const initState = {
   emailOTPSent: false,
   resetEmail: "",
 
-  otpEmail: "",
   otp_open: false,
   loginError: null,
   signupError: null,
+  otpSuccess: null,
+  otpError: null,
+  otpResending: false,
+  otpFailed: false,
 };
 
 export default function authReducer(state = initState, action) {
@@ -89,7 +92,7 @@ export default function authReducer(state = initState, action) {
         signupError: null,
         authenticate: false,
         emailOTPSent: false,
-        otp_open: false
+        otp_open: false,
       };
       break;
     case authConstants.SIGNUP_SUCCESS:
@@ -103,6 +106,7 @@ export default function authReducer(state = initState, action) {
         signupError: null,
         authenticate: false,
         emailOTPSent: true,
+        otp_open: true,
       };
       break;
     case authConstants.SIGNUP_FAILURE:
@@ -121,7 +125,6 @@ export default function authReducer(state = initState, action) {
         ...state,
         loading: false,
         otp_open: action.payload.otp_open,
-        otpEmail: action.payload.otpEmail,
         signupError: action.payload.error,
       };
       break;
@@ -165,6 +168,42 @@ export default function authReducer(state = initState, action) {
         authenticating: false,
         authenticate: false,
         error: null,
+      };
+      break;
+
+    case authConstants.OTP_RESEND_REQUEST:
+      state = {
+        ...state,
+        otpResending: true,
+        otpError: null,
+        otpSuccess: null,
+      };
+      break;
+    case authConstants.OTP_RESEND_SUCCESS:
+      state = {
+        ...state,
+        otpSuccess: action.payload.message,
+        otpResending: false,
+        otpError: null,
+        otpFailed: false,
+      };
+      break;
+    case authConstants.OTP_RESEND_FAILED:
+      state = {
+        ...state,
+        otpResending: false,
+        otpError: action.payload.error,
+        otpSuccess: null,
+        otpFailed: true,
+      };
+      break;
+    case authConstants.OTP_RESEND_FAILURE:
+      state = {
+        ...state,
+        otpResending: false,
+        otpError: action.payload.error,
+        otpSuccess: null,
+        otpFailed: true,
       };
       break;
 

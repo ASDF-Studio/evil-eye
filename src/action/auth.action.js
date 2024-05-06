@@ -112,11 +112,11 @@ export const signup = (user) => {
           payload: {
             otp_open: res.data.otp_open,
             otpEmail: res.data.otpEmail,
-            payload: { error: errorMessage },
+            error: errorMessage,
           },
         });
       }
-      if (res.status === 410) {
+      if (res.status === 210) {
         const errorMessage = res.data.error;
         dispatch({
           type: authConstants.OTP_CLOSE,
@@ -159,6 +159,46 @@ export const verifyOTP = (data) => {
         const { message } = error.response.data;
         dispatch({
           type: authConstants.OTP_FAILURE,
+          payload: { message },
+        });
+      }
+    }
+  };
+};
+
+export const otpResend = (data) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: authConstants.OTP_RESEND_REQUEST });
+      const res = await axios.post(`${baseURL}otpResend`, data);
+
+      if (res.status === 200) {
+        dispatch({
+          type: authConstants.OTP_RESEND_SUCCESS,
+          payload: {
+            message: res.data.message,
+          },
+        });
+      }
+      if (res.status === 204) {
+        dispatch({
+          type: authConstants.OTP_RESEND_FAILURE,
+          payload: {
+            error: res.data.error,
+          },
+        });
+      }
+      if (res.status === 210) {
+        dispatch({
+          type: authConstants.OTP_RESEND_FAILED,
+          payload: { error: res.data.error, otpFailed: res.data.otpFailed },
+        });
+      }
+    } catch (error) {
+      if (error.response.status === 500) {
+        const { message } = error.response.data;
+        dispatch({
+          type: authConstants.OTP_RESEND_FAILURE,
           payload: { message },
         });
       }

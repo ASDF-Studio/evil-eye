@@ -35,10 +35,9 @@ const SignupModal = ({
 
   useEffect(() => {
     if (auth.otp_open) {
-      openNotification("signup");
-      openSignupOTPModal();
+      openSignupOTPModal(email);
     }
-  }, [auth.otp_open]);
+  }, [dispatch, auth.otp_open]);
 
   const [invalidInputs, setInvalidInputs] = useState({
     isNameInvalid: false,
@@ -66,9 +65,9 @@ const SignupModal = ({
     openLogin();
   };
 
-  const openSignupOTPModal = () => {
+  const openSignupOTPModal = (email) => {
     onClose();
-    openSignupOTP();
+    openSignupOTP(email);
   };
 
   const handleSubmit = async (e) => {
@@ -91,6 +90,9 @@ const SignupModal = ({
 
     try {
       await dispatch(signup(user));
+      if (auth.otp_open) {
+        openSignupOTPModal(email);
+      }
     } catch (error) {
       console.error("Error during signup:", error);
     }
@@ -98,7 +100,7 @@ const SignupModal = ({
 
   if (!isvisible) return null;
 
-  return (console.log("signupError",signupError),
+  return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm 2xl:mt-16 4xl:mt-0"
       id="wrapper"

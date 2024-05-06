@@ -1,19 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, FlexBetween, FlexCenter } from "../../layout";
 import ModalFrame from "../modalFrame";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import { Button } from "@/components/button";
 import { Input } from "@/components/input";
-import { verifyOTP } from "@/action";
+import { otpResend, verifyOTP } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { InlineError } from "@/validity";
 
-const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
+const SignupOtpModal = ({
+  isvisible,
+  onClose,
+  otpEmail,
+  openNotification,
+  openNotificationRaw,
+}) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    if (auth.otpFailed) {
+      onClose();
+    }
+  }, [dispatch, auth.otpFailed]);
+
+  useEffect(() => {
+    if (auth.otpError != null) {
+      openNotificationRaw(auth.otpError);
+    }
+  }, [dispatch, auth.otpError]);
+
+  useEffect(() => {
+    if (auth.otpSuccess != null) {
+      openNotificationRaw(auth.otpSuccess);
+    }
+  }, [dispatch, auth.otpSuccess]);
 
   const [otpValue, setOTPValue] = useState("");
 
@@ -25,7 +49,20 @@ const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  
+
+  const handleResend = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      email: otpEmail,
+    };
+
+    try {
+      await dispatch(otpResend(data));
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,21 +104,21 @@ const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
           <div className="pt-3.5">
             <Typography variant="h12" classname=" text-color-brand-yellow2">
               We have sent you an OTP to your email address:
-              <span className=" hover:underline">
-                {" "}
-                {auth.otpEmail}.
-              </span>{" "}
-              Please enter your code <br></br>below to finish changing your
-              email.
+              <span className=" hover:underline"> {otpEmail}.</span> Please
+              enter your code <br></br>below to finish changing your email.
             </Typography>
           </div>
 
           <div className="pt-3.5">
-            <label for="email" className="block  mb-1.5">
+            <FlexBetween>
+              <Typography variant="h12" classname=" text-color-brand-yellow2">
+                OTP
+              </Typography>{" "}
               <Typography variant="h12" classname=" text-color-brand-yellow2">
                 OTP
               </Typography>
-            </label>
+            </FlexBetween>
+
             <Flex className="relative w-full h-[40px] ">
               <Input
                 type="number"
@@ -104,7 +141,9 @@ const SignupOtpModal = ({ isvisible, onClose, openNotification }) => {
                 variant="h12"
                 classname="underline flex justify-end text-color-brand-yellow2"
               >
-                Resend
+                <div onClick={handleResend}>
+                  {auth.otpResending == false ? "Resend" : "Loading..."}
+                </div>
               </Typography>
             </Button>
           </FlexBetween>
