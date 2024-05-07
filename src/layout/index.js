@@ -11,8 +11,7 @@ const MainLayout = ({ children }) => {
       </Head>
       <Header />
       
-      {/* <div className="h-screen overflow-auto sm:overflow-hidden"> */}
-      <div className="">
+      <div className="absolute inset-0 overflow-hidden z-0">
         <div className="block lsm:hidden">
           <BG420 />
         </div>

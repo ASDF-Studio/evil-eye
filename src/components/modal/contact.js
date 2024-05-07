@@ -183,8 +183,8 @@ const Contact = ({ isvisible, onClose, contatcSubmit }) => {
                   }}
                   id="userMsg"
                   name="message"
-                  className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent items-center placeholder:text-textColor-placeholder p-2 text-textColor-brand-gold2 resize-none"
-                  placeholder={"Type here..."}
+                  className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent placeholder:text-textColor-placeholder p-2 text-textColor-brand-gold2 resize-none w-full h-full"
+                  placeholder="Type here..."
                   value={userData.userMsg}
                   required
                 />

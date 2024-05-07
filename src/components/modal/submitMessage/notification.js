@@ -2,7 +2,12 @@ import React from "react";
 import { FlexCenter } from "../../layout";
 import NotificationFrame from "../notificationFrame";
 
-const NotificationModal = ({ isvisible, onClose, notificationData, notificationRawData }) => {
+const NotificationModal = ({
+  isvisible,
+  onClose,
+  notificationData,
+  notificationRawData,
+}) => {
   if (!isvisible) return null;
 
   const handleClose = (e) => {
@@ -32,10 +37,7 @@ const NotificationModal = ({ isvisible, onClose, notificationData, notificationR
           title={variantMapping[notificationData]}
         />
       ) : (
-        <NotificationFrame
-          onClose={onClose}
-          title={notificationRawData}
-        />
+        <NotificationFrame onClose={onClose} title={notificationRawData} />
       )}
     </FlexCenter>
   );

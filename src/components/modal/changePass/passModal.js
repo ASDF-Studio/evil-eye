@@ -55,7 +55,7 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
 
   return (
     <FlexCenter
-      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
+      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm pt-[300px] sm:pt-[0px]"
       id="wrapper"
       onClick={handleClose}
     >

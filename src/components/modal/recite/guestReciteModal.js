@@ -127,25 +127,21 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
           </div>
 
           <Flex className="flex flex-col sm:flex-row gap-4">
-            <div className="h-full w-full">
+            <div
+              className="h-full w-full"
+              onClick={() => setContactMethod("phone")}
+            >
               <Flex className="relative h-[40px]">
-                <CheckBox
-                  checked={contactMethod === "phone"}
-                  onChange={() => setContactMethod("phone")}
-                >
-                  Phone
-                </CheckBox>
+                <CheckBox checked={contactMethod === "phone"}>Phone</CheckBox>
               </Flex>
             </div>
 
-            <div className="h-full w-full">
+            <div
+              className="h-full w-full"
+              onClick={() => setContactMethod("email")}
+            >
               <Flex className="relative h-[40px]">
-                <CheckBox
-                  checked={contactMethod === "email"}
-                  onChange={() => setContactMethod("email")}
-                >
-                  Email
-                </CheckBox>
+                <CheckBox checked={contactMethod === "email"}>Email</CheckBox>
               </Flex>
             </div>
           </Flex>

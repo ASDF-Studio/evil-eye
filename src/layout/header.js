@@ -226,22 +226,20 @@ export const Header = () => {
           >
             {NAV__LINK.map((item, index) => (
               <React.Fragment key={index}>
-                <Button
-                  key={index}
-                  variant="text2"
-                  onClick={() => handlePath(item.path)}
-                >
-                  <FlexCenter className="gap-2">
-                    {item.icon && <User />}
-                    <Typography variant="mobileNav">
-                      {item.display === "login"
-                        ? user.name
-                          ? `${user.name}`
-                          : "login"
-                        : item.display}
-                    </Typography>
-                  </FlexCenter>
-                </Button>
+                <div className="w-full" onClick={() => handlePath(item.path)}>
+                  <Button key={index} variant="text2">
+                    <FlexCenter className="gap-2">
+                      {item.icon && <User />}
+                      <Typography variant="mobileNav">
+                        {item.display === "login"
+                          ? user.name
+                            ? `${user.name}`
+                            : "login"
+                          : item.display}
+                      </Typography>
+                    </FlexCenter>
+                  </Button>
+                </div>
                 {index < NAV__LINK.length - 1 && (
                   <hr className="w-full border-color-brand-op" />
                 )}

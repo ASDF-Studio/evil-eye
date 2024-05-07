@@ -68,7 +68,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       phone: number,
       price: price,
       createdBy: userID,
-      guest: guest
+      guest: guest,
     };
 
     try {
@@ -94,7 +94,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
             PRAYER
           </Typography>
         </div>
-        <FlexColumn className="px-5 gap-2 h-[450px] sm:h-auto 1xl:h-auto 2xl:h-[550px] 4xl:h-auto overflow-y-auto overflow-hidden scrollbar">
+        <FlexColumn className="px-5 gap-2 h-auto sm:h-auto 1xl:h-auto 2xl:h-auto 4xl:h-auto overflow-y-auto overflow-hidden scrollbar">
           <div className="pb-3">
             <Typography
               variant="h12"
@@ -112,29 +112,27 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
           </div>
 
           <Flex className="flex flex-col sm:flex-row gap-4 mb-4">
-            <div className="h-full w-full">
+            <div
+              className="h-full w-full"
+              onClick={() => {
+                setRecipientType("myself");
+                setContactMethod(null);
+              }}
+            >
               <Flex className="relative h-[40px]">
-                <CheckBox
-                  checked={recipientType === "myself"}
-                  onChange={() => {
-                    setRecipientType("myself");
-                    setContactMethod(null);
-                  }}
-                >
-                  Myself
-                </CheckBox>
+                <CheckBox checked={recipientType === "myself"}>Myself</CheckBox>
               </Flex>
             </div>
 
-            <div className="h-full w-full">
+            <div
+              className="h-full w-full"
+              onClick={() => {
+                setRecipientType("someone_else");
+                setContactMethod("email");
+              }}
+            >
               <Flex className="relative h-[40px]">
-                <CheckBox
-                  checked={recipientType === "someone_else"}
-                  onChange={() => {
-                    setRecipientType("someone_else");
-                    setContactMethod("email");
-                  }}
-                >
+                <CheckBox checked={recipientType === "someone_else"}>
                   Someone Else
                 </CheckBox>
               </Flex>
@@ -144,7 +142,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
           {recipientType === "myself" && (
             <div>
-              <div className="pt-3">
+              <div className="py-2">
                 <Typography variant="h12" classname="text-color-brand-yellow2">
                   Notify me via text (optional)
                 </Typography>
@@ -198,23 +196,23 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               </div>
 
               <Flex className="flex flex-col sm:flex-row gap-4">
-                <div className="h-full w-full">
+                <div
+                  className="h-full w-full"
+                  onClick={() => setContactMethod("phone")}
+                >
                   <Flex className="relative h-[40px]">
-                    <CheckBox
-                      checked={contactMethod === "phone"}
-                      onChange={() => setContactMethod("phone")}
-                    >
+                    <CheckBox checked={contactMethod === "phone"}>
                       Phone
                     </CheckBox>
                   </Flex>
                 </div>
 
-                <div className="h-full w-full">
+                <div
+                  className="h-full w-full"
+                  onClick={() => setContactMethod("email")}
+                >
                   <Flex className="relative h-[40px]">
-                    <CheckBox
-                      checked={contactMethod === "email"}
-                      onChange={() => setContactMethod("email")}
-                    >
+                    <CheckBox checked={contactMethod === "email"}>
                       Email
                     </CheckBox>
                   </Flex>

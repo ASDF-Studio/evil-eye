@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import { Pen } from "../../logo";
-import { DesignButton2 } from "../../button/designButton2";
 import { Typography } from "../../typography";
 import PassModal from "../changePass/passModal";
 import EmailModal from "../changeEmail/emailModal";
@@ -13,6 +12,7 @@ import { DesignButton3 } from "@/components/button/designButton3";
 import { getHistoryData, logout, updateUser } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { InlineError } from "@/validity";
+import { DesignButton } from "@/components/button/designButton";
 
 const DashModal = ({ isvisible, onClose, children, openNotification }) => {
   const dispatch = useAppDispatch();
@@ -104,8 +104,9 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
       onClick={handleClose}
     >
       <DashboardModalFrame onClose={onClose} title="DASHBOARD">
-        <Flex className=" gap-0 w-auto divide-[#FFCE70] divide-y-2 1xl:divide-x-2 flex-col 1xl:flex-row">
+        <Flex className=" gap-0 w-full divide-[#FFCE70] divide-y-2 1xl:divide-x-2 flex-col 1xl:flex-row">
           <FlexColumn className="gap-6 p-5 text-left">
+            <div className="w-[410px]" />
             <Flex className="items-start flex-col">
               <Typography
                 variant="h11"
@@ -186,14 +187,14 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
                 <Input type="password" readOnly value={user.name} />
               </Flex>
             </div>
-            <Flex className="w-full relative text-brand-gold bg-brand-yellow2  focus:none focus:border-none mt-2 h-[40px] ">
-              <DesignButton2
-                className=""
-                typoVariant="buttonLabel3"
+            <Flex className="w-full relative text-brand-gold bg-brand-yellow2 focus:none focus:border-none mt-2 h-[40px] ">
+              <DesignButton
+                className="w-full"
+                typoVariant="buttonLabel2"
                 onClick={handleSave}
               >
                 {auth.loading == false ? "Save" : "Loading..."}
-              </DesignButton2>
+              </DesignButton>
             </Flex>
             <div>
               <Flex className="relative focus:none focus:border-none w-full h-[40px] mt-2">
