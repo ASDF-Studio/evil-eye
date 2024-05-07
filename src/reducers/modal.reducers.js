@@ -3,6 +3,7 @@ import { modalConstants } from "@/action/constants";
 const initialState = {
   loginModal: false,
   guestModal: false,
+  userModal: false,
 };
 export default function modalReducer(state = initialState, action) {
   switch (action.type) {
@@ -10,7 +11,8 @@ export default function modalReducer(state = initialState, action) {
       state = {
         ...state,
         loginModal: action.payload.loginModal,
-        uestModal: false,
+        guestModal: false,
+        userModal: false,
       };
       break;
 
@@ -19,6 +21,16 @@ export default function modalReducer(state = initialState, action) {
         ...state,
         guestModal: action.payload.guestModal,
         loginModal: false,
+        userModal: false,
+      };
+      break;
+
+    case modalConstants.USER_RECITE_SUCCESS:
+      state = {
+        ...state,
+        userModal: action.payload.userModal,
+        loginModal: false,
+        guestModal: false,
       };
       break;
   }

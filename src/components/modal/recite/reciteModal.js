@@ -120,7 +120,15 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               }}
             >
               <Flex className="relative h-[40px]">
-                <CheckBox checked={recipientType === "myself"}>Myself</CheckBox>
+                <CheckBox
+                  checked={recipientType === "myself"}
+                  onChange={() => {
+                    setRecipientType("myself");
+                    setContactMethod(null);
+                  }}
+                >
+                  Myself
+                </CheckBox>
               </Flex>
             </div>
 
@@ -132,7 +140,13 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               }}
             >
               <Flex className="relative h-[40px]">
-                <CheckBox checked={recipientType === "someone_else"}>
+                <CheckBox
+                  checked={recipientType === "someone_else"}
+                  onChange={() => {
+                    setRecipientType("someone_else");
+                    setContactMethod("email");
+                  }}
+                >
                   Someone Else
                 </CheckBox>
               </Flex>
@@ -201,7 +215,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                   onClick={() => setContactMethod("phone")}
                 >
                   <Flex className="relative h-[40px]">
-                    <CheckBox checked={contactMethod === "phone"}>
+                    <CheckBox
+                      checked={contactMethod === "phone"}
+                      onChange={() => setContactMethod("phone")}
+                    >
                       Phone
                     </CheckBox>
                   </Flex>
@@ -212,7 +229,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                   onClick={() => setContactMethod("email")}
                 >
                   <Flex className="relative h-[40px]">
-                    <CheckBox checked={contactMethod === "email"}>
+                    <CheckBox
+                      checked={contactMethod === "email"}
+                      onChange={() => setContactMethod("email")}
+                    >
                       Email
                     </CheckBox>
                   </Flex>
@@ -246,6 +266,16 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               )}
             </div>
           )}
+
+          <div>
+            <Typography
+              variant="h22"
+              classname=" text-color-brand-yellow2 opacity-80 "
+            >
+              By entering the details, I acknowledge and agree to the{" "}
+              <a className="cursor-pointer underline">Privacy Policy</a>.
+            </Typography>
+          </div>
 
           <Flex className=" justify-center pt-3 pb-5 w-[100%]">
             <DesignButton

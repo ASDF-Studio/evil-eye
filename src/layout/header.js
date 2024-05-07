@@ -21,9 +21,10 @@ import ForgotPass3 from "@/components/modal/login/forgotpass3";
 import Pricing from "@/components/modal/pricing";
 import Contact from "@/components/modal/contact";
 import { DesignButton } from "@/components/button/designButton";
-import { useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import SuccessModal from "@/components/modal/submitMessage/success";
 import NotificationModal from "@/components/modal/submitMessage/notification";
+import { guest } from "@/action/modal.action";
 
 const NAV__LINK = [
   {
@@ -47,6 +48,8 @@ export const Header = () => {
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
   const modal = useAppSelector((state) => state.modal);
+
+  const dispatch = useAppDispatch();
 
   const [navbar, setNavbar] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -81,7 +84,6 @@ export const Header = () => {
     closeAllModal;
     setShowLoginModal(modal.loginModal);
   }, [modal.loginModal]);
-
   const handlePath = (path) => {
     setNavbar(false);
     closeAllModal();
@@ -167,6 +169,11 @@ export const Header = () => {
     setTimeout(() => {
       setNotification(false);
     }, 4000);
+  };
+
+  const handleLoginClose = () => {
+    setShowLoginModal(false);
+    dispatch(guest(false));
   };
 
   return (
@@ -268,7 +275,7 @@ export const Header = () => {
 
       <LoginModal
         isvisible={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
+        onClose={handleLoginClose}
         openDashboard={openDashboard}
         openForgotPassword={openForgotPassword}
         openSignup={openSignup}

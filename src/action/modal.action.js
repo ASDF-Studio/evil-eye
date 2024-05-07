@@ -9,6 +9,16 @@ export const guest = (showLoginModal) => {
   };
 };
 
+export const userRecite = (showReciteModal) => {
+  return async (dispatch) => {
+    dispatch({
+      type: modalConstants.USER_RECITE_SUCCESS,
+      payload: { userModal: showReciteModal },
+    });
+  };
+};
+
+
 export const guestFromLogin = (showGuestModal) => {
   return async (dispatch) => {
     dispatch({

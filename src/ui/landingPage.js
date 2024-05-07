@@ -15,7 +15,7 @@ import PaymentSuccessReciteModal from "@/components/modal/recite/paymentSuccessR
 import PrayerReciteModal from "@/components/modal/recite/prayerReciteModal";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import ReciteModal from "@/components/modal/recite/reciteModal";
-import { guest } from "@/action/modal.action";
+import { guest, guestFromLogin, userRecite } from "@/action/modal.action";
 
 export const LandingPage = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -28,7 +28,7 @@ export const LandingPage = () => {
   const [showGuestReciteModal, setGuestShowReciteModal] = useState(false);
   const [showReciteModal, setReciteModal] = useState(false);
 
-  const [showLoginModal, setShowLoginModal] = useState(true);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const [showPaymentReciteModal, setPaymentReciteModal] = useState(false);
   const [showPaymentSuccessReciteModal, setPaymentSuccessReciteModal] =
@@ -52,6 +52,12 @@ export const LandingPage = () => {
   useEffect(() => {
     setGuestShowReciteModal(modal.guestModal);
   }, [modal.guestModal]);
+
+  useEffect(() => {
+    closeAllModals;
+    setReciteModal(modal.userModal);
+  }, [modal.userModal]);
+
 
   const openGuestReciteModal = () => {
     closeAllModals;
@@ -85,15 +91,24 @@ export const LandingPage = () => {
     if (auth.authenticate) {
       openReciteModal();
     } else {
-      // openGuestReciteModal();
-
       if (modal.guestModal) {
         setShowLoginModal(false);
       } else {
-        setShowLoginModal(!showLoginModal);
-        await dispatch(guest(showLoginModal));
+        setShowLoginModal(false);
+        await dispatch(guest(true));
       }
     }
+  };
+
+  const handleGuestModalClose = () => {
+    setGuestShowReciteModal(false);
+    dispatch(guest(false));
+    dispatch(guestFromLogin(false));
+  };
+  
+  const handleReciteModalClose = () => {
+    setReciteModal(false);
+    dispatch(userRecite(false));
   };
 
   return (
@@ -200,12 +215,12 @@ export const LandingPage = () => {
           </DesignButton>
           <GuestReciteModal
             isvisible={showGuestReciteModal}
-            onClose={() => setGuestShowReciteModal(false)}
+            onClose={handleGuestModalClose}
             openPaymentReciteModal={openPaymentReciteModal}
           />
           <ReciteModal
             isvisible={showReciteModal}
-            onClose={() => setReciteModal(false)}
+            onClose={handleReciteModalClose}
             openPaymentReciteModal={openPaymentReciteModal}
           />
           <PaymentReciteModal

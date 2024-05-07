@@ -132,7 +132,12 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               onClick={() => setContactMethod("phone")}
             >
               <Flex className="relative h-[40px]">
-                <CheckBox checked={contactMethod === "phone"}>Phone</CheckBox>
+                <CheckBox
+                  checked={contactMethod === "phone"}
+                  onChange={() => setContactMethod("phone")}
+                >
+                  Phone
+                </CheckBox>
               </Flex>
             </div>
 
@@ -141,10 +146,16 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               onClick={() => setContactMethod("email")}
             >
               <Flex className="relative h-[40px]">
-                <CheckBox checked={contactMethod === "email"}>Email</CheckBox>
+                <CheckBox
+                  checked={contactMethod === "email"}
+                  onChange={() => setContactMethod("email")}
+                >
+                  Email
+                </CheckBox>
               </Flex>
             </div>
           </Flex>
+
           {contactMethod === "phone" && (
             <div className="pt-3">
               <Flex className="relative h-[40px]">
@@ -170,6 +181,16 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               </Flex>
             </div>
           )}
+
+          <div>
+            <Typography
+              variant="h22"
+              classname=" text-color-brand-yellow2 opacity-80 "
+            >
+              By entering the details, I acknowledge and agree to the {" "}
+              <a className="cursor-pointer underline">Privacy Policy</a>.
+            </Typography>
+          </div>
 
           <Flex className=" justify-center pt-3.5 pb-2.5 w-[100%]">
             <DesignButton

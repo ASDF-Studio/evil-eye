@@ -216,16 +216,25 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
               PRAYER HISTORY
             </Typography>
             <div className="w-auto sm:w-[450px]">
-              <div className="space-y-6 w-auto sm:w-[450px] h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
-                {histories.map((item) => (
-                  <PrayerHistory
-                    key={item._id}
-                    date={item.createdAt}
-                    recepientName={item.name}
-                    payment={item.price}
-                  />
-                ))}
-              </div>
+              {history.loading ? (
+                <Typography
+                  variant="h12"
+                  classname=" text-color-brand-yellow2 pt-5 px-4"
+                >
+                  Loading...
+                </Typography>
+              ) : (
+                <div className="space-y-6 w-auto sm:w-[450px] h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
+                  {histories.map((item) => (
+                    <PrayerHistory
+                      key={item._id}
+                      date={item.createdAt}
+                      recepientName={item.name}
+                      payment={item.price}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </Flex>

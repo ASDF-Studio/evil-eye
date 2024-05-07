@@ -9,7 +9,7 @@ import { DesignButton3 } from "../../button/designButton3";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { isUserLoggedIn, login } from "@/action";
 import { InlineError } from "@/validity";
-import { guestFromLogin } from "@/action/modal.action";
+import { guest, guestFromLogin } from "@/action/modal.action";
 
 const LoginModal = ({
   isvisible,
@@ -69,7 +69,9 @@ const LoginModal = ({
   const handleGuest = async (e) => {
     e.preventDefault();
 
-    setShowGuestModal(!showGuestModal);
+    setShowGuestModal(true);
+    onClose();
+    dispatch(guest(false));
     await dispatch(guestFromLogin(showGuestModal));
   };
 
