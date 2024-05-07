@@ -37,7 +37,14 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     let name = "";
     let email = "";
     let number = "";
-    let userID = user?._id;
+    let userID = "";
+    let guest = false;
+
+    if (user?._id) {
+      userID = user?._id;
+    } else {
+      guest = true;
+    }
 
     if (recipientType === "myself") {
       name = user?.name;
@@ -61,6 +68,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       phone: number,
       price: price,
       createdBy: userID,
+      guest: guest
     };
 
     try {
