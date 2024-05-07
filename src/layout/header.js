@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   LogoWithBackground,
@@ -46,6 +46,7 @@ const NAV__LINK = [
 export const Header = () => {
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
+  const modal = useAppSelector((state) => state.modal);
 
   const [navbar, setNavbar] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -64,7 +65,7 @@ export const Header = () => {
   const [showSuccessModal, setSuccessModal] = useState(false);
 
   const [showNotification, setNotification] = useState(false);
-  
+
   const [notificationData, setNotificationData] = useState();
   const [notificationRawData, setNotificationRawData] = useState();
 
@@ -75,6 +76,11 @@ export const Header = () => {
     setShowContactModal(false);
     setShowPricingModal(false);
   };
+
+  useEffect(() => {
+    closeAllModal;
+    setShowLoginModal(modal.loginModal);
+  }, [modal.loginModal]);
 
   const handlePath = (path) => {
     setNavbar(false);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ModalFrame from "../modalFrame";
 import { Typography } from "../../typography";
@@ -8,23 +8,68 @@ import { DesignButton } from "../../button/designButton";
 import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
+import { InlineError } from "@/validity";
+import { useAppSelector } from "@/hooks";
 
-const GuestReciteModal = ({ 
-  isvisible,
-  onClose,
-  openPaymentReciteModal,
+const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
+  const user = useAppSelector((state) => state.auth.user);
+  const [guestName, setGuestName] = useState("");
+  const [guestEmail, setGuestEmail] = useState("");
+  const [guestPhone, setGuestPhone] = useState("");
+  const [guestPrice] = useState(parseInt(5));
 
- }) => {
+  const [contactMethod, setContactMethod] = useState("email");
+
+  const [invalidInputs, setInvalidInputs] = useState({
+    isNewNameInvalid: false,
+  });
+
   if (!isvisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-  const openReciteModal2 = () => {
-    onClose();
-    openPaymentReciteModal();
+  const handlePrayerModal = async (e) => {
+    e.preventDefault();
+
+    let name = "";
+    let email = "";
+    let number = "";
+    let userID = "";
+    let guest = false;
+
+    if (user?._id) {
+      userID = user?._id;
+    } else {
+      guest = true;
+    }
+
+    name = guestName;
+    email = guestEmail;
+    number = guestPhone;
+
+    setInvalidInputs({
+      isNewNameInvalid: guestName ? false : true,
+    });
+
+    if (!guestName) return;
+
+    const data = {
+      name: guestName,
+      email: guestEmail,
+      phone: guestPhone,
+      price: guestPrice,
+      createdBy: userID,
+      guest: guest,
+    };
+
+    try {
+      onClose();
+      openPaymentReciteModal(data);
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
   };
-  
 
   return (
     <FlexCenter
@@ -33,7 +78,7 @@ const GuestReciteModal = ({
       onClick={handleClose}
     >
       <ModalFrame onClose={onClose} title="Recite the prayer">
-      <div className="px-5 mb-3.5">
+        <div className="px-5 mb-3.5">
           <Typography
             variant="h11"
             classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -42,7 +87,6 @@ const GuestReciteModal = ({
           </Typography>
         </div>
         <FlexColumn className="px-5 mb-3.5 gap-2">
-          
           <div className="pb-3">
             <Typography
               variant="h12"
@@ -55,58 +99,87 @@ const GuestReciteModal = ({
           <hr className="w-auto border-color-brand-op" />
 
           <div className="pt-3">
-            <Typography
-              variant="h12"
-              classname="text-color-brand-yellow2  "
-            >
+            <Typography variant="h12" classname="text-color-brand-yellow2  ">
               Name of recipient
             </Typography>
             <Flex className="relative h-[40px] pt-1">
-              <Input type="text" placeholder="Name" />
+              <Input
+                type="text"
+                placeholder="Name"
+                value={guestName}
+                onChange={(e) => setGuestName(e.target.value)}
+              />
             </Flex>
+
+            {invalidInputs.isNewNameInvalid && <InlineError message={"name"} />}
           </div>
 
           <div className="pt-3.5">
-          <Typography
-              variant="h12"
-              classname="text-color-brand-yellow2  "
-            >
+            <Typography variant="h12" classname="text-color-brand-yellow2  ">
               Recipient’s phone or email
             </Typography>
-            <div><Typography
-              variant="h17"
-              classname="text-color-brand-yellow2 "
-            >
-              We’ll use this to let them know a prayer is being recited for them
-            </Typography></div>
+            <div>
+              <Typography variant="h17" classname="text-color-brand-yellow2 ">
+                We’ll use this to let them know a prayer is being recited for
+                them
+              </Typography>
+            </div>
           </div>
-          
-          
 
-          <div className="flex gap-4">
+          <Flex className="flex flex-col sm:flex-row gap-4">
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
-                <CheckBox>Phone</CheckBox>
+                <CheckBox
+                  checked={contactMethod === "phone"}
+                  onChange={() => setContactMethod("phone")}
+                >
+                  Phone
+                </CheckBox>
               </Flex>
             </div>
 
             <div className="h-full w-full">
               <Flex className="relative h-[40px]">
-                <CheckBox>Email</CheckBox>
+                <CheckBox
+                  checked={contactMethod === "email"}
+                  onChange={() => setContactMethod("email")}
+                >
+                  Email
+                </CheckBox>
               </Flex>
             </div>
-          </div>
-          <div className="pt-3.5">
-          <Flex className="relative h-[40px]">
-                <Input type="text" placeholder="123-345-6789" />
+          </Flex>
+          {contactMethod === "phone" && (
+            <div className="pt-3">
+              <Flex className="relative h-[40px]">
+                <Input
+                  type="number"
+                  placeholder="123-345-6789"
+                  value={guestPhone}
+                  onChange={(e) => setGuestPhone(e.target.value)}
+                />
               </Flex>
-          </div>
+            </div>
+          )}
+
+          {contactMethod === "email" && (
+            <div className="pt-3">
+              <Flex className="relative h-[40px]">
+                <Input
+                  type="email"
+                  placeholder="example@domain.com"
+                  value={guestEmail}
+                  onChange={(e) => setGuestEmail(e.target.value)}
+                />
+              </Flex>
+            </div>
+          )}
 
           <Flex className=" justify-center pt-3.5 pb-2.5 w-[100%]">
             <DesignButton
               className=" w-full"
               typoVariant="buttonLabel2"
-               onClick={openReciteModal2}
+              onClick={handlePrayerModal}
             >
               Next
             </DesignButton>

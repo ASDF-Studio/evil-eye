@@ -9,6 +9,7 @@ import { DesignButton3 } from "../../button/designButton3";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { isUserLoggedIn, login } from "@/action";
 import { InlineError } from "@/validity";
+import { guestFromLogin } from "@/action/modal.action";
 
 const LoginModal = ({
   isvisible,
@@ -24,6 +25,8 @@ const LoginModal = ({
 
   const [error, setError] = useState("");
   const { loginError: loginError } = useAppSelector((state) => state.auth);
+
+  const [showGuestModal, setShowGuestModal] = useState(true);
 
   React.useEffect(() => {
     setError(loginError);
@@ -61,6 +64,13 @@ const LoginModal = ({
   const openForgotPass1Modal = () => {
     onClose();
     openForgotPass1();
+  };
+
+  const handleGuest = async (e) => {
+    e.preventDefault();
+
+    setShowGuestModal(!showGuestModal);
+    await dispatch(guestFromLogin(showGuestModal));
   };
 
   const handleSubmit = async (e) => {
@@ -195,9 +205,9 @@ const LoginModal = ({
             <FlexCenter className="w-auto sm:w-[410px]">
               <Typography
                 variant="h12"
-                classname="underline text-color-brand-yellow2"
+                classname="underline text-color-brand-yellow2 cursor-pointer"
               >
-                Continue as guest
+                <div onClick={handleGuest}>Continue as guest</div>
               </Typography>
             </FlexCenter>
           </div>

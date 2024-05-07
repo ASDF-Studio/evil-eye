@@ -70,3 +70,8 @@ export const prayerConstants = {
   COUPON_SUCCESS: "COUPON_SUCCESS",
   COUPON_FAILURE: "COUPON_FAILURE",
 };
+
+export const modalConstants = {
+  GUEST_SUCCESS: "GUEST_SUCCESS",
+  GUEST_MODAL_SUCCESS: "GUEST_MODAL_SUCCESS",
+};

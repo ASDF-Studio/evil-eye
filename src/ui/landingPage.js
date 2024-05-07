@@ -3,7 +3,7 @@ import { Flex, FlexColumn } from "@/components/layout";
 import { Borderline, LeftPlay, Play } from "../components/logo";
 import { Typography } from "@/components/typography";
 import InfoModal from "@/components/infoModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DesignButton } from "@/components/button/designButton";
 import Symtoms from "@/components/infoModal/symtoms";
 import Cure from "@/components/infoModal/cure";
@@ -13,17 +13,22 @@ import GuestReciteModal from "@/components/modal/recite/guestReciteModal";
 import PaymentReciteModal from "@/components/modal/recite/paymentReciteModal";
 import PaymentSuccessReciteModal from "@/components/modal/recite/paymentSuccessReciteModal";
 import PrayerReciteModal from "@/components/modal/recite/prayerReciteModal";
-import { useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import ReciteModal from "@/components/modal/recite/reciteModal";
+import { guest } from "@/action/modal.action";
 
 export const LandingPage = () => {
   const auth = useAppSelector((state) => state.auth);
+  const modal = useAppSelector((state) => state.modal);
+  const dispatch = useAppDispatch();
 
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
   const [showGuestReciteModal, setGuestShowReciteModal] = useState(false);
   const [showReciteModal, setReciteModal] = useState(false);
+
+  const [showLoginModal, setShowLoginModal] = useState(true);
 
   const [showPaymentReciteModal, setPaymentReciteModal] = useState(false);
   const [showPaymentSuccessReciteModal, setPaymentSuccessReciteModal] =
@@ -43,6 +48,11 @@ export const LandingPage = () => {
     setPaymentSuccessReciteModal(false);
     setPrayerReciteModal(false);
   };
+
+  useEffect(() => {
+    setGuestShowReciteModal(modal.guestModal);
+  }, [modal.guestModal]);
+
   const openGuestReciteModal = () => {
     closeAllModals;
     setGuestShowReciteModal(true);
@@ -75,7 +85,14 @@ export const LandingPage = () => {
     if (auth.authenticate) {
       openReciteModal();
     } else {
-      openGuestReciteModal();
+      // openGuestReciteModal();
+
+      if (modal.guestModal) {
+        setShowLoginModal(false);
+      } else {
+        setShowLoginModal(!showLoginModal);
+        await dispatch(guest(showLoginModal));
+      }
     }
   };
 
