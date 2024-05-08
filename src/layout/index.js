@@ -26,7 +26,7 @@ const MainLayout = ({ children }) => {
         </div>
         <BGvideo />
 
-        <div className="z-10 relative h-screen overflow-auto sm:overflow-hidden">{children}</div>
+        <div className="z-10 relative h-[100vh] overflow-y-auto overflow-hidden">{children}</div>
       </div>
     </>
   );

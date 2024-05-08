@@ -54,7 +54,7 @@ export const BG420 = () => {
       height="auto"
       priority={true}
       alt="bg420"
-      className="absolute top-0 left-0 w-full h-full object-cover"
+      className="absolute w-full h-full object-cover"
     />
   );
 };
@@ -68,7 +68,7 @@ export const BG960 = () => {
       height="auto"
       priority={true}
       alt="bg960"
-      className="absolute top-0 left-0 w-full h-full object-cover"
+      className="absolute w-full h-full object-cover"
     />
   );
 };
@@ -82,7 +82,7 @@ export const BG1920 = () => {
       height="auto"
       priority={true}
       alt="bg1920"
-      className="absolute top-0 left-0 w-full h-full object-cover"
+      className="absolute w-full h-full object-cover"
     />
   );
 };
@@ -96,7 +96,7 @@ export const BG2880 = () => {
       height="auto"
       priority={true}
       alt="bg2880"
-      className="absolute top-0 left-0 w-full h-full object-cover"
+      className="absolute w-full h-full object-cover"
     />
   );
 };
