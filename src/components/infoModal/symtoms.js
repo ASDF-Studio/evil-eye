@@ -2,7 +2,7 @@ import React from "react";
 
 const Symtoms = () => {
   return (
-    <div>
+    <div className="">
       <h1 className="font-roman drop-shadow-3xl text-[35px] font-normal pb-5">
         SYMPTOMS
       </h1>

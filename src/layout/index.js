@@ -11,7 +11,7 @@ const MainLayout = ({ children }) => {
       </Head>
       <Header />
       
-      <div className="absolute inset-0 overflow-hidden z-0">
+      <div className="">
         <div className="block lsm:hidden">
           <BG420 />
         </div>

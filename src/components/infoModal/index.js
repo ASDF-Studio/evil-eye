@@ -9,12 +9,12 @@ const InfoModal = ({ isvisible, onClose, children }) => {
   useEffect(() => {
     if (isvisible) {
       setModalVisible(true);
-      setShouldAnimateClose(false); // Reset shouldAnimateClose when modal is opened
+      setShouldAnimateClose(false);
     } else {
       setTimeout(() => {
         setModalVisible(false);
         if (modalVisible) {
-          setShouldAnimateClose(true); // Set shouldAnimateClose only if modal was visible
+          setShouldAnimateClose(true);
         }
       }, 100);
     }
@@ -45,7 +45,7 @@ const InfoModal = ({ isvisible, onClose, children }) => {
         >
           <Xmark />
         </button>
-        <div className="text-textColor-brand-yellow w-auto h-auto pl-5 rounded sm:w-[450px]">
+        <div className="text-textColor-brand-yellow w-auto pl-5 rounded overflow-y-auto max-h-[70vh] sm:w-[450px] sm:h-auto">
           {children}
         </div>
       </FlexColumn>

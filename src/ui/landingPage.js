@@ -141,7 +141,7 @@ export const LandingPage = () => {
   }, [router.query.modal]);
 
   return (
-    <div className="flex flex-col h-screen justify-between">
+    <div className="flex flex-col h-screen justify-between overflow-y-auto overflow-hidden">
       <Flex className="w-full h-full mt-[90px] justify-center 1xl:mt-[120px]">
         <Flex className="w-[1440px] h-auto flex-col sm:flex-row  ">
           <FlexColumn className="h-full max-h-[700px] gap-10 justify-between sm:gap-0">
