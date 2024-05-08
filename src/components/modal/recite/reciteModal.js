@@ -5,12 +5,14 @@ import { Flex, FlexCenter, FlexColumn } from "../../layout";
 import { DesignButton } from "../../button/designButton";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
-import { useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { InlineError } from "@/validity";
+import { privacyModal } from "@/action/modal.action";
 
 const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
+  const dispatch = useAppDispatch();
 
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -77,6 +79,12 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     } catch (error) {
       console.error("Error during signup:", error);
     }
+  };
+
+  const handlePrivacyModal = async (e) => {
+    e.preventDefault();
+    onClose();
+    await dispatch(privacyModal(true));
   };
 
   return (
@@ -273,7 +281,13 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               classname=" text-color-brand-yellow2 opacity-80 "
             >
               By entering the details, I acknowledge and agree to the{" "}
-              <a className="cursor-pointer underline">Privacy Policy</a>.
+              <a
+                className="cursor-pointer underline"
+                onClick={handlePrivacyModal}
+              >
+                Privacy Policy
+              </a>
+              .
             </Typography>
           </div>
 

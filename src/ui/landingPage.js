@@ -14,8 +14,15 @@ import PaymentReciteModal from "@/components/modal/recite/paymentReciteModal";
 import PaymentSuccessReciteModal from "@/components/modal/recite/paymentSuccessReciteModal";
 import PrayerReciteModal from "@/components/modal/recite/prayerReciteModal";
 import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useRouter } from "next/router";
 import ReciteModal from "@/components/modal/recite/reciteModal";
-import { guest, guestFromLogin, userRecite } from "@/action/modal.action";
+import {
+  guest,
+  guestFromLogin,
+  privacyModal,
+  userRecite,
+} from "@/action/modal.action";
+import Privacy from "@/components/modal/privacy/privacyModal";
 
 export const LandingPage = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -38,6 +45,8 @@ export const LandingPage = () => {
 
   const [prayerData, setPrayerData] = useState([]);
 
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+
   const closeAllModals = () => {
     setShowModal(false);
     setShowModal2(false);
@@ -58,6 +67,10 @@ export const LandingPage = () => {
     setReciteModal(modal.userModal);
   }, [modal.userModal]);
 
+  useEffect(() => {
+    closeAllModals;
+    setShowPrivacyModal(modal.privacyModal);
+  }, [modal.privacyModal]);
 
   const openGuestReciteModal = () => {
     closeAllModals;
@@ -105,11 +118,27 @@ export const LandingPage = () => {
     dispatch(guest(false));
     dispatch(guestFromLogin(false));
   };
-  
+
   const handleReciteModalClose = () => {
     setReciteModal(false);
     dispatch(userRecite(false));
   };
+
+  const handlePrivacyModalClose = () => {
+    setShowPrivacyModal(false);
+    dispatch(privacyModal(false));
+
+    router.replace(router.pathname, undefined, { shallow: true });
+  };
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const modal = router.query.modal;
+    if (modal === "privacy") {
+      setShowPrivacyModal(true);
+    }
+  }, [router.query.modal]);
 
   return (
     <div className="flex flex-col h-screen justify-between">
@@ -243,6 +272,10 @@ export const LandingPage = () => {
           <DashModal
             isvisible={showDashModal}
             onClose={() => setShowDashModal(false)}
+          />
+          <Privacy
+            isvisible={showPrivacyModal}
+            onClose={handlePrivacyModalClose}
           />
         </Flex>
       </FlexColumn>

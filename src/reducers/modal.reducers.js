@@ -4,6 +4,8 @@ const initialState = {
   loginModal: false,
   guestModal: false,
   userModal: false,
+
+  privacyModal: false,
 };
 export default function modalReducer(state = initialState, action) {
   switch (action.type) {
@@ -31,6 +33,13 @@ export default function modalReducer(state = initialState, action) {
         userModal: action.payload.userModal,
         loginModal: false,
         guestModal: false,
+      };
+      break;
+
+    case modalConstants.PRIVACY_MODAL_SUCCESS:
+      state = {
+        ...state,
+        privacyModal: action.payload.privacyModal,
       };
       break;
   }

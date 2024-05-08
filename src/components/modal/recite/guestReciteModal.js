@@ -9,10 +9,13 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 import { InlineError } from "@/validity";
-import { useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { privacyModal } from "@/action/modal.action";
 
 const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const user = useAppSelector((state) => state.auth.user);
+  const dispatch = useAppDispatch();
+
   const [guestName, setGuestName] = useState("");
   const [guestEmail, setGuestEmail] = useState("");
   const [guestPhone, setGuestPhone] = useState("");
@@ -69,6 +72,12 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     } catch (error) {
       console.error("Error during signup:", error);
     }
+  };
+
+  const handlePrivacyModal = async (e) => {
+    e.preventDefault();
+    onClose();
+    await dispatch(privacyModal(true));
   };
 
   return (
@@ -187,8 +196,14 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               variant="h22"
               classname=" text-color-brand-yellow2 opacity-80 "
             >
-              By entering the details, I acknowledge and agree to the {" "}
-              <a className="cursor-pointer underline">Privacy Policy</a>.
+              By entering the details, I acknowledge and agree to the{" "}
+              <a
+                className="cursor-pointer underline"
+                onClick={handlePrivacyModal}
+              >
+                Privacy Policy
+              </a>
+              .
             </Typography>
           </div>
 

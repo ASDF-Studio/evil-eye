@@ -18,12 +18,20 @@ export const userRecite = (showReciteModal) => {
   };
 };
 
-
 export const guestFromLogin = (showGuestModal) => {
   return async (dispatch) => {
     dispatch({
       type: modalConstants.GUEST_MODAL_SUCCESS,
       payload: { guestModal: showGuestModal },
+    });
+  };
+};
+
+export const privacyModal = (showPrivacyModal) => {
+  return async (dispatch) => {
+    dispatch({
+      type: modalConstants.PRIVACY_MODAL_SUCCESS,
+      payload: { privacyModal: showPrivacyModal },
     });
   };
 };
