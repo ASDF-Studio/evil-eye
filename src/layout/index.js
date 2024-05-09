@@ -28,12 +28,8 @@ const MainLayout = ({ children }) => {
           </div>
           <BGvideo />
         </div>
-
-        {/* Scrollable Content */}
-        <div className="relative z-10 overflow-y-auto">
-          {children}
-        </div>
       </div>
+      <div className="relative z-10 overflow-y-auto">{children}</div>
     </>
   );
 };
