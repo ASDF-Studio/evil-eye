@@ -12,6 +12,7 @@ const MainLayout = ({ children }) => {
       <Header />
 
       <div className="relative overflow-hidden">
+        {/* Background images with fixed position */}
         <div className="absolute inset-0 overflow-hidden fixed-bg z-0">
           <div className="block lsm:hidden">
             <BG420 />
@@ -26,9 +27,11 @@ const MainLayout = ({ children }) => {
             <BG2880 />
           </div>
         </div>
+        {/* Background video */}
         <BGvideo />
 
-        <div className="z-10 relative overflow-y-auto h-screen sm:h-full">
+        {/* Content container */}
+        <div className="z-10 relative overflow-y-auto max-h-screen">
           {children}
         </div>
       </div>
