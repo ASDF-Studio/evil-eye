@@ -11,9 +11,8 @@ const MainLayout = ({ children }) => {
       </Head>
       <Header />
 
-      <div className="relative overflow-hidden">
-        {/* Background Components */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="">
+        <div className="absolute inset-0 overflow-hidden z-0">
           <div className="block lsm:hidden">
             <BG420 />
           </div>
@@ -26,10 +25,14 @@ const MainLayout = ({ children }) => {
           <div className="hidden 5xl:block">
             <BG2880 />
           </div>
-          <BGvideo />
+        </div>
+        
+        <BGvideo />
+
+        <div className="z-10 relative">
+          {children}
         </div>
       </div>
-      <div className="relative z-10 overflow-y-auto">{children}</div>
     </>
   );
 };
