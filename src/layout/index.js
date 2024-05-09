@@ -30,7 +30,7 @@ const MainLayout = ({ children }) => {
         </div>
 
         {/* Scrollable Content */}
-        <div className="relative z-10 h-screen overflow-y-auto sm:overflow-hidden">
+        <div className="relative z-10 overflow-y-auto">
           {children}
         </div>
       </div>
