@@ -10,28 +10,23 @@ const MainLayout = ({ children }) => {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Header />
-
+      
       <div className="">
-        <div className="absolute inset-0 overflow-hidden z-0">
-          <div className="block lsm:hidden">
-            <BG420 />
-          </div>
-          <div className="hidden lsm:block">
-            <BG960 />
-          </div>
-          <div className="hidden x:block">
-            <BG1920 />
-          </div>
-          <div className="hidden 5xl:block">
-            <BG2880 />
-          </div>
+        <div className="block lsm:hidden">
+          <BG420 />
         </div>
-        
+        <div className="hidden lsm:block">
+          <BG960 />
+        </div>
+        <div className="hidden x:block">
+          <BG1920 />
+        </div>
+        <div className="hidden 5xl:block">
+          <BG2880 />
+        </div>
         <BGvideo />
 
-        <div className="z-10 relative">
-          {children}
-        </div>
+        <div className="z-10 relative h-screen overflow-auto sm:overflow-hidden">{children}</div>
       </div>
     </>
   );
