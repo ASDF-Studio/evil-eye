@@ -31,7 +31,7 @@ const MainLayout = ({ children }) => {
         <BGvideo />
 
         {/* Content container */}
-        <div className="z-10 relative overflow-y-auto max-h-screen">
+        <div className="z-10 relative overflow-y-auto max-h-screen scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent">
           {children}
         </div>
       </div>
