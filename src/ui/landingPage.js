@@ -100,6 +100,18 @@ export const LandingPage = () => {
     closeAllModals;
     setPaymentCancelReciteModal(true);
   };
+
+  const handleSuccessModalClose = () => {
+    setPaymentSuccessReciteModal(false);
+
+    router.replace(router.pathname, undefined, { shallow: true });
+  };
+
+  const handleCancelModalClose = () => {
+    setPaymentCancelReciteModal(false);
+
+    router.replace(router.pathname, undefined, { shallow: true });
+  };
   const openPrayerReciteModal = () => {
     closeAllModals;
     setPrayerReciteModal(true);
@@ -141,6 +153,8 @@ export const LandingPage = () => {
 
     router.replace(router.pathname, undefined, { shallow: true });
   };
+
+  // payment
 
   const router = useRouter();
 
@@ -294,12 +308,12 @@ export const LandingPage = () => {
           />
           <PaymentSuccessReciteModal
             isvisible={showPaymentSuccessReciteModal}
-            onClose={() => setPaymentSuccessReciteModal(false)}
+            onClose={handleSuccessModalClose}
             openPrayerReciteModal={openPrayerReciteModal}
           />
           <PaymentCancelReciteModal
             isvisible={showPaymentCancelReciteModal}
-            onClose={() => setPaymentCancelReciteModal(false)}
+            onClose={handleCancelModalClose}
           />
           <PrayerReciteModal
             isvisible={showPrayerReciteModal}
