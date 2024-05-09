@@ -12,8 +12,8 @@ const MainLayout = ({ children }) => {
       <Header />
 
       <div className="relative overflow-hidden">
-        {/* Background images with fixed position */}
-        <div className="absolute inset-0 overflow-hidden fixed-bg z-0">
+        {/* Background Components */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
           <div className="block lsm:hidden">
             <BG420 />
           </div>
@@ -26,12 +26,11 @@ const MainLayout = ({ children }) => {
           <div className="hidden 5xl:block">
             <BG2880 />
           </div>
+          <BGvideo />
         </div>
-        {/* Background video */}
-        <BGvideo />
 
-        {/* Content container */}
-        <div className="z-10 relative overflow-y-auto max-h-screen scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent">
+        {/* Scrollable Content */}
+        <div className="relative z-10 h-screen overflow-y-auto sm:overflow-hidden">
           {children}
         </div>
       </div>
