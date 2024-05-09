@@ -112,9 +112,9 @@ export const LandingPage = () => {
 
     router.replace(router.pathname, undefined, { shallow: true });
   };
-  const openPrayerReciteModal = () => {
+  const openPrayerReciteModal = (paymentDone) => {
     closeAllModals;
-    setPrayerReciteModal(true);
+    setPrayerReciteModal(paymentDone);
   };
   const openDashboard = () => {
     closeAllModals;
@@ -168,26 +168,27 @@ export const LandingPage = () => {
   useEffect(() => {
     const payment = router.query.payment;
     const session_id = router.query.session_id;
+    const prayer_id = router.query.prayer_id;
 
     if (payment === "success" && session_id) {
-      if (auth.authenticate) {
-        const data = {
-          sessionId: session_id,
-          userId: user?._id,
-        };
+      const data = {
+        sessionId: session_id,
+        prayerId: prayer_id,
+      };
 
-        dispatch(verifyCheckoutSession(data));
-      } else {
-        openPaymentSuccessReciteModal(true);
-      }
+      dispatch(verifyCheckoutSession(data));
     } else if (payment === "canceled") {
       openPaymentCancelReciteModal();
     }
   }, [router.query.payment]);
 
   useEffect(() => {
-    openPaymentSuccessReciteModal(prayer.paymentStatus);
-  }, [prayer.paymentStatus]);
+    if (prayer.paymentDone) {
+      openPrayerReciteModal(prayer.paymentDone);
+    } else {
+      openPaymentSuccessReciteModal(prayer.paymentStatus);
+    }
+  }, [prayer.paymentStatus, prayer.paymentDone]);
 
   return (
     <div className="flex flex-col h-screen justify-between">

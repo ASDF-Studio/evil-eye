@@ -10,11 +10,7 @@ import { paymentCheckout, prayer, validateCoupon } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { Input } from "@/components/input";
 
-const PaymentReciteModal = ({
-  isvisible,
-  onClose,
-  prayerData,
-}) => {
+const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
   const dispatch = useAppDispatch();
   const prayerState = useAppSelector((state) => state.prayer);
 
@@ -45,10 +41,11 @@ const PaymentReciteModal = ({
 
     let updatedPrayerData;
 
+    let discountedPrice =
+      prayerData.price -
+      prayerData.price * (prayerState.discountPercentage / 100);
+
     if (prayerState.couponValid) {
-      let discountedPrice =
-        prayerData.price -
-        prayerData.price * (prayerState.discountPercentage / 100);
       updatedPrayerData = {
         ...prayerData,
         discountedPrice: discountedPrice,
@@ -57,11 +54,13 @@ const PaymentReciteModal = ({
     } else {
       updatedPrayerData = {
         ...prayerData,
+        discountedPrice: discountedPrice,
       };
     }
 
     try {
-      await dispatch(paymentCheckout(updatedPrayerData));
+      await dispatch(prayer(updatedPrayerData));
+      // console.log("updatedPrayerData", updatedPrayerData);
     } catch (error) {
       console.error("Error during payment:", error);
     }

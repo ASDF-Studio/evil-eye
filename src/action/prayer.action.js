@@ -22,6 +22,13 @@ export const prayer = (data) => {
             prayer: res.data.prayer,
           },
         });
+
+        const prayerData = {
+          ...data,
+          prayerId: res.data.prayer.prayerId,
+        };
+
+        await dispatch(paymentCheckout(prayerData));
         return;
       }
     } catch (error) {
@@ -109,8 +116,6 @@ export const paymentCheckout = (data) => {
           },
         });
 
-        await dispatch(prayer(data));
-
         const session = res.data;
 
         const result = await stripe.redirectToCheckout({
@@ -158,6 +163,17 @@ export const verifyCheckoutSession = (data) => {
         dispatch({
           type: prayerConstants.CHECKOUT_SUCCESS,
           payload: {
+            prayerDone: res.data.prayerDone,
+            paymentStatus: res.data.paymentStatus,
+          },
+        });
+        return;
+      }
+      if (res.status === 202) {
+        dispatch({
+          type: prayerConstants.CHECKOUT_PRAYER_DONE,
+          payload: {
+            prayerDone: res.data.prayerDone,
             paymentStatus: res.data.paymentStatus,
           },
         });
@@ -168,8 +184,39 @@ export const verifyCheckoutSession = (data) => {
         dispatch({
           type: prayerConstants.CHECKOUT_FAILURE,
           payload: {
+            prayerDone: false,
             paymentStatus: false,
           },
+        });
+        return;
+      }
+    }
+  };
+};
+
+export const recitePrayer = (data) => {
+  return async (dispatch) => {
+    dispatch({
+      type: prayerConstants.RECITE_PRAYER_REQUEST,
+    });
+
+    try {
+      const res = await axios.post(`${baseURL}recitePrayer`, {
+        ...data,
+      });
+      if (res.status === 200) {
+        dispatch({
+          type: prayerConstants.RECITE_PRAYER_SUCCESS,
+          payload: {
+            prayerDone: res.data.prayerDone,
+          },
+        });
+        return;
+      }
+    } catch (error) {
+      if (error?.response?.status === 404) {
+        dispatch({
+          type: prayerConstants.RECITE_PRAYER_FAILURE,
         });
         return;
       }

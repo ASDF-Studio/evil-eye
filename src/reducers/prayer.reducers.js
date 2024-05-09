@@ -12,6 +12,7 @@ const initialState = {
   invalidCoupon: "",
 
   paymentStatus: false,
+  prayerDone: false,
 };
 export default function prayerReducer(state = initialState, action) {
   console.log(action);
@@ -82,6 +83,7 @@ export default function prayerReducer(state = initialState, action) {
       state = {
         ...state,
         paymentStatus: false,
+        prayerDone: false,
       };
       break;
 
@@ -89,6 +91,15 @@ export default function prayerReducer(state = initialState, action) {
       state = {
         ...state,
         paymentStatus: action.payload.paymentStatus,
+        prayerDone: action.payload.prayerDone,
+      };
+      break;
+
+    case prayerConstants.CHECKOUT_PRAYER_DONE:
+      state = {
+        ...state,
+        paymentStatus: action.payload.paymentStatus,
+        prayerDone: action.payload.prayerDone,
       };
       break;
 
@@ -96,6 +107,30 @@ export default function prayerReducer(state = initialState, action) {
       state = {
         ...state,
         paymentStatus: action.payload.paymentStatus,
+        prayerDone: false,
+      };
+      break;
+
+    case prayerConstants.RECITE_PRAYER_REQUEST:
+      state = {
+        ...state,
+        prayerDone: false,
+        loading: true,
+      };
+      break;
+
+    case prayerConstants.RECITE_PRAYER_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+        prayerDone: action.payload.prayerDone,
+      };
+      break;
+
+    case prayerConstants.RECITE_PRAYER_FAILURE:
+      state = {
+        ...state,
+        loading: false,
       };
       break;
   }
