@@ -9,7 +9,9 @@ const initialState = {
   couponValid: false,
   discountPercentage: "",
   coupon: "",
-  invalidCoupon: ""
+  invalidCoupon: "",
+
+  paymentStatus: false,
 };
 export default function prayerReducer(state = initialState, action) {
   console.log(action);
@@ -73,6 +75,27 @@ export default function prayerReducer(state = initialState, action) {
         couponValid: action.payload.couponValid,
         invalidCoupon: action.payload.message,
         loading: false,
+      };
+      break;
+
+    case prayerConstants.CHECKOUT_REQUEST:
+      state = {
+        ...state,
+        paymentStatus: false,
+      };
+      break;
+
+    case prayerConstants.CHECKOUT_SUCCESS:
+      state = {
+        ...state,
+        paymentStatus: action.payload.paymentStatus,
+      };
+      break;
+
+    case prayerConstants.CHECKOUT_FAILURE:
+      state = {
+        ...state,
+        paymentStatus: action.payload.paymentStatus,
       };
       break;
   }

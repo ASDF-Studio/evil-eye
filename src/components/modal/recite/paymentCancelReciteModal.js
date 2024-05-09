@@ -9,15 +9,11 @@ import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 
-const PaymentSuccessReciteModal = ({ isvisible, onClose, openPrayerReciteModal }) => {
+const PaymentCancelReciteModal = ({ isvisible, onClose }) => {
   if (!isvisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
-  };
-  const openReciteModal6 = () => {
-    onClose();
-    openPrayerReciteModal();
   };
 
   return (
@@ -33,14 +29,13 @@ const PaymentSuccessReciteModal = ({ isvisible, onClose, openPrayerReciteModal }
               variant="h11"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
             >
-              PAYMENT SUCCESSFUL
+              PAYMENT FAILED
             </Typography>
           </div>
           <FlexColumn className="mb-3.5 gap-2">
             <div className="flex justify-centerpt-5">
               <Typography variant="h13" classname="text-color-brand-yellow2">
-                We have successfully processed your payment. Please click below
-                to continue.
+                Your payment is failed.
               </Typography>
             </div>
             <div className="">
@@ -61,4 +56,4 @@ const PaymentSuccessReciteModal = ({ isvisible, onClose, openPrayerReciteModal }
   );
 };
 
-export default PaymentSuccessReciteModal;
+export default PaymentCancelReciteModal;

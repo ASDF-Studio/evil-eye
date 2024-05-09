@@ -143,3 +143,36 @@ export const paymentCheckout = (data) => {
     }
   };
 };
+
+export const verifyCheckoutSession = (data) => {
+  return async (dispatch) => {
+    dispatch({
+      type: prayerConstants.CHECKOUT_REQUEST,
+    });
+
+    try {
+      const res = await axios.post(`${baseURL}verifyCheckoutSession`, {
+        ...data,
+      });
+      if (res.status === 200) {
+        dispatch({
+          type: prayerConstants.CHECKOUT_SUCCESS,
+          payload: {
+            paymentStatus: res.data.paymentStatus,
+          },
+        });
+        return;
+      }
+    } catch (error) {
+      if (error?.response?.status === 400) {
+        dispatch({
+          type: prayerConstants.CHECKOUT_FAILURE,
+          payload: {
+            paymentStatus: false,
+          },
+        });
+        return;
+      }
+    }
+  };
+};

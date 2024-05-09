@@ -13,7 +13,6 @@ import { Input } from "@/components/input";
 const PaymentReciteModal = ({
   isvisible,
   onClose,
-  openPaymentSuccessReciteModal,
   prayerData,
 }) => {
   const dispatch = useAppDispatch();
@@ -63,9 +62,6 @@ const PaymentReciteModal = ({
 
     try {
       await dispatch(paymentCheckout(updatedPrayerData));
-
-      onClose();
-      openPaymentSuccessReciteModal();
     } catch (error) {
       console.error("Error during payment:", error);
     }

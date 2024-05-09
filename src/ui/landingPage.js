@@ -23,10 +23,14 @@ import {
   userRecite,
 } from "@/action/modal.action";
 import Privacy from "@/components/modal/privacy/privacyModal";
+import PaymentCancelReciteModal from "@/components/modal/recite/paymentCancelReciteModal";
+import { verifyCheckoutSession } from "@/action";
 
 export const LandingPage = () => {
   const auth = useAppSelector((state) => state.auth);
   const modal = useAppSelector((state) => state.modal);
+  const user = useAppSelector((state) => state.auth.user);
+  const prayer = useAppSelector((state) => state.prayer);
   const dispatch = useAppDispatch();
 
   const [showModal, setShowModal] = useState(false);
@@ -39,6 +43,8 @@ export const LandingPage = () => {
 
   const [showPaymentReciteModal, setPaymentReciteModal] = useState(false);
   const [showPaymentSuccessReciteModal, setPaymentSuccessReciteModal] =
+    useState(false);
+  const [showPaymentCancelReciteModal, setPaymentCancelReciteModal] =
     useState(false);
   const [showPrayerReciteModal, setPrayerReciteModal] = useState(false);
   const [showDashModal, setShowDashModal] = useState(false);
@@ -55,6 +61,7 @@ export const LandingPage = () => {
     setReciteModal(false);
     setPaymentReciteModal(false);
     setPaymentSuccessReciteModal(false);
+    setPaymentCancelReciteModal(false);
     setPrayerReciteModal(false);
   };
 
@@ -85,9 +92,13 @@ export const LandingPage = () => {
     closeAllModals;
     setPaymentReciteModal(true);
   };
-  const openPaymentSuccessReciteModal = () => {
+  const openPaymentSuccessReciteModal = (paymentStatus) => {
     closeAllModals;
-    setPaymentSuccessReciteModal(true);
+    setPaymentSuccessReciteModal(paymentStatus);
+  };
+  const openPaymentCancelReciteModal = () => {
+    closeAllModals;
+    setPaymentCancelReciteModal(true);
   };
   const openPrayerReciteModal = () => {
     closeAllModals;
@@ -139,6 +150,30 @@ export const LandingPage = () => {
       setShowPrivacyModal(true);
     }
   }, [router.query.modal]);
+
+  useEffect(() => {
+    const payment = router.query.payment;
+    const session_id = router.query.session_id;
+
+    if (payment === "success" && session_id) {
+      if (auth.authenticate) {
+        const data = {
+          sessionId: session_id,
+          userId: user?._id,
+        };
+
+        dispatch(verifyCheckoutSession(data));
+      } else {
+        openPaymentSuccessReciteModal(true);
+      }
+    } else if (payment === "canceled") {
+      openPaymentCancelReciteModal();
+    }
+  }, [router.query.payment]);
+
+  useEffect(() => {
+    openPaymentSuccessReciteModal(prayer.paymentStatus);
+  }, [prayer.paymentStatus]);
 
   return (
     <div className="flex flex-col h-screen justify-between">
@@ -255,13 +290,16 @@ export const LandingPage = () => {
           <PaymentReciteModal
             isvisible={showPaymentReciteModal}
             onClose={() => setPaymentReciteModal(false)}
-            openPaymentSuccessReciteModal={openPaymentSuccessReciteModal}
             prayerData={prayerData}
           />
           <PaymentSuccessReciteModal
             isvisible={showPaymentSuccessReciteModal}
             onClose={() => setPaymentSuccessReciteModal(false)}
             openPrayerReciteModal={openPrayerReciteModal}
+          />
+          <PaymentCancelReciteModal
+            isvisible={showPaymentCancelReciteModal}
+            onClose={() => setPaymentCancelReciteModal(false)}
           />
           <PrayerReciteModal
             isvisible={showPrayerReciteModal}
