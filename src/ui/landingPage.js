@@ -278,7 +278,7 @@ export const LandingPage = () => {
 
       {prayer.prayerLoading && <LoadingScreen />}
 
-      <FlexColumn className="items-center h-[100%] justify-end pb-[13%]">
+      <FlexColumn className="items-center h-[100%] pb-[50px]">
       {/* <FlexColumn className="items-center h-full pb-[20px] max-h-[350px] sm:max-h-[380px] 2xl:max-h-[450px]"> */}
         <Borderline />
         <Typography
