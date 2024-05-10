@@ -25,6 +25,7 @@ import {
 import Privacy from "@/components/modal/privacy/privacyModal";
 import PaymentCancelReciteModal from "@/components/modal/recite/paymentCancelReciteModal";
 import { verifyCheckoutSession } from "@/action";
+import PrayerReciteModalDone from "@/components/modal/recite/prayerReciteModalDone";
 
 export const LandingPage = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -47,6 +48,7 @@ export const LandingPage = () => {
   const [showPaymentCancelReciteModal, setPaymentCancelReciteModal] =
     useState(false);
   const [showPrayerReciteModal, setPrayerReciteModal] = useState(false);
+  const [showPrayerReciteModalDone, setPrayerReciteModalDone] = useState(false);
   const [showDashModal, setShowDashModal] = useState(false);
 
   const [prayerData, setPrayerData] = useState([]);
@@ -63,6 +65,7 @@ export const LandingPage = () => {
     setPaymentSuccessReciteModal(false);
     setPaymentCancelReciteModal(false);
     setPrayerReciteModal(false);
+    setPrayerReciteModalDone(false);
   };
 
   useEffect(() => {
@@ -112,9 +115,13 @@ export const LandingPage = () => {
 
     router.replace(router.pathname, undefined, { shallow: true });
   };
-  const openPrayerReciteModal = (paymentDone) => {
+  const openPrayerReciteModal = () => {
     closeAllModals;
-    setPrayerReciteModal(paymentDone);
+    setPrayerReciteModal(true);
+  };
+  const openPrayerReciteModalDone = (paymentDone) => {
+    closeAllModals;
+    setPrayerReciteModalDone(paymentDone);
   };
   const openDashboard = () => {
     closeAllModals;
@@ -183,12 +190,16 @@ export const LandingPage = () => {
   }, [router.query.payment]);
 
   useEffect(() => {
-    if (prayer.paymentDone) {
-      openPrayerReciteModal(prayer.paymentDone);
-    } else {
+    if (prayer.prayerDone) {
+      openPrayerReciteModalDone(prayer.prayerDone);
+    }
+  }, [prayer.prayerDone]);
+
+  useEffect(() => {
+    if (prayer.paymentStatus) {
       openPaymentSuccessReciteModal(prayer.paymentStatus);
     }
-  }, [prayer.paymentStatus, prayer.paymentDone]);
+  }, [prayer.paymentStatus]);
 
   return (
     <div className="flex flex-col h-screen justify-between">
@@ -290,7 +301,9 @@ export const LandingPage = () => {
             typoVariant="buttonLabel2"
             onClick={handlePrayerModal}
           >
-            Recite the prayer
+            {prayer.loading == false
+              ? "Recite the prayer"
+              : "Prayer loading..."}
           </DesignButton>
           <GuestReciteModal
             isvisible={showGuestReciteModal}
@@ -319,6 +332,12 @@ export const LandingPage = () => {
           <PrayerReciteModal
             isvisible={showPrayerReciteModal}
             onClose={() => setPrayerReciteModal(false)}
+            openDashboard={openDashboard}
+            openReciteModal={openReciteModal}
+          />
+          <PrayerReciteModalDone
+            isvisible={showPrayerReciteModalDone}
+            onClose={() => setPrayerReciteModalDone(false)}
             openDashboard={openDashboard}
             openReciteModal={openReciteModal}
           />

@@ -208,6 +208,7 @@ export const recitePrayer = (data) => {
         dispatch({
           type: prayerConstants.RECITE_PRAYER_SUCCESS,
           payload: {
+            prayerStart: res.data.prayerStart,
             prayerDone: res.data.prayerDone,
           },
         });

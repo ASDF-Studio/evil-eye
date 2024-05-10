@@ -43,12 +43,17 @@ const PaymentSuccessReciteModal = ({
     };
 
     try {
-      reciteModal();
       await dispatch(recitePrayer(data));
     } catch (error) {
       console.error("Error during payment:", error);
     }
   };
+
+  useEffect(() => {
+    if (prayerState.prayerStart) {
+      reciteModal(prayerState.prayerStart);
+    }
+  }, [prayerState.prayerStart]);
 
   if (!isvisible) return null;
 

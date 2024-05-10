@@ -12,6 +12,7 @@ const initialState = {
   invalidCoupon: "",
 
   paymentStatus: false,
+  prayerStart: false,
   prayerDone: false,
 };
 export default function prayerReducer(state = initialState, action) {
@@ -84,6 +85,7 @@ export default function prayerReducer(state = initialState, action) {
         ...state,
         paymentStatus: false,
         prayerDone: false,
+        loading: true,
       };
       break;
 
@@ -92,6 +94,7 @@ export default function prayerReducer(state = initialState, action) {
         ...state,
         paymentStatus: action.payload.paymentStatus,
         prayerDone: action.payload.prayerDone,
+        loading: false,
       };
       break;
 
@@ -100,6 +103,7 @@ export default function prayerReducer(state = initialState, action) {
         ...state,
         paymentStatus: action.payload.paymentStatus,
         prayerDone: action.payload.prayerDone,
+        loading: false,
       };
       break;
 
@@ -108,13 +112,14 @@ export default function prayerReducer(state = initialState, action) {
         ...state,
         paymentStatus: action.payload.paymentStatus,
         prayerDone: false,
+        loading: false,
       };
       break;
 
     case prayerConstants.RECITE_PRAYER_REQUEST:
       state = {
         ...state,
-        prayerDone: false,
+        prayerStart: false,
         loading: true,
       };
       break;
@@ -123,7 +128,8 @@ export default function prayerReducer(state = initialState, action) {
       state = {
         ...state,
         loading: false,
-        prayerDone: action.payload.prayerDone,
+        prayerStart: action.payload.prayerStart,
+        loading: false,
       };
       break;
 
@@ -131,6 +137,7 @@ export default function prayerReducer(state = initialState, action) {
       state = {
         ...state,
         loading: false,
+        prayerStart: false,
       };
       break;
   }
