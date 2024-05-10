@@ -83,11 +83,10 @@ export const BG420 = () => {
     <Image
       rel="preload"
       src={bg420}
-      width="auto"
-      height="auto"
+      layout="fill"
+      objectFit="cover"
       priority={true}
       alt="bg420"
-      className="absolute w-full h-full object-cover"
     />
   );
 };

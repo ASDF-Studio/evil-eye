@@ -10,9 +10,7 @@ const MainLayout = ({ children }) => {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Header />
-      
-      {/* <div className="h-screen overflow-auto sm:overflow-hidden"> */}
-      <div className="">
+      <div className="relative">
         <div className="block lsm:hidden">
           <BG420 />
         </div>
@@ -26,8 +24,7 @@ const MainLayout = ({ children }) => {
           <BG2880 />
         </div>
         <BGvideo />
-
-        <div className="z-10 relative h-screen overflow-auto sm:overflow-hidden">{children}</div>
+        <div className="z-10 relative overflow-auto">{children}</div>
       </div>
     </>
   );
