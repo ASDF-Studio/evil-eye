@@ -26,6 +26,7 @@ import Privacy from "@/components/modal/privacy/privacyModal";
 import PaymentCancelReciteModal from "@/components/modal/recite/paymentCancelReciteModal";
 import { verifyCheckoutSession } from "@/action";
 import PrayerReciteModalDone from "@/components/modal/recite/prayerReciteModalDone";
+import { LoadingScreen } from "@/components/background";
 
 export const LandingPage = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -275,9 +276,9 @@ export const LandingPage = () => {
         </Flex>
       </Flex>
 
-      {/* bottom part */}
+      {prayer.prayerLoading && <LoadingScreen />}
+
       <FlexColumn className="items-center h-full pb-[20px] max-h-[350px] sm:max-h-[380px] 2xl:max-h-[450px]">
-        {/* <FlexColumn className="items-center h-full max-h-[450px] sm:pb-[80px]"> */}
         <Borderline />
         <Typography
           variant="h2"

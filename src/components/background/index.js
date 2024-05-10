@@ -4,7 +4,7 @@ import bg960 from "../../../public/background/bg960.jpg";
 import bg1920 from "../../../public/background/bg1920.jpg";
 import bg2880 from "../../../public/background/bg2880.jpg";
 import prayerbg1920 from "../../../public/background/prayer_Background.png";
-import eyeRotate from '../../../public/background/EyeRotate.svg';
+import eyeRotate from "../../../public/background/EyeRotate.svg";
 
 export const BGvideo = () => {
   return (
@@ -59,12 +59,24 @@ export const EyeRotate = () => {
       width={"80"}
       height={"80"}
       alt="eye"
-      className="rotate-animation-step" 
+      className="rotate-animation-step"
     />
   );
 };
 
-
+export const LoadingScreen = () => {
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-filter backdrop-blur z-50">
+      <Image
+        src={eyeRotate}
+        width={"80"}
+        height={"80"}
+        alt="eye"
+        className="animate-spin-slow"
+      />
+    </div>
+  );
+};
 
 export const BG420 = () => {
   return (

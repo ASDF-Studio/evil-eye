@@ -6,6 +6,8 @@ import { DesignButton3 } from "../../button/designButton3";
 import { PrayerBG, PrayerBGvideo } from "@/components/background";
 import PrayerModalFrame from "../prayerModalFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { guest } from "@/action/modal.action";
 
 const PrayerReciteModalDone = ({
   isvisible,
@@ -13,14 +15,16 @@ const PrayerReciteModalDone = ({
   openReciteModal,
   openDashboard,
 }) => {
+  const dispatch = useAppDispatch();
+  const auth = useAppSelector((state) => state.auth);
+
   if (!isvisible) return null;
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
 
-  const openReciteModal3 = () => {
-    setPrayerDone(false);
+  const openAnotherReciteModal = () => {
     onClose();
     openReciteModal();
   };
@@ -28,6 +32,32 @@ const PrayerReciteModalDone = ({
     onClose();
     openDashboard();
   };
+
+  const handleAnotherPrayer = async (e) => {
+    e.preventDefault();
+
+    onClose();
+
+    if (auth.authenticate) {
+      openAnotherReciteModal();
+    } else {
+      await dispatch(guest(true));
+    }
+  };
+
+  const handleHistory = async (e) => {
+    e.preventDefault();
+
+    onClose();
+
+    if (auth.authenticate) {
+      openDashboardModal();
+    } else {
+      await dispatch(guest(true));
+    }
+  };
+
+
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-30"
@@ -60,7 +90,7 @@ const PrayerReciteModalDone = ({
               <DesignButton1
                 className="relative w-full"
                 typoVariant="buttonLabel2"
-                onClick={openReciteModal3}
+                onClick={handleAnotherPrayer}
               >
                 RECITE ANOTHER PRAYER
               </DesignButton1>
@@ -69,7 +99,7 @@ const PrayerReciteModalDone = ({
               <DesignButton3
                 className="w-full"
                 typoVariant="buttonLabel2"
-                onClick={openDashboardModal}
+                onClick={handleHistory}
               >
                 View Order History
               </DesignButton3>
