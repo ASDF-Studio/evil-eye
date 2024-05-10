@@ -203,7 +203,7 @@ export const LandingPage = () => {
   }, [prayer.paymentStatus]);
 
   return (
-    <div className="flex flex-col h-screen justify-between">
+    <div className="flex flex-col h-[100vh] justify-between">
       <Flex className="w-full h-full mt-[90px] justify-center 1xl:mt-[120px]">
         <Flex className="w-[1440px] h-auto flex-col sm:flex-row  ">
           <FlexColumn className="h-full max-h-[700px] gap-10 justify-between sm:gap-0">
@@ -278,7 +278,7 @@ export const LandingPage = () => {
 
       {prayer.prayerLoading && <LoadingScreen />}
 
-      <FlexColumn className="items-center h-2/5">
+      <FlexColumn className="items-center h-[100%] justify-end pb-[50px] sm:pb-[150px] 2xl:pb-[180px]">
       {/* <FlexColumn className="items-center h-full pb-[20px] max-h-[350px] sm:max-h-[380px] 2xl:max-h-[450px]"> */}
         <Borderline />
         <Typography
