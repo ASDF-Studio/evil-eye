@@ -26,6 +26,8 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [invalidInputs, setInvalidInputs] = useState({
     isNewNameInvalid: false,
+    isPhoneInvalid: false,
+    isEmailInvalid: false,
   });
 
   if (!isvisible) return null;
@@ -52,9 +54,20 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     email = guestEmail;
     number = guestPhone;
 
-    setInvalidInputs({
-      isNewNameInvalid: guestName ? false : true,
-    });
+    {
+      contactMethod === "phone" &&
+        setInvalidInputs({
+          isNewNameInvalid: guestName ? false : true,
+          isPhoneInvalid: guestPhone ? false : true,
+        });
+    }
+    {
+      contactMethod === "email" &&
+        setInvalidInputs({
+          isNewNameInvalid: guestName ? false : true,
+          isEmailInvalid: guestEmail ? false : true,
+        });
+    }
 
     if (!guestName) return;
 
@@ -179,6 +192,10 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     onChange={(e) => setGuestPhone(e.target.value)}
                   />
                 </Flex>
+
+                {invalidInputs.isPhoneInvalid && (
+                  <InlineError message={"phone"} />
+                )}
               </div>
             )}
 
@@ -192,6 +209,10 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     onChange={(e) => setGuestEmail(e.target.value)}
                   />
                 </Flex>
+
+                {invalidInputs.isEmailInvalid && (
+                  <InlineError message={"email"} />
+                )}
               </div>
             )}
 

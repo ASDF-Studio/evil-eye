@@ -26,6 +26,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [invalidInputs, setInvalidInputs] = useState({
     isNewNameInvalid: false,
+    isPhoneInvalid: false,
+    isEmailInvalid: false,
   });
 
   if (!isvisible) return null;
@@ -58,9 +60,20 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       email = newEmail;
       number = newPhone;
 
-      setInvalidInputs({
-        isNewNameInvalid: newName ? false : true,
-      });
+      {
+        contactMethod === "phone" &&
+          setInvalidInputs({
+            isNewNameInvalid: newName ? false : true,
+            isPhoneInvalid: newPhone ? false : true,
+          });
+      }
+      {
+        contactMethod === "email" &&
+          setInvalidInputs({
+            isNewNameInvalid: newName ? false : true,
+            isEmailInvalid: newEmail ? false : true,
+          });
+      }
 
       if (!newName) return;
     }
@@ -268,6 +281,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                         onChange={(e) => setNewPhone(e.target.value)}
                       />
                     </Flex>
+
+                    {invalidInputs.isPhoneInvalid && (
+                      <InlineError message={"phone"} />
+                    )}
                   </div>
                 )}
 
@@ -281,6 +298,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                         onChange={(e) => setNewEmail(e.target.value)}
                       />
                     </Flex>
+
+                    {invalidInputs.isEmailInvalid && (
+                      <InlineError message={"email"} />
+                    )}
                   </div>
                 )}
               </div>

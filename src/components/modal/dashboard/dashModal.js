@@ -13,6 +13,7 @@ import { getHistoryData, logout, updateUser } from "@/action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { InlineError } from "@/validity";
 import { DesignButton } from "@/components/button/designButton";
+import ModalScroll from "../modalScroll";
 
 const DashModal = ({ isvisible, onClose, children, openNotification }) => {
   const dispatch = useAppDispatch();
@@ -104,140 +105,150 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
       onClick={handleClose}
     >
       <DashboardModalFrame onClose={onClose} title="DASHBOARD">
-        <Flex className=" gap-0 w-full divide-[#FFCE70] divide-y-2 1xl:divide-x-2 flex-col 1xl:flex-row">
-          <FlexColumn className="gap-6 p-5 text-left">
-            <div className="w-[410px]" />
-            <Flex className="items-start flex-col">
-              <Typography
-                variant="h11"
-                classname=" text-color-brand-yellow2 drop-shadow-3xl "
-              >
-                YOUR INFO
-              </Typography>
-
-              <Typography
-                variant="h12"
-                classname=" text-color-brand-yellow2  pt-5"
-              >
-                Update your settings here.
-              </Typography>
-            </Flex>
-            <div className="pt-5 mb-3.5">
-              <Typography
-                variant="h12"
-                classname=" text-color-brand-yellow2 pt-5"
-              >
-                Your Name
-              </Typography>
-              <Flex className="relative mt-2 ">
-                <Input
-                  type="text"
-                  placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </Flex>
-
-              {invalidInputs.isNameInvalid && <InlineError message={"name"} />}
-            </div>
-
-            <div className="mt-5">
-              <FlexBetween>
-                <Typography variant="h12" classname=" text-color-brand-yellow2">
-                  Email
-                </Typography>
-                <div onClick={() => setShowEmailModal(true)}>
-                  <Pen />
-                </div>
-                <EmailModal
-                  isvisible={showEmailModal}
-                  onClose={() => setShowEmailModal(false)}
-                  onEmailSubmit={handleEmailSubmit}
-                />
-                <OtpModal
-                  isvisible={showOtpModal}
-                  newEmail={newEmail}
-                  onClose={() => setShowOtpModal(false)}
-                  openNotification={openNotification}
-                />
-              </FlexBetween>
-              <Flex className="relative h-[40px] pt-2">
-                <Input
-                  type="email"
-                  placeholder="example@domain.com"
-                  value={user.email}
-                  readOnly
-                />
-              </Flex>
-            </div>
-            <div>
-              <FlexBetween>
-                <Typography variant="h12" classname=" text-color-brand-yellow2">
-                  Password
-                </Typography>
-                <div onClick={() => setShowPassModal(true)}>
-                  <Pen />
-                </div>
-                <PassModal
-                  isvisible={showPassModal}
-                  onClose={() => setShowPassModal(false)}
-                />
-              </FlexBetween>
-              <Flex className=" relative pt-2 outline-none h-[40px] ">
-                <Input type="password" readOnly value={user.name} />
-              </Flex>
-            </div>
-            <Flex className="w-full relative text-brand-gold bg-brand-yellow2 focus:none focus:border-none mt-2 h-[40px] ">
-              <DesignButton
-                className="w-full"
-                typoVariant="buttonLabel2"
-                onClick={handleSave}
-              >
-                {auth.loading == false ? "Save" : "Loading..."}
-              </DesignButton>
-            </Flex>
-            <div>
-              <Flex className="relative focus:none focus:border-none w-full h-[40px] mt-2">
-                <DesignButton3
-                  className="w-full"
-                  typoVariant="buttonLabel2"
-                  onClick={handleLogout}
+        <ModalScroll>
+          <Flex className=" gap-0 w-full divide-[#FFCE70] divide-y-2 1xl:divide-x-2 flex-col 1xl:flex-row">
+            <FlexColumn className="gap-6 p-5 text-left">
+              <div className="w-[410px]" />
+              <Flex className="items-start flex-col">
+                <Typography
+                  variant="h11"
+                  classname=" text-color-brand-yellow2 drop-shadow-3xl "
                 >
-                  LOGOUT
-                </DesignButton3>
-              </Flex>
-            </div>
-          </FlexColumn>
-          <div className="pt-5 pl-5 w-auto ">
-            <Typography
-              variant="h11"
-              classname=" text-color-brand-yellow2 drop-shadow-3xl px-4 pt-5"
-            >
-              PRAYER HISTORY
-            </Typography>
-            <div className="w-auto sm:w-[450px]">
-              {history.loading ? (
+                  YOUR INFO
+                </Typography>
+
                 <Typography
                   variant="h12"
-                  classname=" text-color-brand-yellow2 pt-5 px-4"
+                  classname=" text-color-brand-yellow2  pt-5"
                 >
-                  Loading...
+                  Update your settings here.
                 </Typography>
-              ) : (
-                <div className="space-y-6 w-auto sm:w-[450px] h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
-                  {histories.map((item) => (
-                    <PrayerHistory
-                      key={item._id}
-                      date={item.createdAt}
-                      recepientName={item.name}
-                      payment={item.price}
-                    />
-                  ))}
-                </div>
-              )}
+              </Flex>
+              <div className="pt-5">
+                <Typography
+                  variant="h12"
+                  classname=" text-color-brand-yellow2 pt-5"
+                >
+                  Your Name
+                </Typography>
+                <Flex className="relative mt-2 ">
+                  <Input
+                    type="text"
+                    placeholder="Your Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </Flex>
+
+                {invalidInputs.isNameInvalid && (
+                  <InlineError message={"name"} />
+                )}
+              </div>
+
+              <div>
+                <FlexBetween>
+                  <Typography
+                    variant="h12"
+                    classname=" text-color-brand-yellow2"
+                  >
+                    Email
+                  </Typography>
+                  <div onClick={() => setShowEmailModal(true)}>
+                    <Pen />
+                  </div>
+                  <EmailModal
+                    isvisible={showEmailModal}
+                    onClose={() => setShowEmailModal(false)}
+                    onEmailSubmit={handleEmailSubmit}
+                  />
+                  <OtpModal
+                    isvisible={showOtpModal}
+                    newEmail={newEmail}
+                    onClose={() => setShowOtpModal(false)}
+                    openNotification={openNotification}
+                  />
+                </FlexBetween>
+                <Flex className="relative h-[40px] pt-2">
+                  <Input
+                    type="email"
+                    placeholder="example@domain.com"
+                    value={user.email}
+                    readOnly
+                  />
+                </Flex>
+              </div>
+              <div>
+                <FlexBetween>
+                  <Typography
+                    variant="h12"
+                    classname=" text-color-brand-yellow2"
+                  >
+                    Password
+                  </Typography>
+                  <div onClick={() => setShowPassModal(true)}>
+                    <Pen />
+                  </div>
+                  <PassModal
+                    isvisible={showPassModal}
+                    onClose={() => setShowPassModal(false)}
+                  />
+                </FlexBetween>
+                <Flex className=" relative pt-2 outline-none h-[40px] ">
+                  <Input type="password" readOnly value={user.name} />
+                </Flex>
+              </div>
+              <Flex className="w-full relative text-brand-gold bg-brand-yellow2 focus:none focus:border-none mt-2 h-[40px] ">
+                <DesignButton
+                  className="w-full"
+                  typoVariant="buttonLabel2"
+                  onClick={handleSave}
+                >
+                  {auth.loading == false ? "Save" : "Loading..."}
+                </DesignButton>
+              </Flex>
+              <div>
+                <Flex className="relative focus:none focus:border-none w-full h-[40px] mt-2">
+                  <DesignButton3
+                    className="w-full"
+                    typoVariant="buttonLabel2"
+                    onClick={handleLogout}
+                  >
+                    LOGOUT
+                  </DesignButton3>
+                </Flex>
+              </div>
+            </FlexColumn>
+            <div className="pt-5 pl-5 w-auto ">
+              <Typography
+                variant="h11"
+                classname=" text-color-brand-yellow2 drop-shadow-3xl px-4 pt-5"
+              >
+                PRAYER HISTORY
+              </Typography>
+              <div className="w-auto sm:w-[450px]">
+                {history.loading ? (
+                  <Typography
+                    variant="h12"
+                    classname=" text-color-brand-yellow2 pt-5 px-4"
+                  >
+                    Loading...
+                  </Typography>
+                ) : (
+                  <div className="space-y-6 w-auto sm:w-[450px] h-[500px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-4 text-left">
+                    {histories.map((item) => (
+                      <PrayerHistory
+                        key={item._id}
+                        date={item.createdAt}
+                        recepientName={item.name}
+                        payment={item.price}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        </Flex>
+          </Flex>
+        </ModalScroll>
       </DashboardModalFrame>
     </FlexCenter>
   );

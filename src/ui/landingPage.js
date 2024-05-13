@@ -304,9 +304,10 @@ export const LandingPage = () => {
             typoVariant="buttonLabel2"
             onClick={handlePrayerModal}
           >
-            {prayer.loading == false
+            Recite the prayer
+            {/* {prayer.loading == false
               ? "Recite the prayer"
-              : "Prayer loading..."}
+              : "Prayer loading..."} */}
           </DesignButton>
           <GuestReciteModal
             isvisible={showGuestReciteModal}
