@@ -10,8 +10,8 @@ const ModalFrame = ({ onClose, children, title }) => {
       id="wrapper"
       onClick={onClose}
     >
-      <FlexColumn className=" w-screen h-screen sm:h-auto mt-36 sm:mt-0 sm:w-[450px] ">
-        <div className="h-[85%] max-h-screen sm:h-auto overflow-y-auto overflow-hidden mb-10 mx-3 sm:mx-0 ">
+      <FlexColumn className=" w-screen h-auto sm:mt-[0px] sm:w-[450px] ">
+        <div className="h-auto sm:h-auto overflow-y-auto overflow-hidden mb-10 mx-3 sm:mx-0 ">
         <FlexColumn className="bg-backgroundColor-brand-blue-95 bg-opacity-95 border-2 border-color-brand-yellow2 shadow-buttonShadow3 w-auto ">
           <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
           <Design1 />

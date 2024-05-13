@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { Flex, FlexCenter } from "@/components/layout";
 import { Typography } from "@/components/typography";
 import ModalFrame from "../modalFrame";
+import ModalScroll from "../modalScroll";
 
 const Privacy = ({ isvisible, onClose }) => {
   // http://localhost:3000/?modal=privacy
@@ -17,8 +18,8 @@ const Privacy = ({ isvisible, onClose }) => {
       id="wrapper"
       onClick={handleClose}
     >
-      <ModalFrame onClose={onClose} title="USER ACCOUNT">
-        <div className="h-[570px] overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent px-5 mb-3.5">
+      <ModalFrame onClose={onClose} title="PRIVACY POLICY">
+        <ModalScroll className="px-5">
           <Typography
             variant="h11"
             classname=" text-color-brand-yellow2 drop-shadow-3xl "
@@ -238,7 +239,7 @@ const Privacy = ({ isvisible, onClose }) => {
               </Typography>
             </div>
           </div>
-        </div>
+        </ModalScroll>
       </ModalFrame>
     </FlexCenter>
   );

@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { sendContactUsData } from "@/action/contact.action";
 import { InlineError } from "@/validity";
 import SuccessModal from "./submitMessage/success";
+import ModalScroll from "./modalScroll";
 
 const Contact = ({ isvisible, onClose, contatcSubmit }) => {
   const contactUsEmail = "info@evileyeremedy.com";
@@ -80,132 +81,140 @@ const Contact = ({ isvisible, onClose, contatcSubmit }) => {
       onClick={handleClose}
     >
       <ModalFrame onClose={onClose} title="Contact Us">
-        <div className="px-5 mb-3.5">
-          <Typography
-            variant="h18"
-            classname="text-color-brand-yellow2 flex items-center "
-          >
-            We’ll Get back to you as soon as we can
-          </Typography>
-          <hr className="w-full border-color-brand-yellow2 my-4" />
-          <Flex className="gap-2">
-            <Email />
-            <Typography variant="h12" classname="text-color-brand-yellow2 ">
-              {contactUsEmail}
+        <ModalScroll className="px-5">
+          <div className="px-5 mb-3.5">
+            <Typography
+              variant="h18"
+              classname="text-color-brand-yellow2 flex items-center "
+            >
+              We’ll Get back to you as soon as we can
             </Typography>
-          </Flex>
-          <hr className="w-full border-color-brand-yellow2 my-4" />
-        </div>
-        <div className="px-5 text-left">
-          <div className="space-y-5 h-[370px] 4xl:h-auto w-full overflow-y-auto overflow-hidden scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent py-3.5 px-5 text-left">
-            <div>
-              <label htmlFor="email" className="block">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2  "
-                >
-                  Name
-                </Typography>
-              </label>
-              <Flex className="relative h-[40px]">
-                <Input
-                  id="userName"
-                  type="text"
-                  placeholder="Your Name"
-                  value={userData.userName}
-                  onChange={(e) => {
-                    handleInputChange(e, "userName");
-                  }}
-                />
-              </Flex>
-
-              {invalidInputs.isUserNameInvalid && (
-                <InlineError message={"name"} />
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block">
-                <Typography variant="h12" classname="text-color-brand-yellow2 ">
-                  Email
-                </Typography>
-              </label>
-              <Flex className="relative h-[40px]">
-                <Input
-                  id="userEmail"
-                  type="email"
-                  placeholder="example@domain.com"
-                  onChange={(e) => {
-                    handleInputChange(e, "userEmail");
-                  }}
-                  value={userData.userEmail}
-                />
-              </Flex>
-
-              {invalidInputs.isEmailInvalid && (
-                <InlineError message={"email"} />
-              )}
-            </div>
-            <div>
-              <label htmlFor="password" className="block">
-                <Typography variant="h12" classname="text-color-brand-yellow2 ">
-                  Phone (Optional)
-                </Typography>
-              </label>
-              <Flex className="relative h-[40px]">
-                <Input
-                  id="userPhone"
-                  type="text"
-                  placeholder="123-345-6789"
-                  onChange={(e) => {
-                    handleInputChange(e, "userPhone");
-                  }}
-                  value={userData.userPhone}
-                />
-              </Flex>
-              {invalidInputs.isPhoneInvalid && (
-                <InlineError message={"phone"} />
-              )}
-            </div>
-            <div>
-              <label htmlFor="password" className="block">
-                <Typography
-                  variant="h12"
-                  classname="text-color-brand-yellow2  "
-                >
-                  Message
-                </Typography>
-              </label>
-              <Flex className="relative h-[140px] border-2 border-color-brand-gold2">
-                <textarea
-                  onChange={(e) => {
-                    handleInputChange(e, "userMsg");
-                  }}
-                  id="userMsg"
-                  name="message"
-                  className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent placeholder:text-textColor-placeholder p-2 text-textColor-brand-gold2 resize-none w-full h-full"
-                  placeholder="Type here..."
-                  value={userData.userMsg}
-                  required
-                />
-              </Flex>
-
-              {invalidInputs.isMsgInvalid && (
-                <InlineError message={"message"} />
-              )}
-            </div>
-
-            <Flex className="justify-center pb-2.5 w-[100%]">
-              <DesignButton
-                className="w-full"
-                typoVariant="buttonLabel2"
-                onClick={handleSubmit}
-              >
-                {contact.loading == false ? "ENTER" : "Loading..."}
-              </DesignButton>
+            <hr className="w-full border-color-brand-yellow2 my-4" />
+            <Flex className="gap-2">
+              <Email />
+              <Typography variant="h12" classname="text-color-brand-yellow2 ">
+                {contactUsEmail}
+              </Typography>
             </Flex>
+            <hr className="w-full border-color-brand-yellow2 my-4" />
           </div>
-        </div>
+          <div className="px-5 text-left">
+            <div className="space-y-5 text-left">
+              <div>
+                <label htmlFor="email" className="block">
+                  <Typography
+                    variant="h12"
+                    classname="text-color-brand-yellow2  "
+                  >
+                    Name
+                  </Typography>
+                </label>
+                <Flex className="relative h-[40px]">
+                  <Input
+                    id="userName"
+                    type="text"
+                    placeholder="Your Name"
+                    value={userData.userName}
+                    onChange={(e) => {
+                      handleInputChange(e, "userName");
+                    }}
+                  />
+                </Flex>
+
+                {invalidInputs.isUserNameInvalid && (
+                  <InlineError message={"name"} />
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block">
+                  <Typography
+                    variant="h12"
+                    classname="text-color-brand-yellow2 "
+                  >
+                    Email
+                  </Typography>
+                </label>
+                <Flex className="relative h-[40px]">
+                  <Input
+                    id="userEmail"
+                    type="email"
+                    placeholder="example@domain.com"
+                    onChange={(e) => {
+                      handleInputChange(e, "userEmail");
+                    }}
+                    value={userData.userEmail}
+                  />
+                </Flex>
+
+                {invalidInputs.isEmailInvalid && (
+                  <InlineError message={"email"} />
+                )}
+              </div>
+              <div>
+                <label htmlFor="password" className="block">
+                  <Typography
+                    variant="h12"
+                    classname="text-color-brand-yellow2 "
+                  >
+                    Phone (Optional)
+                  </Typography>
+                </label>
+                <Flex className="relative h-[40px]">
+                  <Input
+                    id="userPhone"
+                    type="text"
+                    placeholder="123-345-6789"
+                    onChange={(e) => {
+                      handleInputChange(e, "userPhone");
+                    }}
+                    value={userData.userPhone}
+                  />
+                </Flex>
+                {invalidInputs.isPhoneInvalid && (
+                  <InlineError message={"phone"} />
+                )}
+              </div>
+              <div>
+                <label htmlFor="password" className="block">
+                  <Typography
+                    variant="h12"
+                    classname="text-color-brand-yellow2  "
+                  >
+                    Message
+                  </Typography>
+                </label>
+                <Flex className="relative h-[140px] border-2 border-color-brand-gold2">
+                  <textarea
+                    onChange={(e) => {
+                      handleInputChange(e, "userMsg");
+                    }}
+                    id="userMsg"
+                    name="message"
+                    className="text-[16px] font-normal font-rosarivo tracking-[-0.8px] outline-none bg-transparent placeholder:text-textColor-placeholder p-2 text-textColor-brand-gold2 resize-none w-full h-full"
+                    placeholder="Type here..."
+                    value={userData.userMsg}
+                    required
+                  />
+                </Flex>
+
+                {invalidInputs.isMsgInvalid && (
+                  <InlineError message={"message"} />
+                )}
+              </div>
+
+              <Flex className="justify-center pb-2.5 w-[100%]">
+                <DesignButton
+                  className="w-full"
+                  typoVariant="buttonLabel2"
+                  onClick={handleSubmit}
+                >
+                  {contact.loading == false ? "ENTER" : "Loading..."}
+                </DesignButton>
+              </Flex>
+            </div>
+          </div>
+        </ModalScroll>
       </ModalFrame>
     </FlexCenter>
   );

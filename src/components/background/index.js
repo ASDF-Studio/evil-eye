@@ -45,9 +45,9 @@ export const PrayerBG = () => {
         alt="prayerbg1920"
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
-      <div className="absolute top-[38.5%] left-[50.5%] transform -translate-x-1/2 -translate-y-1/2">
+      {/* <div className="absolute top-[38.5%] left-[50.5%] transform -translate-x-1/2 -translate-y-1/2">
         <EyeRotate />
-      </div>
+      </div> */}
     </div>
   );
 };
