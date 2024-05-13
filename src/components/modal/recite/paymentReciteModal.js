@@ -16,7 +16,6 @@ const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
 
   const [haveCouponCode, setCouponCode] = useState("");
 
-  // Effect to validate the coupon code whenever it changes
   useEffect(() => {
     const handleCoupon = async () => {
       try {
@@ -26,7 +25,6 @@ const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
       }
     };
 
-    // Check coupon code only if it's not empty
     if (haveCouponCode.trim() !== "") {
       handleCoupon();
     }
@@ -122,48 +120,6 @@ const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
                 </Typography>
               </FlexBetween>
               <hr className="w-auto border-color-brand-op" />
-
-              {/* <FlexBetween className="flex-col w-[100%] sm:flex-row gap-2">
-                <Typography
-                  variant="h13"
-                  classname=" text-color-brand-yellow2 opacity-80"
-                >
-                  Coupon
-                </Typography>
-                {prayerState.couponValid && (
-                  <Typography
-                    variant="h20"
-                    classname=" text-color-brand-yellow2 opacity-60"
-                  >
-                    {prayerState.discountPercentage}% Discount Applied
-                  </Typography>
-                )}
-
-                {prayerState.invalidCoupon && (
-                  <Typography
-                    variant="h20"
-                    classname=" text-color-brand-yellow2 opacity-60"
-                  >
-                    {prayerState.invalidCoupon}
-                  </Typography>
-                )}
-              </FlexBetween>
-
-              <FlexBetween className="h-full w-[100%]">
-                <Flex className="relative w-[57%] h-[40px]">
-                  <Input
-                    type="text"
-                    placeholder="Code"
-                    value={haveCouponCode}
-                    onChange={(e) => setCouponCode(e.target.value)}
-                  />
-                </Flex>
-                <Flex className="relative w-[40%] h-[40px]">
-                  <DesignButton3 onClick={handleCoupon}>
-                    {prayerState.loading == false ? "Check" : "Loading..."}
-                  </DesignButton3>
-                </Flex>
-              </FlexBetween> */}
 
               <FlexBetween className="pt-2 w-auto ">
                 <Flex className="flex-col items-center sm:flex-row gap-2">
