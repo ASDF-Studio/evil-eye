@@ -24,7 +24,7 @@ const MainLayout = ({ children }) => {
           <BG2880 />
         </div>
         <BGvideo />
-        <div className="z-10 relative overflow-auto">{children}</div>
+        <div className="relative overflow-auto">{children}</div>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import user from '../../../public/logos/user.svg';
-import logo from '../../../public/logo.svg';
+// import logo from '../../../public/logo.svg';
+import logo from '../../../public/logo.png';
 import mobileBars from '../../../public/logos/mobileBars.svg';
 import xmark from '../../../public/logos/xmark.svg';
 import x from '../../../public/logos/x.svg';
@@ -25,8 +26,8 @@ export const LogoWithBackground = () => {
   const containerStyle = {
     backgroundImage: 'url("/background/shadow.png")',
     backgroundSize: 'cover',
-    width: '381px',
-    height: '175px',
+    width: 'auto',
+    height: 'auto',
     display: 'flex',
   };
 

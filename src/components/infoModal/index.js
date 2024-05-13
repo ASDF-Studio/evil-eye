@@ -45,7 +45,7 @@ const InfoModal = ({ isvisible, onClose, children }) => {
         >
           <Xmark />
         </button>
-        <div className="text-textColor-brand-yellow w-auto pl-5 rounded overflow-y-auto max-h-[70vh] sm:w-[450px] sm:h-auto">
+        <div className="text-textColor-brand-yellow w-auto pl-5 rounded overflow-y-auto max-h-[70vh] scrollbar scrollbar-thumb-[#FFCE70] scrollbar-track-transparent scrollbar-corner-transparent sm:w-[450px] sm:h-auto">
           {children}
         </div>
       </FlexColumn>

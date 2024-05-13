@@ -77,7 +77,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const handlePrivacyModal = async (e) => {
     e.preventDefault();
-    onClose();
+    // onClose();
     await dispatch(privacyModal(true));
   };
 

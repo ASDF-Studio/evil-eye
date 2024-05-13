@@ -10,8 +10,7 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
 
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
-        const newProgress = prevProgress + 20;
-        console.log("New Progress:", newProgress);
+        const newProgress = prevProgress + 100 / 90;
         return newProgress >= 100 ? 100 : newProgress;
       });
     }, 1000);
