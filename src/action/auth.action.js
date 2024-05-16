@@ -7,7 +7,6 @@ const baseURL = API;
 
 export const login = (user) => {
   return async (dispatch) => {
-    console.log("login user ", user);
     try {
       dispatch({ type: authConstants.LOGIN_REQUEST });
       const res = await axios.post(`${baseURL}login`, user);
@@ -64,22 +63,31 @@ export const updateUser = (user) => {
 
 export const updatePassword = (password) => {
   return async (dispatch) => {
-    dispatch({ type: authConstants.UPDATE_PASSWORD_REQUEST });
-    const res = await axios.post(`${baseURL}updatePassword`, {
-      ...password,
-    });
+    try {
+      dispatch({ type: authConstants.UPDATE_PASSWORD_REQUEST });
+      const res = await axios.post(`${baseURL}updatePassword`, password);
 
-    if (res.status === 200) {
-      const { message } = res.data;
-      dispatch({
-        type: authConstants.UPDATE_PASSWORD_SUCCESS,
-        payload: { message },
-      });
-      dispatch(logout());
-    } else {
-      if (res.status === 400) {
+      if (res.status === 200) {
+        const { message } = res.data;
+        dispatch({
+          type: authConstants.UPDATE_PASSWORD_SUCCESS,
+          payload: { message },
+        });
+        dispatch(logout());
+      }
+      if (res.status === 201) {
+        const errorMessage = res.data.error;
         dispatch({
           type: authConstants.UPDATE_PASSWORD_FAILURE,
+          payload: { error: errorMessage },
+        });
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const { message } = error.response.data.error;
+        console.log("message", message);
+        dispatch({
+          type: authConstants.CHANGE_EMAIL_FAILURE,
           payload: { error: message },
         });
       }
@@ -244,21 +252,30 @@ export const logout = () => {
   };
 };
 
-export const changeEmail = (email) => {
+export const changeEmail = (data) => {
   return async (dispatch) => {
-    dispatch({ type: authConstants.CHANGE_EMAIL_REQUEST });
-    const res = await axios.post(`${baseURL}changeEmail`, {
-      ...email,
-    });
+    try {
+      dispatch({ type: authConstants.CHANGE_EMAIL_REQUEST });
+      const res = await axios.post(`${baseURL}changeEmail`, data);
 
-    if (res.status === 200) {
-      const { message, emailOTPSent } = res.data;
-      dispatch({
-        type: authConstants.CHANGE_EMAIL_SUCCESS,
-        payload: { message, emailOTPSent },
-      });
-    } else {
-      if (res.status === 400) {
+      if (res.status === 200) {
+        const { message, emailOTPSent } = res.data;
+        dispatch({
+          type: authConstants.CHANGE_EMAIL_SUCCESS,
+          payload: { message, emailOTPSent },
+        });
+      }
+      if (res.status === 201) {
+        const errorMessage = res.data.error;
+        dispatch({
+          type: authConstants.CHANGE_EMAIL_FAILURE,
+          payload: { error: errorMessage },
+        });
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const { message } = error.response.data.error;
+        console.log("message", message);
         dispatch({
           type: authConstants.CHANGE_EMAIL_FAILURE,
           payload: { error: message },

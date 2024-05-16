@@ -53,6 +53,13 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
       }
     }
   }, [isOpen]);
+  
+  useEffect(() => {
+    if (auth.passwordUpdated) {
+      onClose();
+    }
+  }, [auth.passwordUpdated]);
+  
 
   if (!isvisible) return null;
 

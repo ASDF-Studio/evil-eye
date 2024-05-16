@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, FlexCenter } from "../../layout";
 import ModalFrame from "../modalFrame";
 import { Typography } from "../../typography";
@@ -8,11 +8,14 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { updatePassword } from "@/action";
 import { InlineError } from "@/validity";
 
-const PassModal = ({ isvisible, email, onClose, openNotification }) => {
+const PassModal = ({ isvisible, onClose }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
+
+  const { error: error } = useAppSelector((state) => state.auth);
+  const [passwordError, setPasswordError] = useState("Boom");
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -21,6 +24,16 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
     isPasswordInvalid: false,
     isConfirmPasswordInvalid: false,
   });
+
+  React.useEffect(() => {
+    setPasswordError(error);
+  }, [error]);
+
+  useEffect(() => {
+    if (auth.passwordUpdated) {
+      onClose();
+    }
+  }, [auth.passwordUpdated]);
 
   if (!isvisible) return null;
 
@@ -46,8 +59,6 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
 
     try {
       await dispatch(updatePassword(data));
-      onClose();
-      openNotification("password");
     } catch (error) {
       console.error("Error during update password:", error);
     }
@@ -68,11 +79,11 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
             Change Password
           </Typography>
           <div className="pt-5">
-            <label for="password" className="block mb-1.5">
+            <div className="block mb-1.5">
               <Typography variant="h12" classname=" text-color-brand-yellow2  ">
                 New Password
               </Typography>
-            </label>
+            </div>
             <Flex className=" relative w-full h-[40px] ">
               <Input
                 type="password"
@@ -86,11 +97,11 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
             )}
           </div>
           <div className="pt-5">
-            <label for="password" className="block mb-1.5">
+            <div className="block mb-1.5">
               <Typography variant="h12" classname=" text-color-brand-yellow2  ">
                 Confirm Password
               </Typography>
-            </label>
+            </div>
             <Flex className="relative w-full h-[40px] ">
               <Input
                 type="password"
@@ -101,6 +112,13 @@ const PassModal = ({ isvisible, email, onClose, openNotification }) => {
             </Flex>
             {invalidInputs.isConfirmPasswordInvalid && (
               <InlineError message={"password"} />
+            )}
+            {passwordError && (
+              <div className="pt-2">
+                <Typography variant="h12" classname="text-red-600">
+                  {passwordError}
+                </Typography>
+              </div>
             )}
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">

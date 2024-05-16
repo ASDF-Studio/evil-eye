@@ -16,11 +16,23 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
 
+  const [emailError, setEmailError] = useState("");
+  const { error: error } = useAppSelector((state) => state.auth);
+
   const [newEmail, setNewEmail] = useState("");
+  const [emailSubmit, setEmailSubmit] = useState(false);
 
   const [invalidInputs, setInvalidInputs] = useState({
     isEmailInvalid: false,
   });
+
+  React.useEffect(() => {
+    setEmailError(error);
+  }, [error]);
+
+  React.useEffect(() => {
+    setEmailSubmit(auth.emailChangeError);
+  }, [auth.emailChangeError]);
 
   if (!isvisible) return null;
 
@@ -30,26 +42,30 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-
+  
     setInvalidInputs({
       isEmailInvalid: newEmail ? false : true,
     });
-
+  
     if (!newEmail) return;
-
+  
     const data = {
       email: user.email,
       newEmail: newEmail,
     };
-
+  
     try {
       await dispatch(changeEmail(data));
-      onEmailSubmit(newEmail);
+  
+      if (auth.emailChangeError) {
+        onEmailSubmit(newEmail);
+      }
+  
     } catch (error) {
-      console.error("Error during signup:", error);
+      console.error("Error during email change:", error);
     }
   };
-
+  
   return (
     <FlexCenter
       className="z-[60] fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm pt-[300px] sm:pt-[0px]"
@@ -66,11 +82,11 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
           </Typography>
 
           <div className="mt-5">
-            <label for="email" className="block  mb-1.5">
+            <div className="block mb-1.5">
               <Typography variant="h12" classname=" text-color-brand-yellow2 ">
                 Email
               </Typography>
-            </label>
+            </div>
             <Flex className=" relative w-full h-[40px] ">
               <Input
                 type="email"
@@ -81,6 +97,13 @@ const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
             </Flex>
 
             {invalidInputs.isEmailInvalid && <InlineError message={"email"} />}
+            {emailError && (
+              <div className="pt-2">
+                <Typography variant="h12" classname="text-red-600">
+                  {emailError}
+                </Typography>
+              </div>
+            )}
           </div>
           <Flex className=" justify-center pt-5 pb-2.5 w-[100%]">
             <DesignButton

@@ -84,6 +84,14 @@ export const Header = () => {
     closeAllModal;
     setShowLoginModal(modal.loginModal);
   }, [modal.loginModal]);
+
+  useEffect(() => {
+    if (auth.passwordUpdated) {
+      openNotification("password");
+      setShowLoginModal(true);
+    }
+  }, [auth.passwordUpdated]);
+
   const handlePath = (path) => {
     setNavbar(false);
     closeAllModal();

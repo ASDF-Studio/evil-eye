@@ -19,7 +19,7 @@ const NotificationModal = ({
     signup: "Welcome. You have successfully login.",
     logout: "successfully logged out",
     save: "Data saved.",
-    password: "Password updated",
+    password: "Password updated, Please login",
     email: "Email change successfully",
     otp: "OTP has been sent to your email",
     otpAgain: "User already registered, Input OTP",

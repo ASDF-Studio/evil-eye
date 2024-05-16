@@ -76,11 +76,11 @@ const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
           </div>
 
           <div className="pt-4">
-            <label for="email" className="block  mb-1.5">
+            <div className="block  mb-1.5">
               <Typography variant="h12" classname=" text-color-brand-yellow2">
                 OTP
               </Typography>
-            </label>
+            </div>
             <Flex className=" relative w-full h-[40px] ">
               <Input
                 type="number"
