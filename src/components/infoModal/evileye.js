@@ -6,7 +6,7 @@ const EvilEye = () => {
       <h1 className="font-roman drop-shadow-3xl text-[35px] font-normal pb-5">
         WHAT IS EVIL EYE
       </h1>
-      <p className="text-justify font-rosarivo text-base font-normal w-auto pr-5 text-textColor-brand-yellow opacity-80">
+      <p className="font-rosarivo text-base font-normal w-auto pr-5 text-textColor-brand-yellow opacity-80">
         The Greek traditional belief of the evil eye dates back to at least the
         6th century BC, the Classical Antiquity, or the time period that
         encompassed the Classical Era in Ancient Greece, when it commonly

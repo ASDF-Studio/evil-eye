@@ -1,8 +1,7 @@
 // OtpModal.js
 import React, { useState } from "react";
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
+import { Flex, FlexCenter, FlexColumn } from "../../layout";
 import ModalFrame from "../modalFrame";
-import { Design1, Design2, Xmark } from "../../logo";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import { Button } from "@/components/button";
@@ -55,7 +54,7 @@ const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
 
   return (
     <FlexCenter
-      className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
+      className="z-[60] fixed top-[50%] left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm"
       id="wrapper"
       onClick={handleClose}
     >

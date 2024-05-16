@@ -28,7 +28,7 @@ const Pricing = ({ isvisible, onClose }) => {
   };
   return (
     <FlexCenter
-      className="z-50 fixed left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm top-[80%] sm:top-[50%]"
+      className="z-50 fixed left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm top-[50%]"
       id="wrapper"
       onClick={handleClose}
     >

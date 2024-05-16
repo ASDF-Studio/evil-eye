@@ -49,7 +49,7 @@ const ForgotPass1 = ({ isvisible, onClose, openForgotPass2 }) => {
 
   return (
     <FlexCenter
-      className="z-50 fixed left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm top-[70%] sm:top-[50%]"
+      className="z-50 fixed left-[50%] bg-black bg-opacity-25 backdrop-blur-sm shadow-sm top-[50%]"
       id="wrapper"
       onClick={handleClose}
     >

@@ -59,6 +59,14 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
       onClose();
     }
   }, [auth.passwordUpdated]);
+
+    
+  useEffect(() => {
+    if (auth.emailOTPSent) {
+      setShowEmailModal(false);
+      setShowOtpModal(auth.emailOTPSent);
+    }
+  }, [auth.emailOTPSent]);
   
 
   if (!isvisible) return null;

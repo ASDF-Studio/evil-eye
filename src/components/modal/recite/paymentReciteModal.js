@@ -122,7 +122,7 @@ const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
               <hr className="w-auto border-color-brand-op" />
 
               <FlexBetween className="pt-2 w-auto ">
-                <Flex className="flex-col items-center sm:flex-row gap-2">
+                <Flex className="flex-col items-start sm:flex-row gap-2">
                   <Typography
                     variant="h13"
                     classname=" text-color-brand-yellow2 opacity-80"
@@ -181,7 +181,7 @@ const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
 
             <Flex className=" justify-center pt-5 pb-5 w-[100%]">
               <DesignButton1
-                className="w-full  "
+                className="w-full text-ellipsis"
                 typoVariant="buttonLabel2"
                 onClick={handlePayment}
               >
