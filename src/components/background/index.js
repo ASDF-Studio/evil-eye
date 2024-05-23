@@ -14,6 +14,7 @@ export const BGvideo = () => {
       muted
       preload
       playsInline
+      priority={true}
       className="absolute top-0 left-0 w-full h-full object-cover mix-blend-lighten"
     >
       <source src="/background/background.mp4" type="video/mp4" />
@@ -29,6 +30,7 @@ export const PrayerBGvideo = () => {
       muted
       playsInline
       preload
+      priority={true}
       className="absolute top-0 left-0 w-full h-full object-cover mix-blend-soft-light"
     >
       <source src="/background/prayer_Background.mp4" type="video/mp4" />
