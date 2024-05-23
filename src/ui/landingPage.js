@@ -192,8 +192,7 @@ export const LandingPage = () => {
 
   useEffect(() => {
     if (prayer.prayerDone) {
-      // openPrayerReciteModalDone(prayer.prayerDone);
-      openPaymentSuccessReciteModal(true);
+      openPrayerReciteModalDone(prayer.prayerDone);
     }
   }, [prayer.prayerDone]);
 
