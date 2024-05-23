@@ -186,7 +186,7 @@ export const Header = () => {
 
   return (
     <>
-      <div className="w-[100%] px-0 mt-[2px] sm:mt-[10px] fixed z-20 sm:px-0">
+      <div className="w-[100%] px-0 mt-[20px] sm:mt-[10px] fixed z-20 sm:px-0">
         <FlexCenter className={["h-[60px] justify-between"].join(" ")}>
           <Link href={"/"} className="relative hidden sm:block">
             <LogoWithBackground />

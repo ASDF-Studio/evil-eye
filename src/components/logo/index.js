@@ -39,21 +39,22 @@ export const LogoWithBackground = () => {
 };
 
 export const LogoWithBackgroundMobile = () => {
-  const containerStyle = {
-    backgroundImage: 'url("/background/shadow.png")',
-    backgroundSize: 'cover',
-    width: '147px',
-    height: 'auto',
-    display: 'flex',
-  };
-
   return (
-    <div style={containerStyle} className='p-3'>
+    <div className="relative w-[147px] h-auto p-3">
+      <div className="absolute top-[-20px] left-0 w-full h-[calc(100%+20px)]">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: 'url("/background/shadow.png")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        ></div>
+      </div>
       <Logo />
     </div>
   );
 };
-
 
 export const Logo = () => {
   return (
@@ -61,7 +62,7 @@ export const Logo = () => {
       rel="preload"
       src={logo}
       width={147}
-      height="auto"
+      height={147}
       priority={true}
       alt="logo"
       className=""
