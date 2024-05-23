@@ -262,7 +262,7 @@ export const changeEmail = (data) => {
         const { message, emailOTPSent } = res.data;
         dispatch({
           type: authConstants.CHANGE_EMAIL_SUCCESS,
-          payload: { message, emailOTPSent },
+          payload: { message, emailOTPSent, newEmail: data.newEmail },
         });
       }
       if (res.status === 201) {
@@ -288,14 +288,14 @@ export const changeEmail = (data) => {
 export const verifyEmailOTP = (data) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: authConstants.OTP_REQUEST });
+      dispatch({ type: authConstants.EMAIL_OTP_REQUEST });
       const res = await axios.post(`${baseURL}verifyEmailOTP`, data);
 
       if (res.status === 200) {
         localStorage.setItem("evileye-token", res.data.token);
         localStorage.setItem("evileye-user", JSON.stringify(res.data.user));
         dispatch({
-          type: authConstants.OTP_SUCCESS,
+          type: authConstants.EMAIL_OTP_SUCCESS,
           payload: {
             token: res.data.token,
             user: res.data.user,
@@ -303,11 +303,18 @@ export const verifyEmailOTP = (data) => {
           },
         });
       }
+      if (res.status === 201) {
+        const errorMessage = res.data.error;
+        dispatch({
+          type: authConstants.EMAIL_OTP_FAILURE,
+          payload: { error: errorMessage },
+        });
+      }
     } catch (error) {
       if (error.response.status === 400) {
         const { message } = error.response.data;
         dispatch({
-          type: authConstants.OTP_FAILURE,
+          type: authConstants.EMAIL_OTP_FAILURE,
           payload: { message },
         });
       }

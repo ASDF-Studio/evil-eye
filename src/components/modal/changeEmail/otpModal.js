@@ -1,4 +1,3 @@
-// OtpModal.js
 import React, { useState } from "react";
 import { Flex, FlexCenter, FlexColumn } from "../../layout";
 import ModalFrame from "../modalFrame";
@@ -10,17 +9,30 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { verifyEmailOTP } from "@/action";
 import { InlineError } from "@/validity";
 
-const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
+const OtpModal = ({ isvisible, onClose, openNotification }) => {
   const dispatch = useAppDispatch();
 
   const auth = useAppSelector((state) => state.auth);
+  const newEmail = useAppSelector((state) => state.auth.newEmail);
   const user = useAppSelector((state) => state.auth.user);
 
   const [otpValue, setOTPValue] = useState("");
+  const [otpError, setOtpError] = useState("");
 
   const [invalidInputs, setInvalidInputs] = useState({
     isOTPInvalid: false,
   });
+
+  React.useEffect(() => {
+    setOtpError(auth.emailOtpErrorMsg);
+  }, [auth.emailOtpErrorMsg]);
+
+  React.useEffect(() => {
+    if (auth.emailUpdated) {
+      onClose();
+      openNotification("email");
+    }
+  }, [auth.emailUpdated]);
 
   if (!isvisible) return null;
 
@@ -45,8 +57,6 @@ const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
 
     try {
       await dispatch(verifyEmailOTP(data));
-      onClose();
-      openNotification("email");
     } catch (error) {
       console.error("Error during signup:", error);
     }
@@ -90,6 +100,13 @@ const OtpModal = ({ isvisible, newEmail, onClose, openNotification }) => {
             </Flex>
 
             {invalidInputs.isOTPInvalid && <InlineError message={"otp"} />}
+            {otpError && (
+              <div className="pt-2">
+                <Typography variant="h12" classname="text-red-600">
+                  {otpError}
+                </Typography>
+              </div>
+            )}
           </div>
           <Flex className="justify-end mt-3">
             <Button variant="text" className="w-full" typoVariant="text">

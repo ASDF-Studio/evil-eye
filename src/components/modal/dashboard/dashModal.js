@@ -23,7 +23,6 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
   const history = useAppSelector((state) => state.history);
 
   const [name, setName] = useState("");
-  const [newEmail, setNewEmail] = useState("");
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [showPassModal, setShowPassModal] = useState(false);
@@ -101,8 +100,7 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
     }
   };
 
-  const handleEmailSubmit = async (newEmail) => {
-    setNewEmail(newEmail);
+  const handleEmailSubmit = async () => {
     try {
       setShowEmailModal(false);
       setShowOtpModal(true);
@@ -178,7 +176,6 @@ const DashModal = ({ isvisible, onClose, children, openNotification }) => {
                   />
                   <OtpModal
                     isvisible={showOtpModal}
-                    newEmail={newEmail}
                     onClose={() => setShowOtpModal(false)}
                     openNotification={openNotification}
                   />

@@ -25,7 +25,12 @@ const initState = {
   otpFailed: false,
 
   emailChangeError: false,
+  emailOtpError: false,
+  emailOtpErrorMsg: null,
+  emailUpdated: false,
   passwordUpdated: false,
+
+  newEmail: "",
 };
 
 export default function authReducer(state = initState, action) {
@@ -277,6 +282,7 @@ export default function authReducer(state = initState, action) {
         emailOTPSent: action.payload.emailOTPSent,
         error: null,
         emailChangeError: false,
+        newEmail: action.payload.newEmail
       };
       break;
 
@@ -294,7 +300,9 @@ export default function authReducer(state = initState, action) {
       state = {
         ...state,
         loading: true,
-        error: null,
+        emailOtpErrorMsg: null,
+        emailOtpError: false,
+        emailUpdated: false,
       };
       break;
 
@@ -303,16 +311,19 @@ export default function authReducer(state = initState, action) {
         ...state,
         user: action.payload.user,
         loading: false,
-        error: null,
+        emailOtpErrorMsg: null,
+        emailOtpError: false,
+        emailUpdated: true,
       };
       break;
 
     case authConstants.EMAIL_OTP_FAILURE:
       state = {
         ...state,
-        error: action.payload.error,
+        emailOtpErrorMsg: action.payload.error,
         loading: false,
-        error: null,
+        emailOtpError: true,
+        emailUpdated: false,
       };
       break;
 
