@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Typography } from "../../typography";
 import { Flex, FlexCenter, FlexColumn } from "../../layout";
 import { DesignButton3 } from "../../button/designButton3";
-import { PrayerBG, PrayerBGvideo } from "@/components/background";
+import { PrayerBG, PrayerBGDone, PrayerBGvideo } from "@/components/background";
 import PrayerModalFrame from "../prayerModalFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 import { useAppDispatch, useAppSelector } from "@/hooks";
@@ -57,7 +57,6 @@ const PrayerReciteModalDone = ({
     }
   };
 
-
   return (
     <FlexCenter
       className="z-50 fixed top-[50%] left-[50%] bg-black bg-opacity-30"
@@ -66,7 +65,7 @@ const PrayerReciteModalDone = ({
     >
       <PrayerModalFrame onClose={onClose} title="Recite the prayer">
         <div className="overflow-hidden">
-          <PrayerBG />
+          <PrayerBGDone />
           <PrayerBGvideo />
         </div>
 

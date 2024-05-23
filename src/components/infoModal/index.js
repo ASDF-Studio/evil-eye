@@ -11,12 +11,10 @@ const InfoModal = ({ isvisible, onClose, children }) => {
       setModalVisible(true);
       setShouldAnimateClose(false);
     } else {
+      setShouldAnimateClose(true);
       setTimeout(() => {
         setModalVisible(false);
-        if (modalVisible) {
-          setShouldAnimateClose(true);
-        }
-      }, 100);
+      }, 200); // Duration of the close animation
     }
   }, [isvisible]);
 
@@ -31,17 +29,17 @@ const InfoModal = ({ isvisible, onClose, children }) => {
       className={`z-50 ml-5 sm:ml-0 fixed right-10 top-24 bg-black bg-opacity-25 backdrop-blur-sm shadow-sm transition-transform ${
         modalVisible
           ? "transform translate-x-0 bounce"
-          : `transform translate-x-[120%] ${
-              shouldAnimateClose ? "closeAnimation" : ""
-            }`
+          : shouldAnimateClose
+          ? "transform translate-x-[120%] closeAnimation"
+          : "hidden"
       }`}
       id="wrapper"
       onClick={handleClose}
     >
-      <FlexColumn className=" bg-backgroundColor-brand-blue-80 border border-color-brand-yellow2 shadow-buttonShadow3 justify-between">
+      <FlexColumn className="bg-backgroundColor-brand-blue-80 border border-color-brand-yellow2 shadow-buttonShadow3 justify-between">
         <button
           className="text-textColor-brand-yellow text-xl place-self-end pr-4 pt-3"
-          onClick={() => onClose()}
+          onClick={onClose}
         >
           <Xmark />
         </button>

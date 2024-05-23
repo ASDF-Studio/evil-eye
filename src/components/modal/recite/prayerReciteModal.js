@@ -3,7 +3,11 @@ import React, { useState, useEffect } from "react";
 import { Typography } from "../../typography";
 import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import { DesignButton3 } from "../../button/designButton3";
-import { PrayerBG, PrayerBGvideo } from "@/components/background";
+import {
+  PrayerBG,
+  PrayerBGMobile,
+  PrayerBGvideo,
+} from "@/components/background";
 import PrayerModalFrame from "../prayerModalFrame";
 import { LoadingFrame } from "@/components/loading/loadingFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
@@ -56,7 +60,7 @@ const PrayerReciteModal = ({
       await dispatch(guest(true));
     }
   };
-  
+
   const handleHistory = async (e) => {
     e.preventDefault();
 
@@ -76,7 +80,12 @@ const PrayerReciteModal = ({
       onClick={handleClose}
     >
       <PrayerModalFrame onClose={onClose} title="Recite the prayer">
-        <div className="overflow-hidden">
+        <div className="overflow-hidden hidden sm:block">
+          <PrayerBGMobile />
+          <PrayerBGvideo />
+        </div>
+
+        <div className="overflow-hidden block sm:hidden">
           <PrayerBG />
           <PrayerBGvideo />
         </div>

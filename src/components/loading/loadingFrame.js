@@ -10,7 +10,7 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
 
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
-        const newProgress = prevProgress + 100 / 90;
+        const newProgress = prevProgress + (100 / 90);
         return newProgress >= 100 ? 100 : newProgress;
       });
     }, 1000);
@@ -34,7 +34,7 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
       <LoadingDesign1 />
       <div className="relative w-full h-full border border-border-loading">
         <div
-          className="h-full bg-backgroundColor-dark-yellow"
+          className="h-full bg-backgroundColor-dark-yellow transition-all duration-1000"
           style={{ width: `${progress}%` }}
         />
       </div>

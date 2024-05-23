@@ -25,6 +25,7 @@ export const PrayerBGvideo = () => {
       autoPlay
       loop
       muted
+      playsInline
       className="absolute top-0 left-0 w-full h-full object-cover mix-blend-soft-light"
     >
       <source src="/background/prayer_Background.mp4" type="video/mp4" />
@@ -45,9 +46,46 @@ export const PrayerBG = () => {
         alt="prayerbg1920"
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
-      {/* <div className="absolute top-[38.5%] left-[50.5%] transform -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-[38.5%] left-[50.8%] transform -translate-x-1/2 -translate-y-1/2">
         <EyeRotate />
-      </div> */}
+      </div>
+    </div>
+  );
+};
+
+export const PrayerBGDone = () => {
+  return (
+    <div className="w-full h-full">
+      {/* PrayerBG image */}
+      <Image
+        rel="preload"
+        src={bg960}
+        width="auto"
+        height="auto"
+        priority={true}
+        alt="prayerbg1920"
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      />
+    </div>
+  );
+};
+
+export const PrayerBGMobile = () => {
+  return (
+    <div className="w-full h-full">
+      {/* PrayerBG image */}
+      <Image
+        rel="preload"
+        src={bg960}
+        width="auto"
+        height="auto"
+        priority={true}
+        alt="prayerbg1920"
+        className="absolute top-0 left-0 w-full h-full object-center"
+      />
+      <div className="absolute top-[38.5%] left-[50.8%] transform -translate-x-1/2 -translate-y-1/2">
+        <EyeRotate />
+      </div>
     </div>
   );
 };
@@ -56,10 +94,10 @@ export const EyeRotate = () => {
   return (
     <Image
       src={eyeRotate}
-      width={"80"}
-      height={"80"}
+      width={"auto"}
+      height={"auto"}
       alt="eye"
-      className="rotate-animation-step"
+      className="rotate-animation-step w-[60px] h-[60px] sm:w-[70px] sm:h-[70px]"
     />
   );
 };
