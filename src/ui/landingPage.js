@@ -205,7 +205,7 @@ export const LandingPage = () => {
 
   return (
     <div className="flex flex-col h-[100svh] justify-between">
-      <Flex className="w-full h-full mt-[90px] justify-center 1xl:mt-[120px]">
+      <Flex className="w-full h-full mt-[80px] justify-center 1xl:mt-[120px]">
         <Flex className="w-[1440px] h-auto flex-col sm:flex-row  ">
           <FlexColumn className="h-full max-h-[700px] gap-10 justify-between sm:gap-0">
             <Flex className="relative w-full h-auto pl-[18px] sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
@@ -279,7 +279,7 @@ export const LandingPage = () => {
 
       {prayer.prayerLoading && <LoadingScreen />}
 
-      <FlexColumn className="items-center h-auto justify-end pb-[10%]">
+      <FlexColumn className="items-center h-auto justify-end pb-[12%] sm:pb-[10%]">
         {/* <FlexColumn className="items-center h-[100%] justify-end pb-[80px] sm:pb-[10%]"> */}
         {/* <FlexColumn className="items-center h-full pb-[20px] max-h-[350px] sm:max-h-[380px] 2xl:max-h-[450px]"> */}
         <Borderline />
