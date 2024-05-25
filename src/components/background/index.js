@@ -102,7 +102,7 @@ export const EyeRotate = () => {
       width={"auto"}
       height={"auto"}
       alt="eye"
-      className="rotate-animation-step w-[57px] h-[57px] sm:w-[70px] sm:h-[70px]"
+      className="rotate-animation-step w-[54px] h-[54px] sm:w-[65px] sm:h-[65px]"
     />
   );
 };
