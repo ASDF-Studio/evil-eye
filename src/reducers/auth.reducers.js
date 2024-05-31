@@ -29,6 +29,7 @@ const initState = {
   emailOtpErrorMsg: null,
   emailUpdated: false,
   passwordUpdated: false,
+  passwordReseted: false,
 
   newEmail: "",
 };
@@ -282,7 +283,7 @@ export default function authReducer(state = initState, action) {
         emailOTPSent: action.payload.emailOTPSent,
         error: null,
         emailChangeError: false,
-        newEmail: action.payload.newEmail
+        newEmail: action.payload.newEmail,
       };
       break;
 
@@ -350,6 +351,33 @@ export default function authReducer(state = initState, action) {
         error: action.payload.error,
         loading: false,
         error: null,
+      };
+      break;
+
+    case authConstants.RESET_LINK_PASSWORD_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+        error: null,
+        passwordReseted: false,
+      };
+      break;
+
+    case authConstants.RESET_LINK_PASSWORD_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+        error: null,
+        passwordReseted: true,
+      };
+      break;
+
+    case authConstants.RESET_LINK_PASSWORD_FAILURE:
+      state = {
+        ...state,
+        error: action.payload.error,
+        loading: false,
+        passwordReseted: false,
       };
       break;
   }

@@ -25,6 +25,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import SuccessModal from "@/components/modal/submitMessage/success";
 import NotificationModal from "@/components/modal/submitMessage/notification";
 import { guest } from "@/action/modal.action";
+import { useRouter } from "next/router";
 
 const NAV__LINK = [
   {
@@ -50,6 +51,7 @@ export const Header = () => {
   const modal = useAppSelector((state) => state.modal);
 
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const [navbar, setNavbar] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -91,6 +93,26 @@ export const Header = () => {
       setShowLoginModal(true);
     }
   }, [auth.passwordUpdated]);
+
+  //http://localhost:3000/?modal=privacy
+  //https://localhost:3000/?pass_series_token=22222&identity=xxxx@gmail.com
+  //http://localhost:3000/?payment=success&session_id=cs_test_a1UiH9JP8hUx3de5wGMfw3VfDYYhwk41JU8kARtcl6gcX8P0fYGFQZ1UmJ&prayer_id=663d2e1fa4078bc278279670
+
+  useEffect(() => {
+    if (auth.passwordReseted) {
+      openNotification("password");
+      setShowLoginModal(true);
+    }
+  }, [auth.passwordReseted]);
+  
+  useEffect(() => {
+    const token = router.query.pass_series_token;
+    const mail = router.query.identity;
+
+    if (token && mail) {
+      openForgotPass3();
+    }
+  }, [router.query.pass_series_token]);
 
   const handlePath = (path) => {
     setNavbar(false);
@@ -183,6 +205,11 @@ export const Header = () => {
     setShowLoginModal(false);
     dispatch(guest(false));
   };
+
+  const handleResetModalClose = () => {
+    setShowForgotPass3Modal(false);
+  };
+
 
   return (
     <>
@@ -323,11 +350,10 @@ export const Header = () => {
       <ForgotPass2
         isvisible={showForgotPass2Modal}
         onClose={() => setShowForgotPass2Modal(false)}
-        openForgotPass3={openForgotPass3}
       />
       <ForgotPass3
         isvisible={showForgotPass3Modal}
-        onClose={() => setShowForgotPass3Modal(false)}
+        onClose={handleResetModalClose}
       />
 
       <NotificationModal

@@ -8,7 +8,6 @@ import { useAppSelector } from "@/hooks";
 const ForgotPass2 = ({ 
   isvisible, 
   onClose,
-  openForgotPass3, 
 }) => {
 
   const resetEmail = useAppSelector((state) => state.auth.resetEmail);
@@ -17,11 +16,6 @@ const ForgotPass2 = ({
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
-
-  // const openForgotPass3Modal = () => {
-  //   onClose();
-  //   openForgotPass3();
-  // };
   
   const handleLinkSend = () => {
     onClose();

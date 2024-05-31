@@ -345,3 +345,37 @@ export const generateResetPasswordLink = (resetEmail) => {
     }
   };
 };
+
+export const resetPassword = (data) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: authConstants.RESET_LINK_PASSWORD_REQUEST });
+      const res = await axios.post(`${baseURL}resetPasswordFromLink`, data);
+
+      if (res.status === 200) {
+        const { message } = res.data;
+        dispatch({
+          type: authConstants.RESET_LINK_PASSWORD_SUCCESS,
+          payload: { message },
+        });
+        dispatch(logout());
+      }
+      if (res.status === 201) {
+        const errorMessage = res.data.error;
+        dispatch({
+          type: authConstants.RESET_LINK_PASSWORD_FAILURE,
+          payload: { error: errorMessage },
+        });
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const { message } = error.response.data.error;
+        console.log("message", message);
+        dispatch({
+          type: authConstants.RESET_LINK_PASSWORD_FAILURE,
+          payload: { error: message },
+        });
+      }
+    }
+  };
+};
