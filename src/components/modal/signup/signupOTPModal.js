@@ -21,6 +21,21 @@ const SignupOtpModal = ({
   const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.auth.user);
 
+  const [error, setError] = useState("");
+  const { error: otpError } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    setError(otpError);
+  }, [otpError]);
+
+  useEffect(() => {
+    if (auth.otpDone) {
+      onClose();
+      openNotification("signup");
+    }
+  }, [dispatch, auth.otpDone]);
+  
+
   useEffect(() => {
     if (auth.otpFailed) {
       onClose();
@@ -80,8 +95,6 @@ const SignupOtpModal = ({
 
     try {
       await dispatch(verifyOTP(data));
-      onClose();
-      openNotification("signup");
     } catch (error) {
       console.error("Error during signup:", error);
     }
@@ -123,6 +136,14 @@ const SignupOtpModal = ({
             </Flex>
 
             {invalidInputs.isOTPInvalid && <InlineError message={"otp"} />}
+
+            {error && (
+              <div className="pt-2">
+                <Typography variant="h12" classname="text-red-600">
+                  {error}
+                </Typography>
+              </div>
+            )}
           </div>
           <FlexBetween className="mt-3">
             <Button

@@ -162,6 +162,14 @@ export const verifyOTP = (data) => {
           },
         });
       }
+
+      if (res.status === 210) {
+        const errorMessage = res.data.error;
+        dispatch({
+          type: authConstants.OTP_FAILURE,
+          payload: { error: errorMessage },
+        });
+      }
     } catch (error) {
       if (error.response.status === 400) {
         const { message } = error.response.data;
