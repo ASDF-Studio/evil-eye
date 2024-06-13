@@ -81,14 +81,14 @@ export const PrayerBGMobile = () => {
       {/* PrayerBG image */}
       <Image
         rel="preload"
-        src={bg960}
+        src={bg1920}
         width="auto"
         height="auto"
         priority="true"
         alt="prayerbg1920"
-        className="absolute top-0 left-0 w-full h-full object-center"
+        className="absolute top-0 left-0 w-full h-full object-cover"
       />
-      <div className="absolute top-[38.5%] left-[50.8%] transform -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-[38.3%] left-[49%] transform -translate-x-1/2 -translate-y-1/2">
         <EyeRotate />
       </div>
     </div>
@@ -102,7 +102,7 @@ export const EyeRotate = () => {
       width={"auto"}
       height={"auto"}
       alt="eye"
-      className="rotate-animation-step w-[54px] h-[54px] sm:w-[65px] sm:h-[65px]"
+      className="rotate-animation-step w-[60px] h-[60px] sm:w-[65px] sm:h-[65px] h-800:w-[50px] h-800:h-[50px] h-680:w-[45px] h-680:h-[45px]"
     />
   );
 };

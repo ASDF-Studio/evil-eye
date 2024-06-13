@@ -24,6 +24,9 @@ module.exports = {
       "4xl": "1800px", // for portfolio card
       "5xl": "1920px", // ultra wide
       "10xl": "2880px", // ultra wide
+
+      'h-800': {'raw': '(max-height: 800px)'},
+      'h-680': {'raw': '(max-height: 680px)'},
     },
     extend: {
       fontFamily: {
