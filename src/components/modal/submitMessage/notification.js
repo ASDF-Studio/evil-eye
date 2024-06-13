@@ -23,6 +23,7 @@ const NotificationModal = ({
     email: "Email change successfully",
     otp: "OTP has been sent to your email",
     otpAgain: "User already registered, Input OTP",
+    expired: "Session expired, Please login again"
   };
 
   return (

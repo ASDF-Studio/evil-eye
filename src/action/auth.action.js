@@ -1,5 +1,5 @@
-// import axios from "../helpers/axios";
 import axios from "axios";
+import axiosInstance from "../helpers/axios";
 import { authConstants } from "./constants";
 import { API } from "../../urlConfig";
 
@@ -39,7 +39,7 @@ export const login = (user) => {
 export const updateUser = (user) => {
   return async (dispatch) => {
     dispatch({ type: authConstants.UPDATE_REQUEST });
-    const res = await axios.post(`${baseURL}updateUser`, {
+    const res = await axiosInstance.post(`${baseURL}updateUser`, {
       ...user,
     });
 
@@ -65,7 +65,10 @@ export const updatePassword = (password) => {
   return async (dispatch) => {
     try {
       dispatch({ type: authConstants.UPDATE_PASSWORD_REQUEST });
-      const res = await axios.post(`${baseURL}updatePassword`, password);
+      const res = await axiosInstance.post(
+        `${baseURL}updatePassword`,
+        password
+      );
 
       if (res.status === 200) {
         const { message } = res.data;
@@ -250,7 +253,12 @@ export const logout = () => {
 
     if (res.status === 200) {
       localStorage.clear();
-      dispatch({ type: authConstants.LOGOUT_SUCCESS });
+      dispatch({
+        type: authConstants.LOGOUT_SUCCESS,
+        payload: {
+          logout: true,
+        },
+      });
     } else {
       dispatch({
         type: authConstants.LOGOUT_FAILURE,
@@ -264,7 +272,7 @@ export const changeEmail = (data) => {
   return async (dispatch) => {
     try {
       dispatch({ type: authConstants.CHANGE_EMAIL_REQUEST });
-      const res = await axios.post(`${baseURL}changeEmail`, data);
+      const res = await authConstants.post(`${baseURL}changeEmail`, data);
 
       if (res.status === 200) {
         const { message, emailOTPSent } = res.data;

@@ -12,9 +12,9 @@ export const BGvideo = () => {
       autoPlay
       loop
       muted
-      preload
+      preload="auto"
       playsInline
-      priority={true}
+      priority="true"
       className="absolute top-0 left-0 w-full h-full object-cover mix-blend-lighten"
     >
       <source src="/background/background.mp4" type="video/mp4" />
@@ -29,8 +29,8 @@ export const PrayerBGvideo = () => {
       loop
       muted
       playsInline
-      preload
-      priority={true}
+      preload="auto"
+      priority="true"
       className="absolute top-0 left-0 w-full h-full object-cover mix-blend-soft-light"
     >
       <source src="/background/prayer_Background.mp4" type="video/mp4" />
@@ -47,7 +47,7 @@ export const PrayerBG = () => {
         src={bg960}
         width="auto"
         height="auto"
-        priority={true}
+        priority="true"
         alt="prayerbg1920"
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
@@ -67,7 +67,7 @@ export const PrayerBGDone = () => {
         src={bg960}
         width="auto"
         height="auto"
-        priority={true}
+        priority="true"
         alt="prayerbg1920"
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
@@ -84,7 +84,7 @@ export const PrayerBGMobile = () => {
         src={bg960}
         width="auto"
         height="auto"
-        priority={true}
+        priority="true"
         alt="prayerbg1920"
         className="absolute top-0 left-0 w-full h-full object-center"
       />
@@ -121,16 +121,31 @@ export const LoadingScreen = () => {
   );
 };
 
+// export const BG420 = () => {
+//   return (
+//     <Image
+//       rel="preload"
+//       src={bg420}
+//       layout="fill"
+//       objectFit="cover"
+//       priority="true"
+//       alt="bg420"
+//     />
+//   );
+// };
+
 export const BG420 = () => {
   return (
-    <Image
-      rel="preload"
-      src={bg420}
-      layout="fill"
-      objectFit="cover"
-      priority={true}
-      alt="bg420"
-    />
+    <div className=" absolute w-[100%] h-[100%]">
+      <Image
+        src={bg420}
+        fill
+        style={{ objectFit: "cover" }}
+        priority
+        alt="bg420"
+        className="absolute w-full h-full"
+      />
+    </div>
   );
 };
 
@@ -141,7 +156,7 @@ export const BG960 = () => {
       src={bg960}
       width="auto"
       height="auto"
-      priority={true}
+      priority="true"
       alt="bg960"
       className="absolute w-full h-full object-cover"
     />
@@ -155,7 +170,7 @@ export const BG1920 = () => {
       src={bg1920}
       width="auto"
       height="auto"
-      priority={true}
+      priority="true"
       alt="bg1920"
       className="absolute w-full h-full object-cover"
     />
@@ -169,7 +184,7 @@ export const BG2880 = () => {
       src={bg2880}
       width="auto"
       height="auto"
-      priority={true}
+      priority="true"
       alt="bg2880"
       className="absolute w-full h-full object-cover"
     />

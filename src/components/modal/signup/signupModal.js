@@ -114,7 +114,7 @@ const SignupModal = ({
               variant="h11"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
             >
-              SIGNUP
+              SIGN UP
             </Typography>
           </div>
           <div className="px-2 text-left">

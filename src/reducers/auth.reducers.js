@@ -15,6 +15,7 @@ const initState = {
   signupRequest: false,
   emailOTPSent: false,
   resetEmail: "",
+  logout: false,
 
   otp_open: false,
   loginError: null,
@@ -77,6 +78,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         loading: true,
         error: null,
+        logout: false,
       };
       break;
     case authConstants.LOGOUT_SUCCESS:
@@ -84,6 +86,7 @@ export default function authReducer(state = initState, action) {
         ...initState,
         error: null,
         authenticate: false,
+        logout: action.payload.logout,
       };
       break;
     case authConstants.LOGOUT_FAILURE:
@@ -91,6 +94,7 @@ export default function authReducer(state = initState, action) {
         ...state,
         error: action.payload.error,
         loading: false,
+        logout: false,
       };
       break;
 

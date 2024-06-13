@@ -63,7 +63,7 @@ export const Logo = () => {
       src={logo}
       width={147}
       height={147}
-      priority={true}
+       priority="true"
       alt="logo"
       className=""
     />
@@ -77,7 +77,7 @@ export const User = () => {
       src={user}
       width={18}
       height="auto"
-      priority={true}
+       priority="true"
       alt="user"
       className='relative rounded-xl shadow'
     />

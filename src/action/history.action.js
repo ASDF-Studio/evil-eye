@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+import axiosInstance from "../helpers/axios";
 import { API } from "../../urlConfig";
 import { historyConstants } from "./constants";
 
@@ -11,7 +12,7 @@ export const getHistoryData = (data) => {
     });
 
     try {
-      const res = await axios.post(`${baseURL}history`, {
+      const res = await axiosInstance.post(`${baseURL}history`, {
         ...data,
       });
       if (res.status === 200) {

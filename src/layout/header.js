@@ -83,6 +83,13 @@ export const Header = () => {
   };
 
   useEffect(() => {
+    if (auth.logout) {
+      setShowDashModal(false);
+      openNotification("expired");
+    }
+  }, [auth.logout]);
+
+  useEffect(() => {
     closeAllModal;
     setShowLoginModal(modal.loginModal);
   }, [modal.loginModal]);
@@ -104,7 +111,7 @@ export const Header = () => {
       setShowLoginModal(true);
     }
   }, [auth.passwordReseted]);
-  
+
   useEffect(() => {
     const token = router.query.pass_series_token;
     const mail = router.query.identity;
@@ -209,7 +216,6 @@ export const Header = () => {
   const handleResetModalClose = () => {
     setShowForgotPass3Modal(false);
   };
-
 
   return (
     <>
