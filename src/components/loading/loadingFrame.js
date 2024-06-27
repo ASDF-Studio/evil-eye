@@ -4,7 +4,7 @@ import { LoadingDesign1, LoadingDesign2 } from "../logo";
 import { useAppDispatch } from "@/hooks";
 import { useRouter } from "next/router";
 
-const TOTAL_DURATION = 10;
+const TOTAL_DURATION = 90;
 
 export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
   const dispatch = useAppDispatch();
