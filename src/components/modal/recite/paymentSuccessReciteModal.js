@@ -43,6 +43,8 @@ const PaymentSuccessReciteModal = ({
       prayerId: prayerId,
     };
 
+    // localStorage.setItem("evileye-prayer", JSON.stringify(data));
+
     try {
       await dispatch(recitePrayer(data));
     } catch (error) {

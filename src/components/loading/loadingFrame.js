@@ -1,28 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { FlexCenter } from "../layout";
 import { LoadingDesign1, LoadingDesign2 } from "../logo";
+import { useAppDispatch } from "@/hooks";
+import { useRouter } from "next/router";
+
+const TOTAL_DURATION = 90; // Total duration in seconds
 
 export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
+  const dispatch = useAppDispatch();
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    setProgress(0);
+    const storedData = JSON.parse(localStorage.getItem("evileye-prayer")) || {};
+    let startTime = storedData.startTime || Date.now();
+    if (!storedData.startTime) {
+      storedData.startTime = startTime;
+      localStorage.setItem("evileye-prayer", JSON.stringify(storedData));
+    }
 
-    const interval = setInterval(() => {
-      setProgress((prevProgress) => {
-        const newProgress = prevProgress + (100 / 90);
-        return newProgress >= 100 ? 100 : newProgress;
-      });
-    }, 1000);
+    let interval;
+
+    const updateProgress = () => {
+      const currentTime = Date.now();
+      const elapsedTime = (currentTime - startTime) / 1000;
+      const newProgress = (elapsedTime / TOTAL_DURATION) * 100;
+
+      if (newProgress >= 100) {
+        setProgress(100);
+        prayerProgress();
+        clearInterval(interval);
+      } else {
+        setProgress(newProgress);
+      }
+    };
+
+    updateProgress();
+
+    interval = setInterval(updateProgress, 1000);
 
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (progress === 100) {
-      prayerProgress();
-    }
-  }, [progress]);
+  }, [prayerProgress]);
 
   return (
     <FlexCenter
@@ -30,6 +47,7 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
         "w-[100%] max-w-[336px] h-[20px] bg-backgroundColor-brand-yellow shadow-buttonShadow2 border-[2px] border-border-loading",
         className,
       ].join(" ")}
+      {...rest}
     >
       <LoadingDesign1 />
       <div className="relative w-full h-full border border-border-loading">
@@ -42,3 +60,5 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
     </FlexCenter>
   );
 };
+
+export default LoadingFrame;

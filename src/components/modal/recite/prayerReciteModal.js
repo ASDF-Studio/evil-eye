@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-
 import { Typography } from "../../typography";
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
+import { Flex, FlexCenter } from "../../layout";
 import { DesignButton3 } from "../../button/designButton3";
 import {
   PrayerBG,
@@ -13,6 +12,8 @@ import { LoadingFrame } from "@/components/loading/loadingFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 import { guest } from "@/action/modal.action";
 import { useAppDispatch, useAppSelector } from "@/hooks";
+import { useRouter } from "next/router";
+import { verifyCheckoutSession } from "@/action";
 
 const PrayerReciteModal = ({
   isvisible,
@@ -21,10 +22,24 @@ const PrayerReciteModal = ({
   openDashboard,
 }) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const auth = useAppSelector((state) => state.auth);
   const [prayerDone, setPrayerDone] = useState(false);
 
-  if (!isvisible) return null;
+  useEffect(() => {
+    if (prayerDone) {
+      const session_id = router.query.session_id;
+      const prayer_id = router.query.prayer_id;
+      localStorage.removeItem("evileye-prayer");
+
+      const data = {
+        sessionId: session_id,
+        prayerId: prayer_id,
+        prayerCount: 100,
+      };
+      dispatch(verifyCheckoutSession(data));
+    }
+  }, [prayerDone, dispatch, router.query]);
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
@@ -35,11 +50,13 @@ const PrayerReciteModal = ({
     onClose();
     openReciteModal();
   };
+
   const openAnotherReciteModal = () => {
     setPrayerDone(false);
     onClose();
     openReciteModal();
   };
+
   const openDashboardModal = () => {
     onClose();
     openDashboard();
@@ -51,27 +68,27 @@ const PrayerReciteModal = ({
 
   const handleAnotherPrayer = async (e) => {
     e.preventDefault();
-
     onClose();
-
     if (auth.authenticate) {
       openAnotherReciteModal();
     } else {
       await dispatch(guest(true));
     }
+    router.replace(router.pathname, undefined, { shallow: true });
   };
 
   const handleHistory = async (e) => {
     e.preventDefault();
-
     onClose();
-
     if (auth.authenticate) {
       openDashboardModal();
     } else {
       await dispatch(guest(true));
     }
+    router.replace(router.pathname, undefined, { shallow: true });
   };
+
+  if (!isvisible) return null;
 
   return (
     <FlexCenter

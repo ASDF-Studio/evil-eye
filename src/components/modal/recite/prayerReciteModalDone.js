@@ -8,6 +8,7 @@ import PrayerModalFrame from "../prayerModalFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { guest } from "@/action/modal.action";
+import { useRouter } from "next/router";
 
 const PrayerReciteModalDone = ({
   isvisible,
@@ -17,6 +18,7 @@ const PrayerReciteModalDone = ({
 }) => {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((state) => state.auth);
+  const router = useRouter();
 
   if (!isvisible) return null;
 
@@ -43,6 +45,8 @@ const PrayerReciteModalDone = ({
     } else {
       await dispatch(guest(true));
     }
+
+    router.replace(router.pathname, undefined, { shallow: true });
   };
 
   const handleHistory = async (e) => {
@@ -55,6 +59,8 @@ const PrayerReciteModalDone = ({
     } else {
       await dispatch(guest(true));
     }
+
+    router.replace(router.pathname, undefined, { shallow: true });
   };
 
   return (

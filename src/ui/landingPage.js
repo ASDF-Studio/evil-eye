@@ -108,7 +108,7 @@ export const LandingPage = () => {
   const handleSuccessModalClose = () => {
     setPaymentSuccessReciteModal(false);
 
-    router.replace(router.pathname, undefined, { shallow: true });
+    // router.replace(router.pathname, undefined, { shallow: true });
   };
 
   const handleCancelModalClose = () => {
@@ -179,16 +179,23 @@ export const LandingPage = () => {
     const prayer_id = router.query.prayer_id;
 
     if (payment === "success" && session_id) {
+      const prayerData =
+        JSON.parse(localStorage.getItem("evileye-prayer")) || {};
+      let prayerCountLocal = prayerData.progress
+        ? parseFloat(prayerData.progress)
+        : 0;
+
       const data = {
         sessionId: session_id,
         prayerId: prayer_id,
+        prayerCount: prayerCountLocal,
       };
 
       dispatch(verifyCheckoutSession(data));
     } else if (payment === "canceled") {
       openPaymentCancelReciteModal();
     }
-  }, [router.query.payment]);
+  }, [router.query.payment, prayerData.progress]);
 
   useEffect(() => {
     if (prayer.prayerDone) {
