@@ -110,6 +110,9 @@ export const LandingPage = () => {
 
     // router.replace(router.pathname, undefined, { shallow: true });
   };
+  const handlePrayerReciteModalClose = () => {
+    setPrayerReciteModal(false);
+  };
 
   const handleCancelModalClose = () => {
     setPaymentCancelReciteModal(false);
@@ -342,7 +345,7 @@ export const LandingPage = () => {
           />
           <PrayerReciteModal
             isvisible={showPrayerReciteModal}
-            onClose={() => setPrayerReciteModal(false)}
+            onClose={handlePrayerReciteModalClose}
             openDashboard={openDashboard}
             openReciteModal={openReciteModal}
           />
@@ -351,6 +354,7 @@ export const LandingPage = () => {
             onClose={() => setPrayerReciteModalDone(false)}
             openDashboard={openDashboard}
             openReciteModal={openReciteModal}
+            modalDoneCLose={handlePrayerReciteModalClose}
           />
           <DashModal
             isvisible={showDashModal}

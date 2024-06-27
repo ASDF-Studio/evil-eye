@@ -31,6 +31,7 @@ const PrayerReciteModal = ({
       const session_id = router.query.session_id;
       const prayer_id = router.query.prayer_id;
       localStorage.removeItem("evileye-prayer");
+      router.replace(router.pathname, undefined, { shallow: true });
 
       const data = {
         sessionId: session_id,
@@ -39,7 +40,7 @@ const PrayerReciteModal = ({
       };
       dispatch(verifyCheckoutSession(data));
     }
-  }, [prayerDone, dispatch, router.query]);
+  }, [prayerDone, dispatch]);
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
@@ -69,23 +70,23 @@ const PrayerReciteModal = ({
   const handleAnotherPrayer = async (e) => {
     e.preventDefault();
     onClose();
+    // router.replace(router.pathname, undefined, { shallow: true });
     if (auth.authenticate) {
       openAnotherReciteModal();
     } else {
       await dispatch(guest(true));
     }
-    router.replace(router.pathname, undefined, { shallow: true });
   };
 
   const handleHistory = async (e) => {
     e.preventDefault();
     onClose();
+    // router.replace(router.pathname, undefined, { shallow: true });
     if (auth.authenticate) {
       openDashboardModal();
     } else {
       await dispatch(guest(true));
     }
-    router.replace(router.pathname, undefined, { shallow: true });
   };
 
   if (!isvisible) return null;

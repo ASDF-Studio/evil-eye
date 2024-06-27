@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Typography } from "../../typography";
 import { Flex, FlexCenter, FlexColumn } from "../../layout";
 import { DesignButton3 } from "../../button/designButton3";
-import { PrayerBG, PrayerBGDone, PrayerBGvideo } from "@/components/background";
+import { PrayerBG, PrayerBGDone, PrayerBGMobile, PrayerBGvideo } from "@/components/background";
 import PrayerModalFrame from "../prayerModalFrame";
 import { DesignButton1 } from "@/components/button/designButton1";
 import { useAppDispatch, useAppSelector } from "@/hooks";
@@ -15,6 +15,7 @@ const PrayerReciteModalDone = ({
   onClose,
   openReciteModal,
   openDashboard,
+  modalDoneCLose,
 }) => {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((state) => state.auth);
@@ -39,7 +40,7 @@ const PrayerReciteModalDone = ({
     e.preventDefault();
 
     onClose();
-
+    modalDoneCLose();
     if (auth.authenticate) {
       openAnotherReciteModal();
     } else {
@@ -53,7 +54,7 @@ const PrayerReciteModalDone = ({
     e.preventDefault();
 
     onClose();
-
+    modalDoneCLose();
     if (auth.authenticate) {
       openDashboardModal();
     } else {
@@ -70,8 +71,13 @@ const PrayerReciteModalDone = ({
       onClick={handleClose}
     >
       <PrayerModalFrame onClose={onClose} title="Recite the prayer">
-        <div className="overflow-hidden">
-          <PrayerBGDone />
+        <div className="overflow-hidden hidden sm:block">
+          <PrayerBGMobile />
+          <PrayerBGvideo />
+        </div>
+
+        <div className="overflow-hidden block sm:hidden">
+          <PrayerBG />
           <PrayerBGvideo />
         </div>
 

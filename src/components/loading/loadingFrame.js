@@ -4,10 +4,11 @@ import { LoadingDesign1, LoadingDesign2 } from "../logo";
 import { useAppDispatch } from "@/hooks";
 import { useRouter } from "next/router";
 
-const TOTAL_DURATION = 90; // Total duration in seconds
+const TOTAL_DURATION = 10;
 
 export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
         setProgress(100);
         prayerProgress();
         clearInterval(interval);
+        router.replace(router.pathname, undefined, { shallow: true });
       } else {
         setProgress(newProgress);
       }
