@@ -20,7 +20,7 @@ const Contact = ({ isvisible, onClose, contatcSubmit }) => {
   const [userData, setUserData] = useState({
     userName: "",
     userEmail: "",
-    userPhone: "",
+    userPhone: "+1",
     userMsg: "",
   });
   const [invalidInputs, setInvalidInputs] = useState({

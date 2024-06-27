@@ -19,7 +19,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [guestName, setGuestName] = useState("");
   const [guestEmail, setGuestEmail] = useState("");
-  const [guestPhone, setGuestPhone] = useState("");
+  const [guestPhone, setGuestPhone] = useState("+1");
   const [guestPrice] = useState(parseInt(5));
 
   const [contactMethod, setContactMethod] = useState("email");
@@ -186,7 +186,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               <div className="pt-3">
                 <Flex className="relative h-[40px]">
                   <Input
-                    type="number"
+                    type="text"
                     placeholder="123-345-6789"
                     value={guestPhone}
                     onChange={(e) => setGuestPhone(e.target.value)}

@@ -17,8 +17,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [newPhone, setNewPhone] = useState("");
+  const [phone, setPhone] = useState("+1");
+  const [newPhone, setNewPhone] = useState("+1");
   const [price] = useState(parseInt(5));
 
   const [recipientType, setRecipientType] = useState("myself");
@@ -190,7 +190,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                 <div>
                   <Flex className="relative h-[40px]">
                     <Input
-                      type="number"
+                      type="text"
                       placeholder="123-345-6789"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
@@ -275,7 +275,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                   <div className="pt-3">
                     <Flex className="relative h-[40px]">
                       <Input
-                        type="number"
+                        type="text"
                         placeholder="123-345-6789"
                         value={newPhone}
                         onChange={(e) => setNewPhone(e.target.value)}
