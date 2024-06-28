@@ -7,6 +7,7 @@ const variantMapping = {
   phone: "Phone numbder is invalid.",
   message: "Please enter your message to us",
   otp: "Please enter a OTP.",
+  validPhone: "Please enter a valid phone number with country code (e.g., +1)."
 };
 
 export const InlineError = ({ message }) => {

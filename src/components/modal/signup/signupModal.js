@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { signup } from "@/action";
 import { InlineError } from "@/validity";
 import ModalScroll from "../modalScroll";
+import { guest, guestFromLogin } from "@/action/modal.action";
 
 const SignupModal = ({
   isvisible,
@@ -29,6 +30,8 @@ const SignupModal = ({
 
   const [error, setError] = useState("");
   const { signupError: signupError } = useAppSelector((state) => state.auth);
+
+  const [showGuestModal, setShowGuestModal] = useState(true);
 
   React.useEffect(() => {
     setError(signupError);
@@ -69,6 +72,15 @@ const SignupModal = ({
   const openSignupOTPModal = (email) => {
     onClose();
     openSignupOTP(email);
+  };
+
+  const handleGuest = async (e) => {
+    e.preventDefault();
+
+    setShowGuestModal(true);
+    onClose();
+    dispatch(guest(false));
+    await dispatch(guestFromLogin(showGuestModal));
   };
 
   const handleSubmit = async (e) => {
@@ -245,9 +257,9 @@ const SignupModal = ({
               <FlexCenter className="w-auto">
                 <Typography
                   variant="h12"
-                  classname="hover:underline text-color-brand-yellow2"
+                  classname="hover:underline text-color-brand-yellow2 cursor-pointer"
                 >
-                  Continue as guest
+                  <div onClick={handleGuest}>Continue as guest</div>
                 </Typography>
               </FlexCenter>
             </div>

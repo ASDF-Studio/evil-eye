@@ -36,6 +36,11 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     if (e.target.id === "wrapper") onClose();
   };
 
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^\+\d{1,3}\d{4,14}(?:x.+)?$/;
+    return phoneRegex.test(phone);
+  };
+
   const handlePrayerModal = async (e) => {
     e.preventDefault();
 
@@ -60,22 +65,20 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       email = newEmail;
       number = newPhone;
 
-      {
-        contactMethod === "phone" &&
-          setInvalidInputs({
-            isNewNameInvalid: newName ? false : true,
-            isPhoneInvalid: newPhone ? false : true,
-          });
+      if (contactMethod === "phone") {
+        const isValidPhone = validatePhoneNumber(newPhone);
+        setInvalidInputs({
+          isNewNameInvalid: newName ? false : true,
+          isPhoneInvalid: !isValidPhone,
+        });
+        if (!newName || !isValidPhone) return;
+      } else if (contactMethod === "email") {
       }
-      {
-        contactMethod === "email" &&
-          setInvalidInputs({
-            isNewNameInvalid: newName ? false : true,
-            isEmailInvalid: newEmail ? false : true,
-          });
-      }
-
-      if (!newName) return;
+      setInvalidInputs({
+        isNewNameInvalid: newName ? false : true,
+        isEmailInvalid: newEmail ? false : true,
+      });
+      if (!newName || !newEmail) return;
     }
 
     const data = {
@@ -283,7 +286,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     </Flex>
 
                     {invalidInputs.isPhoneInvalid && (
-                      <InlineError message={"phone"} />
+                      <InlineError message={"validPhone"} />
                     )}
                   </div>
                 )}

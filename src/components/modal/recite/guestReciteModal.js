@@ -2,10 +2,9 @@ import React, { useState } from "react";
 
 import ModalFrame from "../modalFrame";
 import { Typography } from "../../typography";
-import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
+import { Flex, FlexCenter, FlexColumn } from "../../layout";
 import { Button } from "react-scroll";
 import { DesignButton } from "../../button/designButton";
-import { DesignButton3 } from "../../button/designButton3";
 import { Input } from "@/components/input";
 import { CheckBox } from "@/components/input/checkbox";
 import { InlineError } from "@/validity";
@@ -19,7 +18,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [guestName, setGuestName] = useState("");
   const [guestEmail, setGuestEmail] = useState("");
-  const [guestPhone, setGuestPhone] = useState("+1");
+  const [guestPhone, setGuestPhone] = useState("");
   const [guestPrice] = useState(parseInt(5));
 
   const [contactMethod, setContactMethod] = useState("email");
@@ -35,6 +34,12 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
+
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^\+\d{1,3}\d{4,14}(?:x.+)?$/;
+    return phoneRegex.test(phone);
+  };
+
   const handlePrayerModal = async (e) => {
     e.preventDefault();
 
@@ -54,22 +59,20 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     email = guestEmail;
     number = guestPhone;
 
-    {
-      contactMethod === "phone" &&
-        setInvalidInputs({
-          isNewNameInvalid: guestName ? false : true,
-          isPhoneInvalid: guestPhone ? false : true,
-        });
+    if (contactMethod === "phone") {
+      const isValidPhone = validatePhoneNumber(guestPhone);
+      setInvalidInputs({
+        isNewNameInvalid: guestName ? false : true,
+        isPhoneInvalid: !isValidPhone,
+      });
+      if (!guestName || !isValidPhone) return;
+    } else if (contactMethod === "email") {
+      setInvalidInputs({
+        isNewNameInvalid: guestName ? false : true,
+        isEmailInvalid: guestEmail ? false : true,
+      });
+      if (!guestName || !guestEmail) return;
     }
-    {
-      contactMethod === "email" &&
-        setInvalidInputs({
-          isNewNameInvalid: guestName ? false : true,
-          isEmailInvalid: guestEmail ? false : true,
-        });
-    }
-
-    if (!guestName) return;
 
     const data = {
       name: guestName,
@@ -90,7 +93,6 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const handlePrivacyModal = async (e) => {
     e.preventDefault();
-    // onClose();
     await dispatch(privacyModal(true));
   };
 
@@ -187,14 +189,14 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                 <Flex className="relative h-[40px]">
                   <Input
                     type="text"
-                    placeholder="123-345-6789"
+                    placeholder="+1 123-345-6789"
                     value={guestPhone}
                     onChange={(e) => setGuestPhone(e.target.value)}
                   />
                 </Flex>
 
                 {invalidInputs.isPhoneInvalid && (
-                  <InlineError message={"phone"} />
+                  <InlineError message={"validPhone"} />
                 )}
               </div>
             )}
