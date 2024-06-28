@@ -17,8 +17,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  const [phone, setPhone] = useState("+1");
-  const [newPhone, setNewPhone] = useState("+1");
+  const [phone, setPhone] = useState("");
+  const [newPhone, setNewPhone] = useState("");
   const [price] = useState(parseInt(5));
 
   const [recipientType, setRecipientType] = useState("myself");
@@ -28,6 +28,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     isNewNameInvalid: false,
     isPhoneInvalid: false,
     isEmailInvalid: false,
+    isSelfPhoneInvalid: false,
   });
 
   if (!isvisible) return null;
@@ -60,6 +61,14 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       name = user?.name;
       email = user?.email;
       number = phone;
+
+      if (phone) {
+        const isValidPhoneSelf = validatePhoneNumber(phone);
+        setInvalidInputs({
+          isSelfPhoneInvalid: !isValidPhoneSelf,
+        });
+        if (!isValidPhoneSelf) return;
+      }
     } else {
       name = newName;
       email = newEmail;
@@ -194,11 +203,15 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                   <Flex className="relative h-[40px]">
                     <Input
                       type="text"
-                      placeholder="123-345-6789"
+                      placeholder="+1 123-345-6789"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   </Flex>
+
+                  {invalidInputs.isSelfPhoneInvalid && (
+                    <InlineError message={"validPhone"} />
+                  )}
                 </div>
               </div>
             )}
@@ -279,7 +292,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     <Flex className="relative h-[40px]">
                       <Input
                         type="text"
-                        placeholder="123-345-6789"
+                        placeholder="+1 123-345-6789"
                         value={newPhone}
                         onChange={(e) => setNewPhone(e.target.value)}
                       />
