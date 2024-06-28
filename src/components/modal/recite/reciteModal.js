@@ -82,12 +82,12 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
         });
         if (!newName || !isValidPhone) return;
       } else if (contactMethod === "email") {
+        setInvalidInputs({
+          isNewNameInvalid: newName ? false : true,
+          isEmailInvalid: newEmail ? false : true,
+        });
+        if (!newName || !newEmail) return;
       }
-      setInvalidInputs({
-        isNewNameInvalid: newName ? false : true,
-        isEmailInvalid: newEmail ? false : true,
-      });
-      if (!newName || !newEmail) return;
     }
 
     const data = {
