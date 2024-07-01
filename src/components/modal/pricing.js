@@ -38,7 +38,7 @@ const Pricing = ({ isvisible, onClose }) => {
             variant="h11"
             classname=" text-color-brand-yellow2 drop-shadow-3xl "
           >
-            $5 per prayer
+            $10 per prayer
           </Typography>
         </Flex>
         <div className="px-5 mb-3.5">

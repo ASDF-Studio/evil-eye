@@ -19,7 +19,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const [newEmail, setNewEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [newPhone, setNewPhone] = useState("");
-  const [price] = useState(parseInt(5));
+  const [price] = useState(parseInt(10));
 
   const [recipientType, setRecipientType] = useState("myself");
   const [contactMethod, setContactMethod] = useState("email");
