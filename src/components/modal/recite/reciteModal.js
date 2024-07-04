@@ -17,8 +17,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [newPhone, setNewPhone] = useState("");
+  const [phone, setPhone] = useState("+1");
+  const [newPhone, setNewPhone] = useState("+1");
   const [price] = useState(parseInt(10));
 
   const [recipientType, setRecipientType] = useState("myself");
@@ -38,8 +38,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   };
 
   const validatePhoneNumber = (phone) => {
-    const phoneRegex = /^\+\d{1,3}\d{4,14}(?:x.+)?$/;
-    return phoneRegex.test(phone);
+    const phoneRegex = /^\+1\d{10}(?:x.+)?$/;
+    const lastTenDigits = phone.replace(/\D/g, "").slice(-10);
+
+    return phoneRegex.test(phone) && lastTenDigits.length === 10;
   };
 
   const handlePrayerModal = async (e) => {

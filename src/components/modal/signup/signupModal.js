@@ -122,6 +122,21 @@ const SignupModal = ({
       <ModalFrame onClose={onClose} title="USER ACCOUNT">
         <ModalScroll>
           <div className="px-5 mb-3.5">
+            <FlexCenter className="w-auto sm:w-[410px] mb-4 text-color-brand-yellow2">
+              <Typography variant="h12" classname="text-color-brand-yellow2">
+                {"Don't want to Log In or Signup?"}
+              </Typography>
+            </FlexCenter>
+            <Flex className="justify-center w-[100%]">
+              <DesignButton
+                className="w-full"
+                typoVariant="buttonLabel2"
+                onClick={handleGuest}
+              >
+                {auth.loading == false ? "Continue As a Guest" : "Loading..."}
+              </DesignButton>
+            </Flex>
+            <hr className="w-auto space-y-5 my-6 sm:w-[410px] border-color-brand-op" />
             <Typography
               variant="h11"
               classname="text-color-brand-yellow2 drop-shadow-3xl "
@@ -253,15 +268,6 @@ const SignupModal = ({
                   </DesignButton3>
                 </Flex>
               </div>
-              <hr className="w-auto sm:w-[410px] border-color-brand-op" />
-              <FlexCenter className="w-auto">
-                <Typography
-                  variant="h12"
-                  classname="hover:underline text-color-brand-yellow2 cursor-pointer"
-                >
-                  <div onClick={handleGuest}>Continue as guest</div>
-                </Typography>
-              </FlexCenter>
             </div>
           </div>
         </ModalScroll>
