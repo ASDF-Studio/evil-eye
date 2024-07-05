@@ -130,7 +130,7 @@ const SignupModal = ({
             <Flex className="justify-center w-[100%]">
               <DesignButton
                 className="w-full"
-                typoVariant="buttonLabel2"
+                typoVariant="buttonLabel3"
                 onClick={handleGuest}
               >
                 {auth.loading == false ? "Continue As a Guest" : "Loading..."}
