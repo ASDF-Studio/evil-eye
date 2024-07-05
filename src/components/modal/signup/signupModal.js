@@ -129,7 +129,7 @@ const SignupModal = ({
             </FlexCenter>
             <Flex className="justify-center w-[100%]">
               <DesignButton
-                className="w-full"
+                className="w-full text-[14px] lsm:text-[18px]"
                 typoVariant="buttonLabel3"
                 onClick={handleGuest}
               >
