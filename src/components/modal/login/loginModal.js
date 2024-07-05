@@ -109,21 +109,21 @@ const LoginModal = ({
       <ModalFrame onClose={onClose} title="USER ACCOUNT">
         <ModalScroll>
           <div className="px-5 mb-3.5">
-            <FlexCenter className="w-auto sm:w-[410px] mb-4 text-color-brand-yellow2">
+            <FlexCenter className="w-auto sm:w-[410px] mb-[15px] text-color-brand-yellow2">
               <Typography variant="h12" classname="text-color-brand-yellow2">
                 {"Don't want to Log In or Signup?"}
               </Typography>
             </FlexCenter>
             <Flex className="justify-center w-[100%]">
               <DesignButton
-                className="w-full"
-                typoVariant="buttonLabel2"
+                className="w-full text-[14px] lsm:text-[18px]"
+                typoVariant="buttonLabel3"
                 onClick={handleGuest}
               >
                 {auth.loading == false ? "Continue As a Guest" : "Loading..."}
               </DesignButton>
             </Flex>
-            <hr className="w-auto space-y-5 my-6 sm:w-[410px] border-color-brand-op" />
+            <hr className="w-auto space-y-5 my-[25px] sm:w-[410px] border-color-brand-op" />
             <Typography
               variant="h11"
               classname="text-color-brand-yellow2 drop-shadow-3xl"
