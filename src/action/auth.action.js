@@ -272,9 +272,10 @@ export const changeEmail = (data) => {
   return async (dispatch) => {
     try {
       dispatch({ type: authConstants.CHANGE_EMAIL_REQUEST });
-      const res = await authConstants.post(`${baseURL}changeEmail`, data);
+      const res = await axiosInstance.post(`${baseURL}changeEmail`, data);
 
       if (res.status === 200) {
+
         const { message, emailOTPSent } = res.data;
         dispatch({
           type: authConstants.CHANGE_EMAIL_SUCCESS,

@@ -6,8 +6,8 @@ import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import { Input } from "@/components/input";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { changeEmail } from "@/action";
 import { InlineError } from "@/validity";
+import { changeEmail } from "@/action";
 
 const EmailModal = ({ isvisible, onClose, onEmailSubmit }) => {
   const dispatch = useAppDispatch();
