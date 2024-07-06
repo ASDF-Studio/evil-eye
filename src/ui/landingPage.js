@@ -214,9 +214,9 @@ export const LandingPage = () => {
 
   return (
     <div className="flex flex-col h-[100svh] justify-between">
-      <Flex className="w-full h-full mt-[90px] justify-center 1xl:mt-[120px]">
-        <Flex className="w-[1440px] h-auto flex-col sm:flex-row  ">
-          <FlexColumn className="h-full max-h-[700px] gap-10 justify-between sm:gap-0">
+      <Flex className="w-full h-full mt-[110px] justify-center 1xl:mt-[120px]">
+        <Flex className="w-[1440px] h-auto flex-col sm:flex-row">
+          <FlexColumn className="h-[370px] gap-10 justify-between sm:gap-0">
             <Flex className="relative w-full h-auto pl-[18px] sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
               <Button
                 variant="text"
@@ -262,7 +262,7 @@ export const LandingPage = () => {
             </Flex>
           </FlexColumn>
 
-          <Flex className="relative mx-auto w-full h-auto justify-end pb-[20px] pt-[27px] pr-[20px] items-end flex-col sm:flex-row  sm:pb-[5px] sm:mr-[36px] sm:items-start sm:pt-[130px] 1xl:mr-[225px] 2xl:mr-[290px] 2xl:flex-row 5xl:mr-[280px] 5xl:pt-[5px]">
+          <Flex className="relative mx-auto w-full h-auto justify-end pb-[37px] pt-[37px] pr-[20px] items-end flex-col sm:flex-row  sm:pb-[5px] sm:mr-[36px] sm:items-start sm:pt-[130px] 1xl:mr-[225px] 2xl:mr-[290px] 2xl:flex-row 5xl:mr-[280px] 5xl:pt-[5px]">
             <Button
               variant="text"
               leftIcon={<LeftPlay className="text-color-brand-yellow" />}

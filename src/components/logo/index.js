@@ -40,7 +40,7 @@ export const LogoWithBackground = () => {
 
 export const LogoWithBackgroundMobile = () => {
   return (
-    <div className="relative w-[147px] h-auto p-3">
+    <div className="relative w-[180px] h-auto p-3">
       <div className="absolute top-[-20px] left-0 w-full h-[calc(100%+20px)]">
         <div
           className="w-full h-full"
@@ -157,13 +157,15 @@ export const LeftPlay = () => {
 
 export const Borderline = () => {
   return (
-    <Image
-      src={borderline}
-      width={0}
-      height={"24"}
-      alt="borderline"
-      className=""
-    />
+    <div className="">
+      <Image
+        src={borderline}
+        width={0}
+        height={"24"}
+        alt="borderline"
+        className=""
+      />
+    </div>
   );
 };
 

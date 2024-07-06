@@ -15,7 +15,7 @@ module.exports = {
     },
     screens: {
       msm: "360px",
-      lsm: "420px",
+      lsm: "450px",
       sm: "767px", //mobile
       x: "1009px", //tablet | 1009px is 1024 px in ipad
       xl: "1009px", //laptop | 1009px is 1024 px in ipad

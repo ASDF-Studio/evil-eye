@@ -136,14 +136,14 @@ export const LoadingScreen = () => {
 
 export const BG420 = () => {
   return (
-    <div className=" absolute w-[100%] h-[100%]">
+    <div className="relative w-full h-full">
       <Image
         src={bg420}
         fill
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "cover", objectPosition: "top center", transform: "scale(1)" }} // Keep the image aligned to the top center
         priority
         alt="bg420"
-        className="absolute w-full h-full"
+        className=""
       />
     </div>
   );

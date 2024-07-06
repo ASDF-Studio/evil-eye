@@ -11,9 +11,9 @@ const MainLayout = ({ children }) => {
       </Head>
       <Header />
       <div className="relative">
-        <div className="block lsm:hidden">
+        {/* <div className="block lsm:hidden">
           <BG420 />
-        </div>
+        </div> */}
         <div className="hidden lsm:block">
           <BG960 />
         </div>
@@ -24,7 +24,12 @@ const MainLayout = ({ children }) => {
           <BG2880 />
         </div>
         <BGvideo />
-        <div className="relative overflow-auto mt-[px] sm:mt-0">{children}</div>
+        <div className="relative overflow-auto mt-[px] sm:mt-0">
+          <div className="absolute inset-0 -z-10">
+            <BG420 />
+          </div>
+          {children}
+        </div>
       </div>
     </>
   );
