@@ -225,7 +225,7 @@ const LoginModal = ({
                 <Flex className="relative w-[100%] h-[40px] focus:none focus:border-none">
                   <DesignButton3
                     className="w-full"
-                    typoVariant="buttonLabel2"
+                    typoVariant="buttonLabel4"
                     onClick={openSignupModal}
                   >
                     Sign Up

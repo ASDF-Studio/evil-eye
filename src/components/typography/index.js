@@ -7,6 +7,7 @@ export const Typography = ({
     buttonLabel: "text-center text-[20px] font-normal uppercase font-roman",
     buttonLabel2: "text-center text-[18px] font-normal uppercase font-roman",
     buttonLabel3: "text-center font-normal uppercase font-roman",    
+    buttonLabel4: "text-center text-[18px] font-normal font-roman",
     h1: "text-center font-roman text-[35px] font-normal tracking-[-3.5px] leading-[24px] uppercase drop-shadow-3xl hover:tracking-[-4px]",
     h2: "text-center 1xl:text-[65px] text-[35px] font-normal 1xl:tracking-[-6.5px] tracking-[-3.5px] drop-shadow-3xl leading-normal uppercase font-roman",
     h11: "text-center font-roman text-[35px] leading-[33.25px] font-normal tracking-[-3.5px] drop-shadow-3xl uppercase ",
