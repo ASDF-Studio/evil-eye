@@ -228,7 +228,7 @@ const LoginModal = ({
                     typoVariant="buttonLabel2"
                     onClick={openSignupModal}
                   >
-                    SIGN UP
+                    Sign Up
                   </DesignButton3>
                 </Flex>
               </div>
