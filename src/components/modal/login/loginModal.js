@@ -111,7 +111,7 @@ const LoginModal = ({
           <div className="px-5 mb-3.5">
             <FlexCenter className="w-auto sm:w-[410px] mb-[15px] text-color-brand-yellow2">
               <Typography variant="h12" classname="text-color-brand-yellow2">
-                {"Don't want to Log In or Signup?"}
+                {"Don't want to Log In or Sign Up?"}
               </Typography>
             </FlexCenter>
             <Flex className="justify-center w-[100%]">
@@ -225,10 +225,10 @@ const LoginModal = ({
                 <Flex className="relative w-[100%] h-[40px] focus:none focus:border-none">
                   <DesignButton3
                     className="w-full"
-                    typoVariant="buttonLabel4"
+                    typoVariant="buttonLabel2"
                     onClick={openSignupModal}
                   >
-                    Sign Up
+                    SIGN UP
                   </DesignButton3>
                 </Flex>
               </div>
