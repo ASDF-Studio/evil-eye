@@ -17,12 +17,14 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  const [phone, setPhone] = useState("+1");
-  const [newPhone, setNewPhone] = useState("+1");
+  const [phone, setPhone] = useState("");
+  const [newPhone, setNewPhone] = useState("");
   const [price] = useState(parseInt(10));
 
   const [recipientType, setRecipientType] = useState("myself");
   const [contactMethod, setContactMethod] = useState("phone");
+
+  const [countryCode] = useState("+1");
 
   const [invalidInputs, setInvalidInputs] = useState({
     isNewNameInvalid: false,
@@ -62,10 +64,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     if (recipientType === "myself") {
       name = user?.name;
       email = user?.email;
-      number = phone;
+      number = phone ? countryCode + phone : "";
 
       if (phone) {
-        const isValidPhoneSelf = validatePhoneNumber(phone);
+        const isValidPhoneSelf = validatePhoneNumber(countryCode + phone);
         setInvalidInputs({
           isSelfPhoneInvalid: !isValidPhoneSelf,
         });
@@ -74,10 +76,10 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     } else {
       name = newName;
       email = newEmail;
-      number = newPhone;
+      number = newPhone ? countryCode + newPhone : "";
 
       if (contactMethod === "phone") {
-        const isValidPhone = validatePhoneNumber(newPhone);
+        const isValidPhone = validatePhoneNumber(countryCode + newPhone);
         setInvalidInputs({
           isNewNameInvalid: newName ? false : true,
           isPhoneInvalid: !isValidPhone,
@@ -113,6 +115,15 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     e.preventDefault();
     // onClose();
     await dispatch(privacyModal(true));
+  };
+
+  const handlePhoneNumberChangeSelf = (event) => {
+    const value = event.target.value.replace(countryCode, "");
+    setPhone(value);
+  };
+  const handlePhoneNumberChangeGuest = (event) => {
+    const value = event.target.value.replace(countryCode, "");
+    setNewPhone(value);
   };
 
   return (
@@ -206,8 +217,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     <Input
                       type="text"
                       placeholder="+1 123-345-6789"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      value={countryCode + phone}
+                      onChange={handlePhoneNumberChangeSelf}
                     />
                   </Flex>
 
@@ -295,8 +306,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                       <Input
                         type="text"
                         placeholder="+1 123-345-6789"
-                        value={newPhone}
-                        onChange={(e) => setNewPhone(e.target.value)}
+                        value={countryCode + newPhone}
+                        onChange={handlePhoneNumberChangeGuest}
                       />
                     </Flex>
 

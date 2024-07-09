@@ -18,8 +18,10 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [guestName, setGuestName] = useState("");
   const [guestEmail, setGuestEmail] = useState("");
-  const [guestPhone, setGuestPhone] = useState("+1");
+  const [guestPhone, setGuestPhone] = useState("");
   const [guestPrice] = useState(parseInt(10));
+
+  const [countryCode] = useState("+1");
 
   const [contactMethod, setContactMethod] = useState("phone");
 
@@ -48,6 +50,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     let name = "";
     let email = "";
     let number = "";
+    let price = "";
     let userID = "";
     let guest = false;
 
@@ -59,10 +62,11 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
     name = guestName;
     email = guestEmail;
-    number = guestPhone;
+    price = guestPrice;
+    number = guestPhone ? countryCode + guestPhone : "";
 
     if (contactMethod === "phone") {
-      const isValidPhone = validatePhoneNumber(guestPhone);
+      const isValidPhone = validatePhoneNumber(countryCode + guestPhone);
       setInvalidInputs({
         isNewNameInvalid: guestName ? false : true,
         isPhoneInvalid: !isValidPhone,
@@ -77,10 +81,10 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     }
 
     const data = {
-      name: guestName,
-      email: guestEmail,
-      phone: guestPhone,
-      price: guestPrice,
+      name: name,
+      email: email,
+      phone: number,
+      price: price,
       createdBy: userID,
       guest: guest,
     };
@@ -96,6 +100,11 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const handlePrivacyModal = async (e) => {
     e.preventDefault();
     await dispatch(privacyModal(true));
+  };
+
+  const handlePhoneNumberChange = (event) => {
+    const value = event.target.value.replace(countryCode, "");
+    setGuestPhone(value);
   };
 
   return (
@@ -192,8 +201,8 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                   <Input
                     type="text"
                     placeholder="+1 123-345-6789"
-                    value={guestPhone}
-                    onChange={(e) => setGuestPhone(e.target.value)}
+                    value={countryCode + guestPhone}
+                    onChange={handlePhoneNumberChange}
                   />
                 </Flex>
 

@@ -4,6 +4,8 @@ import { prayerConstants } from "./constants";
 import { loadStripe } from "@stripe/stripe-js";
 
 const baseURL = API;
+const stripePublishKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY;
+const stripe = await loadStripe(stripePublishKey);
 
 export const prayer = (data) => {
   return async (dispatch) => {
@@ -46,10 +48,6 @@ export const prayer = (data) => {
     }
   };
 };
-
-const stripe = await loadStripe(
-  "pk_test_51P8SrgIPSjEjFpyba3Mi0h9ESh305TgDxSwFLGf8heoNrP1kIxIqt9r3t2SNQicYkbu14ECUiaq2CqZUvCljvEaK00bM0qsOG5"
-);
 
 export const validateCoupon = (couponCode) => {
   return async (dispatch) => {

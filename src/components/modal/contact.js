@@ -20,9 +20,12 @@ const Contact = ({ isvisible, onClose, contatcSubmit }) => {
   const [userData, setUserData] = useState({
     userName: "",
     userEmail: "",
-    userPhone: "+1",
+    userPhone: "",
     userMsg: "",
   });
+
+  const [countryCode] = useState("+1");
+
   const [invalidInputs, setInvalidInputs] = useState({
     isUserNameInvalid: false,
     isEmailInvalid: false,
@@ -33,29 +36,52 @@ const Contact = ({ isvisible, onClose, contatcSubmit }) => {
   if (!isvisible) return null;
 
   const handleInputChange = (e, identifier) => {
-    setUserData((prev) => {
-      return { ...prev, [identifier]: e.target.value };
-    });
+    if (identifier == "userPhone") {
+      const value = e.target.value.replace(countryCode, "");
+
+      setUserData((prev) => {
+        return { ...prev, [identifier]: value };
+      });
+    } else {
+      setUserData((prev) => {
+        return { ...prev, [identifier]: e.target.value };
+      });
+    }
   };
 
   const handleClose = (e) => {
     if (e.target.id === "wrapper") onClose();
   };
 
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^\+1\d{10}(?:x.+)?$/;
+    const lastTenDigits = phone.replace(/\D/g, "").slice(-10);
+
+    return phoneRegex.test(phone) && lastTenDigits.length === 10;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const isValidPhone = validatePhoneNumber(countryCode + userData.userPhone);
+
     setInvalidInputs({
       isUserNameInvalid: userData.userName ? false : true,
       isEmailInvalid: userData.userEmail ? false : true,
       isMsgInvalid: userData.userMsg ? false : true,
+      isPhoneInvalid: userData.userPhone && !isValidPhone,
     });
 
     if (!userData.userEmail || !userData.userName || !userData.userMsg) return;
 
+    if (userData.userPhone) {
+      if (!isValidPhone) return;
+    }
+
     const data = {
       name: userData.userName,
       email: userData.userEmail,
-      phone: userData.userPhone,
+      phone: userData.userPhone ? countryCode + userData.userPhone : "",
       message: userData.userMsg,
     };
     try {
@@ -168,11 +194,11 @@ const Contact = ({ isvisible, onClose, contatcSubmit }) => {
                     onChange={(e) => {
                       handleInputChange(e, "userPhone");
                     }}
-                    value={userData.userPhone}
+                    value={countryCode + userData.userPhone}
                   />
                 </Flex>
                 {invalidInputs.isPhoneInvalid && (
-                  <InlineError message={"phone"} />
+                  <InlineError message={"validPhone"} />
                 )}
               </div>
               <div>
