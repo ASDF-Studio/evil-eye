@@ -17,7 +17,6 @@ const initialState = {
   prayerLoading: false,
 };
 export default function prayerReducer(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case prayerConstants.PRAYER_REQUEST:
       state = {

@@ -7,7 +7,7 @@ const MainLayout = ({ children }) => {
     <>
       <Head>
         <title>Evil Eye</title>
-        <link rel="icon" href="/logo.svg" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <div className="relative">

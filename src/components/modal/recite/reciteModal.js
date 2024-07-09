@@ -22,7 +22,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const [price] = useState(parseInt(10));
 
   const [recipientType, setRecipientType] = useState("myself");
-  const [contactMethod, setContactMethod] = useState("email");
+  const [contactMethod, setContactMethod] = useState("phone");
 
   const [invalidInputs, setInvalidInputs] = useState({
     isNewNameInvalid: false,
@@ -173,7 +173,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                 className="h-full w-full"
                 onClick={() => {
                   setRecipientType("someone_else");
-                  setContactMethod("email");
+                  // setContactMethod("email");
                 }}
               >
                 <Flex className="relative h-[40px]">
@@ -181,7 +181,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     checked={recipientType === "someone_else"}
                     onChange={() => {
                       setRecipientType("someone_else");
-                      setContactMethod("email");
+                      // setContactMethod("email");
                     }}
                   >
                     Someone Else

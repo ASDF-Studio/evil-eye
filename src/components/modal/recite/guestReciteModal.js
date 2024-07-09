@@ -21,7 +21,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const [guestPhone, setGuestPhone] = useState("+1");
   const [guestPrice] = useState(parseInt(10));
 
-  const [contactMethod, setContactMethod] = useState("email");
+  const [contactMethod, setContactMethod] = useState("phone");
 
   const [invalidInputs, setInvalidInputs] = useState({
     isNewNameInvalid: false,
