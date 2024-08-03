@@ -2,6 +2,7 @@ import { Typography } from "@/components/typography";
 
 const variantMapping = {
   name: "Please enter your name.",
+  giftName: "Please enter name of recipient.",
   email: "Please enter a valid email address.",
   password: "Please enter a password.",
   phone: "Phone numbder is invalid.",

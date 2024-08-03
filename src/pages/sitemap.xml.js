@@ -1,12 +1,9 @@
-// pages/sitemap.xml.js
-
 const Sitemap = () => {
-    // Nothing to render for this route
-    return null;
-  };
-  
-  export const getServerSideProps = async ({ res }) => {
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  return null;
+};
+
+export const getServerSideProps = async ({ res }) => {
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -22,15 +19,14 @@ const Sitemap = () => {
         <lastmod>2024-07-12T05:48:14+00:00</lastmod>
       </url>
     </urlset>`;
-  
-    res.setHeader('Content-Type', 'application/xml');
-    res.write(sitemap);
-    res.end();
-  
-    return {
-      props: {},
-    };
+
+  res.setHeader("Content-Type", "application/xml");
+  res.write(sitemap);
+  res.end();
+
+  return {
+    props: {},
   };
-  
-  export default Sitemap;
-  
+};
+
+export default Sitemap;

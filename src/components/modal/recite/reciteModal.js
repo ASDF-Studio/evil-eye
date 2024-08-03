@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { InlineError } from "@/validity";
 import { privacyModal } from "@/action/modal.action";
 import ModalScroll from "../modalScroll";
+import { CheckBoxInline } from "@/components/input/checkboxInline";
 
 const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const auth = useAppSelector((state) => state.auth);
@@ -23,6 +24,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const [recipientType, setRecipientType] = useState("myself");
   const [contactMethod, setContactMethod] = useState("phone");
+  const [gift, setGift] = useState(false);
 
   const [countryCode] = useState("+1");
 
@@ -53,6 +55,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     let email = "";
     let number = "";
     let userID = "";
+    let giftName = "";
     let guest = false;
 
     if (user?._id) {
@@ -74,7 +77,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
         if (!isValidPhoneSelf) return;
       }
     } else {
-      name = newName;
+      name = user?.name;
+      giftName = newName;
       email = newEmail;
       number = newPhone ? countryCode + newPhone : "";
 
@@ -96,11 +100,13 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
     const data = {
       name: name,
+      giftName: giftName,
       email: email,
       phone: number,
       price: price,
       createdBy: userID,
       guest: guest,
+      gift: gift,
     };
 
     try {
@@ -333,6 +339,19 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     )}
                   </div>
                 )}
+
+                <Flex className="flex flex-col sm:flex-row gap-4">
+                  <div className="h-full w-full" onClick={() => setGift(!gift)}>
+                    <Flex className="relative h-[40px]">
+                      <CheckBoxInline
+                        checked={gift === true}
+                        onChange={() => setGift(!gift)}
+                      >
+                        Notify recipient of your gift
+                      </CheckBoxInline>
+                    </Flex>
+                  </div>
+                </Flex>
               </div>
             )}
 
