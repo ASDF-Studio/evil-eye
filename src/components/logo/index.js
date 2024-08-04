@@ -1,38 +1,38 @@
-import Image from 'next/image';
-import user from '../../../public/logos/user.svg';
+import Image from "next/image";
+import user from "../../../public/logos/user.svg";
 // import logo from '../../../public/logo.svg';
-import logo from '../../../public/logo.png';
-import mobileBars from '../../../public/logos/mobileBars.svg';
-import xmark from '../../../public/logos/xmark.svg';
-import x from '../../../public/logos/x.svg';
-import play from '../../../public/logos/play.svg';
-import leftPlay from '../../../public/logos/leftPlay.svg';
-import borderline from '../../../public/logos/borderline.svg';
-import design1 from '../../../public/logos/design1.svg';
-import design2 from '../../../public/logos/design2.svg';
-import loadingDesign1 from '../../../public/logos/loadingDesign1.svg';
-import loadingDesign2 from '../../../public/logos/loadingDesign2.svg';
-import pen from '../../../public/logos/pen.svg';
-import email from '../../../public/logos/email.svg';
+import logo from "../../../public/logo.svg";
+import mobileBars from "../../../public/logos/mobileBars.svg";
+import xmark from "../../../public/logos/xmark.svg";
+import x from "../../../public/logos/x.svg";
+import play from "../../../public/logos/play.svg";
+import leftPlay from "../../../public/logos/leftPlay.svg";
+import borderline from "../../../public/logos/borderline.svg";
+import borderlinepc from "../../../public/logos/borderLinePC.svg";
+import design1 from "../../../public/logos/design1.svg";
+import design2 from "../../../public/logos/design2.svg";
+import loadingDesign1 from "../../../public/logos/loadingDesign1.svg";
+import loadingDesign2 from "../../../public/logos/loadingDesign2.svg";
+import pen from "../../../public/logos/pen.svg";
+import email from "../../../public/logos/email.svg";
 
-import eye from '../../../public/logos/eye.svg';
-import chevronRight from '../../../public/logos/chevronRight.svg';
-import diamondExclamation from '../../../public/logos/diamondExclamation.svg';
-import uploadCloud from '../../../public/logos/uploadCloud.svg';
-import stripe from '../../../public/logos/stripe.svg'
-
+import eye from "../../../public/logos/eye.svg";
+import chevronRight from "../../../public/logos/chevronRight.svg";
+import diamondExclamation from "../../../public/logos/diamondExclamation.svg";
+import uploadCloud from "../../../public/logos/uploadCloud.svg";
+import stripe from "../../../public/logos/stripe.svg";
 
 export const LogoWithBackground = () => {
   const containerStyle = {
     backgroundImage: 'url("/background/shadow.png")',
-    backgroundSize: 'cover',
-    width: 'auto',
-    height: 'auto',
-    display: 'flex',
+    backgroundSize: "cover",
+    width: "700px",
+    height: "280px",
+    display: "flex",
   };
 
   return (
-    <div style={containerStyle} className='p-8'>
+    <div style={containerStyle} className="p-8">
       <Logo />
     </div>
   );
@@ -46,8 +46,8 @@ export const LogoWithBackgroundMobile = () => {
           className="w-full h-full"
           style={{
             backgroundImage: 'url("/background/shadow.png")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         ></div>
       </div>
@@ -63,7 +63,7 @@ export const Logo = () => {
       src={logo}
       width={147}
       height={147}
-       priority="true"
+      priority="true"
       alt="logo"
       className=""
     />
@@ -77,9 +77,9 @@ export const User = () => {
       src={user}
       width={18}
       height="auto"
-       priority="true"
+      priority="true"
       alt="user"
-      className='relative rounded-xl shadow'
+      className="relative rounded-xl shadow"
     />
   );
 };
@@ -98,60 +98,26 @@ export const MobileBars = () => {
 
 export const Xmark = () => {
   return (
-    <Image
-      src={xmark}
-      width={37}
-      height="auto"
-      alt="xmark"
-      className="mr-3"
-    />
+    <Image src={xmark} width={37} height="auto" alt="xmark" className="mr-3" />
   );
 };
 export const Stripe = () => {
   return (
-    <Image
-      src={stripe}
-      width={0}
-      height="auto"
-      alt="stripe"
-      className="mr-3"
-    />
+    <Image src={stripe} width={0} height="auto" alt="stripe" className="mr-3" />
   );
 };
 
 export const X = () => {
-  return (
-    <Image
-      src={x}
-      width={18}
-      height="auto"
-      alt="x"
-      className=""
-    />
-  );
+  return <Image src={x} width={18} height="auto" alt="x" className="" />;
 };
 
 export const Play = () => {
-  return (
-    <Image
-      src={play}
-      width={0}
-      height={"24"}
-      alt="eye"
-      className=""
-    />
-  );
+  return <Image src={play} width={0} height={"24"} alt="eye" className="" />;
 };
 
 export const LeftPlay = () => {
   return (
-    <Image
-      src={leftPlay}
-      width={0}
-      height={"24"}
-      alt="leftPlay"
-      className=""
-    />
+    <Image src={leftPlay} width={0} height={"24"} alt="leftPlay" className="" />
   );
 };
 
@@ -168,28 +134,29 @@ export const Borderline = () => {
     </div>
   );
 };
+export const BorderlinePC = () => {
+  return (
+    <div className="">
+      <Image
+        src={borderlinepc}
+        width={0}
+        height={"24"}
+        alt="borderlinepc"
+        className=""
+      />
+    </div>
+  );
+};
 
 export const Design1 = () => {
   return (
-    <Image
-      src={design1}
-      width={18}
-      height={0}
-      alt="design1"
-      className=""
-    />
+    <Image src={design1} width={18} height={0} alt="design1" className="" />
   );
 };
 
 export const Design2 = () => {
   return (
-    <Image
-      src={design2}
-      width={18}
-      height={0}
-      alt="design2"
-      className=""
-    />
+    <Image src={design2} width={18} height={0} alt="design2" className="" />
   );
 };
 
@@ -217,7 +184,6 @@ export const LoadingDesign2 = () => {
   );
 };
 
-
 export const Pen = () => {
   return (
     <Image
@@ -231,17 +197,8 @@ export const Pen = () => {
 };
 
 export const Email = () => {
-  return (
-    <Image
-      src={email}
-      width={"18"}
-      height={0}
-      alt="email"
-      className=""
-    />
-  );
+  return <Image src={email} width={"18"} height={0} alt="email" className="" />;
 };
-
 
 //
 

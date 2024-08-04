@@ -12,10 +12,12 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { privacyModal } from "@/action/modal.action";
 import ModalScroll from "../modalScroll";
 import { CheckBoxInline } from "@/components/input/checkboxInline";
+import { useRouter } from "next/router";
 
 const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const user = useAppSelector((state) => state.auth.user);
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const [guestName, setGuestName] = useState("");
   const [guestGiftName, setGuestGiftName] = useState("");
@@ -113,6 +115,14 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
 
   const handlePrivacyModal = async (e) => {
     e.preventDefault();
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { modal: "privacy" },
+      },
+      undefined,
+      { shallow: true }
+    );
     await dispatch(privacyModal(true));
   };
 

@@ -27,6 +27,7 @@ import PaymentCancelReciteModal from "@/components/modal/recite/paymentCancelRec
 import { verifyCheckoutSession } from "@/action";
 import PrayerReciteModalDone from "@/components/modal/recite/prayerReciteModalDone";
 import { LoadingScreen } from "@/components/background";
+import Footer from "./footer";
 
 export const LandingPage = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -365,6 +366,7 @@ export const LandingPage = () => {
             onClose={handlePrivacyModalClose}
           />
         </Flex>
+        <Footer />
       </FlexColumn>
     </div>
   );
