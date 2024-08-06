@@ -18,9 +18,12 @@
 }
 
 body {
-  color: white;
+  /* color: white; */
   width: auto;
-  background: #16098D;
+  /* background: #16098D; */
+  background: rgba(9, 4, 81, 0.95);
+  box-shadow: -20px 0px 40px 0px rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(7.5px);
 }
 
 @layer utilities {

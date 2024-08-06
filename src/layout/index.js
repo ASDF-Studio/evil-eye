@@ -6,7 +6,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Evil Eye</title>
+        <title>Evil Eye Remedy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />

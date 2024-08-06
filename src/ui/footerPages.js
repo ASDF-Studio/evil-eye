@@ -51,7 +51,12 @@ const FooterPages = () => {
               Terms & Conditions
             </a>
             <span className="hidden x:block"> &nbsp;•&nbsp; </span>
-            <a className="cursor-pointer hover:underline">Legal Disclaimer</a>
+            <a
+              className="cursor-pointer hover:underline"
+              href="/legalDisclaimer"
+            >
+              Legal Disclaimer
+            </a>
           </Typography>
         </div>
         <div className="pt-[20px]">

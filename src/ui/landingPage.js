@@ -29,6 +29,7 @@ import PrayerReciteModalDone from "@/components/modal/recite/prayerReciteModalDo
 import { LoadingScreen } from "@/components/background";
 import Footer from "./footer";
 import AudioPlayer from "@/components/audioPlayer";
+import { LineButton } from "@/components/button/lineButton";
 
 export const LandingPage = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -218,9 +219,9 @@ export const LandingPage = () => {
     <div className="flex flex-col h-[100svh] justify-between">
       <Flex className="w-full h-full mt-[110px] justify-center 1xl:mt-[80px]">
         <Flex className="w-[1440px] h-auto flex-col sm:flex-row">
-          <FlexColumn className="h-[370px] gap-10 justify-between sm:gap-0">
+          <FlexColumn className="max-h-[80%] gap-10 justify-between sm:gap-0">
             <Flex className="relative w-full h-auto pl-[18px] sm:ml-[18px] sm:mt-[18px] 1xl:ml-[275px] 1xl:mt-[-10px] 2xl:ml-[300px] 2xl:mt-[-20px] 5xl:mt-[-80px] 5xl:ml-[300px] 10xl:mr-[150px]">
-              <Button
+              <LineButton
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
                 className="w-[180px]"
@@ -231,7 +232,7 @@ export const LandingPage = () => {
                 }}
               >
                 What is evil eye
-              </Button>
+              </LineButton>
 
               <InfoModal
                 isvisible={showModal}
@@ -242,7 +243,7 @@ export const LandingPage = () => {
             </Flex>
 
             <Flex className="relative w-[100%] h-auto  mt-[37px] pl-[18px] sm:ml-[58px] sm:mb-[38px] 1xl:ml-[315px] 1xl:mt-[90px] 1xl:mb-[50px] 2xl:ml-[360px] 2xl:mt-[100px] 2xl:mb-[70px] 5xl:ml-[390px] 5xl:mt-[120px] 5xl:mb-[70px] 10xl:mb-[100px]">
-              <Button
+              <LineButton
                 variant="text"
                 endIcon={<Play className="text-color-brand-yellow" />}
                 className="w-[100px]"
@@ -253,7 +254,7 @@ export const LandingPage = () => {
                 }}
               >
                 cure
-              </Button>
+              </LineButton>
 
               <InfoModal
                 isvisible={showModal2}
@@ -265,7 +266,7 @@ export const LandingPage = () => {
           </FlexColumn>
 
           <Flex className="relative mx-auto w-full h-auto justify-end pb-[37px] pt-[37px] pr-[20px] items-end flex-col sm:flex-row  sm:pb-[5px] sm:mr-[36px] sm:items-start sm:pt-[130px] 1xl:mr-[225px] 2xl:mr-[290px] 2xl:flex-row 5xl:mr-[280px] 5xl:pt-[5px]">
-            <Button
+            <LineButton
               variant="text"
               leftIcon={<LeftPlay className="text-color-brand-yellow" />}
               className=""
@@ -276,7 +277,7 @@ export const LandingPage = () => {
               }}
             >
               symptoms
-            </Button>
+            </LineButton>
 
             <InfoModal
               isvisible={showModal3}
@@ -294,26 +295,35 @@ export const LandingPage = () => {
         {/* <FlexColumn className="items-center h-[100%] justify-end pb-[80px] sm:pb-[10%]"> */}
         {/* <FlexColumn className="items-center h-full pb-[20px] max-h-[350px] sm:max-h-[380px] 2xl:max-h-[450px]"> */}
         <Borderline />
-        <Typography
+        {/* <Typography
           variant="h2"
           classname="w-[300px] sm:w-[648px] pt-[10px] text-color-brand-yellow2 1xl:w-[852px] 2xl:w-[852px]"
         >
           Relief from the Evil Eye
-        </Typography>
-        <Typography
+        </Typography> */}
+        <h1 className="w-[300px] sm:w-[648px] pt-[10px] text-color-brand-yellow2 text-center 1xl:text-[65px] text-[35px] font-normal 1xl:tracking-[-6.5px] tracking-[-3.5px] drop-shadow-3xl leading-normal uppercase font-roman 1xl:w-[852px] 2xl:w-[852px]">
+          Relief from the Evil Eye
+        </h1>
+        {/* <Typography
           variant="body"
           classname=" pt-[10px] w-[300px] sm:w-[600px] 1xl:w-[805px] 2xl:w-[805px] text-textColor-brand-yellow text-opacity-63"
         >
           Evil Eye Remedy is the original and authentic cure of its kind. Relief
           from your symptoms is close at hand. The ancient and special Evil Eye
           prayer will be said for you or your loved one.
-        </Typography>
+        </Typography> */}
+
+        <h2 className="text-center text-base font-normal font-rosarivo opacity-[63%] leading-[22.4px] tracking-[-0.8px] pt-[10px] w-[300px] sm:w-[600px] 1xl:w-[805px] 2xl:w-[805px] text-textColor-brand-yellow text-opacity-63">
+          Evil Eye Remedy is the original and authentic cure of its kind. Relief
+          from your symptoms is close at hand. The ancient and special Evil Eye
+          prayer will be said for you or your loved one.
+        </h2>
 
         <Flex className="pt-5">
           <DesignButton
             variant="text"
             className=""
-            audioClassName=""  
+            audioClassName=""
             typoVariant="buttonLabel2"
             onClick={handlePrayerModal}
           >
@@ -368,9 +378,13 @@ export const LandingPage = () => {
             onClose={handlePrivacyModalClose}
           />
         </Flex>
-        <Flex className="items-start w-full px-[40px] pb-[8px]">
+        <Flex className="items-start w-full px-[40px] pb-[8px] hidden x:block">
           <AudioPlayer />
         </Flex>
+        <div className="fixed bottom-0 right-0 p-[20px] block x:hidden">
+          <AudioPlayer />
+        </div>
+
         <Footer />
       </FlexColumn>
     </div>
