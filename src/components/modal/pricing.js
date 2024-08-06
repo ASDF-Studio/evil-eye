@@ -5,10 +5,8 @@ import { Typography } from "../typography";
 import { DesignButton } from "../button/designButton";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { guest, userRecite } from "@/action/modal.action";
-import { useAudio } from "@/context/AudioContext";
 
 const Pricing = ({ isvisible, onClose }) => {
-  const { playAudio } = useAudio();
   const auth = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
@@ -20,7 +18,6 @@ const Pricing = ({ isvisible, onClose }) => {
 
   const handlePrayerModal = async (e) => {
     e.preventDefault();
-    playAudio();
     if (auth.authenticate) {
       onClose();
       await dispatch(userRecite(true));

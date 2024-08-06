@@ -3,12 +3,14 @@ import { FlexCenter } from "../layout";
 import { LoadingDesign1, LoadingDesign2 } from "../logo";
 import { useAppDispatch } from "@/hooks";
 import { useRouter } from "next/router";
+import { useAudio } from "@/context/AudioContext";
 
 const TOTAL_DURATION = 90;
 
 export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const { playAudio, pauseAudio } = useAudio(); 
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -18,6 +20,8 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
       storedData.startTime = startTime;
       localStorage.setItem("evileye-prayer", JSON.stringify(storedData));
     }
+
+    playAudio("/audio/Stardust Lullaby.mp3");
 
     let interval;
 
@@ -29,6 +33,10 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
       if (newProgress >= 100) {
         setProgress(100);
         prayerProgress();
+
+        pauseAudio();
+        playAudio("/audio/Cosmic Space.mp3");
+
         clearInterval(interval);
         router.replace(router.pathname, undefined, { shallow: true });
       } else {
@@ -40,8 +48,11 @@ export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
 
     interval = setInterval(updateProgress, 1000);
 
-    return () => clearInterval(interval);
-  }, [prayerProgress]);
+    return () => {
+      clearInterval(interval);
+      // pauseAudio();
+    };
+  }, [prayerProgress, playAudio, pauseAudio, router]);
 
   return (
     <FlexCenter

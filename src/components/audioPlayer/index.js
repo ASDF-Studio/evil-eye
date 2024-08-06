@@ -5,6 +5,7 @@ import { useAudio } from "@/context/AudioContext";
 
 const AudioPlayer = () => {
   const { isPlaying, togglePlay } = useAudio();
+  const audioSrc = "/audio/Cosmic Space.mp3";
 
   return (
     <div className="w-[85px]">
@@ -13,9 +14,13 @@ const AudioPlayer = () => {
         className=""
         audioClassName="px-[1px]"
         typoVariant="buttonLabel2"
-        onClick={togglePlay}
+        onClick={() => togglePlay(audioSrc)}
       >
-        {isPlaying ? <PlayAudio /> : <PauseAudio />}
+        {isPlaying && audioSrc === "/audio/Cosmic Space.mp3" ? (
+          <PlayAudio />
+        ) : (
+          <PauseAudio />
+        )}
       </DesignButton>
     </div>
   );
