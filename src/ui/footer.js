@@ -1,7 +1,5 @@
-import { ScreenPadding } from "@/components/layout/padding";
-import { LandingPage } from "./landingPage";
 import { Typography } from "@/components/typography";
-import { Flex, FlexBetween } from "@/components/layout";
+import { Flex } from "@/components/layout";
 
 const Footer = () => {
   return (
@@ -15,7 +13,7 @@ const Footer = () => {
           variant="h24"
           classname=" text-color-brand-yellow2 opacity-80 "
         >
-          <a className="cursor-pointer hover:underline" href="/privacy">
+          <a className="cursor-pointer hover:underline" href="/privacy&policy">
             Privacy Policy
           </a>{" "}
           •{" "}
@@ -25,7 +23,7 @@ const Footer = () => {
           >
             Terms & Conditions
           </a>{" "}
-          • <a className="cursor-pointer hover:underline">Legal Disclaimer</a>
+          • <a className="cursor-pointer hover:underline" href="/legalDisclaimer">Legal Disclaimer</a>
         </Typography>
       </div>
       <div>

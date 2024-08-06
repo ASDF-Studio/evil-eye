@@ -59,6 +59,9 @@ const FooterList = () => {
   const closeAllModal = () => {
     setShowContactModal(false);
     setShowPricingModal(false);
+    setShowModal(false);
+    setShowModal2(false);
+    setShowModal3(false);
   };
 
   const contatcSubmit = () => {
