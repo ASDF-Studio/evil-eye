@@ -22,6 +22,9 @@ import diamondExclamation from "../../../public/logos/diamondExclamation.svg";
 import uploadCloud from "../../../public/logos/uploadCloud.svg";
 import stripe from "../../../public/logos/stripe.svg";
 
+import playAudio from "../../../public/logos/playAudio.svg";
+import pauseAudio from "../../../public/logos/pauseAudio.svg";
+
 export const LogoWithBackground = () => {
   const containerStyle = {
     backgroundImage: 'url("/background/shadow.png")',
@@ -257,6 +260,30 @@ export const Calender = () => {
       width={0}
       height={"100"}
       alt="calender"
+      className="text-center"
+    />
+  );
+};
+
+export const PlayAudio = () => {
+  return (
+    <Image
+      src={playAudio}
+      width={23}
+      height={18}
+      alt="playAudio"
+      className="text-center"
+    />
+  );
+};
+
+export const PauseAudio = () => {
+  return (
+    <Image
+      src={pauseAudio}
+      width={23}
+      height={18}
+      alt="pauseAudio"
       className="text-center"
     />
   );

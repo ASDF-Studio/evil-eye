@@ -1,11 +1,12 @@
 import { Typography } from "@/components/typography";
 import { Flex } from "@/components/layout";
+import AudioPlayer from "@/components/audioPlayer";
 
 const Footer = () => {
   return (
     <Flex
       className={
-        "w-full flex-col items-center justify-center py-[35px] x:flex-row x:py-[0px] x:justify-between"
+        "w-full flex-col items-center justify-center py-[35px] x:flex-row x:py-[0px] x:justify-between x:px-[40px]"
       }
     >
       <div>
@@ -23,7 +24,10 @@ const Footer = () => {
           >
             Terms & Conditions
           </a>{" "}
-          • <a className="cursor-pointer hover:underline" href="/legalDisclaimer">Legal Disclaimer</a>
+          •{" "}
+          <a className="cursor-pointer hover:underline" href="/legalDisclaimer">
+            Legal Disclaimer
+          </a>
         </Typography>
       </div>
       <div>

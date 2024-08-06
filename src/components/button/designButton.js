@@ -6,6 +6,7 @@ export const DesignButton = ({
   variant = "primary",
   children,
   className = "",
+  audioClassName = "",
   typoVariant = "buttonLabel2",
   ...rest
 }) => {
@@ -18,7 +19,10 @@ export const DesignButton = ({
     >
       <Design1 />
       <button
-        className="w-full h-[40px] p-2 px-[15px] flex items-center justify-center text-textColor-brand-gold border-none"
+        className={[
+          "w-full h-[40px] p-2 px-[15px] flex items-center justify-center text-textColor-brand-gold border-none",
+          audioClassName,
+        ].join(" ")}
         {...rest}
       >
         <Typography classname="" variant={typoVariant}>
