@@ -5,6 +5,7 @@ import { Flex, FlexBetween, FlexColumn } from "@/components/layout";
 import { Borderline, BorderlinePC, Logo } from "@/components/logo";
 import FooterList from "./component/footerList";
 import FooterListTablet from "./component/footerListTablet";
+import Link from "next/link";
 
 const FooterPages = () => {
   return (
@@ -37,26 +38,26 @@ const FooterPages = () => {
             variant="h24"
             classname=" text-color-brand-yellow2 opacity-80 flex flex-col px-[0px] x:flex-row x:pt-[0px]"
           >
-            <a
+            <Link
               className="cursor-pointer hover:underline"
               href="/privacy&policy"
             >
               Privacy Policy
-            </a>
+            </Link>
             <span className="hidden x:block"> &nbsp;•&nbsp; </span>
-            <a
+            <Link
               className="cursor-pointer hover:underline"
               href="/terms&conditions"
             >
               Terms & Conditions
-            </a>
+            </Link>
             <span className="hidden x:block"> &nbsp;•&nbsp; </span>
-            <a
+            <Link
               className="cursor-pointer hover:underline"
               href="/legalDisclaimer"
             >
               Legal Disclaimer
-            </a>
+            </Link>
           </Typography>
         </div>
         <div className="pt-[20px]">

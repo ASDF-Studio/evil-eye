@@ -1,6 +1,6 @@
 import { Typography } from "@/components/typography";
 import { Flex } from "@/components/layout";
-import AudioPlayer from "@/components/audioPlayer";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -14,20 +14,26 @@ const Footer = () => {
           variant="h24"
           classname=" text-color-brand-yellow2 opacity-80 "
         >
-          <a className="cursor-pointer hover:underline" href="/privacy&policy">
+          <Link
+            className="cursor-pointer hover:underline"
+            href="/privacy&policy"
+          >
             Privacy Policy
-          </a>{" "}
+          </Link>{" "}
           •{" "}
-          <a
+          <Link
             className="cursor-pointer hover:underline"
             href="/terms&conditions"
           >
             Terms & Conditions
-          </a>{" "}
+          </Link>{" "}
           •{" "}
-          <a className="cursor-pointer hover:underline" href="/legalDisclaimer">
+          <Link
+            className="cursor-pointer hover:underline"
+            href="/legalDisclaimer"
+          >
             Legal Disclaimer
-          </a>
+          </Link>
         </Typography>
       </div>
       <div>
