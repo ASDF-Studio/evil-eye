@@ -39,23 +39,35 @@ export const LogoWithBackground = () => {
   );
 };
 
+// export const LogoWithBackgroundMobile = () => {
+//   return (
+//     <div className="relative w-[180px] h-auto p-3">
+//       <div className="absolute top-[-10px] left-0 w-full h-[calc(100%+20px)]">
+//         <div
+//           className="w-full h-full"
+//           style={{
+//             backgroundImage: 'url("/background/shadow.png")',
+//             backgroundSize: "cover",
+//             backgroundPosition: "center",
+//             border: "none",
+//             outline: "none",
+//           }}
+//         ></div>
+//       </div>
+//       <Logo />
+//     </div>
+//   );
+// };
+
 export const LogoWithBackgroundMobile = () => {
   return (
-    <div className="relative w-[180px] h-auto p-3">
-      <div className="absolute top-[-20px] left-0 w-full h-[calc(100%+20px)]">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: 'url("/background/shadow.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></div>
-      </div>
+    <div className="relative w-[180px] h-auto p-6 overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center no-border" style={{ backgroundImage: 'url("/background/shadow.png")' }}></div>
       <Logo />
     </div>
   );
 };
+
 
 export const Logo = () => {
   return (
