@@ -41,16 +41,14 @@ export const LogoWithBackground = () => {
 
 export const LogoWithBackgroundMobile = () => {
   return (
-    <div className="relative w-[180px] h-auto p-3">
-      <div className="absolute top-[-10px] left-0 w-full h-[calc(100%+20px)]">
+    <div className="relative w-full h-auto p-[20px]">
+      <div className="absolute top-0 left-0 w-full h-full">
         <div
           className="w-full h-full"
           style={{
             backgroundImage: 'url("/background/shadow.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
-            border: "none",
-            outline: "none",
           }}
         ></div>
       </div>
