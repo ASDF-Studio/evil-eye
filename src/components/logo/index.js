@@ -29,13 +29,11 @@ export const LogoWithBackground = () => {
   const containerStyle = {
     backgroundImage: 'url("/background/shadow.png")',
     backgroundSize: "cover",
-    width: "700px",
-    height: "280px",
     display: "flex",
   };
 
   return (
-    <div style={containerStyle} className="p-8">
+    <div style={containerStyle} className="p-8 w-[400px] h-[280px] x:w-[700px]">
       <Logo />
     </div>
   );

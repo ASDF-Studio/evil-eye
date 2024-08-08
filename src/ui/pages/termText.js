@@ -3,6 +3,14 @@ import { Typography } from "@/components/typography";
 const TermText = () => {
   return (
     <>
+      <div className="pb-6">
+        <Typography
+          variant="h13"
+          classname=" text-color-brand-yellow2 drop-shadow-3xl "
+        >
+          Updated: 7/10/2024
+        </Typography>
+      </div>
       <div className="">
         <Typography
           variant="h13"

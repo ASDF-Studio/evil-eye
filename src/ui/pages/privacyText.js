@@ -8,16 +8,24 @@ const PrivacyText = () => {
           variant="h13"
           classname=" text-color-brand-yellow2 text-opacity-80"
         >
+          The Privacy policy we are using in the first box of Recite the prayer
+          from Sendgrid/Twilio
+        </Typography>
+      </div>
+
+      {/* <div className="pt-6">
+        <Typography
+          variant="h13"
+          classname=" text-color-brand-yellow2 text-opacity-80"
+        >
           Welcome to Evil Remedy, your dedicated platform for finding relief
           from the evil eye through an authentic and ancient prayer service.
           This privacy policy outlines how we collect, use, and protect your
           information when you use our website.
         </Typography>
-      </div>
+      </div> */}
 
-      {/* 2nd */}
-
-      <div>
+      {/* <div>
         <div className="pt-[30px]">
           <Typography variant="h11" classname=" text-color-brand-yellow2">
             Information We Collect
@@ -57,11 +65,9 @@ const PrivacyText = () => {
             </ul>
           </Typography>
         </div>
-      </div>
+      </div> */}
 
-      {/* end 2nd  */}
-
-      <div>
+      {/* <div>
         <div className="pt-[30px]">
           <Typography variant="h11" classname=" text-color-brand-yellow2">
             How We Use Your Information
@@ -206,7 +212,7 @@ const PrivacyText = () => {
             info@evileyeremedy.com
           </Typography>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

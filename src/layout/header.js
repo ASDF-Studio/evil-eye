@@ -224,10 +224,11 @@ export const Header = () => {
           <Link href={"/"} className="relative hidden sm:block">
             <LogoWithBackground />
           </Link>
-          <div className="block sm:hidden">
+          <Link href={"/"} className="block sm:hidden">
             {/* <Logo /> */}
-            <LogoWithBackgroundMobile />
-          </div>
+            {/* <LogoWithBackgroundMobile /> */}
+            <LogoWithBackground />
+          </Link>
 
           <FlexCenter className="gap-2 pr-8 hidden sm:flex">
             {NAV__LINK.map((item, index) => (
