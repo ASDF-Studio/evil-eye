@@ -1,3 +1,56 @@
+# RNTemplate
+
+
+## Prerequisites
+- [Node.js > 20](https://nodejs.org) and npm (Recommended: Use [nvm](https://github.com/nvm-sh/nvm))
+- [nextJS Version = 14] 
+
+## Base dependencies
+    "@redux-devtools/extension": "^3.3.0",
+    "@reduxjs/toolkit": "^2.2.2",
+    "@stripe/stripe-js": "^3.3.0",
+    "axios": "^1.7.2",
+    "framer-motion": "^11.2.6",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-modal": "^3.16.1",
+    "react-redux": "^9.1.0",
+    "react-scroll": "^1.9.0",
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
+    "sharp": "^0.33.4",
+    "stripe": "^15.4.0"
+
+## Folder structure
+This project follows a straightforward project structure:
+
+- `src`: This folder is the main container of all the code inside your application.
+  - `action`: This folder contains all actions that can be dispatched to redux.
+  - `Components`: Folder to store any common component that you use through your app (such as a generic button)
+  - `context`: Context to store all global rappers.
+  - `helpers`: Helpers to store Axios.
+  - `hooks`: Hooks to store redux hook.
+  - `Layout`: Layout to store any kind of UI layout like header or any UI rapper.
+  - `pages`: The main component that starts your whole app.
+  - `reducers`: This folder should have all your reducers, and expose the combined result using its `index.js`.
+  - `store`: Folder to put all redux middlewares and the store.
+  - `styles`: Folder that contains global css.
+  - `UI`: Folder that contains all your application screens/features.
+  - `validity`: Folder that contains all your input validation.
+
+## Setup environments
+Modify the environment variables files in root folder (`.env`)
+
+
+## Developer
+
+[Taraqul Islam Rony](https://github.com/TIRony)
+[Shams Shahriar](https://github.com/Shams000)
+
+
+## NextJS
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
