@@ -41,22 +41,11 @@ export const LogoWithBackground = () => {
 
 export const LogoWithBackgroundMobile = () => {
   return (
-    <div className="relative w-full h-auto p-[20px]">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: 'url("/background/shadow.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></div>
-      </div>
+    <div className="m-8">
       <Logo />
     </div>
   );
 };
-
 
 export const Logo = () => {
   return (
