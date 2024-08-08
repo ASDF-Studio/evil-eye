@@ -224,7 +224,7 @@ export const Header = () => {
           <Link href={"/"} className="relative hidden sm:block">
             <LogoWithBackground />
           </Link>
-          <Link href={"/"} className="block sm:hidden">
+          <Link href={"/"} className="relative block sm:hidden">
             {/* <Logo /> */}
             <LogoWithBackgroundMobile />
             {/* <LogoWithBackground /> */}
