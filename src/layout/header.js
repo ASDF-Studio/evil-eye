@@ -226,8 +226,8 @@ export const Header = () => {
           </Link>
           <Link href={"/"} className="block sm:hidden">
             {/* <Logo /> */}
-            <LogoWithBackgroundMobile />
-            {/* <LogoWithBackground /> */}
+            {/* <LogoWithBackgroundMobile /> */}
+            <LogoWithBackground />
           </Link>
 
           <FlexCenter className="gap-2 pr-8 hidden sm:flex">
