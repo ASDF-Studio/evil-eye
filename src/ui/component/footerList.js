@@ -137,7 +137,6 @@ const FooterList = () => {
         isvisible={showPricingModal}
         onClose={() => setShowPricingModal(false)}
       />
-
       <Contact
         isvisible={showContactModal}
         onClose={() => setShowContactModal(false)}

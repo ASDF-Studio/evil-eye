@@ -1,7 +1,6 @@
 import PageFrame from "./component/pageFrame";
 import FooterPages from "./footerPages";
 import LegalDisclaimerText from "./pages/legalDisclaimerText";
-import PrivacyText from "./pages/privacyText";
 
 const LegalDisclaimer = () => {
   return (

@@ -7,9 +7,7 @@ const PrivacyAndPolicy = () => {
     <div className="h-[100%]">
       <PageFrame title={"Privacy Policy"}>
         <PrivacyText />
-        <div className=" absolute bottom-0 items-center w-full">
-          <FooterPages />
-        </div>
+        <FooterPages />
       </PageFrame>
     </div>
   );
