@@ -28,7 +28,7 @@ const FooterListTablet = ({ children, title }) => {
       path: "symtoms",
       display: "Symptoms",
       icon: "",
-    }
+    },
   ];
   const NAV__LINK_2 = [
     {
@@ -85,15 +85,18 @@ const FooterListTablet = ({ children, title }) => {
     }
 
     if (path === "evileye") {
-      setShowModal(!showModal);
+      // setShowModal(!showModal);
+      router.push("/description");
     }
 
     if (path === "symtoms") {
-      setShowModal3(!showModal3);
+      // setShowModal3(!showModal3);
+      router.push("/description");
     }
 
     if (path === "cure") {
-      setShowModal2(!showModal2);
+      // setShowModal2(!showModal2);
+      router.push("/description");
     }
   };
 

@@ -1,7 +1,5 @@
-import { ScreenPadding } from "@/components/layout/padding";
-import { LandingPage } from "./landingPage";
 import { Typography } from "@/components/typography";
-import { Flex, FlexBetween, FlexColumn } from "@/components/layout";
+import { Flex, FlexColumn } from "@/components/layout";
 import { Borderline, BorderlinePC, Logo } from "@/components/logo";
 import FooterList from "./component/footerList";
 import FooterListTablet from "./component/footerListTablet";
