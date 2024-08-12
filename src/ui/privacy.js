@@ -1,6 +1,7 @@
 import PageFrame from "./component/pageFrame";
 import FooterPages from "./footerPages";
 import PrivacyText from "./pages/privacyText";
+import AudiobuttonForPages from "./component/audiobuttonForPages";
 
 const PrivacyAndPolicy = () => {
   return (
@@ -8,6 +9,7 @@ const PrivacyAndPolicy = () => {
       <PageFrame title={"Privacy Policy"}>
         <PrivacyText />
         <FooterPages />
+        <AudiobuttonForPages />
       </PageFrame>
     </div>
   );

@@ -1,3 +1,4 @@
+import AudiobuttonForPages from "./component/audiobuttonForPages";
 import FooterList from "./component/footerList";
 import PageFrame from "./component/pageFrame";
 import FooterPages from "./footerPages";
@@ -9,6 +10,7 @@ const TermsAndConditions = () => {
       <PageFrame title={"Terms and Conditions"}>
         <TermText />
         <FooterPages />
+        <AudiobuttonForPages />
       </PageFrame>
     </div>
   );
