@@ -1,7 +1,7 @@
 import AudiobuttonForPages from "./component/audiobuttonForPages";
 import PageFrame from "./component/pageFrame";
 import FooterPages from "./footerPages";
-import LegalDisclaimerText from "./pages/legalDisclaimerText";
+import LegalDisclaimerText from "./content/legalDisclaimerText";
 
 const LegalDisclaimer = () => {
   return (

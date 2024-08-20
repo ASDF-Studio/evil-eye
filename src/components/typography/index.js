@@ -23,7 +23,7 @@ export const Typography = ({
     h21: "text-center font-rosarivo text-[18px] font-normal leading-[24px]  ",
     h22: "text-center font-rosarivo text-[12px] font-normal leading-normal tracking-[-0.6px]",
     h23: "text-center text-[18px] font-normal font-rosarivo tracking-[-0.9px]",
-    h24: "text-center font-rosarivo text-[14px] font-normal leading-[28px] tracking-[-0.7px]",
+    h24: "text-center font-rosarivo font-normal leading-[28px] tracking-[-0.7px] text-[12px] sm:text-[14px]",
     body: "text-center text-base font-normal font-rosarivo opacity-[63%] leading-[22.4px] tracking-[-0.8px]",
     title: "text-center text-[18px] font-normal font-roman tracking-[-0.9px]",
     placeholder: "text-center text-[16px] font-normal font-rosarivo tracking-[-0.8px]",

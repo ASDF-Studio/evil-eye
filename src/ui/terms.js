@@ -2,7 +2,7 @@ import AudiobuttonForPages from "./component/audiobuttonForPages";
 import FooterList from "./component/footerList";
 import PageFrame from "./component/pageFrame";
 import FooterPages from "./footerPages";
-import TermText from "./pages/termText";
+import TermText from "./content/termText";
 
 const TermsAndConditions = () => {
   return (

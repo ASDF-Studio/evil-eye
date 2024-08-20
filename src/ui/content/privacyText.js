@@ -3,7 +3,7 @@ import { Typography } from "@/components/typography";
 const PrivacyText = () => {
   return (
     <>
-      <div className="pt-6">
+      {/* <div className="pt-6">
         <Typography
           variant="h13"
           classname=" text-color-brand-yellow2 text-opacity-80"
@@ -11,8 +11,7 @@ const PrivacyText = () => {
           The Privacy policy we are using in the first box of Recite the prayer
           from Sendgrid/Twilio.
         </Typography>
-      </div>
-
+      </div> */}
       <div className="pt-6">
         <Typography
           variant="h13"
@@ -92,11 +91,6 @@ const PrivacyText = () => {
               <li>
                 Provide personalized services for you, your loved ones, or your
                 pets.
-              </li>
-              <li>
-                Communicate with you about your service requests or inquiries.
-                Improve our services and website based on user feedback and
-                interactions.
               </li>
               <li>
                 Communicate with you about your service requests or inquiries.

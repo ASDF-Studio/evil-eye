@@ -10,6 +10,8 @@ import SuccessModal from "@/components/modal/submitMessage/success";
 import { Typography } from "@/components/typography";
 import { Router, useRouter } from "next/router";
 import React, { useState } from "react";
+import Scroll from "react-scroll";
+const ScrollLink = Scroll.Link;
 
 const FooterList = () => {
   const NAV__LINK = [
@@ -19,12 +21,12 @@ const FooterList = () => {
       icon: "",
     },
     {
-      path: "evileye",
+      path: "what-is-evil-eye",
       display: "What is Evil Eye",
       icon: "",
     },
     {
-      path: "symtoms",
+      path: "symptoms",
       display: "Symptoms",
       icon: "",
     },
@@ -69,36 +71,44 @@ const FooterList = () => {
     setSuccessModal(true);
   };
 
+  const scroller = Scroll.scroller;
+
+  const scrollTarget = (target) => {
+    scroller.scrollTo(target, {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+      offset: -60,
+    });
+  };
+
+  const scrollToPage = async (target) => {
+if (target === "cure" || target === "symptoms" || target === "what-is-evil-eye") {
+  await router.push(`/evil-eye-and-prayer#${target}`);
+}
+
+    scrollTarget(target);
+  };
+
   const handlePath = (path) => {
     closeAllModal();
 
     if (path === "home") {
       router.push("/");
-    }
-
-    if (path === "contact") {
+    } else if (path === "contact") {
       setShowContactModal(!showContactModal);
-    }
-
-    if (path === "price") {
+    } else if (path === "price") {
       setShowPricingModal(!showPricingModal);
-    }
-
-    if (path === "evileye") {
-      // setShowModal(!showModal);
-      router.push("/description");
-    }
-
-    if (path === "symtoms") {
-      // setShowModal3(!showModal3);
-      router.push("/description");
-    }
-
-    if (path === "cure") {
-      // setShowModal2(!showModal2);
-      router.push("/description");
+    } else if (["what-is-evil-eye", "symptoms", "cure"].includes(path)) {
+      scrollToPage(path);
+    } else {
+      router.push("/evil-eye-and-prayer");
     }
   };
+
+  // setShowModal(!showModal);
+  // setShowModal3(!showModal3);
+  // setShowModal2(!showModal2);
 
   return (
     <div className="flex justify-center items-center">

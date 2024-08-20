@@ -1,6 +1,6 @@
 import PageFrame from "./component/pageFrame";
 import FooterPages from "./footerPages";
-import PrivacyText from "./pages/privacyText";
+import PrivacyText from "./content/privacyText";
 import AudiobuttonForPages from "./component/audiobuttonForPages";
 
 const PrivacyAndPolicy = () => {

@@ -229,7 +229,7 @@ export const LandingPage = () => {
                 onClick={() => {
                   // closeAllModals();
                   // setShowModal(!showModal);
-                  router.push("/description");
+                  router.push("/evil-eye-and-prayer");
                 }}
               >
                 What is evil eye
@@ -252,7 +252,7 @@ export const LandingPage = () => {
                 onClick={() => {
                   // closeAllModals();
                   // setShowModal2(!showModal2);
-                  router.push("/description");
+                  router.push("/evil-eye-and-prayer");
                 }}
               >
                 cure
@@ -276,7 +276,7 @@ export const LandingPage = () => {
               onClick={() => {
                 // closeAllModals();
                 // setShowModal3(!showModal3);
-                router.push("/description");
+                router.push("/evil-eye-and-prayer");
               }}
             >
               symptoms

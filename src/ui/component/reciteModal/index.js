@@ -199,7 +199,7 @@ const ReciteProcess = () => {
   }, [prayer.paymentStatus]);
   return (
     <>
-      <Flex className="p-[60px] items-center justify-center">
+      <Flex className="items-center justify-center py-[35px] smpy-[50px] x:py-[85px]">
         <DesignButton
           variant="text"
           className=""

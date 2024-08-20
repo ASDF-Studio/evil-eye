@@ -38,21 +38,21 @@ const FooterPages = () => {
           >
             <Link
               className="cursor-pointer hover:underline"
-              href="/privacy&policy"
+              href="/privacy-policy"
             >
               Privacy Policy
             </Link>
             <span className="hidden x:block"> &nbsp;•&nbsp; </span>
             <Link
               className="cursor-pointer hover:underline"
-              href="/terms&conditions"
+              href="/terms-and-conditions"
             >
               Terms & Conditions
             </Link>
             <span className="hidden x:block"> &nbsp;•&nbsp; </span>
             <Link
               className="cursor-pointer hover:underline"
-              href="/legalDisclaimer"
+              href="/legal-disclaimer"
             >
               Legal Disclaimer
             </Link>

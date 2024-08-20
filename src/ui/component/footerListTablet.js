@@ -86,17 +86,17 @@ const FooterListTablet = ({ children, title }) => {
 
     if (path === "evileye") {
       // setShowModal(!showModal);
-      router.push("/description");
+      router.push("/evil-eye-and-prayer");
     }
 
     if (path === "symtoms") {
       // setShowModal3(!showModal3);
-      router.push("/description");
+      router.push("/evil-eye-and-prayer");
     }
 
     if (path === "cure") {
       // setShowModal2(!showModal2);
-      router.push("/description");
+      router.push("/evil-eye-and-prayer");
     }
   };
 

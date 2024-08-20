@@ -1,13 +1,18 @@
 import { Typography } from "@/components/typography";
+import { useRef } from "react";
 
 const DescriptionText = () => {
+  const scrollRef = useRef(null);
   return (
     <div className="px-[0px] sm:px-[60px] ">
       <div>
-        <div className="pt-[40px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+        <div className="pt-[40px]" id="what-is-evil-eye" ref={scrollRef}>
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             What is evil eye
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[35px] font-normal tracking-[-3.5px] leading-[24px] uppercase drop-shadow-3xl">
+            What is evil eye
+          </h2>
         </div>
 
         <div className="pt-[20px]">
@@ -43,10 +48,13 @@ const DescriptionText = () => {
         </div>
       </div>
       <div>
-        <div className="pt-[50px] sm:pt-[80px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+        <div className="pt-[50px] sm:pt-[80px]" id="symptoms" ref={scrollRef}>
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Symptoms
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[35px] font-normal tracking-[-3.5px] leading-[24px] uppercase drop-shadow-3xl">
+            Symptoms
+          </h2>
         </div>
 
         <div className="pt-[10px]">
@@ -89,10 +97,13 @@ const DescriptionText = () => {
         </div>
       </div>
       <div>
-        <div className="pt-[50px] sm:pt-[80px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+        <div id="cure" className="pt-[50px] sm:pt-[80px]">
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Cure
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[35px] font-normal tracking-[-3.5px] leading-[24px] uppercase drop-shadow-3xl">
+            Cure
+          </h2>
         </div>
 
         <div className="pt-[10px]">

@@ -16,21 +16,21 @@ const Footer = () => {
         >
           <Link
             className="cursor-pointer hover:underline"
-            href="/privacy&policy"
+            href="/privacy-policy"
           >
             Privacy Policy
           </Link>{" "}
           •{" "}
           <Link
             className="cursor-pointer hover:underline"
-            href="/terms&conditions"
+            href="/terms-and-conditions"
           >
             Terms & Conditions
           </Link>{" "}
           •{" "}
           <Link
             className="cursor-pointer hover:underline"
-            href="/legalDisclaimer"
+            href="/legal-disclaimer"
           >
             Legal Disclaimer
           </Link>
