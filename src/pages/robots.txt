@@ -1,8 +1,0 @@
-User-agent: *
-Disallow: /background/
-Disallow: /audio/
-Disallow: /fonts/
-Disallow: /logos/
-Allow: /
-
-Sitemap: https://evileyeremedy.com/sitemap.xml
