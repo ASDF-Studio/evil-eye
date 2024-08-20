@@ -1,10 +1,9 @@
-// pages/robots.txt.js
-
+// pages/robots.txt.tsx
 export async function getServerSideProps({ res }) {
     const robots = `
       User-agent: *
-      Disallow: /background/*
-      Disallow: /audio/*
+      Disallow: /background/
+      Disallow: /audio/
       Allow: /
   
       Sitemap: https://evileyeremedy.com/sitemap.xml
@@ -19,8 +18,7 @@ export async function getServerSideProps({ res }) {
     };
   }
   
-  export default function RobotsTxt() {
-    // Default export to prevent Next.js errors
+  export default function Robots() {
     return null;
   }
   
