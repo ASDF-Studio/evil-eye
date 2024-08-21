@@ -36,7 +36,7 @@ export const LogoWithBackground = () => {
     <div style={containerStyle} className="p-8 w-[400px] h-[280px] x:w-[700px]">
       <Logo />
     </div>
-  );
+  );  
 };
 
 export const LogoWithBackgroundMobile = () => {

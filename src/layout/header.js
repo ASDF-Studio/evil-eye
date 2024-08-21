@@ -270,7 +270,7 @@ export const Header = () => {
 
         <div className="w-[100%] h-auto backdrop-blur shadow-buttonShadow3 flex justify-center items-center px-2 pt-0">
           <FlexColumn
-            className={`w-full h-full v-screen items-start justify-center gap-5 shadow-headerShadow  bg-backgroundColor-brand-blue-90 border-2 border-color-brand-yellow2
+            className={`w-full h-full v-screen items-start justify-center gap-5 shadow-headerShadow bg-backgroundColor-brand-blue-90 border-2 border-color-brand-yellow2
             ${navbar ? "p-5 md:p-0 block" : "hidden"}`}
           >
             {NAV__LINK.map((item, index) => (
