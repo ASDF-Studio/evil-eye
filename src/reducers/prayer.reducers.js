@@ -15,6 +15,7 @@ const initialState = {
   prayerStart: false,
   prayerDone: false,
   prayerLoading: false,
+  urlFailed: false,
 };
 export default function prayerReducer(state = initialState, action) {
   switch (action.type) {
@@ -86,6 +87,7 @@ export default function prayerReducer(state = initialState, action) {
         paymentStatus: false,
         prayerDone: false,
         prayerLoading: true,
+        urlFailed: false,
       };
       break;
 
@@ -95,6 +97,7 @@ export default function prayerReducer(state = initialState, action) {
         paymentStatus: action.payload.paymentStatus,
         prayerDone: action.payload.prayerDone,
         prayerLoading: false,
+        urlFailed: false,
       };
       break;
 
@@ -104,6 +107,7 @@ export default function prayerReducer(state = initialState, action) {
         paymentStatus: action.payload.paymentStatus,
         prayerDone: action.payload.prayerDone,
         prayerLoading: false,
+        urlFailed: false,
       };
       break;
 
@@ -113,6 +117,7 @@ export default function prayerReducer(state = initialState, action) {
         paymentStatus: action.payload.paymentStatus,
         prayerDone: false,
         prayerLoading: false,
+        urlFailed: true,
       };
       break;
 

@@ -47,6 +47,7 @@ const NAV__LINK = [
 
 export const Header = () => {
   const auth = useAppSelector((state) => state.auth);
+  const prayer = useAppSelector((state) => state.prayer);
   const user = useAppSelector((state) => state.auth.user);
   const modal = useAppSelector((state) => state.modal);
 
@@ -105,6 +106,12 @@ export const Header = () => {
   //https://localhost:3000/?pass_series_token=22222&identity=xxxx@gmail.com
   //http://localhost:3000/?payment=success&session_id=cs_test_a1UiH9JP8hUx3de5wGMfw3VfDYYhwk41JU8kARtcl6gcX8P0fYGFQZ1UmJ&prayer_id=663d2e1fa4078bc278279670
 
+  useEffect(() => {
+    if (prayer.urlFailed) {
+      openNotification("prayerFalseURL");
+      router.replace(router.pathname, undefined, { shallow: true });
+    }
+  }, [prayer.urlFailed]);
   useEffect(() => {
     if (auth.passwordReseted) {
       openNotification("password");

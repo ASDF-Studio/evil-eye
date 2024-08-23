@@ -13,6 +13,7 @@ import PaymentSuccessReciteModal from "@/components/modal/recite/paymentSuccessR
 import PaymentReciteModal from "@/components/modal/recite/paymentReciteModal";
 import GuestReciteModal from "@/components/modal/recite/guestReciteModal";
 import { useRouter } from "next/router";
+import { verifyCheckoutSession } from "@/action";
 
 const ReciteProcess = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -162,41 +163,41 @@ const ReciteProcess = () => {
     }
   }, [router.query.modal]);
 
-  useEffect(() => {
-    const payment = router.query.payment;
-    const session_id = router.query.session_id;
-    const prayer_id = router.query.prayer_id;
+  // useEffect(() => {
+  //   const payment = router.query.payment;
+  //   const session_id = router.query.session_id;
+  //   const prayer_id = router.query.prayer_id;
 
-    if (payment === "success" && session_id) {
-      const prayerData =
-        JSON.parse(localStorage.getItem("evileye-prayer")) || {};
-      let prayerCountLocal = prayerData.progress
-        ? parseFloat(prayerData.progress)
-        : 0;
+  //   if (payment === "success" && session_id) {
+  //     const prayerData =
+  //       JSON.parse(localStorage.getItem("evileye-prayer")) || {};
+  //     let prayerCountLocal = prayerData.progress
+  //       ? parseFloat(prayerData.progress)
+  //       : 0;
 
-      const data = {
-        sessionId: session_id,
-        prayerId: prayer_id,
-        prayerCount: prayerCountLocal,
-      };
+  //     const data = {
+  //       sessionId: session_id,
+  //       prayerId: prayer_id,
+  //       prayerCount: prayerCountLocal,
+  //     };
 
-      dispatch(verifyCheckoutSession(data));
-    } else if (payment === "canceled") {
-      openPaymentCancelReciteModal();
-    }
-  }, [router.query.payment, prayerData.progress]);
+  //     dispatch(verifyCheckoutSession(data));
+  //   } else if (payment === "canceled") {
+  //     openPaymentCancelReciteModal();
+  //   }
+  // }, [router.query.payment, prayerData.progress]);
 
-  useEffect(() => {
-    if (prayer.prayerDone) {
-      openPrayerReciteModalDone(prayer.prayerDone);
-    }
-  }, [prayer.prayerDone]);
+  // useEffect(() => {
+  //   if (prayer.prayerDone) {
+  //     openPrayerReciteModalDone(prayer.prayerDone);
+  //   }
+  // }, [prayer.prayerDone]);
 
-  useEffect(() => {
-    if (prayer.paymentStatus) {
-      openPaymentSuccessReciteModal(prayer.paymentStatus);
-    }
-  }, [prayer.paymentStatus]);
+  // useEffect(() => {
+  //   if (prayer.paymentStatus) {
+  //     openPaymentSuccessReciteModal(prayer.paymentStatus);
+  //   }
+  // }, [prayer.paymentStatus]);
   return (
     <>
       <Flex className="items-center justify-center py-[35px] smpy-[50px] x:py-[85px]">

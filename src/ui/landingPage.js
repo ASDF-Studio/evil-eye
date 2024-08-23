@@ -203,11 +203,41 @@ export const LandingPage = () => {
     }
   }, [router.query.payment, prayerData.progress]);
 
+  // useEffect(() => {
+  //   if (prayer.prayerDone) {
+  //     openPrayerReciteModalDone(prayer.prayerDone);
+  //   }
+  // }, [prayer.prayerDone]);
+
+  const [prayerDoneShown, setPrayerDoneShown] = useState(false);
+
   useEffect(() => {
-    if (prayer.prayerDone) {
+    const prayerDoneShownInSession = sessionStorage.getItem("prayerDoneShown");
+    console.log("prayerDoneShownInSession")
+
+    if (
+      prayer.prayerDone &&
+      router.pathname === "/" &&
+      !prayerDoneShownInSession
+    ) {
       openPrayerReciteModalDone(prayer.prayerDone);
+      sessionStorage.setItem("prayerDoneShown", "true");
+      setPrayerDoneShown(true);
+    }
+  }, [prayer.prayerDone, router.pathname, prayerDoneShown]);
+
+  useEffect(() => {
+    if (!prayer.prayerDone) {
+      sessionStorage.removeItem("prayerDoneShown");
+      setPrayerDoneShown(false);
     }
   }, [prayer.prayerDone]);
+
+  useEffect(() => {
+    if (prayer.urlFailed) {
+      openPrayerReciteModalDone(prayer.prayerDone);
+    }
+  }, [prayer.urlFailed]);
 
   useEffect(() => {
     if (prayer.paymentStatus) {

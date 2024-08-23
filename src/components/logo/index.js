@@ -1,7 +1,7 @@
 import Image from "next/image";
 import user from "../../../public/logos/user.svg";
 // import logo from '../../../public/logo.svg';
-import logo from "../../../public/logo.svg";
+import logo from "../../../public/logo.png";
 import mobileBars from "../../../public/logos/mobileBars.svg";
 import xmark from "../../../public/logos/xmark.svg";
 import x from "../../../public/logos/x.svg";
@@ -22,8 +22,8 @@ import diamondExclamation from "../../../public/logos/diamondExclamation.svg";
 import uploadCloud from "../../../public/logos/uploadCloud.svg";
 import stripe from "../../../public/logos/stripe.svg";
 
-import playAudio from "../../../public/logos/playAudio.svg";
-import pauseAudio from "../../../public/logos/pauseAudio.svg";
+import playAudio from "../../../public/logos/playAudio.png";
+import pauseAudio from "../../../public/logos/pauseAudio.png";
 
 export const LogoWithBackground = () => {
   const containerStyle = {
@@ -33,10 +33,16 @@ export const LogoWithBackground = () => {
   };
 
   return (
-    <div style={containerStyle} className="p-8 w-[400px] h-[280px] x:w-[700px]">
-      <Logo />
-    </div>
-  );  
+    <>
+      <div
+        style={containerStyle}
+        className="p-8 w-[400px] h-[280px] x:w-[700px]"
+      ></div>
+      <div className=" absolute top-[100px] pt-[14px] pl-[28px]">
+        <Logo />
+      </div>
+    </>
+  );
 };
 
 export const LogoWithBackgroundMobile = () => {

@@ -11,6 +11,7 @@ import { isUserLoggedIn, login } from "@/action";
 import { InlineError } from "@/validity";
 import { guest, guestFromLogin } from "@/action/modal.action";
 import ModalScroll from "../modalScroll";
+import { useRouter } from "next/router";
 
 const LoginModal = ({
   isvisible,
@@ -24,6 +25,8 @@ const LoginModal = ({
 
   const auth = useAppSelector((state) => state.auth);
 
+  const router = useRouter();
+
   const [error, setError] = useState("");
   const { loginError: loginError } = useAppSelector((state) => state.auth);
 
@@ -33,12 +36,26 @@ const LoginModal = ({
     setError(loginError);
   }, [loginError]);
 
+  const [notificationShown, setNotificationShown] = useState(false);
+
   useEffect(() => {
-    if (auth.authenticate) {
+    const notificationShownInSession = sessionStorage.getItem("notificationShown");
+
+    if (auth.authenticate && router.pathname === "/" && !notificationShownInSession) {
       onClose();
       openNotification("login");
+      sessionStorage.setItem("notificationShown", "true");
+      setNotificationShown(true);
+    }
+  }, [auth.authenticate, router.pathname, notificationShown, onClose, openNotification]);
+
+  useEffect(() => {
+    if (!auth.authenticate) {
+      sessionStorage.removeItem("notificationShown");
+      setNotificationShown(false);
     }
   }, [auth.authenticate]);
+  
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
