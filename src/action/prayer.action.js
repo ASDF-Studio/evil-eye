@@ -154,9 +154,7 @@ export const verifyCheckoutSession = (data) => {
     });
 
     try {
-      const res = await axios.post(`${baseURL}verifyCheckoutSession`, {
-        ...data,
-      });
+      const res = await axios.post(`${baseURL}verifyCheckoutSession`, data);
       if (res.status === 200) {
         dispatch({
           type: prayerConstants.CHECKOUT_SUCCESS,
@@ -165,7 +163,7 @@ export const verifyCheckoutSession = (data) => {
             paymentStatus: res.data.paymentStatus,
           },
         });
-        return;
+        return true; // Indicate successful payment and verification
       }
       if (res.status === 202) {
         dispatch({
@@ -175,7 +173,7 @@ export const verifyCheckoutSession = (data) => {
             paymentStatus: res.data.paymentStatus,
           },
         });
-        return;
+        return false; // Indicate successful checkout but prayer already done
       }
     } catch (error) {
       if (error?.response?.status === 400 || error?.response?.status === 404) {
@@ -186,11 +184,14 @@ export const verifyCheckoutSession = (data) => {
             paymentStatus: false,
           },
         });
-        return;
+        return false; // Indicate failure
       }
+      console.error("Unexpected error:", error); // Log unexpected errors
+      return false; // Return false for unexpected errors
     }
   };
 };
+
 
 export const recitePrayer = (data) => {
   return async (dispatch) => {

@@ -2,7 +2,7 @@ import { Flex } from "@/components/layout";
 import { DesignButton } from "@/components/button/designButton";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import ReciteModal from "@/components/modal/recite/reciteModal";
-import { guest, guestFromLogin, userRecite } from "@/action/modal.action";
+import { guest, guestFromLogin, privacyModal, userRecite } from "@/action/modal.action";
 import { useEffect, useState } from "react";
 import Privacy from "@/components/modal/privacy/privacyModal";
 import DashModal from "@/components/modal/dashboard/dashModal";
@@ -162,6 +162,13 @@ const ReciteProcess = () => {
       setShowPrivacyModal(true);
     }
   }, [router.query.modal]);
+  
+
+  useEffect(() => {
+    if (router.pathname === "/" || router.pathname === "/evil-eye-and-prayer") {
+      handlePrivacyModalClose();
+    }
+  }, [router.pathname]);
 
   // useEffect(() => {
   //   const payment = router.query.payment;
@@ -235,7 +242,7 @@ const ReciteProcess = () => {
         isvisible={showPaymentCancelReciteModal}
         onClose={handleCancelModalClose}
       />
-      <PrayerReciteModal
+      {/* <PrayerReciteModal
         isvisible={showPrayerReciteModal}
         onClose={handlePrayerReciteModalClose}
         openDashboard={openDashboard}
@@ -247,7 +254,7 @@ const ReciteProcess = () => {
         openDashboard={openDashboard}
         openReciteModal={openReciteModal}
         modalDoneCLose={handlePrayerReciteModalClose}
-      />
+      /> */}
       <DashModal
         isvisible={showDashModal}
         onClose={() => setShowDashModal(false)}

@@ -167,6 +167,10 @@ export const LandingPage = () => {
 
     router.replace(router.pathname, undefined, { shallow: true });
   };
+  const handlePrivacyModalCloseReload = () => {
+    setShowPrivacyModal(false);
+    dispatch(privacyModal(false));
+  };
 
   // payment
 
@@ -180,28 +184,44 @@ export const LandingPage = () => {
   }, [router.query.modal]);
 
   useEffect(() => {
+    if (router.pathname === "/" || router.pathname === "/evil-eye-and-prayer") {
+      handlePrivacyModalCloseReload();
+      handlePrayerReciteModalClose();
+    }
+  }, [router.pathname]);
+
+
+  useEffect(() => {
     const payment = router.query.payment;
     const session_id = router.query.session_id;
     const prayer_id = router.query.prayer_id;
-
-    if (payment === "success" && session_id) {
-      const prayerData =
-        JSON.parse(localStorage.getItem("evileye-prayer")) || {};
-      let prayerCountLocal = prayerData.progress
-        ? parseFloat(prayerData.progress)
-        : 0;
-
-      const data = {
-        sessionId: session_id,
-        prayerId: prayer_id,
-        prayerCount: prayerCountLocal,
-      };
-
-      dispatch(verifyCheckoutSession(data));
-    } else if (payment === "canceled") {
-      openPaymentCancelReciteModal();
-    }
-  }, [router.query.payment, prayerData.progress]);
+  
+    const handlePaymentVerification = async () => {
+      if (payment === "success" && session_id) {
+        const prayerData = JSON.parse(localStorage.getItem("evileye-prayer")) || {};
+        const prayerCountLocal = prayerData.progress ? parseFloat(prayerData.progress) : 0;
+  
+        const data = {
+          sessionId: session_id,
+          prayerId: prayer_id,
+          prayerCount: prayerCountLocal,
+        };
+  
+        const paymentDone = await dispatch(verifyCheckoutSession(data));
+  
+        if (paymentDone === true) {
+          openPaymentSuccessReciteModal(true);
+        } else if (paymentDone === false) {
+          console.log("Payment was processed but no further action is required.");
+        }
+      } else if (payment === "canceled") {
+        openPaymentCancelReciteModal();
+      }
+    };
+  
+    handlePaymentVerification();
+  }, [router.query.payment, router.query.session_id, router.query.prayer_id, dispatch]);
+  
 
   // useEffect(() => {
   //   if (prayer.prayerDone) {
@@ -213,7 +233,7 @@ export const LandingPage = () => {
 
   useEffect(() => {
     const prayerDoneShownInSession = sessionStorage.getItem("prayerDoneShown");
-    console.log("prayerDoneShownInSession")
+    console.log("prayerDoneShownInSession");
 
     if (
       prayer.prayerDone &&
@@ -223,6 +243,7 @@ export const LandingPage = () => {
       openPrayerReciteModalDone(prayer.prayerDone);
       sessionStorage.setItem("prayerDoneShown", "true");
       setPrayerDoneShown(true);
+      handlePrivacyModalClose;
     }
   }, [prayer.prayerDone, router.pathname, prayerDoneShown]);
 
@@ -239,11 +260,11 @@ export const LandingPage = () => {
     }
   }, [prayer.urlFailed]);
 
-  useEffect(() => {
-    if (prayer.paymentStatus) {
-      openPaymentSuccessReciteModal(prayer.paymentStatus);
-    }
-  }, [prayer.paymentStatus]);
+  // useEffect(() => {
+  //   if (prayer.paymentStatus) {
+  //     openPaymentSuccessReciteModal(prayer.paymentStatus);
+  //   }
+  // }, [prayer.paymentStatus]);
 
   return (
     <div className="flex flex-col h-[100svh] justify-between">

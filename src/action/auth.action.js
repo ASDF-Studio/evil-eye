@@ -21,6 +21,7 @@ export const login = (user) => {
             user: res.data.user,
           },
         });
+        return true; // Indicate success
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -32,6 +33,7 @@ export const login = (user) => {
       } else {
         console.error("Error:", error);
       }
+      return false; // Indicate failure
     }
   };
 };

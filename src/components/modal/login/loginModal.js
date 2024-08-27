@@ -36,27 +36,6 @@ const LoginModal = ({
     setError(loginError);
   }, [loginError]);
 
-  const [notificationShown, setNotificationShown] = useState(false);
-
-  useEffect(() => {
-    const notificationShownInSession = sessionStorage.getItem("notificationShown");
-
-    if (auth.authenticate && router.pathname === "/" && !notificationShownInSession) {
-      onClose();
-      openNotification("login");
-      sessionStorage.setItem("notificationShown", "true");
-      setNotificationShown(true);
-    }
-  }, [auth.authenticate, router.pathname, notificationShown, onClose, openNotification]);
-
-  useEffect(() => {
-    if (!auth.authenticate) {
-      sessionStorage.removeItem("notificationShown");
-      setNotificationShown(false);
-    }
-  }, [auth.authenticate]);
-  
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -109,7 +88,11 @@ const LoginModal = ({
     };
 
     try {
-      await dispatch(login(user));
+      const loginSuccess = await dispatch(login(user));
+      if (loginSuccess) {
+        onClose();
+        openNotification("login");
+      }
     } catch (error) {
       console.error("Error during login:", error);
     }
