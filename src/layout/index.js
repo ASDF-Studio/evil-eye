@@ -6,8 +6,24 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-KZ9PG1ENGY"
+        ></script>
+        <script>
+          window.dataLayer = window.dataLayer || []; function gtag()
+          {dataLayer.push(arguments)}
+          gtag('js', new Date()); gtag('config', 'G-KZ9PG1ENGY');
+        </script>
+
         <title>Evil Eye Remedy</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="canonical"
+          href="https://evileyeremedy.com/"
+          key="canonical"
+        />
       </Head>
       <Header />
       <div className="relative">
