@@ -6,16 +6,21 @@ export default function Disclaimer() {
   return (
     <>
       <Head>
-        {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-KZ9PG1ENGY"
-        ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-KZ9PG1ENGY');
-        </script>
+      {/* Google Tag (gtag.js) */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-KZ9PG1ENGY"
+      ></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-KZ9PG1ENGY');
+          `,
+        }}
+      />
 
         <title>{"Legal Disclaimer - Evil Eye Remedy"}</title>
         <meta name="Legal Disclaimer - Evil Eye Remedy"></meta>

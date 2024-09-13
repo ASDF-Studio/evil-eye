@@ -6,18 +6,28 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Head>
-        {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-KZ9PG1ENGY"
-        ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-KZ9PG1ENGY');
-        </script>
+      {/* Google Tag (gtag.js) */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-KZ9PG1ENGY"
+      ></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-KZ9PG1ENGY');
+          `,
+        }}
+      />
 
-        <title>Evil Eye Remedy</title>
+        <title>Evil Eye Remedy - Powerful Protection Against the Evil Eye</title>
+        <meta name="Evil Eye Remedy - Powerful Protection Against the Evil Eye" />
+        <meta
+          name="description"
+          content="Unlock the power of the original Evil Eye Remedy. An ancient prayer will be performed to protect you or your loved one from negative energies."
+        ></meta>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="canonical"

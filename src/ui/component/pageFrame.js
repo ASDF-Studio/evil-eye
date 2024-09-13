@@ -20,6 +20,7 @@ const PageFrame = ({ children, title, large = false }) => {
                 <Design1 />
                 <Design1 />
                 <Design1 />
+                <Design1 />
               </div>
             ) : (
               <div className="relative flex flex-col justify-center h-auto overflow-hidden">
@@ -28,13 +29,14 @@ const PageFrame = ({ children, title, large = false }) => {
             )}
 
             <div className="flex justify-center items-center w-full">
-              <h1 className="text-color-brand-yellow2 text-center text-[18px] font-normal font-roman tracking-[-0.9px]">
+              <h1 className="text-color-brand-yellow2 text-center text-[24px] font-normal font-roman tracking-[-1.4px] uppercase">
                 {title}
               </h1>
             </div>
 
             {large ? (
               <div className="relative flex flex-col justify-center h-auto overflow-hidden sm:h-[40px]">
+                <Design2 />
                 <Design2 />
                 <Design2 />
                 <Design2 />
