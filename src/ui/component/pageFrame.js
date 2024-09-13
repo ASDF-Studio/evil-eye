@@ -29,7 +29,7 @@ const PageFrame = ({ children, title, large = false }) => {
             )}
 
             <div className="flex justify-center items-center w-full">
-              <h1 className="text-color-brand-yellow2 text-center text-[24px] font-normal font-roman tracking-[-1.4px] uppercase">
+              <h1 className="text-color-brand-yellow2 text-center text-[28px] font-normal font-roman tracking-[-1.4px] uppercase leading-[130%]">
                 {title}
               </h1>
             </div>

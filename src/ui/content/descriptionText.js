@@ -10,7 +10,7 @@ const DescriptionText = () => {
           {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             What is evil eye
           </Typography> */}
-          <h2 className="text-color-brand-yellow2 font-roman text-[35px] font-normal tracking-[-3.5px] leading-[24px] uppercase drop-shadow-3xl">
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
             What is evil eye
           </h2>
         </div>
@@ -52,7 +52,7 @@ const DescriptionText = () => {
           {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Symptoms
           </Typography> */}
-          <h2 className="text-color-brand-yellow2 font-roman text-[35px] font-normal tracking-[-3.5px] leading-[24px] uppercase drop-shadow-3xl">
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
             Symptoms
           </h2>
         </div>
@@ -101,7 +101,7 @@ const DescriptionText = () => {
           {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Cure
           </Typography> */}
-          <h2 className="text-color-brand-yellow2 font-roman text-[35px] font-normal tracking-[-3.5px] leading-[24px] uppercase drop-shadow-3xl">
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
             Cure
           </h2>
         </div>
