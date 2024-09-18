@@ -31,7 +31,7 @@ export default function Disclaimer() {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="canonical"
-          href="https://evileyeremedy.com/legal-disclaimer"
+          href="https://www.evileyeremedy.com/legal-disclaimer"
           key="canonical"
         />
       </Head>

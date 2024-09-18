@@ -31,7 +31,7 @@ export default function Terms() {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="canonical"
-          href="https://evileyeremedy.com/terms-and-conditions"
+          href="https://www.evileyeremedy.com/terms-and-conditions"
           key="canonical"
         />
       </Head>

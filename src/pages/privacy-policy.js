@@ -31,7 +31,7 @@ export default function Privacy() {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="canonical"
-          href="https://evileyeremedy.com/privacy-policy"
+          href="https://www.evileyeremedy.com/privacy-policy"
           key="canonical"
         />
       </Head>

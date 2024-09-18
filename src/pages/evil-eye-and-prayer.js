@@ -31,7 +31,7 @@ export default function Desc() {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="canonical"
-          href="https://evileyeremedy.com/evil-eye-and-prayer"
+          href="https://www.evileyeremedy.com/evil-eye-and-prayer"
           key="canonical"
         />
       </Head>

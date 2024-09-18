@@ -31,7 +31,7 @@ const MainLayout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="canonical"
-          href="https://evileyeremedy.com/"
+          href="https://www.evileyeremedy.com/"
           key="canonical"
         />
       </Head>
