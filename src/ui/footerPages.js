@@ -45,9 +45,9 @@ const FooterPages = () => {
             <span className="hidden x:block"> &nbsp;•&nbsp; </span>
             <Link
               className="cursor-pointer hover:underline"
-              href="/terms-and-conditions"
+              href="/terms"
             >
-              Terms & Conditions
+              Terms
             </Link>
             <span className="hidden x:block"> &nbsp;•&nbsp; </span>
             <Link

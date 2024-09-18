@@ -22,16 +22,16 @@ export default function Terms() {
         }}
       />
 
-        <title>{"Terms and Conditions - Evil Eye Remedy"}</title>
-        <meta name="Terms and Conditions - Evil Eye Remedy" />
+        <title>{"Terms - Evil Eye Remedy"}</title>
+        <meta name="Terms - Evil Eye Remedy" />
         <meta
           name="description"
-          content="Explore the Terms and Conditions of Evil Eye Remedy, detailing the rules, guidelines, and obligations for using our website. Understand your responsibilities and our rights when accessing our content on evil eye protection and remedies."
+          content="Explore the Terms of Evil Eye Remedy, detailing the rules, guidelines, and obligations for using our website. Understand your responsibilities and our rights when accessing our content on evil eye protection and remedies."
         ></meta>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="canonical"
-          href="https://www.evileyeremedy.com/terms-and-conditions"
+          href="https://www.evileyeremedy.com/terms"
           key="canonical"
         />
       </Head>

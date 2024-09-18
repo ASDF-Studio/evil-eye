@@ -19,7 +19,7 @@ export const getServerSideProps = async ({ res }) => {
         <lastmod>2024-07-12T05:48:14+00:00</lastmod>
       </url>
       <url>
-        <loc>https://evileyeremedy.com/terms-and-conditions</loc>
+        <loc>https://evileyeremedy.com/terms</loc>
         <lastmod>2024-07-12T05:48:14+00:00</lastmod>
       </url>
       <url>

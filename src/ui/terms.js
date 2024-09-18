@@ -7,7 +7,7 @@ import TermText from "./content/termText";
 const TermsAndConditions = () => {
   return (
     <div className="h-[100%]">
-      <PageFrame title={"Terms and Conditions"}>
+      <PageFrame title={"Terms"}>
         <TermText />
         <FooterPages />
         <AudiobuttonForPages />

@@ -18,16 +18,16 @@ const TermText = () => {
         >
           www.EvilEyeRemedy.com (the “Web Site”) is an online information
           service provided by Evil Eye Remedy and is subject to your compliance
-          with the terms and conditions set forth below. PLEASE READ THIS
-          DOCUMENT CAREFULLY BEFORE ACCESSING OR USING THE SITE. BY ACCESSING OR
-          USING THE SITE, YOU AGREE TO BE BOUND BY THE TERMS AND CONDITIONS SET
-          FORTH BELOW. IF YOU DO NOT WISH TO BE BOUND BY THESE TERMS AND
-          CONDITIONS, YOU MAY NOT ACCESS OR USE THE WEB SITE. Evil Eye Remedy
-          may modify this agreement at any time, and such modifications shall be
-          effective immediately upon posting of the modified agreement on the
-          site. You agree to review the agreement periodically to be aware of
-          such modifications and your continued access or use of the site shall
-          be deemed your conclusive acceptance of the modified agreement.
+          with the terms set forth below. PLEASE READ THIS DOCUMENT CAREFULLY
+          BEFORE ACCESSING OR USING THE SITE. BY ACCESSING OR USING THE SITE,
+          YOU AGREE TO BE BOUND BY THE TERMS SET FORTH BELOW. IF YOU DO NOT WISH
+          TO BE BOUND BY THESE TERMS, YOU MAY NOT ACCESS OR USE THE WEB SITE.
+          Evil Eye Remedy may modify this agreement at any time, and such
+          modifications shall be effective immediately upon posting of the
+          modified agreement on the site. You agree to review the agreement
+          periodically to be aware of such modifications and your continued
+          access or use of the site shall be deemed your conclusive acceptance
+          of the modified agreement.
         </Typography>
       </div>
       <div className="pt-6">

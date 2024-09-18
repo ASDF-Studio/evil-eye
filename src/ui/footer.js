@@ -23,9 +23,9 @@ const Footer = () => {
           •{" "}
           <Link
             className="cursor-pointer hover:underline"
-            href="/terms-and-conditions"
+            href="/terms"
           >
-            Terms & Conditions
+            Terms
           </Link>{" "}
           •{" "}
           <Link
