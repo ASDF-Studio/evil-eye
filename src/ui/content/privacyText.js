@@ -26,9 +26,12 @@ const PrivacyText = () => {
 
       <div>
         <div className="pt-[30px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Information We Collect
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
+            Information We Collect
+          </h2>
         </div>
 
         <div className="pt-[10px]">
@@ -68,9 +71,12 @@ const PrivacyText = () => {
 
       <div>
         <div className="pt-[30px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             How We Use Your Information
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
+            How We Use Your Information
+          </h2>
         </div>
 
         <div className="pt-[10px]">
@@ -104,9 +110,12 @@ const PrivacyText = () => {
 
       <div>
         <div className="pt-[30px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Sharing of Information
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
+            Sharing of Information
+          </h2>
         </div>
 
         <div className="pt-[10px]">
@@ -145,9 +154,12 @@ const PrivacyText = () => {
 
       <div>
         <div className="pt-[30px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Data Security
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
+            Data Security
+          </h2>
         </div>
 
         <div className="pt-[10px]">
@@ -164,9 +176,12 @@ const PrivacyText = () => {
 
       <div>
         <div className="pt-[30px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Consent and Changes to our Privacy Policy
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
+            Consent and Changes to our Privacy Policy
+          </h2>
         </div>
 
         <div className="pt-[10px]">
@@ -183,9 +198,12 @@ const PrivacyText = () => {
 
       <div>
         <div className="pt-[30px]">
-          <Typography variant="h11" classname=" text-color-brand-yellow2">
+          {/* <Typography variant="h11" classname=" text-color-brand-yellow2">
             Contact Us
-          </Typography>
+          </Typography> */}
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
+            Contact Us
+          </h2>
         </div>
 
         <div className="pt-[10px]">
