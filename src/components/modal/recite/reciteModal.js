@@ -59,6 +59,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     let userID = "";
     let giftName = "";
     let guest = false;
+    let recipient = "";
 
     if (user?._id) {
       userID = user?._id;
@@ -70,6 +71,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       name = user?.name;
       email = user?.email;
       number = phone ? countryCode + phone : "";
+      recipient = "myself";
 
       if (phone) {
         const isValidPhoneSelf = validatePhoneNumber(countryCode + phone);
@@ -83,6 +85,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       giftName = newName;
       email = newEmail;
       number = newPhone ? countryCode + newPhone : "";
+      recipient = "someone_else";
 
       if (contactMethod === "phone") {
         const isValidPhone = validatePhoneNumber(countryCode + newPhone);
@@ -109,6 +112,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       createdBy: userID,
       guest: guest,
       gift: gift,
+      recipient: recipient,
     };
 
     try {

@@ -60,6 +60,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     let userID = "";
     let guest = false;
     let giftName = "";
+    let recipient = "someone_else";
 
     if (user?._id) {
       userID = user?._id;
@@ -103,6 +104,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       createdBy: userID,
       guest: guest,
       gift: gift,
+      recipient: recipient,
     };
 
     try {
