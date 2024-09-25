@@ -10,8 +10,8 @@ const PrivacyText = () => {
       {/* Introduction */}
       <H2title>Introduction</H2title>
       <DesciptionTexth13>
-        Xemati LLC d/b/a Evil Eye Remedy (<b>“Evil Eye Remedy”</b> "Company" or{" "}
-        <b>"We"</b>) is the original and authentic cure of its kind. Relief from
+        Xemati LLC d/b/a Evil Eye Remedy (<b>&quot;Evil Eye Remedy&quot;</b> &quot;Company&quot; or{" "}
+        <b>&quot;We&quot;</b>) is the original and authentic cure of its kind. Relief from
         your symptoms is close at hand. The ancient and special Evil Eye prayer
         will be said for you or your loved one.
       </DesciptionTexth13>
@@ -19,8 +19,8 @@ const PrivacyText = () => {
         We respect your privacy and are committed to protecting it through our
         compliance with this policy. This policy describes the types of
         information we may collect from you or that you may provide when you
-        visit the website <u>https://evileyeremedy.com/</u> (our "<b>Website</b>
-        ") and/or any related apps, and our practices for collecting, using,
+        visit the website <u>https://evileyeremedy.com/</u> (our &quot;<b>Website</b>
+        &quot;) and/or any related apps, and our practices for collecting, using,
         maintaining, protecting, and disclosing that information.
       </DesciptionTexth13>
 
@@ -103,9 +103,9 @@ const PrivacyText = () => {
         <li>
           by which you may be personally identified, such as name, postal
           address, e-mail address, telephone number, and any other identifier by
-          which you may be contacted online or offline ("
+          which you may be contacted online or offline (&quot;
           <b>personal information</b>
-          ");
+          &quot;);
         </li>
         <li>
           that is about you but individually does not identify you; and/or
@@ -169,9 +169,9 @@ const PrivacyText = () => {
 
       <DesciptionTexth13>
         You also may provide information to be published or displayed
-        (hereinafter, "<b>posted</b>") on public areas of the Website, or
+        (hereinafter, &quot;<b>posted</b>&quot;) on public areas of the Website, or
         transmitted to other users of the Website or third parties
-        (collectively, "<b>"User Contributions</b>"). Your User Contributions
+        (collectively, &quot;<b>&quot;User Contributions</b>&quot;). Your User Contributions
         are posted on and transmitted to others at your own risk. Please be
         aware that no security measures are perfect or impenetrable.
         Additionally, we cannot control the actions of other users of the
@@ -273,7 +273,7 @@ const PrivacyText = () => {
       </DesciptionTexth13>
 
       <DesciptionTexth13>
-        We do not control these third parties' tracking technologies or how they
+        We do not control these third parties&apos; tracking technologies or how they
         may be used. If you have any questions about an advertisement or other
         targeted content, you should contact the responsible provider directly.
         For information about how you can opt out of receiving targeted
@@ -321,7 +321,7 @@ const PrivacyText = () => {
 
       <DesciptionTexth13>
         We may also use your information to contact you about our own and
-        third-parties' goods and services that may be of interest to you. If you
+        third-parties&apos; goods and services that may be of interest to you. If you
         do not want us to use your information in this way, please adjust your
         user preferences in your account profile. For more information, see {" "}
         <b>
@@ -331,7 +331,7 @@ const PrivacyText = () => {
       </DesciptionTexth13>
       <DesciptionTexth13>
         We may use the information we have collected from you to enable us to
-        display advertisements to our advertisers' target audiences. Even though
+        display advertisements to our advertisers&apos; target audiences. Even though
         we do not disclose your personal information for these purposes without
         your consent, if you click on or otherwise interact with an
         advertisement, the advertiser may assume that you meet its target
@@ -416,7 +416,7 @@ const PrivacyText = () => {
           <p>Tracking Technologies and Advertising.</p> You can set your browser
           to refuse all or some browser cookies, or to alert you when cookies
           are being sent. To learn how you can manage your Flash cookie
-          settings, visit the Flash player settings page on Adobe's website. If
+          settings, visit the Flash player settings page on Adobe&apos;s website. If
           you disable or refuse cookies, please note that some parts of this
           site may then be inaccessible or not function properly.
         </li>
@@ -432,7 +432,7 @@ const PrivacyText = () => {
         <li>
           <p>Promotional Offers from the Company.</p> If you do not wish to have
           your email address/contact information used by the Company to promote
-          our own or third parties' products or services, you can opt-out by
+          our own or third parties&apos; products or services, you can opt-out by
           logging into the Website and adjusting your user preferences in your
           account profile by checking or unchecking the relevant boxes or by
           sending us an email stating your request to{" "}
@@ -443,13 +443,13 @@ const PrivacyText = () => {
         <li>
           <p>Targeted Advertising.</p> If you do not want us to use information
           that we collect or that you provide to us to deliver advertisements
-          according to our advertisers' target-audience preferences, you can opt
+          according to our advertisers&apos; target-audience preferences, you can opt
           out by sending an email to <u>info@evileyeremedy.com</u>. We do not
-          control third parties' collection or use of your information to serve
+          control third parties&apos; collection or use of your information to serve
           interestbased advertising. However, these third parties may provide
           you with ways to choose not to have your information collected or used
           in this way. You can opt out of receiving targeted ads from members of
-          the Network Advertising Initiative ("NAI") on the NAI's website.
+          the Network Advertising Initiative (&quot;NAI&quot;) on the NAI&apos;s website.
         </li>
       </DesciptionList>
 
@@ -498,7 +498,7 @@ const PrivacyText = () => {
       <H2title>Changes to Our Privacy Policy</H2title>
       <DesciptionTexth13>
         It is our policy to post any changes we make to our privacy policy on
-        this page. If we make material changes to how we treat our users'
+        this page. If we make material changes to how we treat our users&apos;
         personal information, we will notify you through a notice on the Website
         home page. The date the privacy policy was last revised is identified at
         the top of the page. You are responsible for ensuring we have an
@@ -684,7 +684,7 @@ const PrivacyText = () => {
       <H2title>Changes to Our Privacy Policy</H2title>
       <DesciptionTexth13>
         It is our policy to post any changes we make to our privacy policy on
-        this page. If we make material changes to how we treat our users'
+        this page. If we make material changes to how we treat our users&apos;
         personal information, we will notify you through a notice on the Website
         home page. The date the privacy policy was last revised is identified at
         the top of the page. You are responsible for ensuring we have an
@@ -1095,8 +1095,8 @@ const PrivacyText = () => {
 
       <H2title className="text-center">GDPR DISCLOSURES</H2title>
       <DesciptionTexth13>
-        For purposes of the European Union ("<b>EU</b>") and United Kingdom ("<b>UK</b>")
-        General Data Protection Regulation (the "<b>GDPR</b>") the data controller is
+        For purposes of the European Union (&quot;<b>EU</b>&quot;) and United Kingdom (&quot;<b>UK</b>&quot;)
+        General Data Protection Regulation (the &quot;<b>GDPR</b>&quot;) the data controller is
         Xemati LLC, with offices as listed with the Rhode Island Secretary of
         State. Please see Section 12 below for additional disclosures applicable
         only to users based in the EU and UK.
@@ -1210,7 +1210,7 @@ const PrivacyText = () => {
         generally ask for your consent to receive such marketing when you first
         provide your personal data. You can choose to stop receiving any direct
         marketing communications from us or our affiliates at any time simply by
-        following the "Unsubscribe" or "Manage Email Preferences" link at the
+        following the &quot;Unsubscribe&quot; or &quot;Manage Email Preferences&quot; link at the
         bottom of any promotional email, or by logging into your profile on the
         applicable Website and making changes in your account settings. Please
         note that you may not opt out of receiving non-promotional emails

@@ -15,19 +15,19 @@ const TermText = () => {
       <H2title>Acceptance of the Terms of Use</H2title>
       <DesciptionTexth13>
         These terms of use are entered into by and between You and Xemati LLC
-        d/b/a Evil Eye Remedy ("<b>Company</b>", "<b>we</b>" or "<b>us</b>").
-        The following terms and conditions (these "Terms of Use"), govern your
+        d/b/a Evil Eye Remedy (&quot;<b>Company</b>&quot;, &quot;<b>we</b>&quot; or &quot;<b>us</b>&quot;).
+        The following terms and conditions (these &quot;Terms of Use&quot;), govern your
         access to and use of <u>https://evileyeremedy.com/</u>, including any content,
         functionality and services offered on or through {" "}
-        <u>https://evileyeremedy.com/</u> (the "<b>Website</b>"), whether as a guest,
+        <u>https://evileyeremedy.com/</u> (the &quot;<b>Website</b>&quot;), whether as a guest,
         or a registered user. The material, including without limitation
         information, data, text, editorial content, design elements, look and
         feel, formatting, graphics, images, photographs, videos, music, sounds
         and other content contained in or delivered via the Services or
         otherwise made available by Company in connection with the Services is
-        the "Website Content" (or "Content"). Any material (including the
+        the &quot;Website Content&quot; (or &quot;Content&quot;). Any material (including the
         foregoing categories) that you contribute, provide, post or make
-        available using the Services is "Your Content." The Terms of Use are a
+        available using the Services is &quot;Your Content.&quot; The Terms of Use are a
         legally binding agreement between You and Company governing your access
         to and use of the Website and setting out your rights and
         responsibilities when you use the Website.
@@ -349,8 +349,8 @@ const TermText = () => {
         </li>
         <li>
           To transmit, or procure the sending of, any advertising or promotional
-          material without our prior written consent, including any "junk mail",
-          "chain letter" or "spam" or any other similar solicitation.
+          material without our prior written consent, including any &quot;junk mail&quot;,
+          &quot;chain letter&quot; or &quot;spam&quot; or any other similar solicitation.
         </li>
         <li>
           To impersonate or attempt to impersonate the Company, a Company
@@ -359,7 +359,7 @@ const TermText = () => {
           associated with any of the foregoing.
         </li>
         <li>
-          To engage in any other conduct that restricts or inhibits anyone's use
+          To engage in any other conduct that restricts or inhibits anyone&apos;s use
           or enjoyment of the Website, or which, as determined by us, may harm
           the Company or users of the Website or expose them to liability.
         </li>
@@ -368,7 +368,7 @@ const TermText = () => {
       <DesciptionList>
         <li>
           Use the Website in any manner that could disable, overburden, damage,
-          or impair the site or interfere with any other party's use of the
+          or impair the site or interfere with any other party&apos;s use of the
           Website, including their ability to engage in real time activities
           through the Website.
         </li>
@@ -419,10 +419,10 @@ const TermText = () => {
       <DesciptionTexth13>
         The Website may contain message boards, chat rooms, personal web pages
         or profiles, forums, bulletin boards, and other interactive features
-        (collectively, "<b>Interactive Services</b>") that allow users to post,
+        (collectively, &quot;<b>Interactive Services</b>&quot;) that allow users to post,
         submit, publish, display or transmit to other users or other persons
-        (hereinafter, "<b>post</b>") content or materials (collectively, "
-        <b>User Contributions</b>") on or through the Website.
+        (hereinafter, &quot;<b>post</b>&quot;) content or materials (collectively, &quot;
+        <b>User Contributions</b>&quot;) on or through the Website.
       </DesciptionTexth13>
       <DesciptionTexth13>
         All User Contributions must comply with the Content Standards set out in
@@ -703,7 +703,7 @@ const TermText = () => {
         YOUR USE OF THE WEBSITE, ITS CONTENT AND ANY SERVICES OR ITEMS OBTAINED
         THROUGH THE WEBSITE IS AT YOUR OWN RISK. THE WEBSITE, ITS CONTENT AND
         ANY SERVICES OR ITEMS OBTAINED THROUGH THE WEBSITE ARE PROVIDED ON AN
-        "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT ANY WARRANTIES OF ANY KIND,
+        &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS, WITHOUT ANY WARRANTIES OF ANY KIND,
         EITHER EXPRESS OR IMPLIED. NEITHER THE COMPANY NOR ANY PERSON ASSOCIATED
         WITH THE COMPANY MAKES ANY WARRANTY OR REPRESENTATION WITH RESPECT TO
         THE COMPLETENESS, SECURITY, RELIABILITY, QUALITY, ACCURACY OR
@@ -734,10 +734,10 @@ const TermText = () => {
         respective officers, directors, employees, contractors, agents,
         licensors, suppliers, successors and assigns from and against any
         claims, liabilities, damages, judgments, awards, losses, costs, expenses
-        or fees (including reasonable attorneys' fees) arising out of or
+        or fees (including reasonable attorneys&apos; fees) arising out of or
         relating to your violation of these Terms of Use or your use of the
         Website, including, but not limited to, your User Contributions, any use
-        of the Website's content, services and products other than as expressly
+        of the Website&apos;s content, services and products other than as expressly
         authorized in these Terms of Use or your use of any information obtained
         from the Website.
       </DesciptionTexth13>
@@ -837,7 +837,7 @@ const TermText = () => {
           Pursuant to any applicable statutes, regulations, rules, ordinances or
           other laws, including without limitation the United States Electronic
           Signatures in Global and National Commerce Act, P.L. 106-229 (the
-          "E-Sign Act") or other similar statutes, YOU HEREBY AGREE TO THE USE
+          &quot;E-Sign Act&quot;) or other similar statutes, YOU HEREBY AGREE TO THE USE
           OF ELECTRONIC SIGNATURES, CONTRACTS, ORDERS AND OTHER RECORDS AND TO
           ELECTRONIC DELIVERY OF NOTICES, POLICIES AND RECORDS OF TRANSACTIONS
           INITIATED OR COMPLETED THROUGH THE WEBSITE OR SERVICES OFFERED BY
