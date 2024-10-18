@@ -14,7 +14,7 @@ export const Typography = ({
     h12: "text-center font-rosarivo text-[18px] font-normal leading-[25.25px] tracking-[-0.9px]",
     h13: "text-center font-rosarivo text-[16px] font-normal leading-[22.4px] ",
     h14: "text-center font-roman text-[22px] font-normal leading-[20.88px] tracking-[-2.2px] drop-shadow-3xl",
-    h17: "text-center font-rosarivo w-[329px] h-[20px] text-[14px] italic font-normal opacity-[50%] leading-[-0.7px] ",
+    h17: "text-center font-rosarivo w-[329px] h-[20px] text-[14px] italic font-normal opacity-[50%] leading-auto tracking-[-1px]",
     h15: "text-center font-rosarivo text-[14px] font-normal leading-[19.6px] ",
     h16: "text-center font-roman text-[18px] font-normal leading-[25.25px] tracking-[-0.9px]",
     h18: "text-center font-roman text-[35px] leading-[33.25px] font-normal tracking-[-3.5px] drop-shadow-3xl uppercase ",

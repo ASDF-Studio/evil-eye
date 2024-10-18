@@ -84,22 +84,30 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       name = user?.name;
       giftName = newName;
       email = newEmail;
+      email = gift ? user?.email : newEmail;
       number = newPhone ? countryCode + newPhone : "";
       recipient = "someone_else";
 
-      if (contactMethod === "phone") {
-        const isValidPhone = validatePhoneNumber(countryCode + newPhone);
+      if (gift === false) {
         setInvalidInputs({
           isNewNameInvalid: newName ? false : true,
-          isPhoneInvalid: !isValidPhone,
         });
-        if (!newName || !isValidPhone) return;
-      } else if (contactMethod === "email") {
-        setInvalidInputs({
-          isNewNameInvalid: newName ? false : true,
-          isEmailInvalid: newEmail ? false : true,
-        });
-        if (!newName || !newEmail) return;
+        if (!newName) return;
+
+        if (contactMethod === "phone") {
+          const isValidPhone = validatePhoneNumber(countryCode + newPhone);
+          setInvalidInputs({
+            isNewNameInvalid: newName ? false : true,
+            isPhoneInvalid: !isValidPhone,
+          });
+          if (!isValidPhone) return;
+        } else if (contactMethod === "email") {
+          setInvalidInputs({
+            isNewNameInvalid: newName ? false : true,
+            isEmailInvalid: newEmail ? false : true,
+          });
+          if (!newEmail) return;
+        }
       }
     }
 
@@ -180,7 +188,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               </Typography>
             </div>
 
-            <Flex className="flex flex-col sm:flex-row gap-4 mb-4">
+            <Flex className="flex flex-col sm:flex-row gap-4">
               <div
                 className="h-full w-full"
                 onClick={() => {
@@ -221,9 +229,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                 </Flex>
               </div>
             </Flex>
-            <hr className="w-auto border-color-brand-op" />
 
-            {recipientType === "myself" && (
+            {/* {recipientType === "myself" && (
               <div>
                 <div className="py-2">
                   <Typography
@@ -248,113 +255,11 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                   )}
                 </div>
               </div>
-            )}
+            )} */}
 
             {recipientType === "someone_else" && (
               <div>
-                <div className="pt-3">
-                  <Typography
-                    variant="h12"
-                    classname="text-color-brand-yellow2"
-                  >
-                    Name of recipient
-                  </Typography>
-                  <Flex className="relative h-[40px] pt-1">
-                    <Input
-                      type="text"
-                      placeholder="Name"
-                      value={newName}
-                      onChange={(e) => setNewName(e.target.value)}
-                    />
-                  </Flex>
-
-                  {invalidInputs.isNewNameInvalid && (
-                    <InlineError message={"name"} />
-                  )}
-                </div>
-
-                <div className="pt-3">
-                  <Typography
-                    variant="h12"
-                    classname="text-color-brand-yellow2"
-                  >
-                    Recipient’s phone or email
-                  </Typography>
-                  <div>
-                    <Typography
-                      variant="h17"
-                      classname="text-color-brand-yellow2"
-                    >
-                      We’ll use this to let them know a prayer is being recited
-                      for them
-                    </Typography>
-                  </div>
-                </div>
-
-                <Flex className="flex flex-col sm:flex-row gap-4">
-                  <div
-                    className="h-full w-full"
-                    onClick={() => setContactMethod("phone")}
-                  >
-                    <Flex className="relative h-[40px]">
-                      <CheckBox
-                        checked={contactMethod === "phone"}
-                        onChange={() => setContactMethod("phone")}
-                      >
-                        Phone
-                      </CheckBox>
-                    </Flex>
-                  </div>
-
-                  <div
-                    className="h-full w-full"
-                    onClick={() => setContactMethod("email")}
-                  >
-                    <Flex className="relative h-[40px]">
-                      <CheckBox
-                        checked={contactMethod === "email"}
-                        onChange={() => setContactMethod("email")}
-                      >
-                        Email
-                      </CheckBox>
-                    </Flex>
-                  </div>
-                </Flex>
-
-                {contactMethod === "phone" && (
-                  <div className="pt-3">
-                    <Flex className="relative h-[40px]">
-                      <Input
-                        type="text"
-                        placeholder="+1 123-345-6789"
-                        value={countryCode + newPhone}
-                        onChange={handlePhoneNumberChangeGuest}
-                      />
-                    </Flex>
-
-                    {invalidInputs.isPhoneInvalid && (
-                      <InlineError message={"validPhone"} />
-                    )}
-                  </div>
-                )}
-
-                {contactMethod === "email" && (
-                  <div className="pt-3">
-                    <Flex className="relative h-[40px]">
-                      <Input
-                        type="email"
-                        placeholder="example@domain.com"
-                        value={newEmail}
-                        onChange={(e) => setNewEmail(e.target.value)}
-                      />
-                    </Flex>
-
-                    {invalidInputs.isEmailInvalid && (
-                      <InlineError message={"email"} />
-                    )}
-                  </div>
-                )}
-
+                <hr className="w-auto border-color-brand-op my-2" />
                 <Flex className="flex flex-col sm:flex-row gap-4">
                   <div className="h-full w-full" onClick={() => setGift(!gift)}>
                     <Flex className="relative h-[40px]">
@@ -362,31 +267,148 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                         checked={gift === true}
                         onChange={() => setGift(!gift)}
                       >
-                        Notify recipient of your gift
+                        Don’t notify recipient of your gift
                       </CheckBoxInline>
                     </Flex>
+
+                    <Typography
+                      variant="h17"
+                      classname="text-color-brand-yellow2 "
+                    >
+                      If you don't notify the recipient then the receipt text
+                      will be sent to you
+                    </Typography>
                   </div>
                 </Flex>
+
+                {!gift && (
+                  <>
+                    <div className="pt-2">
+                      <Typography
+                        variant="h12"
+                        classname="text-color-brand-yellow2"
+                      >
+                        Name of recipient
+                      </Typography>
+                      <Flex className="relative h-[40px] pt-1">
+                        <Input
+                          type="text"
+                          placeholder="Name"
+                          value={newName}
+                          onChange={(e) => setNewName(e.target.value)}
+                        />
+                      </Flex>
+
+                      {invalidInputs.isNewNameInvalid && (
+                        <InlineError message={"name"} />
+                      )}
+                    </div>
+
+                    <div className="pt-3">
+                      <Typography
+                        variant="h12"
+                        classname="text-color-brand-yellow2"
+                      >
+                        Recipient’s phone or email
+                      </Typography>
+                      <div>
+                        <Typography
+                          variant="h17"
+                          classname="text-color-brand-yellow2"
+                        >
+                          We’ll use this to let them know a prayer is being
+                          recited for them
+                        </Typography>
+                      </div>
+                    </div>
+
+                    <Flex className="flex flex-col sm:flex-row gap-4 pt-2">
+                      <div
+                        className="h-full w-full"
+                        onClick={() => setContactMethod("phone")}
+                      >
+                        <Flex className="relative h-[40px]">
+                          <CheckBox
+                            checked={contactMethod === "phone"}
+                            onChange={() => setContactMethod("phone")}
+                          >
+                            Phone
+                          </CheckBox>
+                        </Flex>
+                      </div>
+
+                      <div
+                        className="h-full w-full"
+                        onClick={() => setContactMethod("email")}
+                      >
+                        <Flex className="relative h-[40px]">
+                          <CheckBox
+                            checked={contactMethod === "email"}
+                            onChange={() => setContactMethod("email")}
+                          >
+                            Email
+                          </CheckBox>
+                        </Flex>
+                      </div>
+                    </Flex>
+
+                    {contactMethod === "phone" && (
+                      <div className="pt-3">
+                        <Flex className="relative h-[40px]">
+                          <Input
+                            type="text"
+                            placeholder="+1 123-345-6789"
+                            value={countryCode + newPhone}
+                            onChange={handlePhoneNumberChangeGuest}
+                          />
+                        </Flex>
+
+                        {invalidInputs.isPhoneInvalid && (
+                          <InlineError message={"validPhone"} />
+                        )}
+                      </div>
+                    )}
+
+                    {contactMethod === "email" && (
+                      <div className="pt-3">
+                        <Flex className="relative h-[40px]">
+                          <Input
+                            type="email"
+                            placeholder="example@domain.com"
+                            value={newEmail}
+                            onChange={(e) => setNewEmail(e.target.value)}
+                          />
+                        </Flex>
+
+                        {invalidInputs.isEmailInvalid && (
+                          <InlineError message={"email"} />
+                        )}
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
             )}
 
-            <div>
-              <Typography
-                variant="h22"
-                classname=" text-color-brand-yellow2 opacity-80 "
-              >
-                By entering the details, I acknowledge and agree to the{" "}
-                <a
-                  className="cursor-pointer underline"
-                  onClick={handlePrivacyModal}
+            {recipientType !== "myself" && (
+              <div>
+                <Typography
+                  variant="h22"
+                  classname=" text-color-brand-yellow2 opacity-80 "
                 >
-                  Privacy Policy
-                </a>
-                .
-              </Typography>
-            </div>
+                  By entering the details, I acknowledge and agree to the{" "}
+                  <a
+                    className="cursor-pointer underline"
+                    onClick={handlePrivacyModal}
+                  >
+                    Privacy Policy
+                  </a>
+                  .
+                </Typography>
+              </div>
+            )}
 
-            <Flex className=" justify-center pt-3 pb-5 w-[100%]">
+            <Flex className=" justify-center pt-3 pb-2 w-[100%]">
               <DesignButton
                 className=" w-full"
                 typoVariant="buttonLabel2"

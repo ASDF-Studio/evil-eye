@@ -19,8 +19,8 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const [guestName, setGuestName] = useState("");
-  const [guestGiftName, setGuestGiftName] = useState("");
+  const [guestName, setGuestName] = useState(""); //Rony
+  const [guestGiftName, setGuestGiftName] = useState(""); //Shams
   const [guestEmail, setGuestEmail] = useState("");
   const [guestPhone, setGuestPhone] = useState("");
   const [guestPrice] = useState(parseInt(10));
@@ -28,6 +28,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
   const [countryCode] = useState("+1");
 
   const [gift, setGift] = useState(false);
+  const [recipientType, setRecipientType] = useState("myself");
   const [contactMethod, setContactMethod] = useState("phone");
 
   const [invalidInputs, setInvalidInputs] = useState({
@@ -60,7 +61,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     let userID = "";
     let guest = false;
     let giftName = "";
-    let recipient = "someone_else";
+    let recipient = recipientType;
 
     if (user?._id) {
       userID = user?._id;
@@ -68,10 +69,17 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       guest = true;
     }
 
-    name = guestName;
+    name = guestName ? guestName : "Anonymous"; //Rony
     email = guestEmail;
     price = guestPrice;
     number = guestPhone ? countryCode + guestPhone : "";
+
+    if (gift === false) {
+      setInvalidInputs({
+        isGiftNameInvalid: guestGiftName ? false : true,
+      });
+      if (!guestGiftName) return;
+    }
 
     if (contactMethod === "phone") {
       const isValidPhone = validatePhoneNumber(countryCode + guestPhone);
@@ -79,25 +87,20 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
         isNewNameInvalid: guestName ? false : true,
         isPhoneInvalid: !isValidPhone,
       });
-      if (!guestName || !isValidPhone) return;
+      // if (!guestName || !isValidPhone) return;
+      if (!isValidPhone) return;
     } else if (contactMethod === "email") {
       setInvalidInputs({
         isNewNameInvalid: guestName ? false : true,
         isEmailInvalid: guestEmail ? false : true,
       });
-      if (!guestName || !guestEmail) return;
-    }
-
-    if (gift === true) {
-      setInvalidInputs({
-        isGiftNameInvalid: guestGiftName ? false : true,
-      });
-      if (!guestGiftName) return;
+      // if (!guestName || !guestEmail) return;
+      if (!guestEmail) return;
     }
 
     const data = {
       name: name,
-      giftName: guestGiftName,
+      giftName: guestGiftName, //shams
       email: email,
       phone: number,
       price: price,
@@ -161,51 +164,138 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
             </div>
             <hr className="w-auto border-color-brand-op" />
 
-            <div className="py-3">
-              <Typography variant="h12" classname="text-color-brand-yellow2  ">
-                Your Name
+            <div className="pt-3">
+              <Typography variant="h12" classname="text-color-brand-yellow2">
+                Who’s the recipient of this prayer?
               </Typography>
-              <Flex className="relative h-[40px] pt-1">
-                <Input
-                  type="text"
-                  placeholder="Name"
-                  value={guestName}
-                  onChange={(e) => setGuestName(e.target.value)}
-                />
-              </Flex>
-
-              {invalidInputs.isNewNameInvalid && (
-                <InlineError message={"name"} />
-              )}
             </div>
 
+            <Flex className="flex flex-col sm:flex-row gap-4 mb-4">
+              <div
+                className="h-full w-full"
+                onClick={() => {
+                  setRecipientType("myself");
+                  // setContactMethod(null);
+                }}
+              >
+                <Flex className="relative h-[40px]">
+                  <CheckBox
+                    checked={recipientType === "myself"}
+                    onChange={() => {
+                      setRecipientType("myself");
+                      // setContactMethod(null);
+                    }}
+                  >
+                    Myself
+                  </CheckBox>
+                </Flex>
+              </div>
+
+              <div
+                className="h-full w-full"
+                onClick={() => {
+                  setRecipientType("someone_else");
+                  // setContactMethod("email");
+                  setGift(false);
+                }}
+              >
+                <Flex className="relative h-[40px]">
+                  <CheckBox
+                    checked={recipientType === "someone_else"}
+                    onChange={() => {
+                      setRecipientType("someone_else");
+                      // setContactMethod("email");
+                      setGift(false);
+                    }}
+                  >
+                    Someone Else
+                  </CheckBox>
+                </Flex>
+              </div>
+            </Flex>
             <hr className="w-auto border-color-brand-op" />
 
-            <div className="py-1">
-              <Typography variant="h12" classname="text-color-brand-yellow2  ">
-                Name of recipient
-              </Typography>
-              <Flex className="relative h-[40px] pt-1">
-                <Input
-                  type="text"
-                  placeholder="Name"
-                  value={guestGiftName}
-                  onChange={(e) => setGuestGiftName(e.target.value)}
-                />
-              </Flex>
-              {gift && invalidInputs.isGiftNameInvalid && (
-                <InlineError message={"giftName"} />
-              )}
-            </div>
+            {/* {recipientType === "myself" && (
+              <div className="py-3">
+                <Typography
+                  variant="h12"
+                  classname="text-color-brand-yellow2  "
+                >
+                  Your Name
+                </Typography>
+                <Flex className="relative h-[40px] pt-1">
+                  <Input
+                    type="text"
+                    placeholder="Name"
+                    value={guestName}
+                    onChange={(e) => setGuestName(e.target.value)}
+                  />
+                </Flex>
+
+                {invalidInputs.isNewNameInvalid && (
+                  <InlineError message={"name"} />
+                )}
+              </div>
+            )} */}
+
+            {recipientType === "someone_else" && (
+              <div>
+                <Flex className="flex flex-col sm:flex-row gap-4">
+                  <div className="h-full w-full" onClick={() => setGift(!gift)}>
+                    <Flex className="relative h-[40px]">
+                      <CheckBoxInline
+                        checked={gift === true}
+                        onChange={() => setGift(!gift)}
+                      >
+                        Don’t notify recipient of your gift
+                      </CheckBoxInline>
+                    </Flex>
+
+                    <Typography
+                      variant="h17"
+                      classname="text-color-brand-yellow2 "
+                    >
+                      If you don't notify the recipient then the receipt text
+                      will be sent to you
+                    </Typography>
+                  </div>
+                </Flex>
+                {!gift && (
+                  <div className="py-1 pt-3">
+                    <Typography
+                      variant="h12"
+                      classname="text-color-brand-yellow2  "
+                    >
+                      Name of recipient
+                    </Typography>
+                    <Flex className="relative h-[40px] pt-1">
+                      <Input
+                        type="text"
+                        placeholder="Name"
+                        value={guestGiftName}
+                        onChange={(e) => setGuestGiftName(e.target.value)}
+                      />
+                    </Flex>
+                    {invalidInputs.isGiftNameInvalid && (
+                      <InlineError message={"giftName"} />
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* <hr className="w-auto border-color-brand-op" /> */}
 
             <div className="pt-3.5">
               <Typography variant="h12" classname="text-color-brand-yellow2  ">
-                Recipient’s phone or email
+                {recipientType === "myself"
+                  ? "Your phone or email"
+                  : "Recipient’s phone or email"}
               </Typography>
               <div>
                 <Typography variant="h17" classname="text-color-brand-yellow2 ">
                   We’ll use this to let them know a prayer is being recited for
-                  them
+                  you
                 </Typography>
               </div>
             </div>
@@ -273,19 +363,6 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                 )}
               </div>
             )}
-
-            <Flex className="flex flex-col sm:flex-row gap-4">
-              <div className="h-full w-full" onClick={() => setGift(!gift)}>
-                <Flex className="relative h-[40px]">
-                  <CheckBoxInline
-                    checked={gift === true}
-                    onChange={() => setGift(!gift)}
-                  >
-                    Notify recipient of your gift
-                  </CheckBoxInline>
-                </Flex>
-              </div>
-            </Flex>
 
             <div>
               <Typography
