@@ -5,7 +5,7 @@ import { useAppDispatch } from "@/hooks";
 import { useRouter } from "next/router";
 import { useAudio } from "@/context/AudioContext";
 
-const TOTAL_DURATION = 5;
+const TOTAL_DURATION = 90;
 
 export const LoadingFrame = ({ className = "", prayerProgress, ...rest }) => {
   const dispatch = useAppDispatch();
