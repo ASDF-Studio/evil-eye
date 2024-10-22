@@ -73,12 +73,14 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     email = guestEmail;
     price = guestPrice;
     number = guestPhone ? countryCode + guestPhone : "";
-
-    if (gift === false) {
-      setInvalidInputs({
-        isGiftNameInvalid: guestGiftName ? false : true,
-      });
-      if (!guestGiftName) return;
+    
+    if(recipientType === "someone_else"){
+      if (gift === false) {
+        setInvalidInputs({
+          isGiftNameInvalid: guestGiftName ? false : true,
+        });
+        if (!guestGiftName) return;
+      }
     }
 
     if (contactMethod === "phone") {
