@@ -292,13 +292,36 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               <Typography variant="h12" classname="text-color-brand-yellow2  ">
                 {recipientType === "myself"
                   ? "Your phone or email"
-                  : "Your phone or email"}
+                  :
+                  gift ? "Your phone or email" : "Recipient’s phone or email"
+                }
               </Typography>
               <div>
-                <Typography variant="h17" classname="text-color-brand-yellow2 ">
-                  If you don&#39;t notify the recipient then the receipt text
-                  will be sent to you
-                </Typography>
+                {recipientType === "myself" ? (
+                  <Typography
+                    variant="h17"
+                    classname="text-color-brand-yellow2 "
+                  >
+                    We&#39;ll use this to let you know a prayer is being recited
+                    for you
+                  </Typography>
+                ) : gift ? (
+                  <Typography
+                    variant="h17"
+                    classname="text-color-brand-yellow2 "
+                  >
+                    If you don&#39;t notify the recipient then the receipt text
+                    will be sent to you
+                  </Typography>
+                ) : (
+                  <Typography
+                    variant="h17"
+                    classname="text-color-brand-yellow2 "
+                  >
+                    We&#39;ll use this to let you know a prayer is being recited
+                    for you
+                  </Typography>
+                )}
               </div>
             </div>
 
