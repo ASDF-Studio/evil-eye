@@ -319,7 +319,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     classname="text-color-brand-yellow2 "
                   >
                     We&#39;ll use this to let you know a prayer is being recited
-                    for you
+                    for them
                   </Typography>
                 )}
               </div>
