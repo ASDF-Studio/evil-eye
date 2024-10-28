@@ -14,6 +14,8 @@ const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
   const dispatch = useAppDispatch();
   const prayerState = useAppSelector((state) => state.prayer);
 
+  const auth = useAppSelector((state) => state.auth);
+
   const [haveCouponCode, setCouponCode] = useState("");
 
   useEffect(() => {
@@ -113,7 +115,19 @@ const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
                   variant="h13"
                   classname=" text-color-brand-yellow2 opacity-80"
                 >
-                  1 Evil Eye Remedy for {prayerData?.name}
+                  {/* 1 Evil Eye Remedy for {prayerData?.gift ? prayerData?.name : prayerData?.giftName } */}
+
+                  {auth.authenticate
+                    ? `1 Evil Eye Remedy for ${
+                        prayerData?.recipient == "someone_else"
+                          ? prayerData?.giftName
+                          : prayerData?.name
+                      }`
+                    : `1 Evil Eye Remedy for ${
+                        prayerData?.recipient == "myself"
+                          ? "you"
+                          : prayerData?.gift ? prayerData?.name : prayerData?.giftName
+                      }`}
                 </Typography>
                 <Typography variant="h14" classname=" text-color-brand-yellow2">
                   ${prayerData?.price}

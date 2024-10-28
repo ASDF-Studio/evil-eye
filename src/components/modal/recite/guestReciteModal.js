@@ -73,8 +73,8 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     email = guestEmail;
     price = guestPrice;
     number = guestPhone ? countryCode + guestPhone : "";
-    
-    if(recipientType === "someone_else"){
+
+    if (recipientType === "someone_else") {
       if (gift === false) {
         setInvalidInputs({
           isGiftNameInvalid: guestGiftName ? false : true,
@@ -292,12 +292,12 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               <Typography variant="h12" classname="text-color-brand-yellow2  ">
                 {recipientType === "myself"
                   ? "Your phone or email"
-                  : "Recipient’s phone or email"}
+                  : "Your phone or email"}
               </Typography>
               <div>
                 <Typography variant="h17" classname="text-color-brand-yellow2 ">
-                  We’ll use this to let them know a prayer is being recited for
-                  you
+                  If you don't notify the recipient then the receipt text will
+                  be sent to you
                 </Typography>
               </div>
             </div>

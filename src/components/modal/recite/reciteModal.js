@@ -88,12 +88,12 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
       number = newPhone ? countryCode + newPhone : "";
       recipient = "someone_else";
 
+      setInvalidInputs({
+        isNewNameInvalid: newName ? false : true,
+      });
+      if (!newName) return;
+      
       if (gift === false) {
-        setInvalidInputs({
-          isNewNameInvalid: newName ? false : true,
-        });
-        if (!newName) return;
-
         if (contactMethod === "phone") {
           const isValidPhone = validatePhoneNumber(countryCode + newPhone);
           setInvalidInputs({
@@ -281,9 +281,7 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                   </div>
                 </Flex>
 
-                {!gift && (
-                  <>
-                    <div className="pt-2">
+                <div className="pt-2">
                       <Typography
                         variant="h12"
                         classname="text-color-brand-yellow2"
@@ -304,6 +302,8 @@ const ReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                       )}
                     </div>
 
+                {!gift && (
+                  <>
                     <div className="pt-3">
                       <Typography
                         variant="h12"
