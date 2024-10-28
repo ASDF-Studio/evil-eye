@@ -296,8 +296,8 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
               </Typography>
               <div>
                 <Typography variant="h17" classname="text-color-brand-yellow2 ">
-                  If you don't notify the recipient then the receipt text will
-                  be sent to you
+                  If you don&#39;t notify the recipient then the receipt text
+                  will be sent to you
                 </Typography>
               </div>
             </div>
