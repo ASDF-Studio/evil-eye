@@ -11,7 +11,7 @@ const DashboardModalFrame = ({ onClose, children, title }) => {
       onClick={onClose}
     >
       <FlexColumn className=" w-screen h-screen 1xl:h-auto mt-32 1xl:mt-0 ">
-        <div className="h-[85%] 1xl:h-auto overflow-y-auto overflow-hidden  m-3 sm:m-0">
+        <div className="h-[85%] border-b-2 border-color-brand-yellow2 1xl:h-auto overflow-y-auto overflow-hidden  m-3 sm:m-0">
           <FlexColumn className="bg-backgroundColor-brand-blue-95 w-auto 1xl:h-auto border-2 border-color-brand-yellow2 shadow-buttonShadow3 sm:top-50%">
             <FlexBetween className=" w-full h-[40px] gap-1 border-2 border-color-brand-yellow2">
               <Design1 />
