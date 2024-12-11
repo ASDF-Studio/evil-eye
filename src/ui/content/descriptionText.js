@@ -122,6 +122,30 @@ const DescriptionText = () => {
           </Typography>
         </div>
       </div>
+      <div>
+        <div id="cure" className="pt-[50px] sm:pt-[80px]">
+          <h2 className="text-color-brand-yellow2 font-roman text-[22px] font-normal tracking-[-2.2px] uppercase drop-shadow-3xl">
+            Why do we charge a Fee?
+          </h2>
+        </div>
+
+        <div className="pt-[10px]">
+          <Typography
+            variant="h13"
+            classname=" text-color-brand-yellow2 text-opacity-80"
+          >
+            Throughout history the Evil Eye Prayer has been recited by a friend
+            or loved one in order to cure the intended of their negative evil
+            eye symptoms. There are many people throughout the world that do not
+            have access to a special individual that can recite the ‘xematiasma’
+            prayer. We provide that assistance. The intention of this website is
+            not to make a profit, all services have expenses to them as does
+            this one. The intention of this website is to help cure individuals,
+            pets, and items of evil eye symptoms. Be Kind to Each other and be
+            Kind to the Earth.
+          </Typography>
+        </div>
+      </div>
     </div>
   );
 };
