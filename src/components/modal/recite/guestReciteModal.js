@@ -75,12 +75,12 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
     number = guestPhone ? countryCode + guestPhone : "";
 
     if (recipientType === "someone_else") {
-      if (gift === false) {
+      // if (gift === false) {
         setInvalidInputs({
           isGiftNameInvalid: guestGiftName ? false : true,
         });
         if (!guestGiftName) return;
-      }
+      // }
     }
 
     if (contactMethod === "phone") {
@@ -89,14 +89,18 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
         isNewNameInvalid: guestName ? false : true,
         isPhoneInvalid: !isValidPhone,
       });
-      // if (!guestName || !isValidPhone) return;
+      if (recipientType === "myself") {
+        if (!guestName || !isValidPhone) return;
+      }
       if (!isValidPhone) return;
     } else if (contactMethod === "email") {
       setInvalidInputs({
         isNewNameInvalid: guestName ? false : true,
         isEmailInvalid: guestEmail ? false : true,
       });
-      // if (!guestName || !guestEmail) return;
+      if (recipientType === "myself") {
+        if (!guestName || !guestEmail) return;
+      }
       if (!guestEmail) return;
     }
 
@@ -217,7 +221,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
             </Flex>
             <hr className="w-auto border-color-brand-op" />
 
-            {/* {recipientType === "myself" && (
+            {recipientType === "myself" && (
               <div className="py-3">
                 <Typography
                   variant="h12"
@@ -238,7 +242,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                   <InlineError message={"name"} />
                 )}
               </div>
-            )} */}
+            )}
 
             {recipientType === "someone_else" && (
               <div>
@@ -262,7 +266,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                     </Typography>
                   </div>
                 </Flex>
-                {!gift && (
+                {/* {!gift && ( */}
                   <div className="py-1 pt-3">
                     <Typography
                       variant="h12"
@@ -282,7 +286,7 @@ const GuestReciteModal = ({ isvisible, onClose, openPaymentReciteModal }) => {
                       <InlineError message={"giftName"} />
                     )}
                   </div>
-                )}
+                {/* )} */}
               </div>
             )}
 

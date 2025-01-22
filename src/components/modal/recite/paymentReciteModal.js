@@ -126,7 +126,7 @@ const PaymentReciteModal = ({ isvisible, onClose, prayerData }) => {
                     : `1 Evil Eye Remedy for ${
                         prayerData?.recipient == "myself"
                           ? "you"
-                          : prayerData?.gift ? prayerData?.name : prayerData?.giftName
+                          : prayerData?.giftName
                       }`}
                 </Typography>
                 <Typography variant="h14" classname=" text-color-brand-yellow2">
