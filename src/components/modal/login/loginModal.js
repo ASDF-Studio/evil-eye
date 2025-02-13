@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Flex, FlexBetween, FlexCenter } from "../../layout";
-import ModalFrame from "../modalFrame";
+import ModalFrameLogin from "../modalFrameLogin";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
 import { Button } from "../../button";
 import { Input } from "../../input";
 import { DesignButton3 } from "../../button/designButton3";
+import { DesignButton2 } from "../../button/designButton2";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { isUserLoggedIn, login } from "@/action";
 import { InlineError } from "@/validity";
@@ -106,33 +107,36 @@ const LoginModal = ({
       id="wrapper"
       onClick={handleClose}
     >
-      <ModalFrame onClose={onClose} title="USER ACCOUNT">
+      <ModalFrameLogin onClose={onClose} title="USER ACCOUNT">
         <ModalScroll>
-          <div className="px-5 mb-3.5">
+          <div className="px-5 pt-5 mb-3.5 bg-color-brand-yellow2">
             <FlexCenter className="w-auto sm:w-[410px] mb-[15px] text-color-brand-yellow2">
-              <Typography variant="h12" classname="text-color-brand-yellow2">
-                {"Don't want to Log In or Sign Up?"}
+              <Typography variant="h12a" classname="text-backgroundColor-brand-blue-95">
+                {"Don't want to Log In or Signup?"}
               </Typography>
             </FlexCenter>
             <Flex className="justify-center w-[100%]">
-              <DesignButton
-                className="w-full text-[14px] lsm:text-[18px]"
+              <DesignButton2
+                className="w-full text-[14px]  lsm:text-[18px]"
                 typoVariant="buttonLabel3"
                 onClick={handleGuest}
               >
                 {auth.loading == false ? "Continue As a Guest" : "Loading..."}
-              </DesignButton>
+              </DesignButton2>
             </Flex>
             <hr className="w-auto space-y-5 my-[25px] sm:w-[410px] border-color-brand-op" />
+            
+          </div>
+          
+          <div className="px-5 text-left">
+          
+            <div className="space-y-5" action="#">
             <Typography
               variant="h11"
               classname="text-color-brand-yellow2 drop-shadow-3xl"
             >
               LOGIN
             </Typography>
-          </div>
-          <div className="px-5 text-left">
-            <div className="space-y-5" action="#">
               <div>
                 <label htmlFor="email" className="block mb-1.5">
                   <Typography
@@ -235,7 +239,7 @@ const LoginModal = ({
             </div>
           </div>
         </ModalScroll>
-      </ModalFrame>
+      </ModalFrameLogin>
     </FlexCenter>
   );
 };
