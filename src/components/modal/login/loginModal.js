@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Flex, FlexBetween, FlexCenter } from "../../layout";
+import { Flex, FlexBetween, FlexCenter, FlexColumn } from "../../layout";
 import ModalFrameLogin from "../modalFrameLogin";
 import { Typography } from "../../typography";
 import { DesignButton } from "../../button/designButton";
@@ -109,8 +109,8 @@ const LoginModal = ({
     >
       <ModalFrameLogin onClose={onClose} title="USER ACCOUNT">
         <ModalScroll>
-          <div className="px-5 pt-5 mb-3.5 bg-color-brand-yellow2">
-            <FlexCenter className="w-auto sm:w-[410px] mb-[15px] text-color-brand-yellow2">
+          <FlexColumn className="px-5 mb-[25px] pt-[76px] pb-[102px] h-auto justify-center items-center bg-color-brand-yellow2">
+            <FlexCenter className="w-auto sm:w-[410px] px-[20px] sm:px-[0px] mb-[15px] text-color-brand-yellow2">
               <Typography variant="h12a" classname="text-backgroundColor-brand-blue-95">
                 {"Don't want to Log In or Signup?"}
               </Typography>
@@ -124,9 +124,9 @@ const LoginModal = ({
                 {auth.loading == false ? "Continue As a Guest" : "Loading..."}
               </DesignButton2>
             </Flex>
-            <hr className="w-auto space-y-5 my-[25px] sm:w-[410px] border-color-brand-op" />
             
-          </div>
+            
+          </FlexColumn>
           
           <div className="px-5 text-left">
           

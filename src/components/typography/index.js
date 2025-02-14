@@ -12,7 +12,7 @@ export const Typography = ({
     h2: "text-center 1xl:text-[65px] text-[35px] font-normal 1xl:tracking-[-6.5px] tracking-[-3.5px] drop-shadow-3xl leading-normal uppercase font-roman",
     h11: "text-center font-roman text-[35px] leading-[33.25px] font-normal tracking-[-3.5px] drop-shadow-3xl uppercase ",
     h12: "text-center font-rosarivo text-[18px] font-normal leading-[25.25px] tracking-[-0.9px]",
-    h12a: "text-center font-rosarivo text-[24px] font-normal leading-[25.25px] tracking-[-1.2px]",
+    h12a: "text-center font-rosarivo text-[45px] font-normal leading-normal tracking-[-2.25px] ",
     h13: "text-center font-rosarivo text-[16px] font-normal leading-[22.4px] ",
     h14: "text-center font-roman text-[22px] font-normal leading-[20.88px] tracking-[-2.2px] drop-shadow-3xl",
     h17: "text-center font-rosarivo w-[329px] h-[20px] text-[14px] italic font-normal opacity-[50%] leading-auto tracking-[-1px]",
