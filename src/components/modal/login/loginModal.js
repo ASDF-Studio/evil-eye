@@ -112,7 +112,7 @@ const LoginModal = ({
           <FlexColumn className="px-5 mb-[25px] pt-[76px] pb-[102px] h-auto justify-center items-center bg-color-brand-yellow2">
             <FlexCenter className="w-auto sm:w-[410px] px-[20px] sm:px-[0px] mb-[15px] text-color-brand-yellow2">
               <Typography variant="h12a" classname="text-backgroundColor-brand-blue-95">
-                {"Don't want to Log In or Signup?"}
+                {"Don't want to log in or sign up?"}
               </Typography>
             </FlexCenter>
             <Flex className="justify-center w-[100%]">
