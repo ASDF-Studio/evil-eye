@@ -26,8 +26,16 @@ import SuccessModal from "@/components/modal/submitMessage/success";
 import NotificationModal from "@/components/modal/submitMessage/notification";
 import { guest } from "@/action/modal.action";
 import { useRouter } from "next/router";
+import YoutubeGalleryModal from "@/components/modal/login/YoutubeGalleryModal";
+import GalleryVideos from "@/ui/content/galleryVideos";
+import YTModal from "@/ui/ytVideo";
 
 const NAV__LINK = [
+  {
+    path: "youtube",
+    display: "Youtube",
+    icon: "",
+  },
   {
     path: "price",
     display: "Price",
@@ -138,6 +146,9 @@ export const Header = () => {
       } else {
         setShowLoginModal(!showLoginModal);
       }
+    }
+    if (path === "youtube") {
+      router.push("/yt-gallery");
     }
 
     if (path === "contact") {
@@ -309,7 +320,7 @@ export const Header = () => {
         isvisible={showPricingModal}
         onClose={() => setShowPricingModal(false)}
       />
-
+     
       <Contact
         isvisible={showContactModal}
         onClose={() => setShowContactModal(false)}

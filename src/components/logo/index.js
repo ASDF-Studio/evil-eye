@@ -16,6 +16,7 @@ import loadingDesign2 from "../../../public/logos/loadingDesign2.svg";
 import pen from "../../../public/logos/pen.svg";
 import email from "../../../public/logos/email.svg";
 
+import shortbolt from "../../../public/logos/bolt.svg";
 import eye from "../../../public/logos/eye.svg";
 import chevronRight from "../../../public/logos/chevronRight.svg";
 import diamondExclamation from "../../../public/logos/diamondExclamation.svg";
@@ -50,6 +51,19 @@ export const LogoWithBackgroundMobile = () => {
     <div className="m-8">
       <Logo />
     </div>
+  );
+};
+export const Shortbolt = () => {
+  return (
+    <Image
+      rel="preload"
+      src={shortbolt}
+      width={7}
+      height={8}
+      priority="true"
+      alt="shortbolt"
+      className=""
+    />
   );
 };
 
