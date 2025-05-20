@@ -26,6 +26,18 @@ export const AudioProvider = ({ children }) => {
       setIsPlaying(true);
     }
   };
+  const resumeAudio = () => {
+  const audio = audioRef.current;
+  if (audio && audio.paused && currentAudio === "/audio/Cosmic Space.mp3") {
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+        console.log("Background audio resumed");
+      })
+      
+  }
+};
 
   const pauseAudio = () => {
     const audio = audioRef.current;
@@ -58,7 +70,7 @@ export const AudioProvider = ({ children }) => {
 
   return (
     <AudioContext.Provider
-      value={{ isPlaying, playAudio, pauseAudio, togglePlay }}
+      value={{ isPlaying, playAudio, pauseAudio, resumeAudio, togglePlay }}
     >
       <audio ref={audioRef} />
       {children}

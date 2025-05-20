@@ -148,7 +148,7 @@ export const Header = () => {
       }
     }
     if (path === "youtube") {
-      router.push("/yt-gallery");
+      router.push("/videos");
     }
 
     if (path === "contact") {

@@ -3,16 +3,46 @@ import { fetchYoutubeFeed } from "@/action/youtubeFeed";
 import { FlexCenter, FlexColumn } from "@/components/layout";
 import { Design1, Design2, Xmark } from "@/components/logo";
 import { Typography } from "@/components/typography";
+import { useAudio } from "@/context/AudioContext";
+import { useRouter } from "next/router";
+
 
 const GalleryVideos = ({ isvisible }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [videos, setVideos] = useState([]);
 
+  const { pauseAudio, resumeAudio } = useAudio(); // ✅ Access context
+  const router = useRouter();
+
+// Resume audio when leaving /videos
+useEffect(() => {
+  const handleRouteChange = (url) => {
+    if (!url.includes("/videos")) {
+      resumeAudio();
+    }
+  };
+
+  router.events.on("routeChangeStart", handleRouteChange);
+  return () => {
+    router.events.off("routeChangeStart", handleRouteChange);
+  };
+}, []);
   useEffect(() => {
     if (isvisible) {
       fetchYoutubeFeed().then(setVideos).catch(console.error);
+      pauseAudio(); // ✅ Pause background music
     }
   }, [isvisible]);
+
+  // ✅ Resume audio only when modal closes and no video is selected
+  useEffect(() => {
+  if (!isvisible && selectedVideo === null) {
+    // Wait a bit to allow the iframe to unmount (optional but helps in some cases)
+    setTimeout(() => {
+      resumeAudio();
+    }, 300); // 300ms delay
+  }
+}, [isvisible, selectedVideo]);
 
   if (!isvisible) return null;
 
