@@ -42,6 +42,11 @@ const FooterListTablet = ({ children, title }) => {
       icon: "",
     },
     {
+    path: "youtube",
+    display: "VIDEO LIBRARY",
+    icon: "",
+  },
+    {
       path: "contact",
       display: "Contact us",
       icon: "",
@@ -78,6 +83,9 @@ const FooterListTablet = ({ children, title }) => {
 
     if (path === "contact") {
       setShowContactModal(!showContactModal);
+    }
+    if (path === "youtube") {
+      router.push("/videos");
     }
 
     if (path === "price") {

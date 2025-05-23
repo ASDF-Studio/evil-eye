@@ -41,6 +41,11 @@ const FooterList = () => {
       icon: "",
     },
     {
+    path: "youtube",
+    display: "VIDEO LIBRARY",
+    icon: "",
+  },
+    {
       path: "contact",
       display: "Contact us",
       icon: "",
@@ -103,6 +108,9 @@ if (target === "cure" || target === "symptoms" || target === "what-is-evil-eye")
       scrollToPage(path);
     } else {
       router.push("/evil-eye-and-prayer");
+    }
+    if (path === "youtube") {
+      router.push("/videos");
     }
   };
 

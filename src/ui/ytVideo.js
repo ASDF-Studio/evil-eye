@@ -11,7 +11,7 @@ const YTModal = () => {
     <div className="h-[100%]">
       <PageFrame
         title={
-          "YOUTUBE GALLERY"
+          "VIDEO LIBRARY"
         }
         large={true}
       >

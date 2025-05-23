@@ -33,7 +33,7 @@ import YTModal from "@/ui/ytVideo";
 const NAV__LINK = [
   {
     path: "youtube",
-    display: "Youtube",
+    display: "VIDEO LIBRARY",
     icon: "",
   },
   {

@@ -14,7 +14,7 @@ const GalleryVideos = ({ isvisible }) => {
   const { pauseAudio, resumeAudio } = useAudio(); // ✅ Access context
   const router = useRouter();
 
-// Resume audio when leaving /videos
+
 useEffect(() => {
   const handleRouteChange = (url) => {
     if (!url.includes("/videos")) {
@@ -30,14 +30,14 @@ useEffect(() => {
   useEffect(() => {
     if (isvisible) {
       fetchYoutubeFeed().then(setVideos).catch(console.error);
-      pauseAudio(); // ✅ Pause background music
+      pauseAudio(); 
     }
   }, [isvisible]);
 
-  // ✅ Resume audio only when modal closes and no video is selected
+  
   useEffect(() => {
   if (!isvisible && selectedVideo === null) {
-    // Wait a bit to allow the iframe to unmount (optional but helps in some cases)
+  
     setTimeout(() => {
       resumeAudio();
     }, 300); // 300ms delay
@@ -74,6 +74,13 @@ useEffect(() => {
                   e.currentTarget.src = `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`;
                 }}
               />
+              <div className="absolute inset-0 flex items-center justify-center">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" // ← use your uploaded YouTube play icon or this one
+      alt="Play"
+      className="w-[64px] h-[45px]"
+    />
+  </div>
               <div className="absolute bottom-2 right-2 bg-[#0C0B59] font-roman text-[#FFCE70] text-[8px] px-2 py-1 rounded">
                 {video.label === "SHORTS" ? "SHORTS" : "Video"}
               </div>
