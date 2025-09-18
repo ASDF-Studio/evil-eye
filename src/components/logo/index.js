@@ -1,7 +1,7 @@
 import Image from "next/image";
 import user from "../../../public/logos/user.svg";
 // import logo from '../../../public/logo.svg';
-import logo from "../../../public/logo.png";
+import logo from "../../../public/logo2.svg";
 import mobileBars from "../../../public/logos/mobileBars.svg";
 import xmark from "../../../public/logos/xmark.svg";
 import x from "../../../public/logos/x.svg";
@@ -296,4 +296,3 @@ export const PauseAudio = () => {
     />
   );
 };
-
