@@ -23,6 +23,8 @@
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
     "rss-parser": "^3.13.0",
+    "socket.io": "4.8.1",
+    "socket.io-client": "4.8.1",
     "sharp": "^0.33.4",
     "stripe": "^15.4.0"
   },
